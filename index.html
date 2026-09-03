@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio profesional y laboratorio de datos de Luis Alberto Moreno. Especialista en arquitectura MPP, pipelines de datos y optimización de bases de datos.">
+    <title>Luis Alberto Moreno | Data Lab</title>
+
+    <!-- Favicon SVG principal y respaldos -->
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="apple-touch-icon" href="./favicon.png">
+    
+    <!-- Tailwind CSS y FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Reproductor de Lottie para animaciones vectoriales JSON -->
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;700&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; }
+        .font-mono-code { font-family: 'Fira Code', monospace; }
+
+        /* Estilo de formato fijo COBOL */
+        .cobol-editor {
+            background-color: #0f172a;
+            color: #f8fafc;
+            tab-size: 4;
+        }
+        .col-seq { color: #64748b; }       /* Cols 1-6 */
+        .col-ind { color: #f59e0b; }       /* Col 7 */
+        .col-area-a { color: #38bdf8; font-weight: bold; } /* Cols 8-11 */
+        .col-area-b { color: #e2e8f0; }    /* Cols 12-72 */
+        .cobol-comment { color: #94a3b8; font-style: italic; }
+        .cobol-keyword { color: #c084fc; font-weight: bold; }
+        .cobol-string { color: #4ade80; }
+
+        /* CARRUSEL/TICKER DEL PERSONAJE EXPRESADO EN PORCENTAJES */
+        .navbar-ticker-window {
+            position: relative;
+            width: 22%;             /* Ancho proporcional dentro de la barra */
+            min-width: 140px;       /* Tamaño mínimo responsive */
+            max-width: 200px;       /* Tamaño máximo para pantallas grandes */
+            height: 36px;
+            overflow: hidden;       /* Oculta los elementos fuera del marco */
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+        }
+
+        .ticker-track {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: absolute;
+            white-space: nowrap;
+            will-change: transform;
+            animation: tickerWalkPercent 8s linear infinite;
+        }
+
+        /* Trayectoria de animación fluida en porcentajes */
+        @keyframes tickerWalkPercent {
+            0% {
+                transform: translateX(100%);  /* Inicia completamente a la derecha fuera de vista */
+            }
+            100% {
+                transform: translateX(-100%); /* Sale completamente a la izquierda fuera de vista */
+            }
+        }
+
+        /* Pausa la caminata al pasar el cursor sobre la cápsula */
+        .navbar-ticker-window:hover .ticker-track {
+            animation-play-state: paused;
+        }
+
+        /* FILTRO PARA PASAR EL PERSONAJE A BLANCO */
+        .personaje-blanco {
+            filter: invert(1) brightness(2);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col relative pt-20">
+
+    <!-- BARRA DE NAVEGACIÓN FLOTANTE (GLASSMORPHISM) -->
+    <header class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-5xl">
+        <div class="flex items-center justify-between p-2 rounded-full bg-slate-900/40 backdrop-blur-md border border-sky-400/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+            
+            <!-- Brand / Logo + Carrusel Datalab en Porcentaje -->
+            <div class="flex items-center space-x-2 pl-2">
+                <!-- Icono del Logo -->
+                <div class="w-8 h-8 bg-sky-500/20 border border-sky-400/30 rounded-full flex items-center justify-center font-bold text-sky-400 text-xs shadow-[0_0_10px_rgba(56,189,248,0.3)] flex-shrink-0">
+                    &lt;/&gt;
+                </div>
+
+                <!-- Marco Encapsulado (Área de animación Datalab) -->
+                <div class="navbar-ticker-window hidden sm:flex">
+                    <div class="ticker-track">
+                        <!-- Etiqueta Datalab -->
+                        <span class="font-mono text-xs font-bold text-sky-300 tracking-wider uppercase pl-1">
+                            DataLab
+                        </span>
+                        
+                        <!-- Personaje Animado en Blanco -->
+                        <div class="w-7 h-7 flex-shrink-0 flex items-center justify-center">
+                            <!-- Archivo JSON Lottie con filtro blanco -->
+                            <dotlottie-player 
+                                src="./personaje.json" 
+                                background="transparent" 
+                                speed="1" 
+                                class="personaje-blanco"
+                                style="width: 28px; height: 28px;" 
+                                loop 
+                                autoplay>
+                            </dotlottie-player>
+
+                            <!-- Opción GIF de respaldo en blanco (Descomentar si usas GIF): -->
+                            <!-- <img src="./personaje.gif" alt="datalab character" class="w-7 h-7 object-contain personaje-blanco"> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Items de Navegación -->
+            <nav class="flex items-center space-x-1">
+                <button onclick="switchTab('home')" id="nav-home" class="nav-btn flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-semibold text-slate-950 bg-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.4)] transition-all duration-300">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="hidden md:inline">Inicio</span>
+                </button>
+                <button onclick="switchTab('portfolio')" id="nav-portfolio" class="nav-btn flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span class="hidden md:inline">Portafolio</span>
+                </button>
+                <button onclick="switchTab('course')" id="nav-course" class="nav-btn flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span class="hidden md:inline">Curso COBOL</span>
+                </button>
+                <button onclick="switchTab('contact')" id="nav-contact" class="nav-btn flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span class="hidden md:inline">Contacto</span>
+                </button>
+
+                <!-- Separador -->
+                <div class="h-4 w-[1px] bg-sky-400/20 mx-1"></div>
+
+                <!-- Botón Directo WhatsApp (Reemplazar 525527813356 por tu número real) -->
+                <a href="https://wa.me/525527813356?text=Hola%20Luis,%20vi%20tu%20sitio%20web%20y%20me%20interesa%20consultar%20sobre%20sus%20servicios." 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="flex items-center justify-center w-8 h-8 rounded-full text-emerald-400 hover:text-white hover:bg-emerald-500/20 transition-all duration-200" 
+                   title="Contactar por WhatsApp">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- SECCIÓN 1: INICIO (HOME) -->
+    <main id="section-home" class="tab-content flex-grow max-w-7xl w-full mx-auto px-4 py-12">
+        <div class="grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-7 space-y-6">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 bg-sky-950/80 border border-sky-800/60 rounded-full text-sky-400 text-xs font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                    <span>Actuario & Data Engineer</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                    Transformando datos en <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-blue-500">soluciones de alto impacto.</span>
+                </h1>
+                <p class="text-slate-400 text-lg leading-relaxed">
+                    Especialista en optimización de bases de datos, Arquitectura MPP, modelado semántico, Query Tuning y diseño de pipelines de datos de alto rendimiento.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <button onclick="switchTab('portfolio')" class="px-6 py-3 bg-sky-500 hover:bg-sky-400 font-semibold text-slate-950 rounded-lg shadow-lg shadow-sky-500/20 transition">
+                        Ver Portafolio de Proyectos
+                    </button>
+                    <button onclick="switchTab('course')" class="px-6 py-3 bg-slate-900 hover:bg-slate-800 font-semibold text-slate-200 rounded-lg border border-slate-800 transition">
+                        Explorar Curso COBOL
+                    </button>
+                </div>
+            </div>
+
+            <div class="md:col-span-5 bg-slate-900/80 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl">
+                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider">Domain Stack & Especialidades</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-slate-950 text-slate-200 text-xs font-mono rounded border border-slate-800">Vertica DB</span>
+                    <span class="px-3 py-1 bg-slate-950 text-slate-200 text-xs font-mono rounded border border-slate-800">Snowflake Snowpark</span>
+                    <span class="px-3 py-1 bg-slate-950 text-slate-200 text-xs font-mono rounded border border-slate-800">Power BI & DAX</span>
+                    <span class="px-3 py-1 bg-slate-950 text-slate-200 text-xs font-mono rounded border border-slate-800">Python / Pandas</span>
+                    <span class="px-3 py-1 bg-slate-950 text-slate-200 text-xs font-mono rounded border border-slate-800">StarRocks & Dremio</span>
+                    <span class="px-3 py-1 bg-slate-950 text-sky-400 text-xs font-mono rounded border border-sky-900/60">COBOL</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SECCIÓN 2: PORTAFOLIO -->
+    <main id="section-portfolio" class="tab-content hidden flex-grow max-w-7xl w-full mx-auto px-4 py-12 space-y-8">
+        <div>
+            <h2 class="text-3xl font-bold text-white">Portafolio de Proyectos</h2>
+            <p class="text-slate-400 mt-1">Soluciones de arquitectura de datos, transformación, optimización y desarrollo.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-slate-700 transition">
+                <div class="space-y-3">
+                    <div class="text-sky-400 text-xs font-bold font-mono">DATA PIPELINES</div>
+                    <h3 class="text-xl font-bold text-white">Anomaly Detection con Snowpark</h3>
+                    <p class="text-slate-400 text-sm">Pipeline para el cálculo de tasas por minuto y detección de outliers estadísticos en datasets de movilidad pública.</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-500 font-mono">
+                    <span>Snowflake · Python</span>
+                    <a href="#" class="text-sky-400 hover:underline">Detalles →</a>
+                </div>
+            </div>
+
+            <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-slate-700 transition">
+                <div class="space-y-3">
+                    <div class="text-cyan-400 text-xs font-bold font-mono">DISEÑO</div>
+                    <h3 class="text-xl font-bold text-white">Vertica Projection Design</h3>
+                    <p class="text-slate-400 text-sm">Extracción, Carga y Transformación en bases de datos orientadas a columnas.</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-500 font-mono">
+                    <span>Vertica · SQL</span>
+                    <a href="#" class="text-sky-400 hover:underline">Detalles →</a>
+                </div>
+            </div>
+
+            <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-slate-700 transition">
+                <div class="space-y-3">
+                    <div class="text-purple-400 text-xs font-bold font-mono">EDUCATION / MAINFRAME</div>
+                    <h3 class="text-xl font-bold text-white">COBOL Interactive Academy</h3>
+                    <p class="text-slate-400 text-sm">Plataforma interactiva de aprendizaje línea por línea para el lenguaje COBOL alineado a pruebas de Exercism.</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-500 font-mono">
+                    <span>COBOL · HTML5</span>
+                    <button onclick="switchTab('course')" class="text-sky-400 hover:underline">Ir al Curso →</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SECCIÓN 3: SUBSECCIÓN CURSO COBOL -->
+    <main id="section-course" class="tab-content hidden flex-grow max-w-7xl w-full mx-auto px-4 py-8">
+        <div class="grid md:grid-cols-12 gap-8">
+            <aside class="md:col-span-4 bg-slate-900/80 border border-slate-800 rounded-xl p-4 h-fit">
+                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4 px-2">Ruta de Aprendizaje COBOL</h3>
+                <div class="space-y-1 text-sm">
+                    <button class="w-full text-left px-3 py-2 bg-sky-950/60 border border-sky-800/80 text-sky-300 font-semibold rounded-lg flex items-center justify-between">
+                        <span>1.1 Historia y Arch. Mainframe</span>
+                        <i class="fa-solid fa-play text-xs"></i>
+                    </button>
+                    <button class="w-full text-left px-3 py-2 text-slate-400 hover:bg-slate-800 hover:text-slate-200 rounded-lg flex items-center justify-between">
+                        <span>1.2 Formato Fijo y Columnas</span>
+                        <i class="fa-solid fa-lock text-xs text-slate-600"></i>
+                    </button>
+                    <button class="w-full text-left px-3 py-2 text-slate-400 hover:bg-slate-800 hover:text-slate-200 rounded-lg flex items-center justify-between">
+                        <span>1.3 Las 4 Divisiones</span>
+                        <i class="fa-solid fa-lock text-xs text-slate-600"></i>
+                    </button>
+                    <button class="w-full text-left px-3 py-2 text-slate-400 hover:bg-slate-800 hover:text-slate-200 rounded-lg flex items-center justify-between">
+                        <span>2.1 Variables y PIC</span>
+                        <i class="fa-solid fa-lock text-xs text-slate-600"></i>
+                    </button>
+                </div>
+            </aside>
+
+            <section class="md:col-span-8 space-y-6">
+                <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-6 space-y-4">
+                    <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.1</span>
+                    <h2 class="text-2xl font-bold text-white">Historia y Arquitectura del Mainframe / GnuCOBOL</h2>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        COBOL (COmmon Business-Oriented Language) procesa cerca del 80% de las transacciones financieras mundiales. Su fortaleza reside en la precisión matemática exacta de centavos y el procesamiento masivo batch.
+                    </p>
+
+                    <div class="cobol-editor font-mono-code p-4 rounded-lg text-xs leading-relaxed overflow-x-auto border border-slate-800">
+                        <div><span class="col-seq">000010</span><span class="col-ind">*</span><span class="cobol-comment">================================================================*</span></div>
+                        <div><span class="col-seq">000020</span><span class="col-ind">*</span><span class="cobol-comment"> LECCIÓN 1.1: ESQUELETO MÍNIMO DE UN PROGRAMA                    *</span></div>
+                        <div><span class="col-seq">000030</span><span class="col-ind">*</span><span class="cobol-comment">================================================================*</span></div>
+                        <div><span class="col-seq">000040</span><span class="col-ind"> </span><span class="col-area-a">IDENTIFICATION DIVISION.</span></div>
+                        <div><span class="col-seq">000050</span><span class="col-ind"> </span><span class="col-area-a">PROGRAM-ID.</span><span class="col-area-b"> LEC0101.</span></div>
+                        <div><span class="col-seq">000060</span><span class="col-ind"> </span><span class="col-area-a">PROCEDURE DIVISION.</span></div>
+                        <div><span class="col-seq">000070</span><span class="col-ind"> </span><span class="col-area-a">INICIO.</span></div>
+                        <div><span class="col-seq">000080</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">DISPLAY</span><span class="col-area-b"> </span><span class="cobol-string">"¡Bienvenido al curso de COBOL!"</span><span class="col-area-b">.</span></div>
+                        <div><span class="col-seq">000090</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">STOP RUN</span><span class="col-area-b">.</span></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- SECCIÓN 4: CONTACTO -->
+    <main id="section-contact" class="tab-content hidden flex-grow max-w-3xl w-full mx-auto px-4 py-12 space-y-6">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-8 space-y-6">
+            <h2 class="text-2xl font-bold text-white">Contacto & Consultoría</h2>
+            <p class="text-slate-400 text-sm">Si deseas colaborar en proyectos, asistencia técnica o requieres una solución de arquitectura de datos: envía un mensaje.</p>
+            
+            <!-- Botón directo de WhatsApp (Reemplazar 525527813356 por tu número real) -->
+            <a href="https://wa.me/525527813356?text=Hola%20Luis,%20me%20gustaría%20agendar%20una%20consulta%20técnica." 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="flex items-center justify-center gap-3 w-full bg-emerald-600 hover:bg-emerald-500 font-semibold text-white py-3 rounded-lg shadow-lg shadow-emerald-600/20 transition">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                <span>Contactar por WhatsApp</span>
+            </a>
+
+            <div class="relative flex py-2 items-center">
+                <div class="flex-grow border-t border-slate-800"></div>
+                <span class="flex-shrink mx-4 text-xs text-slate-500 uppercase tracking-widest">o envía un correo</span>
+                <div class="flex-grow border-t border-slate-800"></div>
+            </div>
+
+            <form class="space-y-4" onsubmit="event.preventDefault(); alert('Mensaje enviado correctamente.');">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Nombre Completo</label>
+                    <input type="text" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-sky-500" placeholder="Tu nombre">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Correo Electrónico</label>
+                    <input type="email" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-sky-500" placeholder="correo@ejemplo.com">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Mensaje</label>
+                    <textarea rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-sky-500" placeholder="Escribe tu mensaje..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-slate-800 hover:bg-slate-700 font-semibold text-slate-200 border border-slate-700 py-3 rounded-lg transition">
+                    Enviar Mensaje por Correo
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-800/80 py-6 text-center text-xs text-slate-500">
+        <p>© 2026 Luis Alberto Moreno · Actuario y Data Engineer</p>
+    </footer>
+
+    <!-- LÓGICA DE CAMBIO DE PESTAÑAS (SPA) -->
+    <script>
+        function switchTab(tabName) {
+            // Ocultar todos los contenidos
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            
+            // Restablecer estilos visuales de botones tipo cápsula
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-slate-950', 'bg-sky-400', 'font-semibold', 'shadow-[0_0_15px_rgba(56,189,248,0.4)]');
+                btn.classList.add('text-slate-300', 'font-medium');
+            });
+
+            // Mostrar la sección elegida
+            document.getElementById(`section-${tabName}`).classList.remove('hidden');
+
+            // Activar botón en la barra neumórfica
+            const activeBtn = document.getElementById(`nav-${tabName}`);
+            activeBtn.classList.add('text-slate-950', 'bg-sky-400', 'font-semibold', 'shadow-[0_0_15px_rgba(56,189,248,0.4)]');
+            activeBtn.classList.remove('text-slate-300', 'font-medium');
+        }
+    </script>
+</body>
+</html>
