@@ -15,9 +15,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Reproductor de Lottie para animaciones vectoriales JSON -->
-    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;700&display=swap');
         
@@ -38,91 +35,55 @@
         .cobol-keyword { color: #c084fc; font-weight: bold; }
         .cobol-string { color: #4ade80; }
 
-        /* CARRUSEL/TICKER DEL PERSONAJE EXPRESADO EN PORCENTAJES */
-        .navbar-ticker-window {
-            position: relative;
-            width: 22%;             /* Ancho proporcional dentro de la barra */
-            min-width: 140px;       /* Tamaño mínimo responsive */
-            max-width: 200px;       /* Tamaño máximo para pantallas grandes */
-            height: 36px;
-            overflow: hidden;       /* Oculta los elementos fuera del marco */
-            background: rgba(15, 23, 42, 0.7);
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            border-radius: 9999px;
+        /* PERSONAJE DE FONDO PARA TODA LA PÁGINA */
+        .hero-background-character {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none; /* Inerte para permitir clics en los botones */
+            z-index: 0;           /* Detrás de todo el contenido */
             display: flex;
             align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
 
-        .ticker-track {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            position: absolute;
-            white-space: nowrap;
-            will-change: transform;
-            animation: tickerWalkPercent 8s linear infinite;
-        }
-
-        /* Trayectoria de animación fluida en porcentajes */
-        @keyframes tickerWalkPercent {
-            0% {
-                transform: translateX(100%);  /* Inicia completamente a la derecha fuera de vista */
-            }
-            100% {
-                transform: translateX(-100%); /* Sale completamente a la izquierda fuera de vista */
-            }
-        }
-
-        /* Pausa la caminata al pasar el cursor sobre la cápsula */
-        .navbar-ticker-window:hover .ticker-track {
-            animation-play-state: paused;
-        }
-
-        /* FILTRO PARA PASAR EL PERSONAJE A BLANCO */
-        .personaje-blanco {
-            filter: invert(1) brightness(2);
+        .hero-background-character img, 
+        .hero-background-character svg {
+            width: 75vh;          /* Ocupa el 75% de la altura de la pantalla */
+            max-width: 650px;     /* Límite para monitores muy grandes */
+            height: auto;
+            opacity: 0.08;        /* Opacidad baja estilo marca de agua para no interferir la lectura */
+            filter: invert(1) brightness(2); /* Mantiene el trazo en blanco */
+            transform: translateX(25vw);    /* Desplazado ligeramente a la derecha para equilibrar */
         }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col relative pt-20">
 
+    <!-- PERSONAJE EN FONDO SVG (FILTRO DE AGUA TÉCNICO) -->
+    <div class="hero-background-character">
+        <!-- Puedes apuntar a tu archivo cara.svg o a la versión con cuerpo completo -->
+        <img src="./cara.svg" alt="Fondo Arquitectura DataLab" onerror="this.src='./favicon.svg';">
+    </div>
+
     <!-- BARRA DE NAVEGACIÓN FLOTANTE (GLASSMORPHISM) -->
     <header class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-5xl">
         <div class="flex items-center justify-between p-2 rounded-full bg-slate-900/40 backdrop-blur-md border border-sky-400/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
             
-            <!-- Brand / Logo + Carrusel Datalab en Porcentaje -->
-            <div class="flex items-center space-x-2 pl-2">
-                <!-- Icono del Logo -->
+            <!-- Brand / Logo -->
+            <div class="flex items-center space-x-3 pl-3">
                 <div class="w-8 h-8 bg-sky-500/20 border border-sky-400/30 rounded-full flex items-center justify-center font-bold text-sky-400 text-xs shadow-[0_0_10px_rgba(56,189,248,0.3)] flex-shrink-0">
                     &lt;/&gt;
                 </div>
-
-                <!-- Marco Encapsulado (Área de animación Datalab) -->
-                <div class="navbar-ticker-window hidden sm:flex">
-                    <div class="ticker-track">
-                        <!-- Etiqueta Datalab -->
-                        <span class="font-mono text-xs font-bold text-sky-300 tracking-wider uppercase pl-1">
-                            DataLab
-                        </span>
-                        
-                        <!-- Personaje Animado en Blanco -->
-                        <div class="w-7 h-7 flex-shrink-0 flex items-center justify-center">
-                            <!-- Archivo JSON Lottie con filtro blanco -->
-                            <dotlottie-player 
-                                src="./personaje.json" 
-                                background="transparent" 
-                                speed="1" 
-                                class="personaje-blanco"
-                                style="width: 28px; height: 28px;" 
-                                loop 
-                                autoplay>
-                            </dotlottie-player>
-
-                            <!-- Opción GIF de respaldo en blanco (Descomentar si usas GIF): -->
-                            <!-- <img src="./personaje.gif" alt="datalab character" class="w-7 h-7 object-contain personaje-blanco"> -->
-                        </div>
-                    </div>
-                </div>
+                <span class="font-bold text-sm tracking-tight text-white flex items-center gap-2">
+                    Luis Alberto Moreno 
+                    <span class="text-[10px] text-sky-300 font-normal px-2 py-0.5 bg-sky-950/60 rounded-full border border-sky-800/50 hidden sm:inline">
+                        DataLab & ReSearch
+                    </span>
+                </span>
             </div>
             
             <!-- Items de Navegación -->
@@ -147,7 +108,7 @@
                 <!-- Separador -->
                 <div class="h-4 w-[1px] bg-sky-400/20 mx-1"></div>
 
-                <!-- Botón Directo WhatsApp (Reemplazar 525527813356 por tu número real) -->
+                <!-- Botón Directo WhatsApp (Sustituye por tu número real) -->
                 <a href="https://wa.me/525527813356?text=Hola%20Luis,%20vi%20tu%20sitio%20web%20y%20me%20interesa%20consultar%20sobre%20sus%20servicios." 
                    target="_blank" 
                    rel="noopener noreferrer" 
@@ -160,12 +121,12 @@
     </header>
 
     <!-- SECCIÓN 1: INICIO (HOME) -->
-    <main id="section-home" class="tab-content flex-grow max-w-7xl w-full mx-auto px-4 py-12">
+    <main id="section-home" class="tab-content relative z-10 flex-grow max-w-7xl w-full mx-auto px-4 py-12">
         <div class="grid md:grid-cols-12 gap-12 items-center">
             <div class="md:col-span-7 space-y-6">
                 <div class="inline-flex items-center space-x-2 px-3 py-1 bg-sky-950/80 border border-sky-800/60 rounded-full text-sky-400 text-xs font-semibold">
                     <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
-                    <span>Actuario & Data Engineer</span>
+                    <span>Actuario || Data Engineer || Researcher</span>
                 </div>
                 <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-tight">
                     Transformando datos en <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-blue-500">soluciones de alto impacto.</span>
@@ -183,8 +144,8 @@
                 </div>
             </div>
 
-            <div class="md:col-span-5 bg-slate-900/80 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl">
-                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider">Domain Stack & Especialidades</h3>
+            <div class="md:col-span-5 bg-slate-900/80 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl">
+                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider">Domain Stack</h3>
                 <div class="flex flex-wrap gap-2">
                     <span class="px-3 py-1 bg-slate-950 text-slate-200 text-xs font-mono rounded border border-slate-800">Vertica DB</span>
                     <span class="px-3 py-1 bg-slate-950 text-slate-200 text-xs font-mono rounded border border-slate-800">Snowflake Snowpark</span>
@@ -198,14 +159,14 @@
     </main>
 
     <!-- SECCIÓN 2: PORTAFOLIO -->
-    <main id="section-portfolio" class="tab-content hidden flex-grow max-w-7xl w-full mx-auto px-4 py-12 space-y-8">
+    <main id="section-portfolio" class="tab-content relative z-10 hidden flex-grow max-w-7xl w-full mx-auto px-4 py-12 space-y-8">
         <div>
             <h2 class="text-3xl font-bold text-white">Portafolio de Proyectos</h2>
             <p class="text-slate-400 mt-1">Soluciones de arquitectura de datos, transformación, optimización y desarrollo.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-slate-700 transition">
+            <div class="bg-slate-900/80 backdrop-blur-sm border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-slate-700 transition">
                 <div class="space-y-3">
                     <div class="text-sky-400 text-xs font-bold font-mono">DATA PIPELINES</div>
                     <h3 class="text-xl font-bold text-white">Anomaly Detection con Snowpark</h3>
@@ -217,11 +178,11 @@
                 </div>
             </div>
 
-            <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-slate-700 transition">
+            <div class="bg-slate-900/80 backdrop-blur-sm border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-slate-700 transition">
                 <div class="space-y-3">
                     <div class="text-cyan-400 text-xs font-bold font-mono">DISEÑO</div>
-                    <h3 class="text-xl font-bold text-white">Vertica Projection Design</h3>
-                    <p class="text-slate-400 text-sm">Extracción, Carga y Transformación en bases de datos orientadas a columnas.</p>
+                    <h3 class="text-xl font-bold text-white">Vertica Projection Designing</h3>
+                    <p class="text-slate-400 text-sm">Extracción, Carga y Transformación en bases de datos columnares.</p>
                 </div>
                 <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-500 font-mono">
                     <span>Vertica · SQL</span>
@@ -229,7 +190,7 @@
                 </div>
             </div>
 
-            <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-slate-700 transition">
+            <div class="bg-slate-900/80 backdrop-blur-sm border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-slate-700 transition">
                 <div class="space-y-3">
                     <div class="text-purple-400 text-xs font-bold font-mono">EDUCATION / MAINFRAME</div>
                     <h3 class="text-xl font-bold text-white">COBOL Interactive Academy</h3>
@@ -244,9 +205,9 @@
     </main>
 
     <!-- SECCIÓN 3: SUBSECCIÓN CURSO COBOL -->
-    <main id="section-course" class="tab-content hidden flex-grow max-w-7xl w-full mx-auto px-4 py-8">
+    <main id="section-course" class="tab-content relative z-10 hidden flex-grow max-w-7xl w-full mx-auto px-4 py-8">
         <div class="grid md:grid-cols-12 gap-8">
-            <aside class="md:col-span-4 bg-slate-900/80 border border-slate-800 rounded-xl p-4 h-fit">
+            <aside class="md:col-span-4 bg-slate-900/80 backdrop-blur-sm border border-slate-800 rounded-xl p-4 h-fit">
                 <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4 px-2">Ruta de Aprendizaje COBOL</h3>
                 <div class="space-y-1 text-sm">
                     <button class="w-full text-left px-3 py-2 bg-sky-950/60 border border-sky-800/80 text-sky-300 font-semibold rounded-lg flex items-center justify-between">
@@ -269,7 +230,7 @@
             </aside>
 
             <section class="md:col-span-8 space-y-6">
-                <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-6 space-y-4">
+                <div class="bg-slate-900/80 backdrop-blur-sm border border-slate-800 rounded-xl p-6 space-y-4">
                     <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.1</span>
                     <h2 class="text-2xl font-bold text-white">Historia y Arquitectura del Mainframe / GnuCOBOL</h2>
                     <p class="text-slate-300 text-sm leading-relaxed">
@@ -293,12 +254,12 @@
     </main>
 
     <!-- SECCIÓN 4: CONTACTO -->
-    <main id="section-contact" class="tab-content hidden flex-grow max-w-3xl w-full mx-auto px-4 py-12 space-y-6">
-        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-8 space-y-6">
+    <main id="section-contact" class="tab-content relative z-10 hidden flex-grow max-w-3xl w-full mx-auto px-4 py-12 space-y-6">
+        <div class="bg-slate-900/80 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 space-y-6">
             <h2 class="text-2xl font-bold text-white">Contacto & Consultoría</h2>
             <p class="text-slate-400 text-sm">Si deseas colaborar en proyectos, asistencia técnica o requieres una solución de arquitectura de datos: envía un mensaje.</p>
             
-            <!-- Botón directo de WhatsApp (Reemplazar 525527813356 por tu número real) -->
+            <!-- Botón directo de WhatsApp -->
             <a href="https://wa.me/525527813356?text=Hola%20Luis,%20me%20gustaría%20agendar%20una%20consulta%20técnica." 
                target="_blank" 
                rel="noopener noreferrer" 
@@ -334,7 +295,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-950 border-t border-slate-800/80 py-6 text-center text-xs text-slate-500">
+    <footer class="bg-slate-950 border-t border-slate-800/80 py-6 text-center text-xs text-slate-500 relative z-10">
         <p>© 2026 Luis Alberto Moreno · Actuario y Data Engineer</p>
     </footer>
 
