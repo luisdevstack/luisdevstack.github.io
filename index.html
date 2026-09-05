@@ -10,17 +10,17 @@
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
     <link rel="icon" type="image/png" href="./favicon.png">
     <link rel="apple-touch-icon" href="./favicon.png">
-    
+
     <!-- Tailwind CSS y FontAwesome -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- GSAP (Librería para animaciones de entrada) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;700&display=swap');
-        
+
         body { font-family: 'Inter', sans-serif; }
         .font-mono-code { font-family: 'Fira Code', monospace; }
 
@@ -31,14 +31,14 @@
             tab-size: 4;
         }
         .col-seq { color: #64748b; }
-        .col-ind { color: #f59e0b; }
+        .col-ind { color: #f59e0b; font-weight: bold; }
         .col-area-a { color: #38bdf8; font-weight: bold; }
         .col-area-b { color: #e2e8f0; }
         .cobol-comment { color: #94a3b8; font-style: italic; }
         .cobol-keyword { color: #c084fc; font-weight: bold; }
         .cobol-string { color: #4ade80; }
 
-        /* PERSONAJE DE FONDO DELIMITADO POR ALTURA */
+        /* PERSONAJE DE FONDO DELIMITADO POR ALTURA (HOME) */
         .hero-background-character {
             position: fixed;
             top: 0;
@@ -54,7 +54,7 @@
             overflow: hidden;
         }
 
-        .hero-background-character img, 
+        .hero-background-character img,
         .hero-background-character svg {
             height: 85vh;
             width: auto;
@@ -67,11 +67,11 @@
         /* EFECTO DE TEXTO MULTICOLOR ANIMADO CONTINUO */
         .animated-gradient-text {
             background: linear-gradient(
-                135deg, 
-                #38bdf8 0%, 
-                #818cf8 25%, 
-                #c084fc 50%, 
-                #34d399 75%, 
+                135deg,
+                #38bdf8 0%,
+                #818cf8 25%,
+                #c084fc 50%,
+                #34d399 75%,
                 #38bdf8 100%
             );
             background-size: 300% 300%;
@@ -86,7 +86,30 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* BOTÓN PÍLDORA NEUMÓRFICO FLOTANTE (SOFT 3D PILL BUTTON) */
+        /* MÁSCARA SVG DE CARA CON GRADIENTE ANIMADO */
+        .animated-svg-mask {
+            background: linear-gradient(
+                135deg,
+                #38bdf8 0%,
+                #818cf8 25%,
+                #c084fc 50%,
+                #34d399 75%,
+                #38bdf8 100%
+            );
+            background-size: 300% 300%;
+            animation: gradientShift 6s ease infinite;
+            -webkit-mask-image: url('./cara.svg');
+            mask-image: url('./cara.svg');
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-position: center;
+            -webkit-mask-size: contain;
+            mask-size: contain;
+            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.3));
+        }
+
+        /* BOTÓN PÍLDORA NEUMÓRFICO FLOTANTE */
         .pill-3d-button {
             display: inline-flex;
             align-items: center;
@@ -96,7 +119,7 @@
             border-radius: 9999px;
             background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
             border: 1px solid rgba(56, 189, 248, 0.3);
-            box-shadow: 
+            box-shadow:
                 0 10px 25px -5px rgba(0, 0, 0, 0.5),
                 inset 0 1px 1px 0 rgba(255, 255, 255, 0.15),
                 inset 0 -2px 4px 0 rgba(0, 0, 0, 0.4);
@@ -107,24 +130,22 @@
 
         .pill-3d-button:hover {
             border-color: rgba(56, 189, 248, 0.6);
-            box-shadow: 
+            box-shadow:
                 0 15px 30px -5px rgba(56, 189, 248, 0.25),
                 inset 0 1px 2px 0 rgba(255, 255, 255, 0.3);
         }
 
-        /* EFECTO DE FLOTACIÓN CONTINUA DEL BOTÓN */
         @keyframes floatingPill {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-7px); }
         }
 
-        /* ESFERA / CÍRCULO NEUMÓRFICO INTERIOR CON ROTACIÓN PERPETUA */
         .pill-orb-3d {
             width: 2.5rem;
             height: 2.5rem;
             border-radius: 9999px;
             background: radial-gradient(circle at 35% 35%, #38bdf8, #0284c7 60%, #0369a1);
-            box-shadow: 
+            box-shadow:
                 inset -2px -2px 6px rgba(0, 0, 0, 0.6),
                 inset 2px 2px 6px rgba(255, 255, 255, 0.5),
                 0 4px 10px rgba(2, 132, 199, 0.4);
@@ -174,7 +195,22 @@
             100% { transform: translateY(-50%); }
         }
 
-        /* EVITA PARPADEO PRE-GSAP */
+        /* ESTILOS DEL CARRUSEL DE TEXTO EN TITULAR */
+        .text-carousel-wrapper {
+            display: inline-block;
+            vertical-align: bottom;
+            position: relative;
+            overflow: hidden;
+            height: 1.3em;
+        }
+
+        .text-carousel-item {
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+            white-space: nowrap;
+        }
+
+        /* EVITA PARPADEO PRE-GSAP Y AJUSTE DE HEADER */
         .hero-anim-item, .header-anim {
             opacity: 0;
             will-change: transform, opacity;
@@ -183,83 +219,81 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col relative pt-20">
 
-    <!-- PERSONAJE EN FONDO SVG -->
+    <!-- PERSONAJE EN FONDO SVG (HOME) -->
     <div class="hero-background-character hero-bg-anim">
         <img src="./cara.svg" alt="Fondo Arquitectura DataLab" onerror="this.src='./favicon.svg';">
     </div>
 
-    <!-- BARRA DE NAVEGACIÓN FLOTANTE (GLASSMORPHISM) -->
-    <header class="header-anim fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-5xl">
-        <div class="flex items-center justify-between p-2 rounded-full bg-slate-900/40 backdrop-blur-md border border-sky-400/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
-            
-            <!-- Brand / Logo (Nombre más pequeño y con texto multicolor continuo) -->
-            <div class="flex items-center space-x-2.5 pl-2">
-                <div class="w-7 h-7 bg-sky-500/20 border border-sky-400/30 rounded-full flex items-center justify-center font-bold text-sky-400 text-xs shadow-[0_0_10px_rgba(56,189,248,0.3)] flex-shrink-0">
-                    &lt;/&gt;
+    <!-- BARRA DE NAVEGACIÓN FLOTANTE (CORREGIDO ALINEADO CON WRAPPER DE CENTRADO PERFECTO) -->
+    <div class="header-anim fixed top-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
+        <header class="w-full max-w-5xl pointer-events-auto">
+            <div class="flex items-center justify-between p-2 rounded-full bg-slate-900/40 backdrop-blur-md border border-sky-400/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+
+                <!-- Logo -->
+                <div class="flex items-center space-x-2.5 pl-2">
+                    <div class="w-7 h-7 bg-sky-500/20 border border-sky-400/30 rounded-full flex items-center justify-center font-bold text-sky-400 text-xs shadow-[0_0_10px_rgba(56,189,248,0.3)] flex-shrink-0">
+                        &lt;/&gt;
+                    </div>
+                    <span class="font-bold text-xs sm:text-sm tracking-tight animated-gradient-text">
+                        Luis Alberto Moreno
+                    </span>
                 </div>
-                <span class="font-bold text-xs sm:text-sm tracking-tight animated-gradient-text">
-                    Luis Alberto Moreno
-                </span>
+
+                <!-- Items de Navegación -->
+                <nav class="flex items-center space-x-1">
+                    <button onclick="switchTab('home')" id="nav-home" class="nav-btn flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-semibold text-slate-950 bg-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.4)] transition-all duration-300">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="hidden md:inline">Inicio</span>
+                    </button>
+                    <button onclick="switchTab('portfolio')" id="nav-portfolio" class="nav-btn flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <span class="hidden md:inline">Portafolio</span>
+                    </button>
+                    <button onclick="switchTab('course')" id="nav-course" class="nav-btn flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span class="hidden md:inline">Aprende COBOL</span>
+                    </button>
+                    <button onclick="switchTab('contact')" id="nav-contact" class="nav-btn flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span class="hidden md:inline">Contacto</span>
+                    </button>
+
+                    <div class="h-4 w-[1px] bg-sky-400/20 mx-1"></div>
+
+                    <a href="https://wa.me/525527813356?text=Hola%20Luis,%20vi%20tu%20sitio%20web%20y%20me%20interesa%20consultar%20sobre%20sus%20servicios."
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="flex items-center justify-center w-8 h-8 rounded-full text-emerald-400 hover:text-white hover:bg-emerald-500/20 transition-all duration-200"
+                       title="Contactar por WhatsApp">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                    </a>
+                </nav>
             </div>
-            
-            <!-- Items de Navegación -->
-            <nav class="flex items-center space-x-1">
-                <button onclick="switchTab('home')" id="nav-home" class="nav-btn flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-semibold text-slate-950 bg-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.4)] transition-all duration-300">
-                    <i class="fa-solid fa-house"></i>
-                    <span class="hidden md:inline">Inicio</span>
-                </button>
-                <button onclick="switchTab('portfolio')" id="nav-portfolio" class="nav-btn flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
-                    <i class="fa-solid fa-briefcase"></i>
-                    <span class="hidden md:inline">Portafolio</span>
-                </button>
-                <button onclick="switchTab('course')" id="nav-course" class="nav-btn flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                    <span class="hidden md:inline">Aprende COBOL</span>
-                </button>
-                <button onclick="switchTab('contact')" id="nav-contact" class="nav-btn flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span class="hidden md:inline">Contacto</span>
-                </button>
-
-                <!-- Separador -->
-                <div class="h-4 w-[1px] bg-sky-400/20 mx-1"></div>
-
-                <!-- Botón Directo WhatsApp -->
-                <a href="https://wa.me/525527813356?text=Hola%20Luis,%20vi%20tu%20sitio%20web%20y%20me%20interesa%20consultar%20sobre%20sus%20servicios." 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="flex items-center justify-center w-8 h-8 rounded-full text-emerald-400 hover:text-white hover:bg-emerald-500/20 transition-all duration-200" 
-                   title="Contactar por WhatsApp">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                </a>
-            </nav>
-        </div>
-    </header>
+        </header>
+    </div>
 
     <!-- SECCIÓN 1: INICIO (HOME) -->
     <main id="section-home" class="tab-content relative z-10 flex-grow max-w-7xl w-full mx-auto px-4 py-12">
         <div class="grid md:grid-cols-12 gap-12 items-center">
             <div class="md:col-span-7 space-y-6">
-                <!-- Tag superior -->
                 <div class="hero-anim-item tag-item inline-flex items-center space-x-2 px-3 py-1 bg-sky-950/80 border border-sky-800/60 rounded-full text-sky-400 text-xs font-semibold">
                     <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
                     <span>DataLab & Research Core</span>
                 </div>
-                
-                <!-- TÍTULO PRINCIPAL CON EFECTO DE CAMBIO DE COLOR CONTINUO -->
+
+                <!-- TÍTULO CON CARRUSEL DE TEXTO ANIMADO -->
                 <h1 class="hero-anim-item title-main text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.25] md:leading-[1.3]">
-                    Transformando necesidades en 
-                    <span class="animated-gradient-text">Soluciones Análiticas.</span>
+                    Transformando necesidades en
+                    <div class="text-carousel-wrapper">
+                        <span id="carousel-text" class="text-carousel-item animated-gradient-text">Soluciones Analíticas.</span>
+                    </div>
                 </h1>
-                
-                <!-- Subtítulo -->
+
                 <p class="hero-anim-item subtitle-item text-slate-400 text-lg leading-relaxed">
                     Especialista en optimización de bases de datos, Arquitectura de Procesamiento Paralelo Masivo, modelado semántico, Query Tuning e implementación de pipelines de alto rendimiento.
                 </p>
 
-                <!-- BOTONES FLOTANTES ESTILO PÍLDORA NEUMÓRFICA 3D -->
                 <div class="hero-anim-item cta-item flex flex-wrap items-center gap-5 pt-2">
-                    <!-- Botón Principal: Portafolio (Píldora Flotante 3D) -->
                     <button onclick="switchTab('portfolio')" class="pill-3d-button group">
                         <div class="text-left">
                             <div class="text-[10px] uppercase font-mono tracking-widest text-sky-400 font-bold">Explorar</div>
@@ -270,11 +304,10 @@
                         </div>
                     </button>
 
-                    <!-- Botón Secundario: Aprender COBOL -->
                     <button onclick="switchTab('course')" class="pill-3d-button group" style="animation-delay: -2s;">
                         <div class="text-left">
                             <div class="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-bold">Mainframe</div>
-                            <div class="text-sm font-bold text-white leading-tight">Aprender COBOL</div>
+                            <div class="text-sm font-bold text-white leading-tight">Aprende COBOL</div>
                         </div>
                         <div class="pill-orb-3d" style="background: radial-gradient(circle at 35% 35%, #34d399, #059669 60%, #047857);">
                             <div class="pill-orb-spinner"></div>
@@ -283,7 +316,7 @@
                 </div>
             </div>
 
-            <!-- AREA DOMAIN STACK TRANSPARENTE CON DESPLAZAMIENTO COLUMNAR -->
+            <!-- DOMAIN STACK -->
             <div class="hero-anim-item stack-card md:col-span-5 bg-transparent border border-slate-700/40 backdrop-blur-[2px] rounded-2xl p-6 space-y-4 shadow-xl transition hover:border-sky-500/30">
                 <div class="flex items-center justify-between">
                     <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest font-mono">DOMAIN STACK</h3>
@@ -292,10 +325,8 @@
                     </span>
                 </div>
 
-                <!-- Marquesina vertical autodesplazable -->
                 <div class="stack-column-container">
                     <div class="stack-column-track">
-                        <!-- Bloque 1 de Tecnologías -->
                         <div class="flex items-center justify-between p-2.5 bg-slate-950/40 border border-slate-800/80 rounded-xl backdrop-blur-sm">
                             <span class="text-xs font-mono font-semibold text-slate-200">Vertica DB</span>
                             <span class="text-[10px] font-mono text-slate-500">Arquitectura MPP</span>
@@ -321,7 +352,7 @@
                             <span class="text-[10px] font-mono text-sky-500">Mainframe Core</span>
                         </div>
 
-                        <!-- Bloque duplicado (bucle sin saltos) -->
+                        <!-- Bloque duplicado -->
                         <div class="flex items-center justify-between p-2.5 bg-slate-950/40 border border-slate-800/80 rounded-xl backdrop-blur-sm">
                             <span class="text-xs font-mono font-semibold text-slate-200">Vertica DB</span>
                             <span class="text-[10px] font-mono text-slate-500">Columnar MPP</span>
@@ -388,7 +419,7 @@
                 <div class="space-y-3">
                     <div class="text-purple-400 text-xs font-bold font-mono">EDUCATION / MAINFRAME</div>
                     <h3 class="text-xl font-bold text-white">COBOL Interactive Academy</h3>
-                    <p class="text-slate-400 text-sm">Plataforma interactiva de aprendizaje línea por línea para el lenguaje COBOL alineado a pruebas de Exercism.</p>
+                    <p class="text-slate-400 text-sm">Plataforma interactiva de aprendizaje para el lenguaje COBOL.</p>
                 </div>
                 <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-500 font-mono">
                     <span>COBOL · HTML5</span>
@@ -400,50 +431,142 @@
 
     <!-- SECCIÓN 3: SUBSECCIÓN CURSO COBOL -->
     <main id="section-course" class="tab-content relative z-10 hidden flex-grow max-w-7xl w-full mx-auto px-4 py-8">
-        <div class="grid md:grid-cols-12 gap-8">
-            <aside class="md:col-span-4 bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-xl p-4 h-fit">
-                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4 px-2">Ruta de Aprendizaje COBOL</h3>
-                <div class="space-y-1 text-sm">
-                    <button class="w-full text-left px-3 py-2 bg-sky-950/60 border border-sky-800/80 text-sky-300 font-semibold rounded-lg flex items-center justify-between">
-                        <span>1.1 Historia y Arch. Mainframe</span>
-                        <i class="fa-solid fa-play text-xs"></i>
-                    </button>
-                    <button class="w-full text-left px-3 py-2 text-slate-400 hover:bg-slate-800 hover:text-slate-200 rounded-lg flex items-center justify-between">
-                        <span>1.2 Formato Fijo y Columnas</span>
-                        <i class="fa-solid fa-lock text-xs text-slate-600"></i>
-                    </button>
-                    <button class="w-full text-left px-3 py-2 text-slate-400 hover:bg-slate-800 hover:text-slate-200 rounded-lg flex items-center justify-between">
-                        <span>1.3 Las 4 Divisiones</span>
-                        <i class="fa-solid fa-lock text-xs text-slate-600"></i>
-                    </button>
-                    <button class="w-full text-left px-3 py-2 text-slate-400 hover:bg-slate-800 hover:text-slate-200 rounded-lg flex items-center justify-between">
-                        <span>2.1 Variables y PIC</span>
-                        <i class="fa-solid fa-lock text-xs text-slate-600"></i>
-                    </button>
+        <div class="grid lg:grid-cols-12 gap-8">
+
+            <!-- SIDEBAR DEL CURSO -->
+            <aside class="lg:col-span-4 space-y-6">
+                <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-4 space-y-3">
+                    <div class="flex items-center justify-between px-2 pb-2 border-b border-slate-800">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Ruta Completa COBOL</h3>
+                        <span class="text-[10px] bg-sky-950 text-sky-400 px-2 py-0.5 rounded border border-sky-800">7 Módulos</span>
+                    </div>
+
+                    <div class="space-y-2 text-xs" id="accordion-container">
+                        <!-- MÓDULO 1 -->
+                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
+                            <button onclick="toggleModule('mod-1')" class="w-full px-3 py-2.5 text-left font-semibold text-slate-200 hover:bg-slate-800/60 flex items-center justify-between transition">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-layer-group text-sky-400"></i> M1: Fundamentos y Estructura</span>
+                                <i id="icon-mod-1" class="fa-solid fa-chevron-down text-slate-500 text-[10px] transition-transform duration-200"></i>
+                            </button>
+                            <div id="mod-1" class="space-y-1 p-2 bg-slate-950/80 border-t border-slate-800/60">
+                                <button onclick="loadLesson('1.1')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
+                                    <span>1.1 Historia y Arch. Mainframe</span>
+                                    <i class="fa-solid fa-play text-[10px]"></i>
+                                </button>
+                                <button onclick="loadLesson('1.2')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
+                                    <span>1.2 Formato Fijo y Columnas</span>
+                                    <i class="fa-solid fa-play text-[10px]"></i>
+                                </button>
+                                <button onclick="loadLesson('1.3')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
+                                    <span>1.3 Las 4 Divisiones</span>
+                                    <i class="fa-solid fa-play text-[10px]"></i>
+                                </button>
+                                <button onclick="loadLesson('1.4')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
+                                    <span>1.4 Delimitadores y Puntos</span>
+                                    <i class="fa-solid fa-play text-[10px]"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- MÓDULO 2 -->
+                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
+                            <button onclick="toggleModule('mod-2')" class="w-full px-3 py-2.5 text-left font-semibold text-slate-300 hover:bg-slate-800/60 flex items-center justify-between transition">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-memory text-purple-400"></i> M2: Manejo de Memoria</span>
+                                <i id="icon-mod-2" class="fa-solid fa-chevron-right text-slate-500 text-[10px] transition-transform duration-200"></i>
+                            </button>
+                            <div id="mod-2" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-slate-800/60">
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">2.1 Niveles de Datos (01, 05, 77)</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">2.2 Cláusula PIC y Tipos</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">2.3 Literales y Figurativos</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">2.4 Cláusula REDEFINES</span>
+                            </div>
+                        </div>
+
+                        <!-- MÓDULO 3 -->
+                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
+                            <button onclick="toggleModule('mod-3')" class="w-full px-3 py-2.5 text-left font-semibold text-slate-300 hover:bg-slate-800/60 flex items-center justify-between transition">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-code-branch text-amber-400"></i> M3: Control y Operaciones</span>
+                                <i id="icon-mod-3" class="fa-solid fa-chevron-right text-slate-500 text-[10px] transition-transform duration-200"></i>
+                            </button>
+                            <div id="mod-3" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-slate-800/60">
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">3.1 Asignación con MOVE</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">3.2 Operaciones y COMPUTE</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">3.3 Decisiones IF / ELSE / 88</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">3.4 Evaluación con EVALUATE</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">3.5 Bucles PERFORM</span>
+                            </div>
+                        </div>
+
+                        <!-- MÓDULO 4 -->
+                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
+                            <button onclick="toggleModule('mod-4')" class="w-full px-3 py-2.5 text-left font-semibold text-slate-300 hover:bg-slate-800/60 flex items-center justify-between transition">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-font text-emerald-400"></i> M4: Texto y Funciones</span>
+                                <i id="icon-mod-4" class="fa-solid fa-chevron-right text-slate-500 text-[10px] transition-transform duration-200"></i>
+                            </button>
+                            <div id="mod-4" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-slate-800/60">
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">4.1 STRING y UNSTRING</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">4.2 INSPECT REPLACING</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">4.3 Reference Modification</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">4.4 Funciones Intrínsecas</span>
+                            </div>
+                        </div>
+
+                        <!-- MÓDULO 5 -->
+                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
+                            <button onclick="toggleModule('mod-5')" class="w-full px-3 py-2.5 text-left font-semibold text-slate-300 hover:bg-slate-800/60 flex items-center justify-between transition">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-table-cells text-cyan-400"></i> M5: Arrays y Tablas</span>
+                                <i id="icon-mod-5" class="fa-solid fa-chevron-right text-slate-500 text-[10px] transition-transform duration-200"></i>
+                            </button>
+                            <div id="mod-5" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-slate-800/60">
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">5.1 Cláusula OCCURS</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">5.2 Subíndices e Índices</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">5.3 Recorrido de Tablas</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">5.4 Búsquedas SEARCH / SEARCH ALL</span>
+                            </div>
+                        </div>
+
+                        <!-- MÓDULO 6 -->
+                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
+                            <button onclick="toggleModule('mod-6')" class="w-full px-3 py-2.5 text-left font-semibold text-slate-300 hover:bg-slate-800/60 flex items-center justify-between transition">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-diagram-project text-indigo-400"></i> M6: Subprogramas</span>
+                                <i id="icon-mod-6" class="fa-solid fa-chevron-right text-slate-500 text-[10px] transition-transform duration-200"></i>
+                            </button>
+                            <div id="mod-6" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-slate-800/60">
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">6.1 CALL ... USING</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">6.2 LINKAGE SECTION</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">6.3 Paso de Parámetros</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">6.4 Liberación CANCEL</span>
+                            </div>
+                        </div>
+
+                        <!-- MÓDULO 7 -->
+                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
+                            <button onclick="toggleModule('mod-7')" class="w-full px-3 py-2.5 text-left font-semibold text-slate-300 hover:bg-slate-800/60 flex items-center justify-between transition">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-file-invoice text-rose-400"></i> M7: Manejo de Archivos</span>
+                                <i id="icon-mod-7" class="fa-solid fa-chevron-right text-slate-500 text-[10px] transition-transform duration-200"></i>
+                            </button>
+                            <div id="mod-7" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-slate-800/60">
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">7.1 FILE-CONTROL y SELECT</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">7.2 FILE SECTION y FD</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">7.3 OPEN, READ, WRITE, CLOSE</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">7.4 Organización VSAM / Secuencial</span>
+                                <span class="block px-2 py-1 text-[11px] text-slate-500">7.5 Control FILE STATUS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VECTOR SVG CON MÁSCARA Y GRADIENTE ANIMADO -->
+                <div class="hidden md:flex justify-center items-center bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6 relative overflow-hidden group shadow-xl">
+                    <div class="animated-svg-mask w-32 h-32 transition-transform duration-500 group-hover:scale-105"></div>
                 </div>
             </aside>
 
-            <section class="md:col-span-8 space-y-6">
-                <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-xl p-6 space-y-4">
-                    <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.1</span>
-                    <h2 class="text-2xl font-bold text-white">Historia y Arquitectura del Mainframe / GnuCOBOL</h2>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        COBOL (COmmon Business-Oriented Language) procesa cerca del 80% de las transacciones financieras mundiales. Su fortaleza reside en la precisión matemática exacta de centavos y el procesamiento masivo batch.
-                    </p>
-
-                    <div class="cobol-editor font-mono-code p-4 rounded-lg text-xs leading-relaxed overflow-x-auto border border-slate-800">
-                        <div><span class="col-seq">000010</span><span class="col-ind">*</span><span class="cobol-comment">================================================================*</span></div>
-                        <div><span class="col-seq">000020</span><span class="col-ind">*</span><span class="cobol-comment"> LECCIÓN 1.1: ESQUELETO MÍNIMO DE UN PROGRAMA                    *</span></div>
-                        <div><span class="col-seq">000030</span><span class="col-ind">*</span><span class="cobol-comment">================================================================*</span></div>
-                        <div><span class="col-seq">000040</span><span class="col-ind"> </span><span class="col-area-a">IDENTIFICATION DIVISION.</span></div>
-                        <div><span class="col-seq">000050</span><span class="col-ind"> </span><span class="col-area-a">PROGRAM-ID.</span><span class="col-area-b"> LEC0101.</span></div>
-                        <div><span class="col-seq">000060</span><span class="col-ind"> </span><span class="col-area-a">PROCEDURE DIVISION.</span></div>
-                        <div><span class="col-seq">000070</span><span class="col-ind"> </span><span class="col-area-a">INICIO.</span></div>
-                        <div><span class="col-seq">000080</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">DISPLAY</span><span class="col-area-b"> </span><span class="cobol-string">"¡Bienvenido al curso de COBOL!"</span><span class="col-area-b">.</span></div>
-                        <div><span class="col-seq">000090</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">STOP RUN</span><span class="col-area-b">.</span></div>
-                    </div>
-                </div>
+            <!-- CONTENIDO DE LA LECCIÓN Y VISOR DE CÓDIGO -->
+            <section class="lg:col-span-8 space-y-6" id="lesson-content">
+                <!-- Se llena dinámicamente con JS -->
             </section>
+
         </div>
     </main>
 
@@ -452,11 +575,10 @@
         <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-8 space-y-6">
             <h2 class="text-2xl font-bold text-white">Contacto & Consultoría</h2>
             <p class="text-slate-400 text-sm">Si deseas colaborar en proyectos, asistencia técnica o requieres una solución de arquitectura de datos: envía un mensaje.</p>
-            
-            <!-- Botón directo de WhatsApp -->
-            <a href="https://wa.me/525527813356?text=Hola%20Luis,%20me%20gustaría%20agendar%20una%20consulta%20técnica." 
-               target="_blank" 
-               rel="noopener noreferrer" 
+
+            <a href="https://wa.me/525527813356?text=Hola%20Luis,%20me%20gustaría%20agendar%20una%20consulta%20técnica."
+               target="_blank"
+               rel="noopener noreferrer"
                class="flex items-center justify-center gap-3 w-full bg-emerald-600 hover:bg-emerald-500 font-semibold text-white py-3 rounded-lg shadow-lg shadow-emerald-600/20 transition">
                 <i class="fa-brands fa-whatsapp text-xl"></i>
                 <span>Contactar por WhatsApp</span>
@@ -493,12 +615,11 @@
         <p>© 2026 Luis Alberto Moreno · Actuario y Data Engineer</p>
     </footer>
 
-    <!-- JS Y SECUENCIA DE ANIMACIONES CON GSAP -->
+    <!-- JS Y LÓGICA DE INTERACTIVIDAD -->
     <script>
-        // Lógica de cambio de pestañas SPA
         function switchTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            
+
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('text-slate-950', 'bg-sky-400', 'font-semibold', 'shadow-[0_0_15px_rgba(56,189,248,0.4)]');
                 btn.classList.add('text-slate-300', 'font-medium');
@@ -511,17 +632,292 @@
             activeBtn.classList.remove('text-slate-300', 'font-medium');
         }
 
-        // ANIMACIÓN DE ENTRADA MULTIDIRECCIONAL (GSAP)
+        function toggleModule(modId) {
+            const el = document.getElementById(modId);
+            const icon = document.getElementById(`icon-${modId}`);
+
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                icon.classList.remove('fa-chevron-right');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                el.classList.add('hidden');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-right');
+            }
+        }
+
+        function loadLesson(lessonId) {
+            const container = document.getElementById('lesson-content');
+
+            if (lessonId === '1.1') {
+                container.innerHTML = `
+                    <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                            <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.1</span>
+                            <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-1 rounded">Estructura Mínima</span>
+                        </div>
+
+                        <h2 class="text-2xl font-bold text-white tracking-tight">Historia y Arquitectura del Mainframe / COBOL</h2>
+
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            COBOL (COmmon Business-Oriented Language) procesa cerca del 80% de las transacciones financieras mundiales. Su fortaleza reside en la precisión matemática exacta de centavos y el procesamiento masivo batch.
+                        </p>
+
+                        <div class="cobol-editor font-mono-code p-4 rounded-xl text-xs leading-relaxed overflow-x-auto border border-slate-800 shadow-2xl">
+                            <div><span class="col-seq">000010</span><span class="col-ind">*</span><span class="cobol-comment">================================================================*</span></div>
+                            <div><span class="col-seq">000020</span><span class="col-ind">*</span><span class="cobol-comment"> LECCIÓN 1.1: ESQUELETO MÍNIMO DE UN PROGRAMA EN COBOL          *</span></div>
+                            <div><span class="col-seq">000030</span><span class="col-ind">*</span><span class="cobol-comment">================================================================*</span></div>
+                            <div><span class="col-seq">000040</span><span class="col-ind"> </span><span class="col-area-a">IDENTIFICATION DIVISION.</span></div>
+                            <div><span class="col-seq">000050</span><span class="col-ind"> </span><span class="col-area-a">PROGRAM-ID.</span><span class="col-area-b"> LEC0101.</span></div>
+                            <div><span class="col-seq">000060</span><span class="col-ind"> </span><span class="col-area-a">PROCEDURE DIVISION.</span></div>
+                            <div><span class="col-seq">000070</span><span class="col-ind"> </span><span class="col-area-a">INICIO.</span></div>
+                            <div><span class="col-seq">000080</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">DISPLAY</span><span class="col-area-b"> </span><span class="cobol-string">"¡Bienvenido al curso de COBOL!"</span><span class="col-area-b">.</span></div>
+                            <div><span class="col-seq">000090</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">STOP RUN</span><span class="col-area-b">.</span></div>
+                        </div>
+
+                        <div class="space-y-3 pt-2">
+                            <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-list-check text-sky-400"></i> Documentación Exhaustiva Línea por Línea
+                            </h3>
+
+                            <div class="grid gap-3 text-xs">
+                                <div class="p-3 bg-slate-950/80 border-l-4 border-slate-500 rounded-r-lg space-y-1">
+                                    <div class="font-mono font-bold text-slate-200">Líneas 000010 - 000030: Encabezado de Comentario</div>
+                                    <p class="text-slate-400"><strong class="text-amber-400">Columna 7 (*):</strong> Operador de comentario. Desactiva la línea para el compilador. Usado para delimitar bloques y documentar intenciones.</p>
+                                </div>
+
+                                <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg space-y-1">
+                                    <div class="font-mono font-bold text-sky-300">Línea 000040: IDENTIFICATION DIVISION.</div>
+                                    <p class="text-slate-400"><strong class="text-sky-400">Área A (Col 8):</strong> Declaración de la primera división obligatoria. Cierra obligatoriamente con el <strong class="text-white">operador punto (.)</strong>.</p>
+                                </div>
+
+                                <div class="p-3 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-lg space-y-1">
+                                    <div class="font-mono font-bold text-purple-300">Línea 000050: PROGRAM-ID. LEC0101.</div>
+                                    <p class="text-slate-400"><strong class="text-purple-400">Sintaxis:</strong> Define el nombre único del programa ejecutable. El primer punto separa el parágrafo del valor, y el punto final concluye la sentencia.</p>
+                                </div>
+
+                                <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg space-y-1">
+                                    <div class="font-mono font-bold text-sky-300">Línea 000060 - 000070: PROCEDURE DIVISION. / INICIO.</div>
+                                    <p class="text-slate-400"><strong class="text-sky-400">Área A:</strong> Tercera división obligatoria que aloja la lógica ejecutable. <strong class="text-white">INICIO.</strong> es el nombre de parágrafo que actúa como etiqueta de salto.</p>
+                                </div>
+
+                                <div class="p-3 bg-slate-950/80 border-l-4 border-emerald-400 rounded-r-lg space-y-1">
+                                    <div class="font-mono font-bold text-emerald-300">Líneas 000080 - 000090: DISPLAY y STOP RUN.</div>
+                                    <p class="text-slate-400"><strong class="text-slate-200">Área B (Col 12):</strong> <strong class="text-purple-400">DISPLAY</strong> imprime el literal en pantalla. <strong class="text-purple-400">STOP RUN</strong> finaliza la ejecución y libera el proceso.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (lessonId === '1.2') {
+                container.innerHTML = `
+                    <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                            <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.2</span>
+                            <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-1 rounded">Estructura de Columnas</span>
+                        </div>
+
+                        <h2 class="text-2xl font-bold text-white tracking-tight">El Formato Fijo de 80 Columnas</h2>
+
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            COBOL tradicional exige organizar el código a lo largo de 80 columnas fijas, heredadas de las tarjetas perforadas. Cada sección horizontal tiene una función sintáctica sagrada.
+                        </p>
+
+                        <div class="cobol-editor font-mono-code p-4 rounded-xl text-xs leading-relaxed overflow-x-auto border border-slate-800 shadow-2xl">
+                            <div><span class="col-seq">000010</span><span class="col-ind">*</span><span class="cobol-comment">================================================================*</span></div>
+                            <div><span class="col-seq">000020</span><span class="col-ind">*</span><span class="cobol-comment"> DEMOSTRACIÓN DE ZONAS Y ÁREAS EN FORMATO FIJO                  *</span></div>
+                            <div><span class="col-seq">000030</span><span class="col-ind">*</span><span class="cobol-comment">================================================================*</span></div>
+                            <div><span class="col-seq">000040</span><span class="col-ind"> </span><span class="col-area-a">IDENTIFICATION DIVISION.</span></div>
+                            <div><span class="col-seq">000050</span><span class="col-ind"> </span><span class="col-area-a">PROGRAM-ID.</span><span class="col-area-b"> LEC0102.</span></div>
+                            <div><span class="col-seq">000060</span><span class="col-ind"> </span><span class="col-area-a">DATA DIVISION.</span></div>
+                            <div><span class="col-seq">000070</span><span class="col-ind"> </span><span class="col-area-a">WORKING-STORAGE SECTION.</span></div>
+                            <div><span class="col-seq">000080</span><span class="col-ind"> </span><span class="col-area-a">01</span><span class="col-area-b"> WS-TEXTO          </span><span class="cobol-keyword">PIC</span><span class="col-area-b"> X(20) </span><span class="cobol-keyword">VALUE</span><span class="col-area-b"> </span><span class="cobol-string">"FORMATO FIJO COBOL"</span><span class="col-area-b">.</span></div>
+                            <div><span class="col-seq">000090</span><span class="col-ind"> </span><span class="col-area-a">PROCEDURE DIVISION.</span></div>
+                            <div><span class="col-seq">000100</span><span class="col-ind"> </span><span class="col-area-a">MAIN-PARAGRAPH.</span></div>
+                            <div><span class="col-seq">000110</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">DISPLAY</span><span class="col-area-b"> WS-TEXTO.</span></div>
+                            <div><span class="col-seq">000120</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">STOP RUN</span><span class="col-area-b">.</span></div>
+                        </div>
+
+                        <div class="space-y-3 pt-2">
+                            <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-table-columns text-sky-400"></i> Desglose Estricto de Columnas y Operadores
+                            </h3>
+
+                            <div class="grid gap-3 text-xs">
+                                <div class="p-3 bg-slate-950/80 border-l-4 border-slate-500 rounded-r-lg">
+                                    <strong class="text-slate-300 font-mono">Cols 1 – 6 (Sequence Number):</strong> Reservadas para numeración lógica de línea (ej. <span class="col-seq">000080</span>).
+                                </div>
+                                <div class="p-3 bg-slate-950/80 border-l-4 border-amber-500 rounded-r-lg">
+                                    <strong class="text-amber-400 font-mono">Columna 7 (Indicator Area):</strong> Control del compilador. El carácter <span class="col-ind">*</span> crea comentarios; <span class="col-ind">-</span> continúa líneas.
+                                </div>
+                                <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg">
+                                    <strong class="text-sky-300 font-mono">Cols 8 – 11 (Área A):</strong> Reservada para Divisiones, Secciones, Parágrafos y variables base (<span class="col-area-a">01</span>).
+                                </div>
+                                <div class="p-3 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-lg">
+                                    <strong class="text-purple-300 font-mono">Cols 12 – 72 (Área B):</strong> Área para sentencias ejecutables (<span class="cobol-keyword">DISPLAY</span>, <span class="cobol-keyword">MOVE</span>), cláusulas y subniveles de datos.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (lessonId === '1.3') {
+                container.innerHTML = `
+                    <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                            <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.3</span>
+                            <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-1 rounded">Estructura Jerárquica</span>
+                        </div>
+
+                        <h2 class="text-2xl font-bold text-white tracking-tight">Las 4 Divisiones de COBOL en Profundidad</h2>
+
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Todo programa COBOL se organiza obligatoriamente en hasta cuatro grandes divisiones, cada una con un rol único de configuración, hardware, memoria o ejecución.
+                        </p>
+
+                        <div class="cobol-editor font-mono-code p-4 rounded-xl text-xs leading-relaxed overflow-x-auto border border-slate-800 shadow-2xl">
+                            <div><span class="col-seq">000010</span><span class="col-ind"> </span><span class="col-area-a">IDENTIFICATION DIVISION.</span></div>
+                            <div><span class="col-seq">000020</span><span class="col-ind"> </span><span class="col-area-a">PROGRAM-ID.</span><span class="col-area-b"> LEC0103.</span></div>
+                            <div><span class="col-seq">000030</span><span class="col-ind"> </span><span class="col-area-a">ENVIRONMENT DIVISION.</span></div>
+                            <div><span class="col-seq">000040</span><span class="col-ind"> </span><span class="col-area-a">CONFIGURATION SECTION.</span></div>
+                            <div><span class="col-seq">000050</span><span class="col-ind"> </span><span class="col-area-a">DATA DIVISION.</span></div>
+                            <div><span class="col-seq">000060</span><span class="col-ind"> </span><span class="col-area-a">WORKING-STORAGE SECTION.</span></div>
+                            <div><span class="col-seq">000070</span><span class="col-ind"> </span><span class="col-area-a">01</span><span class="col-area-b"> WS-SALUDO          </span><span class="cobol-keyword">PIC</span><span class="col-area-b"> X(15) </span><span class="cobol-keyword">VALUE</span><span class="col-area-b"> </span><span class="cobol-string">"HOLA COBOL"</span><span class="col-area-b">.</span></div>
+                            <div><span class="col-seq">000080</span><span class="col-ind"> </span><span class="col-area-a">PROCEDURE DIVISION.</span></div>
+                            <div><span class="col-seq">000090</span><span class="col-ind"> </span><span class="col-area-a">PROCESO-PRINCIPAL.</span></div>
+                            <div><span class="col-seq">000100</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">DISPLAY</span><span class="col-area-b"> WS-SALUDO.</span></div>
+                            <div><span class="col-seq">000110</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">STOP RUN</span><span class="col-area-b">.</span></div>
+                        </div>
+
+                        <div class="space-y-3 pt-2">
+                            <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-sitemap text-sky-400"></i> Desglose Técnico de las 4 Divisiones
+                            </h3>
+
+                            <div class="grid gap-3 text-xs">
+                                <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg space-y-1">
+                                    <div class="font-mono font-bold text-sky-300">1. IDENTIFICATION DIVISION</div>
+                                    <p class="text-slate-400">Identifica metadatos del programa. Contiene párrafos obligatorios como <span class="text-white font-mono">PROGRAM-ID</span> y opcionales como <span class="text-slate-300 font-mono">AUTHOR</span>.</p>
+                                </div>
+
+                                <div class="p-3 bg-slate-950/80 border-l-4 border-amber-400 rounded-r-lg space-y-1">
+                                    <div class="font-mono font-bold text-amber-300">2. ENVIRONMENT DIVISION</div>
+                                    <p class="text-slate-400">Especifica el entorno físico de hardware y mapeo de archivos de entrada/salida (<span class="text-white font-mono">INPUT-OUTPUT SECTION</span>) e impresoras.</p>
+                                </div>
+
+                                <div class="p-3 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-lg space-y-1">
+                                    <div class="font-mono font-bold text-purple-300">3. DATA DIVISION</div>
+                                    <p class="text-slate-400">Reserva y define todas las variables en RAM. Se divide en <span class="text-white font-mono">WORKING-STORAGE</span> (variables locales) y <span class="text-white font-mono">FILE SECTION</span> (archivos).</p>
+                                </div>
+
+                                <div class="p-3 bg-slate-950/80 border-l-4 border-emerald-400 rounded-r-lg space-y-1">
+                                    <div class="font-mono font-bold text-emerald-300">4. PROCEDURE DIVISION</div>
+                                    <p class="text-slate-400">Contiene las sentencias ejecutables y lógica de negocio mediante parágrafos, verbos y flujo de control.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (lessonId === '1.4') {
+                container.innerHTML = `
+                    <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                            <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.4</span>
+                            <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-1 rounded">Reglas de Sintaxis</span>
+                        </div>
+
+                        <h2 class="text-2xl font-bold text-white tracking-tight">Delimitadores, Comentarios y el Uso Estricto del Punto</h2>
+
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            El compilador de COBOL es extremadamente riguroso con la puntuación. El punto (<code class="text-sky-400 font-mono">.</code>) actúa como delimitador de sentencias finales y un error de posición puede cambiar el flujo del programa.
+                        </p>
+
+                        <div class="cobol-editor font-mono-code p-4 rounded-xl text-xs leading-relaxed overflow-x-auto border border-slate-800 shadow-2xl">
+                            <div><span class="col-seq">000010</span><span class="col-ind">*</span><span class="cobol-comment">================================================================*</span></div>
+                            <div><span class="col-seq">000020</span><span class="col-ind">*</span><span class="cobol-comment"> USO CORRECTO E INCORRECTO DE DELIMITADORES Y PUNTOS            *</span></div>
+                            <div><span class="col-seq">000030</span><span class="col-ind">*</span><span class="cobol-comment">================================================================*</span></div>
+                            <div><span class="col-seq">000040</span><span class="col-ind"> </span><span class="col-area-a">IDENTIFICATION DIVISION.</span></div>
+                            <div><span class="col-seq">000050</span><span class="col-ind"> </span><span class="col-area-a">PROGRAM-ID.</span><span class="col-area-b"> LEC0104.</span></div>
+                            <div><span class="col-seq">000060</span><span class="col-ind"> </span><span class="col-area-a">PROCEDURE DIVISION.</span></div>
+                            <div><span class="col-seq">000070</span><span class="col-ind"> </span><span class="col-area-a">EVALUA-PUNTO.</span></div>
+                            <div><span class="col-seq">000080</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">DISPLAY</span><span class="col-area-b"> </span><span class="cobol-string">"LÍNEA 1 SIN PUNTO INTERMEDIO"</span></div>
+                            <div><span class="col-seq">000090</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">DISPLAY</span><span class="col-area-b"> </span><span class="cobol-string">"LÍNEA 2 CIERRA CON PUNTO FINAL"</span><span class="col-area-b">.</span></div>
+                            <div><span class="col-seq">000100</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">STOP RUN</span><span class="col-area-b">.</span></div>
+                        </div>
+
+                        <div class="space-y-3 pt-2">
+                            <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-circle-exclamation text-sky-400"></i> Reglas Sagradas del Punto (.) y Delimitadores
+                            </h3>
+
+                            <div class="grid gap-3 text-xs">
+                                <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg space-y-1">
+                                    <div class="font-mono font-bold text-sky-300">Obligatoriedad en Encabezados</div>
+                                    <p class="text-slate-400">Todas las Divisiones, Secciones y Parágrafos deben terminar siempre con punto (<span class="text-white font-mono">.</span>).</p>
+                                </div>
+
+                                <div class="p-3 bg-slate-950/80 border-l-4 border-amber-400 rounded-r-lg space-y-1">
+                                    <div class="font-mono font-bold text-amber-300">Punto Falso en Estructuras Lógicas</div>
+                                    <p class="text-slate-400">Un punto dentro de un bloque <span class="text-white font-mono">IF / ELSE</span> termina la condición antes de tiempo. En COBOL moderno se prefieren delimitadores explícitos como <span class="text-sky-300 font-mono">END-IF</span> o <span class="text-sky-300 font-mono">END-PERFORM</span>.</p>
+                                </div>
+
+                                <div class="p-3 bg-slate-950/80 border-l-4 border-emerald-400 rounded-r-lg space-y-1">
+                                    <div class="font-mono font-bold text-emerald-300">Separadores Espaciales</div>
+                                    <p class="text-slate-400">El punto debe estar inmediatamente pegado a la palabra anterior y seguido por al menos un espacio en blanco.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // LÓGICA DEL CARRUSEL DE TEXTO ANIMADO
+        function initTextCarousel() {
+            const phrases = [
+                "Soluciones Analíticas.",
+                "Sostenibilidad Operativa.",
+                "Activos Estratégicos.",
+                "Modelos Semánticos."
+            ];
+            let index = 0;
+            const el = document.getElementById("carousel-text");
+
+            setInterval(() => {
+                // Animación de salida (desplazamiento hacia arriba)
+                el.style.transform = "translateY(-100%)";
+                el.style.opacity = "0";
+
+                setTimeout(() => {
+                    index = (index + 1) % phrases.length;
+                    el.textContent = phrases[index];
+                    // Posicionamiento previo abajo para la entrada
+                    el.style.transition = "none";
+                    el.style.transform = "translateY(100%)";
+
+                    // Re-activa la transición para la animación de entrada desde abajo
+                    setTimeout(() => {
+                        el.style.transition = "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease";
+                        el.style.transform = "translateY(0)";
+                        el.style.opacity = "1";
+                    }, 50);
+                }, 600);
+            }, 3200);
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
+            loadLesson('1.1');
+            initTextCarousel();
+
             const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 1.1 } });
 
-            tl.fromTo(".header-anim", 
-                { y: -100, opacity: 0 }, 
+            tl.fromTo(".header-anim",
+                { y: -100, opacity: 0 },
                 { y: 0, opacity: 1, duration: 1 }
             );
 
-            tl.fromTo(".tag-item", 
-                { x: -80, opacity: 0 }, 
+            tl.fromTo(".tag-item",
+                { x: -80, opacity: 0 },
                 { x: 0, opacity: 1 }, "-=0.7"
             );
 
@@ -529,13 +925,13 @@
             tl.fromTo(".subtitle-item", { y: 30, opacity: 0 }, { y: 0, opacity: 1 }, "-=0.6");
             tl.fromTo(".cta-item", { y: 40, opacity: 0 }, { y: 0, opacity: 1, ease: "back.out(1.4)" }, "-=0.5");
 
-            tl.fromTo(".stack-card", 
-                { x: 100, opacity: 0 }, 
+            tl.fromTo(".stack-card",
+                { x: 100, opacity: 0 },
                 { x: 0, opacity: 1 }, "-=1.0"
             );
 
-            gsap.fromTo(".hero-bg-anim", 
-                { scale: 0.85, opacity: 0 }, 
+            gsap.fromTo(".hero-bg-anim",
+                { scale: 0.85, opacity: 0 },
                 { scale: 1, opacity: 1, duration: 2, ease: "power2.out" }, 0.2
             );
         });
