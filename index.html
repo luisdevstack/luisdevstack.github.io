@@ -56,9 +56,9 @@
 
         .hero-background-character img,
         .hero-background-character svg {
-            height: 85vh;
+            height: 90vh;
             width: auto;
-            max-height: 1000px;
+            max-height: 1300px;
             opacity: 0.35;
             filter: invert(1) brightness(2) drop-shadow(0 0 10px rgba(56, 189, 248, 0.2));
             transform: translateY(2vh);
@@ -80,33 +80,24 @@
             animation: gradientShift 6s ease infinite;
         }
 
+        /* GRADIENTE ANIMADO PARA EL LOGO PRINCIPAL </ > */
+        .animated-gradient-bg {
+            background: linear-gradient(
+                135deg,
+                rgba(56, 189, 248, 0.25) 0%,
+                rgba(129, 140, 248, 0.25) 25%,
+                rgba(192, 132, 252, 0.25) 50%,
+                rgba(52, 211, 153, 0.25) 75%,
+                rgba(56, 189, 248, 0.25) 100%
+            );
+            background-size: 300% 300%;
+            animation: gradientShift 6s ease infinite;
+        }
+
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
-        }
-
-        /* MÁSCARA SVG DE CARA CON GRADIENTE ANIMADO */
-        .animated-svg-mask {
-            background: linear-gradient(
-                135deg,
-                #38bdf8 0%,
-                #818cf8 25%,
-                #c084fc 50%,
-                #34d399 75%,
-                #38bdf8 100%
-            );
-            background-size: 300% 300%;
-            animation: gradientShift 6s ease infinite;
-            -webkit-mask-image: url('./cara.svg');
-            mask-image: url('./cara.svg');
-            -webkit-mask-repeat: no-repeat;
-            mask-repeat: no-repeat;
-            -webkit-mask-position: center;
-            mask-position: center;
-            -webkit-mask-size: contain;
-            mask-size: contain;
-            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.3));
         }
 
         /* BOTÓN PÍLDORA NEUMÓRFICO FLOTANTE */
@@ -224,15 +215,15 @@
         <img src="./cara.svg" alt="Fondo Arquitectura DataLab" onerror="this.src='./favicon.svg';">
     </div>
 
-    <!-- BARRA DE NAVEGACIÓN FLOTANTE (CORREGIDO ALINEADO CON WRAPPER DE CENTRADO PERFECTO) -->
+    <!-- BARRA DE NAVEGACIÓN FLOTANTE -->
     <div class="header-anim fixed top-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
         <header class="w-full max-w-5xl pointer-events-auto">
             <div class="flex items-center justify-between p-2 rounded-full bg-slate-900/40 backdrop-blur-md border border-sky-400/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
 
-                <!-- Logo -->
+                <!-- Logo Principal con gradiente animado -->
                 <div class="flex items-center space-x-2.5 pl-2">
-                    <div class="w-7 h-7 bg-sky-500/20 border border-sky-400/30 rounded-full flex items-center justify-center font-bold text-sky-400 text-xs shadow-[0_0_10px_rgba(56,189,248,0.3)] flex-shrink-0">
-                        &lt;/&gt;
+                    <div class="w-7 h-7 animated-gradient-bg border border-sky-400/40 rounded-full flex items-center justify-center font-bold text-xs shadow-[0_0_12px_rgba(56,189,248,0.4)] flex-shrink-0">
+                        <span class="animated-gradient-text">&lt;/&gt;</span>
                     </div>
                     <span class="font-bold text-xs sm:text-sm tracking-tight animated-gradient-text">
                         Luis Alberto Moreno
@@ -290,7 +281,7 @@
                 </h1>
 
                 <p class="hero-anim-item subtitle-item text-slate-400 text-lg leading-relaxed">
-                    Especialista en optimización de bases de datos, Arquitectura de Procesamiento Paralelo Masivo, modelado semántico, Query Tuning e implementación de pipelines de alto rendimiento.
+                    Especialista en optimización de bases de datos, Arquitectura de Procesamiento Paralelo Masivo, Modelado Semántico, Query Tuning e Implementación de Flujos de Datos de Alto Rendimiento.
                 </p>
 
                 <div class="hero-anim-item cta-item flex flex-wrap items-center gap-5 pt-2">
@@ -438,17 +429,36 @@
                 <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-4 space-y-3">
                     <div class="flex items-center justify-between px-2 pb-2 border-b border-slate-800">
                         <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Ruta Completa COBOL</h3>
-                        <span class="text-[10px] bg-sky-950 text-sky-400 px-2 py-0.5 rounded border border-sky-800">7 Módulos</span>
+                        <span class="text-[10px] bg-sky-950 text-sky-400 px-2 py-0.5 rounded border border-sky-800">8 Módulos</span>
                     </div>
 
                     <div class="space-y-2 text-xs" id="accordion-container">
+
+                        <!-- MÓDULO 0: ENTORNO Y HERRAMIENTAS -->
+                        <div class="border border-emerald-800/60 rounded-xl overflow-hidden bg-emerald-950/20">
+                            <button onclick="toggleModule('mod-0')" class="w-full px-3 py-2.5 text-left font-semibold text-emerald-300 hover:bg-emerald-900/30 flex items-center justify-between transition">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-terminal text-emerald-400"></i> M0: Entorno y Herramientas</span>
+                                <i id="icon-mod-0" class="fa-solid fa-chevron-down text-emerald-500 text-[10px] transition-transform duration-200"></i>
+                            </button>
+                            <div id="mod-0" class="space-y-1 p-2 bg-slate-950/80 border-t border-emerald-900/40">
+                                <button onclick="loadLesson('0.1')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-emerald-900/30 flex items-center justify-between">
+                                    <span>0.1 Instalar MSYS2 y GnuCOBOL</span>
+                                    <i class="fa-solid fa-play text-[10px] text-emerald-400"></i>
+                                </button>
+                                <button onclick="loadLesson('0.2')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-emerald-900/30 flex items-center justify-between">
+                                    <span>0.2 Configurar VS Code & Zed</span>
+                                    <i class="fa-solid fa-play text-[10px] text-emerald-400"></i>
+                                </button>
+                            </div>
+                        </div>
+
                         <!-- MÓDULO 1 -->
                         <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
                             <button onclick="toggleModule('mod-1')" class="w-full px-3 py-2.5 text-left font-semibold text-slate-200 hover:bg-slate-800/60 flex items-center justify-between transition">
                                 <span class="flex items-center gap-2"><i class="fa-solid fa-layer-group text-sky-400"></i> M1: Fundamentos y Estructura</span>
-                                <i id="icon-mod-1" class="fa-solid fa-chevron-down text-slate-500 text-[10px] transition-transform duration-200"></i>
+                                <i id="icon-mod-1" class="fa-solid fa-chevron-right text-slate-500 text-[10px] transition-transform duration-200"></i>
                             </button>
-                            <div id="mod-1" class="space-y-1 p-2 bg-slate-950/80 border-t border-slate-800/60">
+                            <div id="mod-1" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-slate-800/60">
                                 <button onclick="loadLesson('1.1')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
                                     <span>1.1 Historia y Arch. Mainframe</span>
                                     <i class="fa-solid fa-play text-[10px]"></i>
@@ -556,9 +566,31 @@
                     </div>
                 </div>
 
-                <!-- VECTOR SVG CON MÁSCARA Y GRADIENTE ANIMADO -->
-                <div class="hidden md:flex justify-center items-center bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6 relative overflow-hidden group shadow-xl">
-                    <div class="animated-svg-mask w-32 h-32 transition-transform duration-500 group-hover:scale-105"></div>
+                <!-- TARJETA PROMOCIONAL EXERCISM -->
+                <div class="bg-gradient-to-br from-purple-950/40 via-slate-900/60 to-slate-950 border border-purple-800/40 backdrop-blur-md rounded-2xl p-5 space-y-3.5 shadow-xl relative overflow-hidden group">
+                    <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-all duration-500"></div>
+                    
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-purple-400 bg-purple-950/80 border border-purple-800/60 px-2 py-0.5 rounded-full">
+                            Práctica Interactiva
+                        </span>
+                        <i class="fa-solid fa-laptop-code text-purple-400 text-sm"></i>
+                    </div>
+
+                    <div class="space-y-1">
+                        <h4 class="text-sm font-bold text-white tracking-tight">Practica COBOL en Exercism</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Resuelve ejercicios reales, ejecuta pruebas unitarias e inspecciona tu código directamente en el navegador de la página sin necesidad de instalar.
+                        </p>
+                    </div>
+
+                    <a href="https://exercism.org/tracks/cobol"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="inline-flex items-center justify-center gap-2 w-full py-2 px-3 rounded-xl bg-purple-600/30 hover:bg-purple-600/50 border border-purple-500/40 text-purple-200 text-xs font-semibold shadow-lg transition-all duration-300 group-hover:border-purple-400">
+                        <span>Ir al Track de COBOL</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
                 </div>
             </aside>
 
@@ -650,7 +682,143 @@
         function loadLesson(lessonId) {
             const container = document.getElementById('lesson-content');
 
-            if (lessonId === '1.1') {
+            if (lessonId === '0.1') {
+                container.innerHTML = `
+                    <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                            <span class="text-xs font-mono text-emerald-400">Módulo 0 · Lección 0.1</span>
+                            <span class="text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800 px-2 py-1 rounded font-mono">Compilador Local</span>
+                        </div>
+
+                        <h2 class="text-2xl font-bold text-white tracking-tight">Instalación de MSYS2 y GnuCOBOL en Windows</h2>
+
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Para ejecutar programas COBOL nativamente en Windows se utiliza <strong>GnuCOBOL</strong>. La forma más limpia y robusta de compilarlo es mediante <strong>MSYS2</strong>, un gestor de paquetes que provee las herramientas nativas de C/C++ requeridas.
+                        </p>
+
+                        <div class="space-y-4 text-xs">
+                            <div class="p-4 bg-slate-950/80 border-l-4 border-emerald-400 rounded-r-xl space-y-2">
+                                <div class="font-bold text-emerald-300 text-sm flex items-center gap-2">
+                                    <i class="fa-solid fa-download"></i> Paso 1: Descargar e Instalar MSYS2
+                                </div>
+                                <p class="text-slate-400">Descarga el instalador oficial desde <a href="https://www.msys2.org/" target="_blank" class="text-sky-400 underline">msys2.org</a> e instálalo en la ruta por defecto (<code>C:\\msys64</code>).</p>
+                            </div>
+
+                            <div class="p-4 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-xl space-y-2">
+                                <div class="font-bold text-sky-300 text-sm flex items-center gap-2">
+                                    <i class="fa-solid fa-terminal"></i> Paso 2: Instalar GnuCOBOL desde la Terminal MSYS2
+                                </div>
+                                <p class="text-slate-400">Abre la terminal <strong>MSYS2 UCRT64</strong> e ingresa el siguiente comando para actualizar paquetes e instalar GnuCOBOL:</p>
+                                <div class="bg-slate-900 p-2.5 rounded-lg font-mono-code text-slate-200 text-xs border border-slate-800">
+                                    pacman -Suc<br>
+                                    pacman -S mingw-w64-ucrt-x86_64-gnucobol
+                                </div>
+                            </div>
+
+                            <div class="p-4 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-xl space-y-2">
+                                <div class="font-bold text-purple-300 text-sm flex items-center gap-2">
+                                    <i class="fa-solid fa-sliders"></i> Paso 3: Agregar al PATH de Windows
+                                </div>
+                                <p class="text-slate-400">Añade la siguiente ruta a las Variables de Entorno del Sistema (PATH):</p>
+                                <code class="block bg-slate-900 p-2 rounded text-purple-300 font-mono">C:\\msys64\\ucrt64\\bin</code>
+                            </div>
+
+                            <div class="p-4 bg-slate-950/80 border-l-4 border-amber-400 rounded-r-xl space-y-2">
+                                <div class="font-bold text-amber-300 text-sm flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check"></i> Paso 4: Verificación
+                                </div>
+                                <p class="text-slate-400">Abre una nueva ventana de PowerShell o CMD e ingresa:</p>
+                                <code class="block bg-slate-900 p-2 rounded text-amber-300 font-mono">cobc -v</code>
+                                <p class="text-slate-400 mt-1">Si responde con la versión de GnuCOBOL, ¡el compilador está listo!</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (lessonId === '0.2') {
+                container.innerHTML = `
+                    <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                            <span class="text-xs font-mono text-emerald-400">Módulo 0 · Lección 0.2</span>
+                            <span class="text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800 px-2 py-1 rounded font-mono">Editores de Código</span>
+                        </div>
+
+                        <h2 class="text-2xl font-bold text-white tracking-tight">Configuración en Visual Studio Code y Zed Editor</h2>
+
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Una vez teniendo <code>cobc</code> en el sistema, configura tu editor preferido para contar con resaltado de sintaxis, linters y compilación con un solo clic.
+                        </p>
+
+                        <!-- TABS EDITORES -->
+                        <div class="grid md:grid-cols-2 gap-6 text-xs">
+                            <!-- VS CODE -->
+                            <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-5 space-y-4">
+                                <div class="flex items-center gap-2 text-sky-400 font-bold text-base border-b border-slate-800 pb-2">
+                                    <i class="fa-solid fa-code"></i> Visual Studio Code
+                                </div>
+                                
+                                <div class="space-y-2">
+                                    <span class="font-bold text-slate-200 block">1. Extensiones clave:</span>
+                                    <ul class="list-disc list-inside text-slate-400 space-y-1">
+                                        <li><strong class="text-sky-300">IBM COBOL</strong> o <strong class="text-sky-300">COBOL</strong> (by bitlang): Brinda autocompletado y formato de columnas.</li>
+                                        <li><strong class="text-sky-300">Code Runner</strong>: Para ejecutar el archivo actual con un botón.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <span class="font-bold text-slate-200 block">2. Configurar Code Runner:</span>
+                                    <p class="text-slate-400">En <code>settings.json</code> agrega este mapeo de ejecución:</p>
+                                    <div class="bg-slate-900 p-2.5 rounded font-mono-code text-[11px] text-slate-300 border border-slate-800 overflow-x-auto">
+                                        "code-runner.executorMap": {<br>
+                                        &nbsp;&nbsp;"cobol": "cobc -x -o $fileNameWithoutExt $fileName && ./$fileNameWithoutExt"<br>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ZED EDITOR -->
+                            <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-5 space-y-4">
+                                <div class="flex items-center gap-2 text-emerald-400 font-bold text-base border-b border-slate-800 pb-2">
+                                    <i class="fa-solid fa-bolt"></i> Zed Editor
+                                </div>
+
+                                <div class="space-y-2">
+                                    <span class="font-bold text-slate-200 block">1. Extensiones recomendadas:</span>
+                                    <p class="text-slate-400">En Zed (<code>Ctrl+Shift+X</code> / <code>Cmd+Shift+X</code>), busca e instala la extensión oficial de <strong class="text-emerald-300">COBOL</strong> para resaltado de sintaxis y detección del formato fijo de 80 columnas.</p>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <span class="font-bold text-slate-200 block">2. Tarea de Compilación (Task):</span>
+                                    <p class="text-slate-400">Agrega en tu archivo <code>.zed/tasks.json</code> del proyecto:</p>
+                                    <div class="bg-slate-900 p-2.5 rounded font-mono-code text-[11px] text-slate-300 border border-slate-800 overflow-x-auto">
+                                        [<br>
+                                        &nbsp;&nbsp;{<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;"label": "Compilar y Ejecutar COBOL",<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;"command": "cobc -x $ZED_FILE && ./\${ZED_FILE_STEM}",<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;"use_new_terminal": true<br>
+                                        &nbsp;&nbsp;}<br>
+                                        ]<br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CÓDIGO DE PRUEBA -->
+                        <div class="pt-4 border-t border-slate-800 space-y-3">
+                            <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-vial text-emerald-400"></i> Programa de Prueba (hola.cbl)
+                            </h3>
+
+                            <div class="cobol-editor font-mono-code p-4 rounded-xl text-xs leading-relaxed overflow-x-auto border border-slate-800 shadow-2xl">
+                                <div><span class="col-seq">000010</span><span class="col-ind"> </span><span class="col-area-a">IDENTIFICATION DIVISION.</span></div>
+                                <div><span class="col-seq">000020</span><span class="col-ind"> </span><span class="col-area-a">PROGRAM-ID.</span><span class="col-area-b"> HOLAMUNDO.</span></div>
+                                <div><span class="col-seq">000030</span><span class="col-ind"> </span><span class="col-area-a">PROCEDURE DIVISION.</span></div>
+                                <div><span class="col-seq">000040</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">DISPLAY</span><span class="col-area-b"> </span><span class="cobol-string">"¡ENTORNO CONFIGURADO CORRECTAMENTE!"</span><span class="col-area-b">.</span></div>
+                                <div><span class="col-seq">000050</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">STOP RUN</span><span class="col-area-b">.</span></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (lessonId === '1.1') {
                 container.innerHTML = `
                     <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
                         <div class="flex items-center justify-between border-b border-slate-800 pb-3">
@@ -876,26 +1044,23 @@
         function initTextCarousel() {
             const phrases = [
                 "Soluciones Analíticas.",
-                "Sostenibilidad Operativa.",
-                "Activos Estratégicos.",
+                "Arquitecturas MPP.",
+                "Pipelines Escalables.",
                 "Modelos Semánticos."
             ];
             let index = 0;
             const el = document.getElementById("carousel-text");
 
             setInterval(() => {
-                // Animación de salida (desplazamiento hacia arriba)
                 el.style.transform = "translateY(-100%)";
                 el.style.opacity = "0";
 
                 setTimeout(() => {
                     index = (index + 1) % phrases.length;
                     el.textContent = phrases[index];
-                    // Posicionamiento previo abajo para la entrada
                     el.style.transition = "none";
                     el.style.transform = "translateY(100%)";
 
-                    // Re-activa la transición para la animación de entrada desde abajo
                     setTimeout(() => {
                         el.style.transition = "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease";
                         el.style.transform = "translateY(0)";
@@ -906,7 +1071,7 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            loadLesson('1.1');
+            loadLesson('0.1');
             initTextCarousel();
 
             const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 1.1 } });
