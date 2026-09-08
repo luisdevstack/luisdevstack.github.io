@@ -23,7 +23,7 @@ function loadLesson(lessonId) {
 
     if (lessonId === '0.1') {
         container.innerHTML = `
-            <div class="glass-panel rounded-2xl p-6 space-y-6">
+            <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                     <span class="text-xs font-mono text-emerald-400">Módulo 0 · Lección 0.1</span>
                     <span class="text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800 px-2 py-1 rounded font-mono">Compilador Local</span>
@@ -75,7 +75,7 @@ function loadLesson(lessonId) {
         `;
     } else if (lessonId === '0.2') {
         container.innerHTML = `
-            <div class="glass-panel rounded-2xl p-6 space-y-6">
+            <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                     <span class="text-xs font-mono text-emerald-400">Módulo 0 · Lección 0.2</span>
                     <span class="text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800 px-2 py-1 rounded font-mono">Editores de Código</span>
@@ -92,11 +92,21 @@ function loadLesson(lessonId) {
                         <div class="flex items-center gap-2 text-sky-400 font-bold text-base border-b border-slate-800 pb-2">
                             <i class="fa-solid fa-code"></i> Visual Studio Code
                         </div>
-                        <p class="text-slate-400">Instala la extensión <strong>COBOL by bitlang</strong> y configura Code Runner en tu <code>settings.json</code>:</p>
-                        <div class="bg-slate-900 p-2.5 rounded font-mono-code text-[11px] text-slate-300 border border-slate-800 overflow-x-auto">
-                            "code-runner.executorMap": {<br>
-                            &nbsp;&nbsp;"cobol": "cobc -x -o $fileNameWithoutExt $fileName && ./$fileNameWithoutExt"<br>
-                            }
+                        <div class="space-y-2">
+                            <span class="font-bold text-slate-200 block">1. Extensiones clave:</span>
+                            <ul class="list-disc list-inside text-slate-400 space-y-1">
+                                <li><strong class="text-sky-300">IBM COBOL</strong> o <strong class="text-sky-300">COBOL</strong> (by bitlang): Brinda autocompletado y formato de columnas.</li>
+                                <li><strong class="text-sky-300">Code Runner</strong>: Para ejecutar el archivo actual con un botón.</li>
+                            </ul>
+                        </div>
+                        <div class="space-y-2">
+                            <span class="font-bold text-slate-200 block">2. Configurar Code Runner:</span>
+                            <p class="text-slate-400">En <code>settings.json</code> agrega este mapeo de ejecución:</p>
+                            <div class="bg-slate-900 p-2.5 rounded font-mono-code text-[11px] text-slate-300 border border-slate-800 overflow-x-auto">
+                                "code-runner.executorMap": {<br>
+                                &nbsp;&nbsp;"cobol": "cobc -x -o $fileNameWithoutExt $fileName && ./$fileNameWithoutExt"<br>
+                                }
+                            </div>
                         </div>
                     </div>
 
@@ -104,23 +114,43 @@ function loadLesson(lessonId) {
                         <div class="flex items-center gap-2 text-emerald-400 font-bold text-base border-b border-slate-800 pb-2">
                             <i class="fa-solid fa-bolt"></i> Zed Editor
                         </div>
-                        <p class="text-slate-400">En tu archivo <code>.zed/tasks.json</code> añade la tarea de compilación directa:</p>
-                        <div class="bg-slate-900 p-2.5 rounded font-mono-code text-[11px] text-slate-300 border border-slate-800 overflow-x-auto">
-                            [<br>
-                            &nbsp;&nbsp;{<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;"label": "Compilar y Ejecutar COBOL",<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;"command": "cobc -x $ZED_FILE && ./\${ZED_FILE_STEM}",<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;"use_new_terminal": true<br>
-                            &nbsp;&nbsp;}<br>
-                            ]<br>
+                        <div class="space-y-2">
+                            <span class="font-bold text-slate-200 block">1. Extensiones recomendadas:</span>
+                            <p class="text-slate-400">En Zed (<code>Ctrl+Shift+X</code> / <code>Cmd+Shift+X</code>), busca e instala la extensión oficial de <strong class="text-emerald-300">COBOL</strong> para resaltado de sintaxis y detección del formato fijo de 80 columnas.</p>
                         </div>
+                        <div class="space-y-2">
+                            <span class="font-bold text-slate-200 block">2. Tarea de Compilación (Task):</span>
+                            <p class="text-slate-400">Agrega en tu archivo <code>.zed/tasks.json</code> del proyecto:</p>
+                            <div class="bg-slate-900 p-2.5 rounded font-mono-code text-[11px] text-slate-300 border border-slate-800 overflow-x-auto">
+                                [<br>
+                                &nbsp;&nbsp;{<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"label": "Compilar y Ejecutar COBOL",<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"command": "cobc -x $ZED_FILE && ./\${ZED_FILE_STEM}",<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"use_new_terminal": true<br>
+                                &nbsp;&nbsp;}<br>
+                                ]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-slate-800 space-y-3">
+                    <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-vial text-emerald-400"></i> Programa de Prueba (hola.cbl)
+                    </h3>
+                    <div class="cobol-editor font-mono-code p-4 rounded-xl text-xs leading-relaxed overflow-x-auto border border-slate-800 shadow-2xl">
+                        <div><span class="col-seq">000010</span><span class="col-ind"> </span><span class="col-area-a">IDENTIFICATION DIVISION.</span></div>
+                        <div><span class="col-seq">000020</span><span class="col-ind"> </span><span class="col-area-a">PROGRAM-ID.</span><span class="col-area-b"> HOLAMUNDO.</span></div>
+                        <div><span class="col-seq">000030</span><span class="col-ind"> </span><span class="col-area-a">PROCEDURE DIVISION.</span></div>
+                        <div><span class="col-seq">000040</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">DISPLAY</span><span class="col-area-b"> </span><span class="cobol-string">"¡ENTORNO CONFIGURADO CORRECTAMENTE!"</span><span class="col-area-b">.</span></div>
+                        <div><span class="col-seq">000050</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">STOP RUN</span><span class="col-area-b">.</span></div>
                     </div>
                 </div>
             </div>
         `;
     } else if (lessonId === '1.1') {
         container.innerHTML = `
-            <div class="glass-panel rounded-2xl p-6 space-y-6">
+            <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                     <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.1</span>
                     <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-1 rounded">Estructura Mínima</span>
@@ -143,14 +173,42 @@ function loadLesson(lessonId) {
                     <div><span class="col-seq">000080</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">DISPLAY</span><span class="col-area-b"> </span><span class="cobol-string">"¡Bienvenido al curso de COBOL!"</span><span class="col-area-b">.</span></div>
                     <div><span class="col-seq">000090</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">STOP RUN</span><span class="col-area-b">.</span></div>
                 </div>
+
+                <div class="space-y-3 pt-2">
+                    <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-sky-400"></i> Documentación Exhaustiva Línea por Línea
+                    </h3>
+                    <div class="grid gap-3 text-xs">
+                        <div class="p-3 bg-slate-950/80 border-l-4 border-slate-500 rounded-r-lg space-y-1">
+                            <div class="font-mono font-bold text-slate-200">Líneas 000010 - 000030: Encabezado de Comentario</div>
+                            <p class="text-slate-400"><strong class="text-amber-400">Columna 7 (*):</strong> Operador de comentario. Desactiva la línea para el compilador.</p>
+                        </div>
+                        <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg space-y-1">
+                            <div class="font-mono font-bold text-sky-300">Línea 000040: IDENTIFICATION DIVISION.</div>
+                            <p class="text-slate-400"><strong class="text-sky-400">Área A (Col 8):</strong> Declaración de la primera división obligatoria. Cierra obligatoriamente con punto (.).</p>
+                        </div>
+                        <div class="p-3 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-lg space-y-1">
+                            <div class="font-mono font-bold text-purple-300">Línea 000050: PROGRAM-ID. LEC0101.</div>
+                            <p class="text-slate-400"><strong class="text-purple-400">Sintaxis:</strong> Define el nombre único del programa ejecutable.</p>
+                        </div>
+                        <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg space-y-1">
+                            <div class="font-mono font-bold text-sky-300">Línea 000060 - 000070: PROCEDURE DIVISION. / INICIO.</div>
+                            <p class="text-slate-400"><strong class="text-sky-400">Área A:</strong> Tercera división obligatoria que aloja la lógica ejecutable.</p>
+                        </div>
+                        <div class="p-3 bg-slate-950/80 border-l-4 border-emerald-400 rounded-r-lg space-y-1">
+                            <div class="font-mono font-bold text-emerald-300">Líneas 000080 - 000090: DISPLAY y STOP RUN.</div>
+                            <p class="text-slate-400"><strong class="text-slate-200">Área B (Col 12):</strong> <strong class="text-purple-400">DISPLAY</strong> imprime en pantalla y <strong class="text-purple-400">STOP RUN</strong> finaliza el proceso.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         `;
     } else if (lessonId === '1.2') {
         container.innerHTML = `
-            <div class="glass-panel rounded-2xl p-6 space-y-6">
+            <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                     <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.2</span>
-                    <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-1 rounded">Formato Fijo</span>
+                    <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-1 rounded">Estructura de Columnas</span>
                 </div>
 
                 <h2 class="text-2xl font-bold text-white tracking-tight">El Formato Fijo de 80 Columnas</h2>
@@ -160,46 +218,39 @@ function loadLesson(lessonId) {
                 </p>
 
                 <div class="cobol-editor font-mono-code p-4 rounded-xl text-xs leading-relaxed overflow-x-auto border border-slate-800 shadow-2xl">
-                    <div><span class="col-seq">000010</span><span class="col-ind"> </span><span class="col-area-a">IDENTIFICATION DIVISION.</span></div>
-                    <div><span class="col-seq">000020</span><span class="col-ind"> </span><span class="col-area-a">PROGRAM-ID.</span><span class="col-area-b"> LEC0102.</span></div>
-                    <div><span class="col-seq">000030</span><span class="col-ind"> </span><span class="col-area-a">DATA DIVISION.</span></div>
-                    <div><span class="col-seq">000040</span><span class="col-ind"> </span><span class="col-area-a">WORKING-STORAGE SECTION.</span></div>
-                    <div><span class="col-seq">000050</span><span class="col-ind"> </span><span class="col-area-a">01</span><span class="col-area-b"> WS-TEXTO          </span><span class="cobol-keyword">PIC</span><span class="col-area-b"> X(20) </span><span class="cobol-keyword">VALUE</span><span class="col-area-b"> </span><span class="cobol-string">"FORMATO FIJO COBOL"</span><span class="col-area-b">.</span></div>
-                    <div><span class="col-seq">000060</span><span class="col-ind"> </span><span class="col-area-a">PROCEDURE DIVISION.</span></div>
-                    <div><span class="col-seq">000070</span><span class="col-ind"> </span><span class="col-area-a">MAIN-PARAGRAPH.</span></div>
-                    <div><span class="col-seq">000080</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">DISPLAY</span><span class="col-area-b"> WS-TEXTO.</span></div>
-                    <div><span class="col-seq">000090</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">STOP RUN</span><span class="col-area-b">.</span></div>
-                </div>
-            </div>
-        `;
-    } else if (lessonId === '1.3') {
-        container.innerHTML = `
-            <div class="glass-panel rounded-2xl p-6 space-y-6">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                    <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.3</span>
-                    <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-1 rounded">Estructura Jerárquica</span>
+                    <div><span class="col-seq">000010</span><span class="col-ind">*</span><span class="cobol-comment">================================================================*</span></div>
+                    <div><span class="col-seq">000020</span><span class="col-ind">*</span><span class="cobol-comment"> DEMOSTRACIÓN DE ZONAS Y ÁREAS EN FORMATO FIJO                  *</span></div>
+                    <div><span class="col-seq">000030</span><span class="col-ind">*</span><span class="cobol-comment">================================================================*</span></div>
+                    <div><span class="col-seq">000040</span><span class="col-ind"> </span><span class="col-area-a">IDENTIFICATION DIVISION.</span></div>
+                    <div><span class="col-seq">000050</span><span class="col-ind"> </span><span class="col-area-a">PROGRAM-ID.</span><span class="col-area-b"> LEC0102.</span></div>
+                    <div><span class="col-seq">000060</span><span class="col-ind"> </span><span class="col-area-a">DATA DIVISION.</span></div>
+                    <div><span class="col-seq">000070</span><span class="col-ind"> </span><span class="col-area-a">WORKING-STORAGE SECTION.</span></div>
+                    <div><span class="col-seq">000080</span><span class="col-ind"> </span><span class="col-area-a">01</span><span class="col-area-b"> WS-TEXTO          </span><span class="cobol-keyword">PIC</span><span class="col-area-b"> X(20) </span><span class="cobol-keyword">VALUE</span><span class="col-area-b"> </span><span class="cobol-string">"FORMATO FIJO COBOL"</span><span class="col-area-b">.</span></div>
+                    <div><span class="col-seq">000090</span><span class="col-ind"> </span><span class="col-area-a">PROCEDURE DIVISION.</span></div>
+                    <div><span class="col-seq">000100</span><span class="col-ind"> </span><span class="col-area-a">MAIN-PARAGRAPH.</span></div>
+                    <div><span class="col-seq">000110</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">DISPLAY</span><span class="col-area-b"> WS-TEXTO.</span></div>
+                    <div><span class="col-seq">000120</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">STOP RUN</span><span class="col-area-b">.</span></div>
                 </div>
 
-                <h2 class="text-2xl font-bold text-white tracking-tight">Las 4 Divisiones de COBOL en Profundidad</h2>
-
-                <p class="text-slate-300 text-sm leading-relaxed">
-                    Todo programa COBOL se organiza obligatoriamente en hasta cuatro grandes divisiones: <strong>IDENTIFICATION</strong>, <strong>ENVIRONMENT</strong>, <strong>DATA</strong> y <strong>PROCEDURE</strong>.
-                </p>
-            </div>
-        `;
-    } else if (lessonId === '1.4') {
-        container.innerHTML = `
-            <div class="glass-panel rounded-2xl p-6 space-y-6">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                    <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.4</span>
-                    <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-1 rounded">Sintaxis</span>
+                <div class="space-y-3 pt-2">
+                    <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-table-columns text-sky-400"></i> Desglose Estricto de Columnas y Operadores
+                    </h3>
+                    <div class="grid gap-3 text-xs">
+                        <div class="p-3 bg-slate-950/80 border-l-4 border-slate-500 rounded-r-lg">
+                            <strong class="text-slate-300 font-mono">Cols 1 – 6 (Sequence Number):</strong> Reservadas para numeración lógica de línea.
+                        </div>
+                        <div class="p-3 bg-slate-950/80 border-l-4 border-amber-500 rounded-r-lg">
+                            <strong class="text-amber-400 font-mono">Columna 7 (Indicator Area):</strong> Control del compilador (* para comentarios, - para continuación).
+                        </div>
+                        <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg">
+                            <strong class="text-sky-300 font-mono">Cols 8 – 11 (Área A):</strong> Reservada para Divisiones, Secciones, Parágrafos y variables base (01).
+                        </div>
+                        <div class="p-3 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-lg">
+                            <strong class="text-purple-300 font-mono">Cols 12 – 72 (Área B):</strong> Área para sentencias ejecutables (DISPLAY, MOVE) y subniveles.
+                        </div>
+                    </div>
                 </div>
-
-                <h2 class="text-2xl font-bold text-white tracking-tight">Delimitadores, Comentarios y Uso del Punto</h2>
-
-                <p class="text-slate-300 text-sm leading-relaxed">
-                    En COBOL, el punto (<code class="text-sky-400 font-mono">.</code>) actúo como delimitador estricto de cierre de parágrafos y divisiones.
-                </p>
             </div>
         `;
     }
