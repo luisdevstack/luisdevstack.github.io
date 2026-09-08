@@ -184,5 +184,5 @@ details summary::-webkit-details-marker { display: none; }
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradientShift 6s ease infinite;
+    animation: gradientShift 2s ease infinite;
 }
