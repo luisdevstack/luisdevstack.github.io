@@ -21,41 +21,40 @@
         <header class="w-full max-w-5xl">
             <div class="flex items-center justify-between p-2 rounded-full bg-slate-900/40 backdrop-blur-md border border-sky-400/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
 
-                <!-- Logo e Identidad (Se oculta el texto en dispositivos móviles) -->
-                <a href="./index.html" class="flex items-center space-x-2.5 pl-2">
+                <!-- Logo e Identidad (Oculta texto en móviles <640px) -->
+                <a href="./index.html" class="flex items-center space-x-2 pl-2">
                     <div class="w-7 h-7 bg-sky-500/20 border border-sky-400/30 rounded-full flex items-center justify-center font-bold text-sky-400 text-xs shadow-[0_0_10px_rgba(56,189,248,0.3)] flex-shrink-0">
                         &lt;/&gt;
                     </div>
-                    <!-- Oculto en formato estrecho (< 640px) para mantener espacio perfecto -->
                     <span class="hidden sm:inline font-bold text-xs sm:text-sm tracking-tight animated-gradient-text">
                         Luis Alberto Moreno
                     </span>
                 </a>
 
-                <!-- Navegación con Íconos Visibles en Todo Momento -->
+                <!-- Navegación Adaptativa: Íconos en móvil / Íconos + Texto en escritorio -->
                 <nav class="flex items-center space-x-1 sm:space-x-1.5">
-                    <!-- INICIO (En la página activa lleva el fondo sky-400 y texto slate-950) -->
-                    <a href="./index.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-semibold text-slate-950 bg-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.4)] transition-all duration-300">
+                    <!-- INICIO -->
+                    <a href="./index.html" class="flex items-center gap-1.5 px-2.5 py-1.5 md:px-3.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200" title="Inicio">
                         <i class="fa-solid fa-house"></i>
-                        <span data-i18n="navHome">Inicio</span>
+                        <span class="hidden md:inline" data-i18n="navHome">Inicio</span>
                     </a>
 
                     <!-- PORTAFOLIO -->
-                    <a href="./portafolio.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
+                    <a href="./portafolio.html" class="flex items-center gap-1.5 px-2.5 py-1.5 md:px-3.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200" title="Portafolio">
                         <i class="fa-solid fa-briefcase"></i>
-                        <span data-i18n="navPortfolio">Portafolio</span>
+                        <span class="hidden md:inline" data-i18n="navPortfolio">Portafolio</span>
                     </a>
 
-                    <!-- APRENDE COBOL -->
-                    <a href="./curso-cobol.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
+                    <!-- APRENDE COBOL (PÁGINA ACTIVA EN ESTE EJEMPLO) -->
+                    <a href="./curso-cobol.html" class="flex items-center gap-1.5 px-2.5 py-1.5 md:px-3.5 rounded-full text-xs md:text-sm font-semibold text-slate-950 bg-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.4)] transition-all duration-300" title="Aprende COBOL">
                         <i class="fa-solid fa-graduation-cap"></i>
-                        <span data-i18n="navCourse">Aprende COBOL</span>
+                        <span class="hidden md:inline" data-i18n="navCourse">Aprende COBOL</span>
                     </a>
 
                     <!-- CONTACTO -->
-                    <a href="./contacto.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
+                    <a href="./contacto.html" class="flex items-center gap-1.5 px-2.5 py-1.5 md:px-3.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200" title="Contacto">
                         <i class="fa-solid fa-envelope"></i>
-                        <span data-i18n="navContact">Contacto</span>
+                        <span class="hidden md:inline" data-i18n="navContact">Contacto</span>
                     </a>
 
                     <div class="h-4 w-[1px] bg-sky-400/20 mx-0.5 sm:mx-1"></div>
@@ -69,8 +68,8 @@
                         <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i>
                     </a>
 
-                    <!-- IDIOMA -->
-                    <button id="lang-toggle-btn" onclick="toggleLanguage()" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border border-sky-400/40 text-[11px] sm:text-xs font-mono font-bold text-sky-400 hover:bg-sky-400/10 transition">
+                    <!-- CAMBIO DE IDIOMA -->
+                    <button id="lang-toggle-btn" onclick="toggleLanguage()" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border border-sky-400/40 text-[11px] sm:text-xs font-mono font-bold text-sky-400 hover:bg-sky-400/10 transition" title="Cambiar idioma">
                         EN
                     </button>
                 </nav>
