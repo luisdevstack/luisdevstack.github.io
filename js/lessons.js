@@ -165,9 +165,9 @@ function loadLesson(lessonId) {
 
                 <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
                     <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
-<span class="text-slate-500">000010</span><span class="text-yellow-500">*================================================================*</span>
-<span class="text-slate-500">000020</span><span class="text-yellow-500">* LECCIÓN 1.1: ESQUELETO MÍNIMO DE UN PROGRAMA EN COBOL          *</span>
-<span class="text-slate-500">000030</span><span class="text-yellow-500">*================================================================*</span>
+<span class="text-slate-500">000010</span><span class="cobol-comment-silver">*================================================================*</span>
+<span class="text-slate-500">000020</span><span class="cobol-comment-silver">* LECCIÓN 1.1: ESQUELETO MÍNIMO DE UN PROGRAMA EN COBOL          *</span>
+<span class="text-slate-500">000030</span><span class="cobol-comment-silver">*================================================================*</span>
 <span class="text-slate-500">000040</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
 <span class="text-slate-500">000050</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROGRAM-ID.</span> LEC0101.
 <span class="text-slate-500">000060</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
@@ -221,9 +221,9 @@ function loadLesson(lessonId) {
 
                 <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
                     <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
-<span class="text-slate-500">000010</span><span class="text-yellow-500">*================================================================*</span>
-<span class="text-slate-500">000020</span><span class="text-yellow-500">* DEMOSTRACIÓN DE ZONAS Y ÁREAS EN FORMATO FIJO                  *</span>
-<span class="text-slate-500">000030</span><span class="text-yellow-500">*================================================================*</span>
+<span class="text-slate-500">000010</span><span class="cobol-comment-silver">*================================================================*</span>
+<span class="text-slate-500">000020</span><span class="cobol-comment-silver">* DEMOSTRACIÓN DE ZONAS Y ÁREAS EN FORMATO FIJO                  *</span>
+<span class="text-slate-500">000030</span><span class="cobol-comment-silver">*================================================================*</span>
 <span class="text-slate-500">000040</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
 <span class="text-slate-500">000050</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROGRAM-ID.</span> LEC0102.
 <span class="text-slate-500">000060</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">DATA DIVISION.</span>
