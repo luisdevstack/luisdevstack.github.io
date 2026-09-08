@@ -76,7 +76,7 @@
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8">
         <div class="grid lg:grid-cols-12 gap-8">
 
-            <!-- SIDEBAR DEL CURSO (ACORDEÓN + VECTOR + TARJETA EXERCISM) -->
+            <!-- SIDEBAR DEL CURSO (ACORDEÓN + TARJETA EXERCISM) -->
             <aside class="lg:col-span-4 space-y-6">
                 <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-4 space-y-3">
                     <div class="flex items-center justify-between px-2 pb-2 border-b border-slate-800">
@@ -214,19 +214,15 @@
                     </div>
                 </div>
 
-                <!-- VECTOR SVG + ANUNCIO DE EXERCISM CON CARRUSEL ANIMADO Y LOGO PLATEADO -->
+                <!-- ANUNCIO DE EXERCISM CON CARRUSEL ANIMADO Y LOGO PLATEADO -->
                 <div class="hidden md:flex flex-col items-center bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-2xl p-5 relative overflow-hidden group shadow-xl space-y-4">
 
-                    <!-- VECTOR SVG ANIMADO -->
-                    <div class="animated-svg-mask w-24 h-24 transition-transform duration-500 group-hover:scale-105"></div>
-
-                    <div class="w-full h-[1px] bg-slate-800"></div>
-
                     <!-- TARJETA INVITACIÓN EXERCISM ENRIQUECIDA -->
-                    <div class="w-full space-y-3.5 text-center">
-                        <!-- LOGO CON EFECTO PLATEADO METÁLICO -->
-                        <div class="flex items-center justify-center gap-2.5">
-                            <img src="./assets/Exercism.svg" alt="Exercism Logo" class="h-6 w-auto logo-exercism-silver" onerror="this.style.display='none';">
+                    <div class="w-full space-y-4 text-center">
+                        
+                        <!-- LOGO APILADO SOBRE EL TEXTO -->
+                        <div class="flex flex-col items-center justify-center gap-2">
+                            <img src="./assets/Exercism.svg" alt="Exercism Logo" class="h-10 w-auto logo-exercism-silver" onerror="this.style.display='none';">
                             <span class="font-mono font-bold text-sm silver-gradient-text tracking-tight">Ruta COBOL en Exercism</span>
                         </div>
 
