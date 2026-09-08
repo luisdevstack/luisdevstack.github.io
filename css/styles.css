@@ -177,3 +177,13 @@ details summary::-webkit-details-marker { display: none; }
     min-width: max-content;
     padding-left: 0 !important; /* Vital para que el caracter 0 alinee con el 0ch del degradado */
 }
+
+/* Color y efecto tornasol plateado específico para comentarios COBOL */
+.cobol-comment-silver {
+    color: #D4C9D4;
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 35%, #D4C9D4 70%, #a855f7 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: silverShift 2s ease infinite;
+}
