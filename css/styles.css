@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;700&display=swap');
+
+body { font-family: 'Inter', sans-serif; }
+.font-mono-code { font-family: 'Fira Code', monospace; }
+
+/* PERSONAJE DE FONDO ACORDADO SOLO PARA HOME Y CONTACTO (100vh) */
+.hero-background-character {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-right: 4vw;
+    overflow: hidden;
+}
+
+.hero-background-character img,
+.hero-background-character svg {
+    height: 80vh;
+    width: auto;
+    max-height: 800px;
+    opacity: 0.32;
+    filter: invert(1) brightness(2) drop-shadow(0 0 12px rgba(56, 189, 248, 0.25));
+    object-fit: contain;
+}
+
+/* ESTILOS GLASSMORPHISM PROFESIONAL */
+.glass-panel {
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-card {
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 12px 30px -10px rgba(56, 189, 248, 0.2);
+    transform: translateY(-2px);
+}
+
+/* EFECTO TORNASOL MULTICOLOR ANIMADO */
+.animated-gradient-text {
+    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 25%, #c084fc 50%, #34d399 75%, #38bdf8 100%);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 6s ease infinite;
+}
+
+.animated-gradient-bg {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(129, 140, 248, 0.2) 25%, rgba(192, 132, 252, 0.2) 50%, rgba(52, 211, 153, 0.2) 75%, rgba(56, 189, 248, 0.2) 100%);
+    background-size: 300% 300%;
+    animation: gradientShift 6s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* BOTÓN PÍLDORA NEUMÓRFICO */
+.pill-3d-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding: 0.5rem 0.6rem 0.5rem 1.4rem;
+    border-radius: 9999px;
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    animation: floatingPill 4s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+.pill-3d-button:hover {
+    border-color: rgba(56, 189, 248, 0.6);
+    box-shadow: 0 15px 30px -5px rgba(56, 189, 248, 0.25);
+}
+
+@keyframes floatingPill {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+}
+
+/* ACCORDION ACCENT STYLES */
+details summary::-webkit-details-marker { display: none; }
