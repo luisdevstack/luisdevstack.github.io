@@ -125,7 +125,7 @@ function loadLesson(lessonId) {
                                 [<br>
                                 &nbsp;&nbsp;{<br>
                                 &nbsp;&nbsp;&nbsp;&nbsp;"label": "Compilar y Ejecutar COBOL",<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;"command": "cobc -x $ZED_FILE && ./\${ZED_FILE_STEM}",<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"command": "cobc -x $ZED_FILE && ./\\${ZED_FILE_STEM}",<br>
                                 &nbsp;&nbsp;&nbsp;&nbsp;"use_new_terminal": true<br>
                                 &nbsp;&nbsp;}<br>
                                 ]
@@ -138,12 +138,13 @@ function loadLesson(lessonId) {
                     <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
                         <i class="fa-solid fa-vial text-emerald-400"></i> Programa de Prueba (hola.cbl)
                     </h3>
-                    <div class="cobol-editor font-mono-code p-4 rounded-xl text-xs leading-relaxed overflow-x-auto border border-slate-800 shadow-2xl">
-                        <div><span class="col-seq">000010</span><span class="col-ind"> </span><span class="col-area-a">IDENTIFICATION DIVISION.</span></div>
-                        <div><span class="col-seq">000020</span><span class="col-ind"> </span><span class="col-area-a">PROGRAM-ID.</span><span class="col-area-b"> HOLAMUNDO.</span></div>
-                        <div><span class="col-seq">000030</span><span class="col-ind"> </span><span class="col-area-a">PROCEDURE DIVISION.</span></div>
-                        <div><span class="col-seq">000040</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">DISPLAY</span><span class="col-area-b"> </span><span class="cobol-string">"¡ENTORNO CONFIGURADO CORRECTAMENTE!"</span><span class="col-area-b">.</span></div>
-                        <div><span class="col-seq">000050</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">STOP RUN</span><span class="col-area-b">.</span></div>
+                    <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
+                        <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
+<span class="text-slate-500">000010</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
+<span class="text-slate-500">000020</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROGRAM-ID.</span> HOLAMUNDO.
+<span class="text-slate-500">000030</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
+<span class="text-slate-500">000040</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡ENTORNO CONFIGURADO CORRECTAMENTE!"</span>.
+<span class="text-slate-500">000050</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
                     </div>
                 </div>
             </div>
@@ -162,16 +163,17 @@ function loadLesson(lessonId) {
                     COBOL (COmmon Business-Oriented Language) procesa cerca del 80% de las transacciones financieras mundiales. Su fortaleza reside en la precisión matemática exacta de centavos y el procesamiento masivo batch.
                 </p>
 
-                <div class="cobol-editor font-mono-code p-4 rounded-xl text-xs leading-relaxed overflow-x-auto border border-slate-800 shadow-2xl">
-                    <div><span class="col-seq">000010</span><span class="col-ind">*</span><span class="cobol-comment">================================================================*</span></div>
-                    <div><span class="col-seq">000020</span><span class="col-ind">*</span><span class="cobol-comment"> LECCIÓN 1.1: ESQUELETO MÍNIMO DE UN PROGRAMA EN COBOL          *</span></div>
-                    <div><span class="col-seq">000030</span><span class="col-ind">*</span><span class="cobol-comment">================================================================*</span></div>
-                    <div><span class="col-seq">000040</span><span class="col-ind"> </span><span class="col-area-a">IDENTIFICATION DIVISION.</span></div>
-                    <div><span class="col-seq">000050</span><span class="col-ind"> </span><span class="col-area-a">PROGRAM-ID.</span><span class="col-area-b"> LEC0101.</span></div>
-                    <div><span class="col-seq">000060</span><span class="col-ind"> </span><span class="col-area-a">PROCEDURE DIVISION.</span></div>
-                    <div><span class="col-seq">000070</span><span class="col-ind"> </span><span class="col-area-a">INICIO.</span></div>
-                    <div><span class="col-seq">000080</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">DISPLAY</span><span class="col-area-b"> </span><span class="cobol-string">"¡Bienvenido al curso de COBOL!"</span><span class="col-area-b">.</span></div>
-                    <div><span class="col-seq">000090</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">STOP RUN</span><span class="col-area-b">.</span></div>
+                <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
+                    <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
+<span class="text-slate-500">000010</span><span class="text-yellow-500">*================================================================*</span>
+<span class="text-slate-500">000020</span><span class="text-yellow-500">* LECCIÓN 1.1: ESQUELETO MÍNIMO DE UN PROGRAMA EN COBOL          *</span>
+<span class="text-slate-500">000030</span><span class="text-yellow-500">*================================================================*</span>
+<span class="text-slate-500">000040</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
+<span class="text-slate-500">000050</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROGRAM-ID.</span> LEC0101.
+<span class="text-slate-500">000060</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
+<span class="text-slate-500">000070</span><span class="text-slate-500"> </span><span class="text-amber-300">INICIO.</span>
+<span class="text-slate-500">000080</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡Bienvenido al curso de COBOL!"</span>.
+<span class="text-slate-500">000090</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
                 </div>
 
                 <div class="space-y-3 pt-2">
@@ -217,19 +219,20 @@ function loadLesson(lessonId) {
                     COBOL tradicional exige organizar el código a lo largo de 80 columnas fijas, heredadas de las tarjetas perforadas. Cada sección horizontal tiene una función sintáctica sagrada.
                 </p>
 
-                <div class="cobol-editor font-mono-code p-4 rounded-xl text-xs leading-relaxed overflow-x-auto border border-slate-800 shadow-2xl">
-                    <div><span class="col-seq">000010</span><span class="col-ind">*</span><span class="cobol-comment">================================================================*</span></div>
-                    <div><span class="col-seq">000020</span><span class="col-ind">*</span><span class="cobol-comment"> DEMOSTRACIÓN DE ZONAS Y ÁREAS EN FORMATO FIJO                  *</span></div>
-                    <div><span class="col-seq">000030</span><span class="col-ind">*</span><span class="cobol-comment">================================================================*</span></div>
-                    <div><span class="col-seq">000040</span><span class="col-ind"> </span><span class="col-area-a">IDENTIFICATION DIVISION.</span></div>
-                    <div><span class="col-seq">000050</span><span class="col-ind"> </span><span class="col-area-a">PROGRAM-ID.</span><span class="col-area-b"> LEC0102.</span></div>
-                    <div><span class="col-seq">000060</span><span class="col-ind"> </span><span class="col-area-a">DATA DIVISION.</span></div>
-                    <div><span class="col-seq">000070</span><span class="col-ind"> </span><span class="col-area-a">WORKING-STORAGE SECTION.</span></div>
-                    <div><span class="col-seq">000080</span><span class="col-ind"> </span><span class="col-area-a">01</span><span class="col-area-b"> WS-TEXTO          </span><span class="cobol-keyword">PIC</span><span class="col-area-b"> X(20) </span><span class="cobol-keyword">VALUE</span><span class="col-area-b"> </span><span class="cobol-string">"FORMATO FIJO COBOL"</span><span class="col-area-b">.</span></div>
-                    <div><span class="col-seq">000090</span><span class="col-ind"> </span><span class="col-area-a">PROCEDURE DIVISION.</span></div>
-                    <div><span class="col-seq">000100</span><span class="col-ind"> </span><span class="col-area-a">MAIN-PARAGRAPH.</span></div>
-                    <div><span class="col-seq">000110</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">DISPLAY</span><span class="col-area-b"> WS-TEXTO.</span></div>
-                    <div><span class="col-seq">000120</span><span class="col-ind"> </span><span class="col-area-b">    </span><span class="cobol-keyword">STOP RUN</span><span class="col-area-b">.</span></div>
+                <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
+                    <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
+<span class="text-slate-500">000010</span><span class="text-yellow-500">*================================================================*</span>
+<span class="text-slate-500">000020</span><span class="text-yellow-500">* DEMOSTRACIÓN DE ZONAS Y ÁREAS EN FORMATO FIJO                  *</span>
+<span class="text-slate-500">000030</span><span class="text-yellow-500">*================================================================*</span>
+<span class="text-slate-500">000040</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
+<span class="text-slate-500">000050</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROGRAM-ID.</span> LEC0102.
+<span class="text-slate-500">000060</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">DATA DIVISION.</span>
+<span class="text-slate-500">000070</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">WORKING-STORAGE SECTION.</span>
+<span class="text-slate-500">000080</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">01</span> WS-TEXTO          <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">X(20)</span> <span class="text-sky-400 font-semibold">VALUE</span> <span class="text-pink-400">"FORMATO FIJO COBOL"</span>.
+<span class="text-slate-500">000090</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
+<span class="text-slate-500">000100</span><span class="text-slate-500"> </span><span class="text-amber-300">MAIN-PARAGRAPH.</span>
+<span class="text-slate-500">000110</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">DISPLAY</span> WS-TEXTO.
+<span class="text-slate-500">000120</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
                 </div>
 
                 <div class="space-y-3 pt-2">
@@ -237,17 +240,25 @@ function loadLesson(lessonId) {
                         <i class="fa-solid fa-table-columns text-sky-400"></i> Desglose Estricto de Columnas y Operadores
                     </h3>
                     <div class="grid gap-3 text-xs">
-                        <div class="p-3 bg-slate-950/80 border-l-4 border-slate-500 rounded-r-lg">
-                            <strong class="text-slate-300 font-mono">Cols 1 – 6 (Sequence Number):</strong> Reservadas para numeración lógica de línea.
+                        <div class="pl-4 py-3 border-l-4 border-slate-500 bg-slate-900/50 rounded-r-xl">
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                <span class="font-bold text-slate-400">Cols 1 - 6 (Sequence Number):</span> Reservadas para numeración lógica de línea.
+                            </p>
                         </div>
-                        <div class="p-3 bg-slate-950/80 border-l-4 border-amber-500 rounded-r-lg">
-                            <strong class="text-amber-400 font-mono">Columna 7 (Indicator Area):</strong> Control del compilador (* para comentarios, - para continuación).
+                        <div class="pl-4 py-3 border-l-4 border-yellow-500 bg-slate-900/50 rounded-r-xl">
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                <span class="font-bold text-yellow-500">Columna 7 (Indicator Area):</span> Control del compilador (* para comentarios, - para continuación).
+                            </p>
                         </div>
-                        <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg">
-                            <strong class="text-sky-300 font-mono">Cols 8 – 11 (Área A):</strong> Reservada para Divisiones, Secciones, Parágrafos y variables base (01).
+                        <div class="pl-4 py-3 border-l-4 border-cyan-500 bg-slate-900/50 rounded-r-xl">
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                <span class="font-bold text-cyan-400">Cols 8 - 11 (Área A):</span> Reservada para Divisiones, Secciones, Parágrafos y variables base (01).
+                            </p>
                         </div>
-                        <div class="p-3 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-lg">
-                            <strong class="text-purple-300 font-mono">Cols 12 – 72 (Área B):</strong> Área para sentencias ejecutables (DISPLAY, MOVE) y subniveles.
+                        <div class="pl-4 py-3 border-l-4 border-purple-500 bg-slate-900/50 rounded-r-xl">
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                <span class="font-bold text-purple-400">Cols 12 - 72 (Área B):</span> Área para sentencias ejecutables (DISPLAY, MOVE) y subniveles.
+                            </p>
                         </div>
                     </div>
                 </div>
