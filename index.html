@@ -19,6 +19,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <link rel="stylesheet" href="./css/styles.css">
+
+    <!-- ESTILOS Y ANIMACIÓN CONTINUA PARA EL DOMAIN STACK -->
+    <style>
+        .stack-column-container {
+            height: 230px;
+            overflow: hidden;
+            position: relative;
+            mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+        }
+
+        .stack-column-track {
+            display: flex;
+            flex-direction: column;
+            gap: 0.625rem;
+            animation: scrollVertical 20s linear infinite;
+        }
+
+        .stack-column-container:hover .stack-column-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollVertical {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-50%);
+            }
+        }
+    </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col relative pt-20">
 
@@ -29,65 +60,63 @@
 
     <!-- BARRA DE NAVEGACIÓN FLOTANTE MULTIPÁGINA CON ÍCONOS -->
     <div class="header-anim fixed top-4 inset-x-0 z-50 flex justify-center px-4">
+        <header class="w-full max-w-5xl">
+            <div class="flex items-center justify-between p-2 rounded-full bg-slate-900/40 backdrop-blur-md border border-sky-400/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
 
-<header class="w-full max-w-5xl">
-    <div class="flex items-center justify-between p-2 rounded-full bg-slate-900/40 backdrop-blur-md border border-sky-400/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+                <!-- Logo e Identidad (Oculta el texto en pantallas estrechas <640px) -->
+                <a href="./index.html" class="flex items-center space-x-2.5 pl-2">
+                    <div class="w-7 h-7 bg-sky-500/20 border border-sky-400/30 rounded-full flex items-center justify-center font-bold text-sky-400 text-xs shadow-[0_0_10px_rgba(56,189,248,0.3)] flex-shrink-0">
+                        &lt;/&gt;
+                    </div>
+                    <span class="hidden sm:inline font-bold text-xs sm:text-sm tracking-tight animated-gradient-text">
+                        Luis Alberto Moreno
+                    </span>
+                </a>
 
-        <!-- Logo e Identidad (Se oculta el texto en dispositivos móviles) -->
-        <a href="./index.html" class="flex items-center space-x-2.5 pl-2">
-            <div class="w-7 h-7 bg-sky-500/20 border border-sky-400/30 rounded-full flex items-center justify-center font-bold text-sky-400 text-xs shadow-[0_0_10px_rgba(56,189,248,0.3)] flex-shrink-0">
-                &lt;/&gt;
+                <!-- Navegación con Íconos Visibles Siempre -->
+                <nav class="flex items-center space-x-1 sm:space-x-1.5">
+                    <!-- INICIO -->
+                    <a href="./index.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-semibold text-slate-950 bg-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.4)] transition-all duration-300">
+                        <i class="fa-solid fa-house"></i>
+                        <span data-i18n="navHome">Inicio</span>
+                    </a>
+
+                    <!-- PORTAFOLIO -->
+                    <a href="./portafolio.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <span data-i18n="navPortfolio">Portafolio</span>
+                    </a>
+
+                    <!-- APRENDE COBOL -->
+                    <a href="./curso-cobol.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span data-i18n="navCourse">Aprende COBOL</span>
+                    </a>
+
+                    <!-- CONTACTO -->
+                    <a href="./contacto.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span data-i18n="navContact">Contacto</span>
+                    </a>
+
+                    <div class="h-4 w-[1px] bg-sky-400/20 mx-0.5 sm:mx-1"></div>
+
+                    <!-- WHATSAPP -->
+                    <a href="https://wa.me/525527813356?text=Hola%20Luis,%20vi%20tu%20sitio%20web%20y%20me%20interesa%20consultar%20sobre%20sus%20servicios."
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full text-emerald-400 hover:text-white hover:bg-emerald-500/20 transition-all duration-200"
+                       title="Contactar por WhatsApp">
+                        <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i>
+                    </a>
+
+                    <!-- IDIOMA -->
+                    <button id="lang-toggle-btn" onclick="toggleLanguage()" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border border-sky-400/40 text-[11px] sm:text-xs font-mono font-bold text-sky-400 hover:bg-sky-400/10 transition">
+                        EN
+                    </button>
+                </nav>
             </div>
-            <!-- Oculto en formato estrecho (< 640px) para mantener espacio perfecto -->
-            <span class="hidden sm:inline font-bold text-xs sm:text-sm tracking-tight animated-gradient-text">
-                Luis Alberto Moreno
-            </span>
-        </a>
-
-        <!-- Navegación con Íconos Visibles en Todo Momento -->
-        <nav class="flex items-center space-x-1 sm:space-x-1.5">
-            <!-- INICIO (En la página activa lleva el fondo sky-400 y texto slate-950) -->
-            <a href="./index.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-semibold text-slate-950 bg-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.4)] transition-all duration-300">
-                <i class="fa-solid fa-house"></i>
-                <span data-i18n="navHome">Inicio</span>
-            </a>
-
-            <!-- PORTAFOLIO -->
-            <a href="./portafolio.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
-                <i class="fa-solid fa-briefcase"></i>
-                <span data-i18n="navPortfolio">Portafolio</span>
-            </a>
-
-            <!-- APRENDE COBOL -->
-            <a href="./curso-cobol.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <span data-i18n="navCourse">Aprende COBOL</span>
-            </a>
-
-            <!-- CONTACTO -->
-            <a href="./contacto.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
-                <i class="fa-solid fa-envelope"></i>
-                <span data-i18n="navContact">Contacto</span>
-            </a>
-
-            <div class="h-4 w-[1px] bg-sky-400/20 mx-0.5 sm:mx-1"></div>
-
-            <!-- WHATSAPP -->
-            <a href="https://wa.me/525527813356?text=Hola%20Luis,%20vi%20tu%20sitio%20web%20y%20me%20interesa%20consultar%20sobre%20sus%20servicios."
-               target="_blank"
-               rel="noopener noreferrer"
-               class="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full text-emerald-400 hover:text-white hover:bg-emerald-500/20 transition-all duration-200"
-               title="Contactar por WhatsApp">
-                <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i>
-            </a>
-
-            <!-- IDIOMA -->
-            <button id="lang-toggle-btn" onclick="toggleLanguage()" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border border-sky-400/40 text-[11px] sm:text-xs font-mono font-bold text-sky-400 hover:bg-sky-400/10 transition">
-                EN
-            </button>
-        </nav>
-    </div>
-</header>        
+        </header>        
     </div>
 
     <!-- SECCIÓN 1: INICIO (HOME) -->
@@ -108,7 +137,7 @@
                 </h1>
 
                 <p class="hero-anim-item subtitle-item text-slate-400 text-lg leading-relaxed" data-i18n="heroSubtitle">
-                    Especialista en optimización de bases de datos, Arquitectura de Procesamiento Paralelo Masivo, modelado semántico, Query Tuning e implementación de pipelines de alto rendimiento.
+                    Especialista en optimización de bases de datos, Arquitectura de Procesamiento Paralelo Masivo, Modelado Semántico, Query Tuning e implementación de pipelines de alto rendimiento.
                 </p>
 
                 <div class="hero-anim-item cta-item flex flex-wrap items-center gap-5 pt-2">
@@ -134,7 +163,7 @@
                 </div>
             </div>
 
-            <!-- DOMAIN STACK MARQUESINA VERTICAL -->
+            <!-- DOMAIN STACK MARQUESINA VERTICAL CONTINUA -->
             <div class="hero-anim-item stack-card md:col-span-5 bg-transparent border border-slate-700/40 backdrop-blur-[2px] rounded-2xl p-6 space-y-4 shadow-xl transition hover:border-sky-500/30">
                 <div class="flex items-center justify-between">
                     <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest font-mono">DOMAIN STACK</h3>
@@ -145,6 +174,7 @@
 
                 <div class="stack-column-container">
                     <div class="stack-column-track">
+                        <!-- Bloque 1 -->
                         <div class="flex items-center justify-between p-2.5 bg-slate-950/40 border border-slate-800/80 rounded-xl backdrop-blur-sm">
                             <span class="text-xs font-mono font-semibold text-slate-200">Vertica DB</span>
                             <span class="text-[10px] font-mono text-slate-500">Arquitectura MPP</span>
@@ -170,10 +200,10 @@
                             <span class="text-[10px] font-mono text-sky-500">Mainframe Core</span>
                         </div>
 
-                        <!-- Bloque duplicado -->
+                        <!-- Bloque Duplicado para Bucle Infinito Continua -->
                         <div class="flex items-center justify-between p-2.5 bg-slate-950/40 border border-slate-800/80 rounded-xl backdrop-blur-sm">
                             <span class="text-xs font-mono font-semibold text-slate-200">Vertica DB</span>
-                            <span class="text-[10px] font-mono text-slate-500">Columnar MPP</span>
+                            <span class="text-[10px] font-mono text-slate-500">Arquitectura MPP</span>
                         </div>
                         <div class="flex items-center justify-between p-2.5 bg-slate-950/40 border border-slate-800/80 rounded-xl backdrop-blur-sm">
                             <span class="text-xs font-mono font-semibold text-slate-200">Snowflake Snowpark</span>
@@ -215,7 +245,7 @@
             const phrases = [
                 "Soluciones Analíticas.",
                 "Arquitecturas MPP.",
-                "Pipelines de Datos.",
+                "Pipelines Escalables.",
                 "Modelos Semánticos."
             ];
             let index = 0;
