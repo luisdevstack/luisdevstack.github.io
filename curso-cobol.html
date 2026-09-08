@@ -29,8 +29,8 @@
 
                 <!-- Navegación con Íconos Visibles en Todo Momento -->
                 <nav class="flex items-center space-x-1 sm:space-x-1.5">
-                    <!-- INICIO (En la página activa lleva el fondo sky-400 y texto slate-950) -->
-                    <a href="./index.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-semibold text-slate-950 bg-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.4)] transition-all duration-300">
+                    <!-- INICIO -->
+                    <a href="./index.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
                         <i class="fa-solid fa-house"></i>
                         <span data-i18n="navHome">Inicio</span>
                     </a>
@@ -41,8 +41,8 @@
                         <span data-i18n="navPortfolio">Portafolio</span>
                     </a>
 
-                    <!-- APRENDE COBOL -->
-                    <a href="./curso-cobol.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200">
+                    <!-- APRENDE COBOL (PÁGINA ACTIVA) -->
+                    <a href="./curso-cobol.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-semibold text-slate-950 bg-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.4)] transition-all duration-300">
                         <i class="fa-solid fa-graduation-cap"></i>
                         <span data-i18n="navCourse">Aprende COBOL</span>
                     </a>
@@ -77,7 +77,7 @@
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8">
         <div class="grid lg:grid-cols-12 gap-8">
 
-            <!-- SIDEBAR DEL CURSO (ACORDEÓN Y VECTORES) -->
+            <!-- SIDEBAR DEL CURSO (ACORDEÓN + VECTOR + TARJETA EXERCISM) -->
             <aside class="lg:col-span-4 space-y-6">
                 <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-4 space-y-3">
                     <div class="flex items-center justify-between px-2 pb-2 border-b border-slate-800">
@@ -215,9 +215,52 @@
                     </div>
                 </div>
 
-                <!-- VECTOR SVG CON MÁSCARA Y GRADIENTE ANIMADO EN SIDEBAR -->
-                <div class="hidden md:flex justify-center items-center bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6 relative overflow-hidden group shadow-xl">
-                    <div class="animated-svg-mask w-32 h-32 transition-transform duration-500 group-hover:scale-105"></div>
+                <!-- VECTOR SVG + ANUNCIO DE EXERCISM -->
+                <div class="hidden md:flex flex-col items-center bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6 relative overflow-hidden group shadow-xl space-y-5">
+                    <!-- VECTOR SVG ANIMADO -->
+                    <div class="animated-svg-mask w-28 h-28 transition-transform duration-500 group-hover:scale-105"></div>
+
+                    <div class="w-full h-[1px] bg-slate-800"></div>
+
+                    <!-- TARJETA INVITACIÓN EXERCISM -->
+                    <div class="w-full space-y-3.5 text-center">
+                        <div class="flex items-center justify-center gap-2">
+                            <img src="./assets/Exercism.svg" alt="Exercism Logo" class="h-6 w-auto object-contain" onerror="this.style.display='none';">
+                            <span class="font-mono font-bold text-sm text-purple-300 tracking-tight">Ruta COBOL en Exercism</span>
+                        </div>
+
+                        <p class="text-xs text-slate-300 leading-relaxed text-left">
+                            ¡Pon a prueba lo aprendido! Practica de manera interactiva con la plataforma <strong>Exercism</strong> y domina la sintaxis COBOL.
+                        </p>
+
+                        <!-- VENTAJAS -->
+                        <ul class="text-[11px] text-slate-400 text-left space-y-1.5 font-sans">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-purple-400 text-[10px] mt-0.5"></i>
+                                <span><strong>Pruebas Automatizadas:</strong> Ejecución de test-suite en cada entrega.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-purple-400 text-[10px] mt-0.5"></i>
+                                <span><strong>Feedback de Mentores:</strong> Revisiones de código gratuitas por expertos.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-purple-400 text-[10px] mt-0.5"></i>
+                                <span><strong>Dificultad Gradual:</strong> De "Hello World" a algoritmos complejos.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-purple-400 text-[10px] mt-0.5"></i>
+                                <span><strong>100% Gratuito y Open Source:</strong> Flujo local vía CLI o en navegador.</span>
+                            </li>
+                        </ul>
+
+                        <a href="https://exercism.org/tracks/cobol" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="inline-flex items-center justify-center gap-2 w-full py-2 px-4 rounded-xl font-bold text-xs bg-purple-600 hover:bg-purple-500 text-white shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.5)]">
+                            <span>Ir a la Ruta de Exercism</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
                 </div>
             </aside>
 
