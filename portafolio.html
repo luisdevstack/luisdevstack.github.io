@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio & Herramientas | Luis Alberto Moreno</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col relative pt-24">
+
+    <!-- NO TIENE EL PERSONAJE DE FONDO -->
+
+    <!-- NAVBAR -->
+    <div class="fixed top-4 inset-x-0 z-50 flex justify-center px-4">
+        <header class="w-full max-w-5xl">
+            <div class="flex items-center justify-between p-2 rounded-full glass-panel border border-sky-400/20">
+                <a href="./index.html" class="flex items-center space-x-2.5 pl-2">
+                    <div class="w-8 h-8 animated-gradient-bg border border-sky-400/40 rounded-full flex items-center justify-center font-bold text-xs shadow-md">
+                        <span class="animated-gradient-text font-extrabold text-sm">&lt;/&gt;</span>
+                    </div>
+                    <span class="font-bold text-xs sm:text-sm tracking-tight animated-gradient-text">Luis Alberto Moreno</span>
+                </a>
+
+                <nav class="flex items-center space-x-1">
+                    <a href="./index.html" class="px-3.5 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition" data-i18n="navHome">Inicio</a>
+                    <a href="./portafolio.html" class="px-3.5 py-1.5 rounded-full text-xs md:text-sm font-semibold text-slate-950 bg-sky-400 shadow" data-i18n="navPortfolio">Portafolio</a>
+                    <a href="./curso-cobol.html" class="px-3.5 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition" data-i18n="navCourse">Aprende COBOL</a>
+                    <a href="./contacto.html" class="px-3.5 py-1.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition" data-i18n="navContact">Contacto</a>
+                    <button id="lang-toggle-btn" onclick="toggleLanguage()" class="ml-2 px-2.5 py-1 rounded-full border border-sky-400/40 text-xs font-mono font-bold text-sky-400 hover:bg-sky-400/10 transition">EN</button>
+                </nav>
+            </div>
+        </header>
+    </div>
+
+    <!-- SECCIÓN PORTAFOLIO Y STACK GENERAL EN GLASS -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8 space-y-10">
+        <div>
+            <h2 class="text-3xl font-bold text-white">Portafolio & Herramientas de Arquitectura</h2>
+            <p class="text-slate-400 mt-1">Evaluación de stacks analíticos, pipelines de ingeniería y entornos enterprise.</p>
+        </div>
+
+        <!-- 1. RESUMEN GENERAL DE HERRAMIENTAS (PUNTOS FUERTES Y DESVENTAJAS) -->
+        <section class="glass-panel rounded-2xl p-6 space-y-6">
+            <h3 class="text-xl font-bold text-sky-400 flex items-center gap-2">
+                <i class="fa-solid fa-layer-group"></i> Panorama General del Stack Tecnológico
+            </h3>
+
+            <div class="grid md:grid-cols-2 gap-6 text-xs">
+                <!-- VENTAJAS GENERALE -->
+                <div class="p-4 rounded-xl bg-slate-900/60 border border-emerald-500/30 space-y-2">
+                    <h4 class="font-bold text-emerald-300 text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check"></i> Puntos Fuertes Globales
+                    </h4>
+                    <ul class="list-disc list-inside text-slate-300 space-y-1.5 leading-relaxed">
+                        <td><strong>Escalabilidad MPP:</strong> Procesa petabytes mediante distribución de consultas en clústeres.</td>
+                        <td><strong>Separación de Cómputo y Almacenamiento:</strong> Optimización de costos operativos Cloud.</td>
+                        <td><strong>Modelado Semántico Avanzado:</strong> Reducción de latencia en Query Tuning con estructuras precalculadas.</td>
+                    </ul>
+                </div>
+
+                <!-- DESVENTAJAS GENERALES -->
+                <div class="p-4 rounded-xl bg-slate-900/60 border border-rose-500/30 space-y-2">
+                    <h4 class="font-bold text-rose-300 text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-circle-exclamation"></i> Consideraciones y Desventajas
+                    </h4>
+                    <ul class="list-disc list-inside text-slate-300 space-y-1.5 leading-relaxed">
+                        <td><strong>Costos Cloud Inesperados:</strong> Requiere gobernar el auto-scaling de motores analíticos.</td>
+                        <td><strong>Mantenimiento de Proyecciones/Índices:</strong> Operación avanzada para evitar fragmentation en ROS/Storage.</td>
+                        <td><strong>Curva de Aprendizaje Legacy:</strong> COBOL requiere estándares estrictos de compilación e integración.</td>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. DESPLEGABLES ENCAPSULADOS PARA CADA TECNOLOGÍA -->
+        <section class="space-y-4">
+            
+            <!-- ACCORDION 1: DATA PIPELINES (SNOWFLAKE & SNOWPARK) -->
+            <details class="portfolio-accordion glass-card rounded-2xl overflow-hidden group">
+                <summary class="p-6 cursor-pointer flex items-center justify-between select-none">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-sky-500/20 border border-sky-400/40 flex items-center justify-center text-sky-400">
+                            <i class="fa-solid fa-diagram-project text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-mono text-sky-400 font-bold">DATA PIPELINES</span>
+                            <h3 class="text-xl font-bold text-white">Snowflake, Snowpark y Pipeline Architecture</h3>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+                </summary>
+
+                <div class="px-6 pb-6 pt-2 border-t border-slate-800/80 space-y-4 text-sm text-slate-300 leading-relaxed">
+                    <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-2">
+                        <h4 class="font-bold text-sky-300 text-base">¿Qué es Snowpark?</h4>
+                        <p>Snowpark es la biblioteca de Snowflake que permite a ingenieros y científicos de datos ejecutar código nativo en Python, Java y Scala dentro del propio motor de cómputo optimizado de Snowflake sin extraer datos del entorno seguro.</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-2">
+                        <h4 class="font-bold text-sky-300 text-base">¿Qué es y cómo funciona un Data Pipeline?</h4>
+                        <p>Un Data Pipeline (tubo de proceso de datos) es un flujo automatizado de extracción, transformación y carga (ETL/ELT). Su función es capturar información de múltiples fuentes primarias, limpiar anomalías, aplicar lógica de negocio y depositar los datasets estructurados en capas analíticas (Silver/Gold) listos para BI.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- ACCORDION 2: PROYECCIONES Y BASES DE DATOS (VERTICA DB) -->
+            <details class="portfolio-accordion glass-card rounded-2xl overflow-hidden group">
+                <summary class="p-6 cursor-pointer flex items-center justify-between select-none">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400">
+                            <i class="fa-solid fa-database text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-mono text-cyan-400 font-bold">COLUMNAR MPP</span>
+                            <h3 class="text-xl font-bold text-white">Vertica DB y Arquitectura de Proyecciones</h3>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+                </summary>
+
+                <div class="px-6 pb-6 pt-2 border-t border-slate-800/80 space-y-4 text-sm text-slate-300 leading-relaxed">
+                    <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-2">
+                        <h4 class="font-bold text-cyan-300 text-base">¿Qué es Vertica?</h4>
+                        <p>Vertica es una base de datos relacional analítica distribuida de Procesamiento Paralelo Masivo (MPP) diseñada específicamente para lectura ultra-rápida de grandes volúmenes mediante almacenamiento columnar y compresión avanzada en disco.</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-2">
+                        <h4 class="font-bold text-cyan-300 text-base">¿Qué son las Proyecciones en Vertica?</h4>
+                        <p>A diferencia de las bases de datos tradicionales que usan tablas e índices secundarios, en Vertica la información física se almacena en <strong>Proyecciones</strong>. Una proyección guarda una selección de columnas ordenadas, codificadas y segmentadas entre los nodos del clúster, permitiendo resolver consultas analíticas sin tocar archivos irrelevantes.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- ACCORDION 3: COBOL & MAINFRAME PRACTICES -->
+            <details class="portfolio-accordion glass-card rounded-2xl overflow-hidden group">
+                <summary class="p-6 cursor-pointer flex items-center justify-between select-none">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 border border-purple-400/40 flex items-center justify-center text-purple-400">
+                            <i class="fa-solid fa-terminal text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-mono text-purple-400 font-bold">MAINFRAME CORE</span>
+                            <h3 class="text-xl font-bold text-white">El Lenguaje COBOL y Recursos de Práctica</h3>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+                </summary>
+
+                <div class="px-6 pb-6 pt-2 border-t border-slate-800/80 space-y-4 text-sm text-slate-300 leading-relaxed">
+                    <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-2">
+                        <h4 class="font-bold text-purple-300 text-base">El Lenguaje COBOL</h4>
+                        <p>COBOL (COmmon Business-Oriented Language) es el estándar definitivo en sistemas financieros e instituciones bancarias a nivel global. Destaca por su manejo matemático exacto de tipos numéricos fijos sin errores de redondeo en flotantes.</p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="./curso-cobol.html" class="px-4 py-2 rounded-xl bg-sky-500/20 border border-sky-400/40 text-sky-300 font-semibold text-xs hover:bg-sky-500/30 transition flex items-center gap-2">
+                            <i class="fa-solid fa-graduation-cap"></i> Ir al Curso Interactivo COBOL
+                        </a>
+
+                        <a href="https://exercism.org/tracks/cobol" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-purple-500/20 border border-purple-400/40 text-purple-300 font-semibold text-xs hover:bg-purple-500/30 transition flex items-center gap-2">
+                            <i class="fa-solid fa-laptop-code"></i> Practicar en Exercism (Track COBOL)
+                        </a>
+                    </div>
+                </div>
+            </details>
+
+        </section>
+    </main>
+
+    <footer class="bg-slate-950 border-t border-slate-800/80 py-6 text-center text-xs text-slate-500">
+        <p>© 2026 Luis Alberto Moreno · Actuario y Data Engineer</p>
+    </footer>
+
+    <script src="./js/translations.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
