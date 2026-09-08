@@ -24,7 +24,7 @@ body { font-family: 'Inter', sans-serif; }
     height: 80vh;
     width: auto;
     max-height: 800px;
-    opacity: 0.55;
+    opacity: 0.32;
     filter: invert(1) brightness(2) drop-shadow(0 0 12px rgba(56, 189, 248, 0.25));
     object-fit: contain;
 }
@@ -73,7 +73,54 @@ body { font-family: 'Inter', sans-serif; }
     100% { background-position: 0% 50%; }
 }
 
-/* BOTÓN PÍLDORA NEUMÓRFICO CON ORBE 3D */
+/* LOGO EXERCISM CON ACABADO PLATEADO METÁLICO / RESPLANDOR */
+.logo-exercism-silver {
+    filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(192, 132, 252, 0.6));
+    transition: filter 0.3s ease;
+}
+
+.logo-exercism-silver:hover {
+    filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(236, 72, 153, 0.8));
+}
+
+/* EFECTO TORNASOL PLATEADO EN TEXTO */
+.silver-gradient-text {
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 35%, #e2e8f0 70%, #a855f7 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: silverShift 4s ease infinite;
+}
+
+@keyframes silverShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* CARRUSEL ANIMADO DE VENTAJAS DE EXERCISM */
+.exercism-carousel-container {
+    position: relative;
+    height: 52px;
+    overflow: hidden;
+}
+
+.exercism-carousel-item {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+
+.exercism-carousel-item.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* BOTÓN PÍLDORA NEUMÓRFICO */
 .pill-3d-button {
     display: inline-flex;
     align-items: center;
@@ -98,103 +145,6 @@ body { font-family: 'Inter', sans-serif; }
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-6px); }
 }
-
-.pill-orb-3d {
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 9999px;
-    background: radial-gradient(circle at 35% 35%, #38bdf8, #0284c7 60%, #0369a1);
-    box-shadow: inset -2px -2px 6px rgba(0, 0, 0, 0.6), inset 2px 2px 6px rgba(255, 255, 255, 0.4), 0 0 12px rgba(56, 189, 248, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.pill-orb-spinner {
-    width: 0.75rem;
-    height: 0.75rem;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-top-color: #ffffff;
-    border-radius: 9999px;
-    animation: spinOrb 1.5s linear infinite;
-}
-
-@keyframes spinOrb {
-    to { transform: rotate(360deg); }
-}
-
-/* ==========================================================================
-   LO QUE HACÍA FALTA AGREGAR:
-   ========================================================================== */
-
-/* 1. DOMAIN STACK: MARQUESINA VERTICAL CONTINUA */
-.stack-column-container {
-    height: 230px;
-    overflow: hidden;
-    position: relative;
-    mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
-}
-
-.stack-column-track {
-    display: flex;
-    flex-direction: column;
-    gap: 0.625rem;
-    animation: scrollVertical 20s linear infinite;
-}
-
-.stack-column-container:hover .stack-column-track {
-    animation-play-state: paused;
-}
-
-@keyframes scrollVertical {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-50%); }
-}
-
-/* 2. CONTENEDOR DEL CARRUSEL DE TEXTO ANIMADO EN H1 */
-.text-carousel-wrapper {
-    display: inline-block;
-    position: relative;
-    height: 1.3em;
-    overflow: hidden;
-    vertical-align: bottom;
-}
-
-.text-carousel-item {
-    display: block;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
-}
-
-/* 3. MÁSCARA SVG Y GRADIENTE PARA SIDEBAR DE APRENDE COBOL */
-.animated-svg-mask {
-    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #34d399 100%);
-    background-size: 200% 200%;
-    animation: gradientShift 4s ease infinite;
-    mask-image: url('../assets/cara.svg');
-    -webkit-mask-image: url('../assets/cara.svg');
-    mask-size: contain;
-    -webkit-mask-size: contain;
-    mask-repeat: no-repeat;
-    -webkit-mask-repeat: no-repeat;
-    mask-position: center;
-    -webkit-mask-position: center;
-}
-
-/* 4. VISOR DE CÓDIGO COBOL SINTAXIS 80 COLUMNAS */
-.cobol-editor {
-    background-color: #020617;
-    color: #e2e8f0;
-    font-family: 'Fira Code', monospace;
-}
-
-.cobol-editor .col-seq { color: #64748b; margin-right: 0.5rem; }
-.cobol-editor .col-ind { color: #f59e0b; font-weight: bold; }
-.cobol-editor .col-area-a { color: #38bdf8; font-weight: 600; }
-.cobol-editor .col-area-b { color: #cbd5e1; }
-.cobol-editor .cobol-keyword { color: #c084fc; font-weight: bold; }
-.cobol-editor .cobol-string { color: #34d399; }
-.cobol-editor .cobol-comment { color: #64748b; font-style: italic; }
 
 /* ACCORDION ACCENT STYLES */
 details summary::-webkit-details-marker { display: none; }
