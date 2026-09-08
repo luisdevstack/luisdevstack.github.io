@@ -148,3 +148,32 @@ body { font-family: 'Inter', sans-serif; }
 
 /* ACCORDION ACCENT STYLES */
 details summary::-webkit-details-marker { display: none; }
+
+/* =========================================================
+   NUEVAS CLASES: FONDOS Y COLUMNAS PARA CURSO COBOL
+   ========================================================= */
+
+/* Fondo didáctico para marcar las columnas de COBOL */
+.cobol-columns-bg {
+    /* 
+      Col 1-6 (Secuencia): Slate / Gris
+      Col 7 (Indicador): Yellow / Amarillo
+      Col 8-11 (Área A): Cyan / Celeste
+      Col 12-72 (Área B): Purple / Morado
+    */
+    background: linear-gradient(to right,
+        rgba(100, 116, 139, 0.2) 0ch, rgba(100, 116, 139, 0.2) 6ch,
+        rgba(234, 179, 8, 0.2) 6ch, rgba(234, 179, 8, 0.2) 7ch,
+        rgba(6, 182, 212, 0.15) 7ch, rgba(6, 182, 212, 0.15) 11ch,
+        rgba(168, 85, 247, 0.15) 11ch, rgba(168, 85, 247, 0.15) 72ch,
+        transparent 72ch
+    );
+}
+
+/* Ajuste para asegurar que el bloque ocupe el espacio correcto sin romper el fondo */
+.cobol-code-block {
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    display: inline-block;
+    min-width: max-content;
+    padding-left: 0 !important; /* Vital para que el caracter 0 alinee con el 0ch del degradado */
+}
