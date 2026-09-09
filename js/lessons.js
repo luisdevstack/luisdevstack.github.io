@@ -17,6 +17,25 @@ function toggleModule(modId) {
     }
 }
 
+// Función para alternar la visibilidad de la solución del rompecabezas
+function toggleSolution() {
+    const solutionDiv = document.getElementById('solution-container');
+    const btnText = document.getElementById('btn-sol-text');
+    const btnIcon = document.getElementById('btn-sol-icon');
+
+    if (solutionDiv.classList.contains('hidden')) {
+        solutionDiv.classList.remove('hidden');
+        btnText.innerText = 'Ocultar Solución';
+        btnIcon.classList.remove('fa-eye');
+        btnIcon.classList.add('fa-eye-slash');
+    } else {
+        solutionDiv.classList.add('hidden');
+        btnText.innerText = 'Mostrar Solución';
+        btnIcon.classList.remove('fa-eye-slash');
+        btnIcon.classList.add('fa-eye');
+    }
+}
+
 function loadLesson(lessonId) {
     const container = document.getElementById('lesson-content');
     if (!container) return;
@@ -133,20 +152,6 @@ function loadLesson(lessonId) {
                         </div>
                     </div>
                 </div>
-
-                <div class="pt-4 border-t border-slate-800 space-y-3">
-                    <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
-                        <i class="fa-solid fa-vial text-emerald-400"></i> Programa de Prueba (hola.cbl)
-                    </h3>
-                    <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
-                        <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
-<span class="text-slate-500">000010</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
-<span class="text-slate-500">000020</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROGRAM-ID.</span> HOLAMUNDO.
-<span class="text-slate-500">000030</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
-<span class="text-slate-500">000040</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡ENTORNO CONFIGURADO CORRECTAMENTE!"</span>.
-<span class="text-slate-500">000050</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
-                    </div>
-                </div>
             </div>
         `;
     } else if (lessonId === '1.1') {
@@ -174,34 +179,6 @@ function loadLesson(lessonId) {
 <span class="text-slate-500">000070</span><span class="text-slate-500"> </span><span class="text-amber-300">INICIO.</span>
 <span class="text-slate-500">000080</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡Bienvenido al curso de COBOL!"</span>.
 <span class="text-slate-500">000090</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
-                </div>
-
-                <div class="space-y-3 pt-2">
-                    <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
-                        <i class="fa-solid fa-list-check text-sky-400"></i> Documentación Exhaustiva Línea por Línea
-                    </h3>
-                    <div class="grid gap-3 text-xs">
-                        <div class="p-3 bg-slate-950/80 border-l-4 border-slate-500 rounded-r-lg space-y-1">
-                            <div class="font-mono font-bold text-slate-200">Líneas 000010 - 000030: Encabezado de Comentario</div>
-                            <p class="text-slate-400"><strong class="text-amber-400">Columna 7 (*):</strong> Operador de comentario. Desactiva la línea para el compilador.</p>
-                        </div>
-                        <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg space-y-1">
-                            <div class="font-mono font-bold text-sky-300">Línea 000040: IDENTIFICATION DIVISION.</div>
-                            <p class="text-slate-400"><strong class="text-sky-400">Área A (Col 8):</strong> Declaración de la primera división obligatoria. Cierra obligatoriamente con punto (.).</p>
-                        </div>
-                        <div class="p-3 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-lg space-y-1">
-                            <div class="font-mono font-bold text-purple-300">Línea 000050: PROGRAM-ID. LEC0101.</div>
-                            <p class="text-slate-400"><strong class="text-purple-400">Sintaxis:</strong> Define el nombre único del programa ejecutable.</p>
-                        </div>
-                        <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg space-y-1">
-                            <div class="font-mono font-bold text-sky-300">Línea 000060 - 000070: PROCEDURE DIVISION. / INICIO.</div>
-                            <p class="text-slate-400"><strong class="text-sky-400">Área A:</strong> Tercera división obligatoria que aloja la lógica ejecutable.</p>
-                        </div>
-                        <div class="p-3 bg-slate-950/80 border-l-4 border-emerald-400 rounded-r-lg space-y-1">
-                            <div class="font-mono font-bold text-emerald-300">Líneas 000080 - 000090: DISPLAY y STOP RUN.</div>
-                            <p class="text-slate-400"><strong class="text-slate-200">Área B (Col 12):</strong> <strong class="text-purple-400">DISPLAY</strong> imprime en pantalla y <strong class="text-purple-400">STOP RUN</strong> finaliza el proceso.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         `;
@@ -234,59 +211,91 @@ function loadLesson(lessonId) {
 <span class="text-slate-500">000110</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">DISPLAY</span> WS-TEXTO.
 <span class="text-slate-500">000120</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
                 </div>
-
-                <div class="space-y-3 pt-2">
-                    <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
-                        <i class="fa-solid fa-table-columns text-sky-400"></i> Desglose Estricto de Columnas y Operadores
-                    </h3>
-                    <div class="grid gap-3 text-xs">
-                        <div class="pl-4 py-3 border-l-4 border-slate-500 bg-slate-900/50 rounded-r-xl">
-                            <p class="text-xs text-slate-300 leading-relaxed">
-                                <span class="font-bold text-slate-400">Cols 1 - 6 (Sequence Number):</span> Reservadas para numeración lógica de línea.
-                            </p>
-                        </div>
-                        <div class="pl-4 py-3 border-l-4 border-yellow-500 bg-slate-900/50 rounded-r-xl">
-                            <p class="text-xs text-slate-300 leading-relaxed">
-                                <span class="font-bold text-yellow-500">Columna 7 (Indicator Area):</span> Control del compilador (* para comentarios, - para continuación).
-                            </p>
-                        </div>
-                        <div class="pl-4 py-3 border-l-4 border-cyan-500 bg-slate-900/50 rounded-r-xl">
-                            <p class="text-xs text-slate-300 leading-relaxed">
-                                <span class="font-bold text-cyan-400">Cols 8 - 11 (Área A):</span> Reservada para Divisiones, Secciones, Parágrafos y variables base (01).
-                            </p>
-                        </div>
-                        <div class="pl-4 py-3 border-l-4 border-purple-500 bg-slate-900/50 rounded-r-xl">
-                            <p class="text-xs text-slate-300 leading-relaxed">
-                                <span class="font-bold text-purple-400">Cols 12 - 72 (Área B):</span> Área para sentencias ejecutables (DISPLAY, MOVE) y subniveles.
-                            </p>
-                        </div>
-                    </div>
-                </div>
             </div>
         `;
     } else if (lessonId === '1.3') {
         container.innerHTML = `
-            <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6 text-center py-12">
-                <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.3</span>
-                <h2 class="text-2xl font-bold text-white tracking-tight">Las 4 Divisiones de COBOL</h2>
-                <p class="text-slate-400 text-sm max-w-md mx-auto">
-                    Esta lección se encuentra actualmente en desarrollo y se integrará próximamente con guías detalladas e interactividad.
+            <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.3</span>
+                    <span class="text-[10px] bg-sky-950 text-sky-300 border border-sky-800 px-2.5 py-0.5 rounded font-mono">Arquitectura Modular</span>
+                </div>
+
+                <h2 class="text-2xl font-bold text-white tracking-tight">Las 4 Divisiones Fundamentales de COBOL</h2>
+
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    Todo programa clásico en COBOL está estructurado jerárquicamente en hasta cuatro divisiones obligatorias u opcionales. Cada una cumple un propósito arquitectónico específico, separando los metadatos, el entorno de hardware, la memoria de datos y la lógica ejecutable.
                 </p>
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-mono">
-                    <i class="fa-solid fa-person-digging text-amber-400"></i> Próximamente
+
+                <div class="grid gap-4 text-xs">
+                    <!-- DIVISION 1 -->
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-xl space-y-2">
+                        <div class="font-bold text-sky-300 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-id-card"></i> 1. IDENTIFICATION DIVISION
+                        </div>
+                        <p class="text-slate-400">Es la única división obligatoria absoluta. Contiene metadatos de documentación del programa, destacando el párrafo <code>PROGRAM-ID</code> que asigna el nombre oficial al binario compilado.</p>
+                    </div>
+
+                    <!-- DIVISION 2 -->
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-xl space-y-2">
+                        <div class="font-bold text-purple-300 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-network-wired"></i> 2. ENVIRONMENT DIVISION
+                        </div>
+                        <p class="text-slate-400">Define la relación entre el programa y el entorno físico externo de la computadora (Mainframe o servidor). Incluye la <code>CONFIGURATION SECTION</code> y la <code>INPUT-OUTPUT SECTION</code> para asociar archivos lógicos con dispositivos físicos.</p>
+                    </div>
+
+                    <!-- DIVISION 3 -->
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-emerald-400 rounded-r-xl space-y-2">
+                        <div class="font-bold text-emerald-300 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-memory"></i> 3. DATA DIVISION
+                        </div>
+                        <p class="text-slate-400">Aloja la definición de todas las variables, estructuras de registros y memoria de trabajo. Se divide en secciones clave como la <code>WORKING-STORAGE SECTION</code> y la <code>FILE SECTION</code>.</p>
+                    </div>
+
+                    <!-- DIVISION 4 -->
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-amber-400 rounded-r-xl space-y-2">
+                        <div class="font-bold text-amber-300 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-terminal"></i> 4. PROCEDURE DIVISION
+                        </div>
+                        <p class="text-slate-400">Contiene el corazón algorítmico del programa. Aquí reside todo el código ejecutable organizado en párrafos, sentencias y verbos lógicos (como <code>DISPLAY</code>, <code>MOVE</code> o <code>PERFORM</code>).</p>
+                    </div>
                 </div>
             </div>
         `;
     } else if (lessonId === '1.4') {
         container.innerHTML = `
-            <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6 text-center py-12">
-                <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.4</span>
-                <h2 class="text-2xl font-bold text-white tracking-tight">Delimitadores y Puntos en COBOL</h2>
-                <p class="text-slate-400 text-sm max-w-md mx-auto">
-                    Esta lección se encuentra actualmente en desarrollo y se integrará próximamente con guías detalladas e interactividad.
+            <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.4</span>
+                    <span class="text-[10px] bg-sky-950 text-sky-300 border border-sky-800 px-2.5 py-0.5 rounded font-mono">Sintaxis y Puntuación</span>
+                </div>
+
+                <h2 class="text-2xl font-bold text-white tracking-tight">Delimitadores, Sentencias y la Importancia del Punto (.)</h2>
+
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    A diferencia de lenguajes modernos donde las llaves <code>{}</code> o los saltos de línea delimitan bloques, en COBOL la puntuación y los delimitadores juegan un papel crítico en el alcance de las instrucciones lógicas.
                 </p>
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-mono">
-                    <i class="fa-solid fa-person-digging text-amber-400"></i> Próximamente
+
+                <div class="space-y-4 text-xs">
+                    <!-- PUNTO -->
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-pink-400 rounded-r-xl space-y-2">
+                        <div class="font-bold text-pink-300 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-circle-stop"></i> El Poder y Peligro del Punto (.)
+                        </div>
+                        <p class="text-slate-400">
+                            El punto final en COBOL marca el cierre definitivo de una sentencia o un párrafo completo. Olvidar un punto o colocarlo erróneamente dentro de una estructura condicional (como un <code>IF</code>) puede alterar drásticamente la lógica de ejecución del programa, haciendo que instrucciones posteriores queden atrapadas dentro de la condición.
+                        </p>
+                    </div>
+
+                    <!-- SEPARADORES -->
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-xl space-y-2">
+                        <div class="font-bold text-sky-300 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-columns"></i> Espacios y Comas
+                        </div>
+                        <p class="text-slate-400">
+                            Los espacios en blanco son obligatorios para separar palabras reservadas, nombres de variables y operadores (COBOL no permite palabras pegadas). Las comas y los puntos y comas actúan principalmente como elementos estéticos de separación entre argumentos, aunque las versiones modernas prefieren depender netamente de los espacios.
+                        </p>
+                    </div>
                 </div>
             </div>
         `;
@@ -301,7 +310,7 @@ function loadLesson(lessonId) {
                 <h2 class="text-2xl font-bold text-white tracking-tight">¡Tu Primer Hola Mundo y Glosario Didáctico!</h2>
 
                 <p class="text-slate-300 text-sm leading-relaxed">
-                    Es momento de consolidar lo aprendido. A continuación, te presentamos el glosario oficial de colores que utilizamos en nuestros editores y un ejercicio interactivo de código.
+                    Es momento de consolidar lo aprendido. Revisa el glosario oficial de colores, resuelve el rompecabezas lógico y consulta la solución cuando estés listo.
                 </p>
 
                 <!-- GLOSARIO DE SISTEMA DE COLORES ESTILIZADO -->
@@ -321,7 +330,7 @@ function loadLesson(lessonId) {
                         <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
                             <span class="w-3 h-3 rounded-full bg-purple-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(192,132,252,0.5)]"></span>
                             <div>
-                                <strong class="text-purple-300 block mb-0.5"><span class="cobol-comment font-bold">Comentarios de Documentación</span></strong>
+                                <strong class="cobol-comment block mb-0.5">Comentarios de Documentación</strong>
                                 <span class="text-slate-400 text-[11px]">Envueltos con la etiqueta <span class="cobol-comment font-bold">tornasol</span>, señalan líneas ignoradas por el compilador (*).</span>
                             </div>
                         </div>
@@ -344,10 +353,57 @@ function loadLesson(lessonId) {
                     </div>
                 </div>
 
-                <!-- EJEMPLO COMPLETADO DE HOLA MUNDO -->
-                <div class="space-y-3 pt-2">
+                <!-- SECCIÓN ROMPECABEZAS LÓGICO MEJORADO (COLOCADO ANTES DE LA SOLUCIÓN) -->
+                <div class="bg-slate-950/80 border border-purple-900/40 rounded-xl p-5 space-y-4 shadow-lg">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <h4 class="text-xs font-bold text-purple-300 uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-puzzle-piece text-purple-400"></i> Rompecabezas Lógico: Arma tu Bloque
+                        </h4>
+                        <span class="text-[10px] bg-purple-950 text-purple-300 px-2 py-0.5 rounded border border-purple-800">Reto Práctico</span>
+                    </div>
+                    <p class="text-xs text-slate-300">
+                        Ordena mentalmente los siguientes conceptos y líneas clave para construir un programa funcional en COBOL (desde la identificación hasta la ejecución):
+                    </p>
+                    <div class="grid gap-2 text-xs font-mono">
+                        <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
+                            <span>1. [ ? ] <strong class="text-sky-400">IDENTIFICATION DIVISION.</strong></span>
+                            <span class="text-[10px] text-slate-500">División inicial</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
+                            <span>2. [ ? ] <strong class="text-sky-400">PROGRAM-ID. HOLAMUNDO.</strong></span>
+                            <span class="text-[10px] text-slate-500">Identificador del programa</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
+                            <span>3. [ ? ] <strong class="text-sky-400">PROCEDURE DIVISION.</strong></span>
+                            <span class="text-[10px] text-slate-500">División de procedimientos</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
+                            <span>4. [ ? ] <strong class="text-amber-300">INICIO-PROGRAMA.</strong></span>
+                            <span class="text-[10px] text-slate-500">Etiqueta / Párrafo inicial</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
+                            <span>5. [ ? ] <strong class="text-sky-400">DISPLAY "¡Hola Mundo!"</strong></span>
+                            <span class="text-[10px] text-slate-500">Salida en pantalla</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
+                            <span>6. [ ? ] <strong class="text-sky-400">STOP RUN.</strong></span>
+                            <span class="text-[10px] text-slate-500">Cierre de ejecución</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOTÓN PARA MOSTRAR/OCULTAR LA SOLUCIÓN -->
+                <div class="pt-2">
+                    <button onclick="toggleSolution()" class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl font-bold text-xs bg-sky-600 hover:bg-sky-500 text-white shadow-[0_0_15px_rgba(56,189,248,0.3)] transition-all duration-300">
+                        <i id="btn-sol-icon" class="fa-solid fa-eye"></i>
+                        <span id="btn-sol-text">Mostrar Solución</span>
+                    </button>
+                </div>
+
+                <!-- ESTRUCTURA FINAL (OCULTA INICIALMENTE) -->
+                <div id="solution-container" class="hidden space-y-3 pt-2 transition-all duration-300">
                     <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
-                        <i class="fa-solid fa-code text-emerald-400"></i> Estructura Final del Programa "Hola Mundo"
+                        <i class="fa-solid fa-code text-emerald-400"></i> Estructura Final del Programa "Hola Mundo" (Solución)
                     </h3>
                     <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-xl">
                         <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
@@ -363,32 +419,6 @@ function loadLesson(lessonId) {
                     </div>
                 </div>
 
-                <!-- SECCIÓN ROMPECABEZAS DIDÁCTICO -->
-                <div class="bg-slate-950/80 border border-purple-900/40 rounded-xl p-5 space-y-4">
-                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                        <h4 class="text-xs font-bold text-purple-300 uppercase tracking-wider flex items-center gap-2">
-                            <i class="fa-solid fa-puzzle-piece text-purple-400"></i> Rompecabezas Lógico: Arma tu Bloque
-                        </h4>
-                        <span class="text-[10px] bg-purple-950 text-purple-300 px-2 py-0.5 rounded border border-purple-800">Reto Práctico</span>
-                    </div>
-                    <p class="text-xs text-slate-300">
-                        Identifica mentalmente el orden correcto en el que deben colocarse las líneas lógicas de la <code>PROCEDURE DIVISION</code> para imprimir un mensaje de bienvenida y cerrar el programa con éxito:
-                    </p>
-                    <div class="grid gap-2 text-xs font-mono">
-                        <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
-                            <span>1. [ ? ] <strong class="text-amber-300">INICIO-PROGRAMA.</strong></span>
-                            <span class="text-[10px] text-slate-500">Párrafo de inicio</span>
-                        </div>
-                        <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
-                            <span>2. [ ? ] <strong class="text-sky-400">DISPLAY "¡Hola Mundo!"</strong></span>
-                            <span class="text-[10px] text-slate-500">Salida por pantalla</span>
-                        </div>
-                        <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
-                            <span>3. [ ? ] <strong class="text-sky-400">STOP RUN.</strong></span>
-                            <span class="text-[10px] text-slate-500">Cierre de ejecución</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         `;
     }
