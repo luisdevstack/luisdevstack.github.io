@@ -134,20 +134,33 @@
                             </div>
                         </div>
 
-                        <!-- MÓDULOS DEL 2 AL 7 -->
+                        <!-- MÓDULO 2 -->
                         <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
                             <button onclick="toggleModule('mod-2')" class="w-full px-3 py-2.5 text-left font-semibold text-slate-300 hover:bg-slate-800/60 flex items-center justify-between transition">
                                 <span class="flex items-center gap-2"><i class="fa-solid fa-memory text-purple-400"></i> M2: Manejo de Memoria</span>
                                 <i id="icon-mod-2" class="fa-solid fa-chevron-right text-slate-500 text-[10px] transition-transform duration-200"></i>
                             </button>
                             <div id="mod-2" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-slate-800/60">
-                                <span class="block px-2 py-1 text-[11px] text-slate-500">2.1 Niveles de Datos (01, 05, 77)</span>
-                                <span class="block px-2 py-1 text-[11px] text-slate-500">2.2 Cláusula PIC y Tipos</span>
-                                <span class="block px-2 py-1 text-[11px] text-slate-500">2.3 Literales y Figurativos</span>
-                                <span class="block px-2 py-1 text-[11px] text-slate-500">2.4 Cláusula REDEFINES</span>
+                                <button onclick="loadLesson('2.1')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
+                                    <span>2.1 Niveles de Datos (01, 05, 77)</span>
+                                    <i class="fa-solid fa-play text-[10px]"></i>
+                                </button>
+                                <button onclick="loadLesson('2.2')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
+                                    <span>2.2 Cláusula PIC y Tipos</span>
+                                    <i class="fa-solid fa-play text-[10px]"></i>
+                                </button>
+                                <button onclick="loadLesson('2.3')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
+                                    <span>2.3 Literales y Figurativos</span>
+                                    <i class="fa-solid fa-play text-[10px]"></i>
+                                </button>
+                                <button onclick="loadLesson('2.4')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
+                                    <span>2.4 Cláusula REDEFINES</span>
+                                    <i class="fa-solid fa-play text-[10px]"></i>
+                                </button>
                             </div>
                         </div>
 
+                        <!-- MÓDULOS DEL 3 AL 7 -->
                         <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
                             <button onclick="toggleModule('mod-3')" class="w-full px-3 py-2.5 text-left font-semibold text-slate-300 hover:bg-slate-800/60 flex items-center justify-between transition">
                                 <span class="flex items-center gap-2"><i class="fa-solid fa-code-branch text-amber-400"></i> M3: Control y Operaciones</span>
