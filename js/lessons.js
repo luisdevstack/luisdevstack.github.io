@@ -68,7 +68,7 @@ function loadLesson(lessonId) {
                         </div>
                         <p class="text-slate-400">Abre la terminal <strong>MSYS2 UCRT64</strong> e ingresa el siguiente comando para actualizar paquetes e instalar GnuCOBOL:</p>
                         <div class="bg-slate-900 p-2.5 rounded-lg font-mono-code text-slate-200 text-xs border border-slate-800">
-                            pacman -Suc<br>
+                            pacman -Syu<br>
                             pacman -S mingw-w64-ucrt-x86_64-gnucobol
                         </div>
                     </div>
@@ -180,6 +180,34 @@ function loadLesson(lessonId) {
 <span class="text-slate-500">000080</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡Bienvenido al curso de COBOL!"</span>.
 <span class="text-slate-500">000090</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
                 </div>
+
+                <div class="space-y-3 pt-2">
+                    <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-sky-400"></i> Documentación Exhaustiva Línea por Línea
+                    </h3>
+                    <div class="grid gap-3 text-xs">
+                        <div class="p-3 bg-slate-950/80 border-l-4 border-slate-500 rounded-r-lg space-y-1">
+                            <div class="font-mono font-bold text-slate-200">Líneas 000010 - 000030: Encabezado de Comentario</div>
+                            <p class="text-slate-400"><strong class="text-amber-400">Columna 7 (*):</strong> Operador de comentario. Desactiva la línea para el compilador.</p>
+                        </div>
+                        <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg space-y-1">
+                            <div class="font-mono font-bold text-sky-300">Línea 000040: IDENTIFICATION DIVISION.</div>
+                            <p class="text-slate-400"><strong class="text-sky-400">Área A (Col 8):</strong> Declaración de la primera división obligatoria. Cierra obligatoriamente con punto (.).</p>
+                        </div>
+                        <div class="p-3 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-lg space-y-1">
+                            <div class="font-mono font-bold text-purple-300">Línea 000050: PROGRAM-ID. LEC0101.</div>
+                            <p class="text-slate-400"><strong class="text-purple-400">Sintaxis:</strong> Define el nombre único del programa ejecutable.</p>
+                        </div>
+                        <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg space-y-1">
+                            <div class="font-mono font-bold text-sky-300">Línea 000060 - 000070: PROCEDURE DIVISION. / INICIO.</div>
+                            <p class="text-slate-400"><strong class="text-sky-400">Área A:</strong> Tercera división obligatoria que aloja la lógica ejecutable.</p>
+                        </div>
+                        <div class="p-3 bg-slate-950/80 border-l-4 border-emerald-400 rounded-r-lg space-y-1">
+                            <div class="font-mono font-bold text-emerald-300">Líneas 000080 - 000090: DISPLAY y STOP RUN.</div>
+                            <p class="text-slate-400"><strong class="text-slate-200">Área B (Col 12):</strong> <strong class="text-purple-400">DISPLAY</strong> imprime en pantalla y <strong class="text-purple-400">STOP RUN</strong> finaliza el proceso.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         `;
     } else if (lessonId === '1.2') {
@@ -228,7 +256,6 @@ function loadLesson(lessonId) {
                 </p>
 
                 <div class="grid gap-4 text-xs">
-                    <!-- DIVISION 1 -->
                     <div class="p-4 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-xl space-y-2">
                         <div class="font-bold text-sky-300 text-sm flex items-center gap-2">
                             <i class="fa-solid fa-id-card"></i> 1. IDENTIFICATION DIVISION
@@ -236,7 +263,6 @@ function loadLesson(lessonId) {
                         <p class="text-slate-400">Es la única división obligatoria absoluta. Contiene metadatos de documentación del programa, destacando el párrafo <code>PROGRAM-ID</code> que asigna el nombre oficial al binario compilado.</p>
                     </div>
 
-                    <!-- DIVISION 2 -->
                     <div class="p-4 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-xl space-y-2">
                         <div class="font-bold text-purple-300 text-sm flex items-center gap-2">
                             <i class="fa-solid fa-network-wired"></i> 2. ENVIRONMENT DIVISION
@@ -244,7 +270,6 @@ function loadLesson(lessonId) {
                         <p class="text-slate-400">Define la relación entre el programa y el entorno físico externo de la computadora (Mainframe o servidor). Incluye la <code>CONFIGURATION SECTION</code> y la <code>INPUT-OUTPUT SECTION</code> para asociar archivos lógicos con dispositivos físicos.</p>
                     </div>
 
-                    <!-- DIVISION 3 -->
                     <div class="p-4 bg-slate-950/80 border-l-4 border-emerald-400 rounded-r-xl space-y-2">
                         <div class="font-bold text-emerald-300 text-sm flex items-center gap-2">
                             <i class="fa-solid fa-memory"></i> 3. DATA DIVISION
@@ -252,7 +277,6 @@ function loadLesson(lessonId) {
                         <p class="text-slate-400">Aloja la definición de todas las variables, estructuras de registros y memoria de trabajo. Se divide en secciones clave como la <code>WORKING-STORAGE SECTION</code> y la <code>FILE SECTION</code>.</p>
                     </div>
 
-                    <!-- DIVISION 4 -->
                     <div class="p-4 bg-slate-950/80 border-l-4 border-amber-400 rounded-r-xl space-y-2">
                         <div class="font-bold text-amber-300 text-sm flex items-center gap-2">
                             <i class="fa-solid fa-terminal"></i> 4. PROCEDURE DIVISION
@@ -277,23 +301,21 @@ function loadLesson(lessonId) {
                 </p>
 
                 <div class="space-y-4 text-xs">
-                    <!-- PUNTO -->
                     <div class="p-4 bg-slate-950/80 border-l-4 border-pink-400 rounded-r-xl space-y-2">
                         <div class="font-bold text-pink-300 text-sm flex items-center gap-2">
                             <i class="fa-solid fa-circle-stop"></i> El Poder y Peligro del Punto (.)
                         </div>
                         <p class="text-slate-400">
-                            El punto final en COBOL marca el cierre definitivo de una sentencia o un párrafo completo. Olvidar un punto o colocarlo erróneamente dentro de una estructura condicional (como un <code>IF</code>) puede alterar drásticamente la lógica de ejecución del programa, haciendo que instrucciones posteriores queden atrapadas dentro de la condición.
+                            El punto final en COBOL marca el cierre definitivo de una sentencia o un párrafo completo. Olvidar un punto o colocarlo erróneamente dentro de una estructura condicional (como un <code>IF</code>) puede alterar drásticamente la lógica de ejecución del programa.
                         </p>
                     </div>
 
-                    <!-- SEPARADORES -->
                     <div class="p-4 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-xl space-y-2">
                         <div class="font-bold text-sky-300 text-sm flex items-center gap-2">
                             <i class="fa-solid fa-columns"></i> Espacios y Comas
                         </div>
                         <p class="text-slate-400">
-                            Los espacios en blanco son obligatorios para separar palabras reservadas, nombres de variables y operadores (COBOL no permite palabras pegadas). Las comas y los puntos y comas actúan principalmente como elementos estéticos de separación entre argumentos, aunque las versiones modernas prefieren depender netamente de los espacios.
+                            Los espacios en blanco son obligatorios para separar palabras reservadas, nombres de variables y operadores (COBOL no permite palabras pegadas).
                         </p>
                     </div>
                 </div>
@@ -313,7 +335,6 @@ function loadLesson(lessonId) {
                     Es momento de consolidar lo aprendido. Revisa el glosario oficial de colores, resuelve el rompecabezas lógico y consulta la solución cuando estés listo.
                 </p>
 
-                <!-- GLOSARIO DE SISTEMA DE COLORES ESTILIZADO -->
                 <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5 space-y-4">
                     <h3 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
                         <i class="fa-solid fa-palette text-sky-400"></i> Glosario Visual de Sintaxis COBOL
@@ -330,7 +351,7 @@ function loadLesson(lessonId) {
                         <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
                             <span class="w-3 h-3 rounded-full bg-purple-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(192,132,252,0.5)]"></span>
                             <div>
-                                <strong class="cobol-comment block mb-0.5">Comentarios de Documentación</strong>
+                                <strong class="cobol-comment block font-extrabold mb-0.5">Comentarios de Documentación</strong>
                                 <span class="text-slate-400 text-[11px]">Envueltos con la etiqueta <span class="cobol-comment font-bold">tornasol</span>, señalan líneas ignoradas por el compilador (*).</span>
                             </div>
                         </div>
@@ -347,13 +368,12 @@ function loadLesson(lessonId) {
                             <span class="w-3 h-3 rounded-full bg-amber-300 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(252,211,77,0.5)]"></span>
                             <div>
                                 <strong class="text-amber-300 block mb-0.5">Etiquetas y Párrafos</strong>
-                                <span class="text-slate-400 text-[11px]">En tono <span class="text-amber-300 font-bold">Amarillo</span>, funcionan como puntos de anclaje (análogos a :INICIO de Batch).</span>
+                                <span class="text-slate-400 text-[11px]">En tono <span class="text-amber-300 font-bold">Amarillo</span>, funcionan como puntos de anclaje.</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- SECCIÓN ROMPECABEZAS LÓGICO MEJORADO (COLOCADO ANTES DE LA SOLUCIÓN) -->
                 <div class="bg-slate-950/80 border border-purple-900/40 rounded-xl p-5 space-y-4 shadow-lg">
                     <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                         <h4 class="text-xs font-bold text-purple-300 uppercase tracking-wider flex items-center gap-2">
@@ -362,7 +382,7 @@ function loadLesson(lessonId) {
                         <span class="text-[10px] bg-purple-950 text-purple-300 px-2 py-0.5 rounded border border-purple-800">Reto Práctico</span>
                     </div>
                     <p class="text-xs text-slate-300">
-                        Ordena mentalmente los siguientes conceptos y líneas clave para construir un programa funcional en COBOL (desde la identificación hasta la ejecución):
+                        Ordena mentalmente los siguientes conceptos y líneas clave para construir un programa funcional en COBOL:
                     </p>
                     <div class="grid gap-2 text-xs font-mono">
                         <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
@@ -392,7 +412,6 @@ function loadLesson(lessonId) {
                     </div>
                 </div>
 
-                <!-- BOTÓN PARA MOSTRAR/OCULTAR LA SOLUCIÓN -->
                 <div class="pt-2">
                     <button onclick="toggleSolution()" class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl font-bold text-xs bg-sky-600 hover:bg-sky-500 text-white shadow-[0_0_15px_rgba(56,189,248,0.3)] transition-all duration-300">
                         <i id="btn-sol-icon" class="fa-solid fa-eye"></i>
@@ -400,7 +419,6 @@ function loadLesson(lessonId) {
                     </button>
                 </div>
 
-                <!-- ESTRUCTURA FINAL (OCULTA INICIALMENTE) -->
                 <div id="solution-container" class="hidden space-y-3 pt-2 transition-all duration-300">
                     <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
                         <i class="fa-solid fa-code text-emerald-400"></i> Estructura Final del Programa "Hola Mundo" (Solución)
@@ -418,7 +436,127 @@ function loadLesson(lessonId) {
 <span class="text-slate-500">000090</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
                     </div>
                 </div>
+            </div>
+        `;
+    } 
+    // --- MÓDULO 2: MANEJO DE MEMORIA ---
+    else if (lessonId === '2.1') {
+        container.innerHTML = `
+            <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <span class="text-xs font-mono text-purple-400">Módulo 2 · Lección 2.1</span>
+                    <span class="text-[10px] bg-purple-950 text-purple-300 border border-purple-800 px-2.5 py-0.5 rounded font-mono">Estructura Jerárquica</span>
+                </div>
 
+                <h2 class="text-2xl font-bold text-white tracking-tight">Niveles de Datos (01, 05, 77)</h2>
+
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    COBOL no utiliza variables sueltas como otros lenguajes; organiza la memoria RAM en jerarquías estrictas basadas en números de nivel dentro de la <code>WORKING-STORAGE SECTION</code>.
+                </p>
+
+                <div class="grid gap-4 text-xs">
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-xl space-y-2">
+                        <div class="font-bold text-purple-300 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-layer-group"></i> Nivel 01 (Registros Principales)
+                        </div>
+                        <p class="text-slate-400">Define el nivel superior o un bloque de datos completo (por ejemplo, un registro de empleado o estructura de cabecera).</p>
+                    </div>
+
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-xl space-y-2">
+                        <div class="font-bold text-sky-300 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-sitemap"></i> Niveles 02 al 49 (Subcampos)
+                        </div>
+                        <p class="text-slate-400">Subdividen lógicamente al nivel 01 superior, permitiendo crear estructuras anidadas similares a objetos o structs en C.</p>
+                    </div>
+
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-amber-400 rounded-r-xl space-y-2">
+                        <div class="font-bold text-amber-300 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-tag"></i> Nivel 77 (Variables Independientes)
+                        </div>
+                        <p class="text-slate-400">Se utiliza para declarar variables elementales aisladas que no dependen ni tienen subcampos subordinados.</p>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else if (lessonId === '2.2') {
+        container.innerHTML = `
+            <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <span class="text-xs font-mono text-purple-400">Módulo 2 · Lección 2.2</span>
+                    <span class="text-[10px] bg-purple-950 text-purple-300 border border-purple-800 px-2.5 py-0.5 rounded font-mono">Tipos y Formatos</span>
+                </div>
+
+                <h2 class="text-2xl font-bold text-white tracking-tight">La Cláusula PIC (Picture) y Tipos de Datos</h2>
+
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    La cláusula <code>PIC</code> define exactamente cuántos bytes ocupa una variable en memoria y qué tipo de caracteres puede almacenar.
+                </p>
+
+                <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-2">
+                        <span class="font-bold text-emerald-300 block text-sm">Alfanuméricos: X(n)</span>
+                        <p class="text-slate-400">Acepta letras, números y símbolos. Ejemplo: <code>PIC X(10)</code> reserva 10 espacios de texto alineados a la izquierda.</p>
+                    </div>
+
+                    <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-2">
+                        <span class="font-bold text-sky-300 block text-sm">Numéricos Enteros: 9(n)</span>
+                        <p class="text-slate-400">Almacena exclusivamente dígitos numéricos (0-9). Ejemplo: <code>PIC 9(5)</code> para un valor entero de hasta 5 cifras.</p>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else if (lessonId === '2.3') {
+        container.innerHTML = `
+            <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <span class="text-xs font-mono text-purple-400">Módulo 2 · Lección 2.3</span>
+                    <span class="text-[10px] bg-purple-950 text-purple-300 border border-purple-800 px-2.5 py-0.5 rounded font-mono">Inicialización</span>
+                </div>
+
+                <h2 class="text-2xl font-bold text-white tracking-tight">Literales y Valores Figurativos</h2>
+
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    Los valores figurativos en COBOL son palabras clave predefinidas que permiten inicializar bloques de memoria completos sin necesidad de escribir literales explícitos.
+                </p>
+
+                <div class="grid gap-3 text-xs">
+                    <div class="p-3 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-lg">
+                        <strong class="text-purple-300 block font-mono text-sm">SPACES / SPACE</strong>
+                        <p class="text-slate-400">Llena el campo o variable completamente con espacios en blanco (caracteres de relleno estándar).</p>
+                    </div>
+                    <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg">
+                        <strong class="text-sky-300 block font-mono text-sm">ZEROS / ZERO / ZEROS</strong>
+                        <p class="text-slate-400">Rellena la variable numérica o alfanumérica con ceros ('0').</p>
+                    </div>
+                    <div class="p-3 bg-slate-950/80 border-l-4 border-amber-400 rounded-r-lg">
+                        <strong class="text-amber-300 block font-mono text-sm">HIGH-VALUES / LOW-VALUES</strong>
+                        <p class="text-slate-400">Representan el valor hexadecimal más alto (xFF) y más bajo (x00) del conjunto de caracteres del sistema, muy usados en control de corte de control.</p>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else if (lessonId === '2.4') {
+        container.innerHTML = `
+            <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <span class="text-xs font-mono text-purple-400">Módulo 2 · Lección 2.4</span>
+                    <span class="text-[10px] bg-purple-950 text-purple-300 border border-purple-800 px-2.5 py-0.5 rounded font-mono">Optimización de Memoria</span>
+                </div>
+
+                <h2 class="text-2xl font-bold text-white tracking-tight">La Cláusula REDEFINES</h2>
+
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    La cláusula <code>REDEFINES</code> permite que dos o más variables compartan exactamente el **mismo espacio físico de memoria RAM**, permitiendo interpretar los mismos bytes de formas distintas según el contexto del programa.
+                </p>
+
+                <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
+                    <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
+<span class="text-slate-500">000100</span> <span class="text-sky-400 font-semibold">01</span> WS-FECHA-RAW       <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">X(8)</span>.
+<span class="text-slate-500">000110</span> <span class="text-sky-400 font-semibold">01</span> WS-FECHA-ESTRUCTURA <span class="text-sky-400 font-semibold">REDEFINES</span> WS-FECHA-RAW.
+<span class="text-slate-500">000120</span>     <span class="text-sky-400 font-semibold">05</span> WS-ANIO       <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(4)</span>.
+<span class="text-slate-500">000130</span>     <span class="text-sky-400 font-semibold">05</span> WS-MES        <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(2)</span>.
+<span class="text-slate-500">000140</span>     <span class="text-sky-400 font-semibold">05</span> WS-DIA        <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(2)</span>.</code></pre>
+                </div>
             </div>
         `;
     }
