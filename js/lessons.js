@@ -321,7 +321,7 @@ function loadLesson(lessonId) {
                         <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
                             <span class="w-3 h-3 rounded-full bg-purple-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(192,132,252,0.5)]"></span>
                             <div>
-                                <strong class="text-purple-300 block mb-0.5">Comentarios de Documentación</strong>
+                                <strong class="text-purple-300 block mb-0.5"><span class="cobol-comment font-bold">Comentarios de Documentación</span></strong>
                                 <span class="text-slate-400 text-[11px]">Envueltos con la etiqueta <span class="cobol-comment font-bold">tornasol</span>, señalan líneas ignoradas por el compilador (*).</span>
                             </div>
                         </div>
