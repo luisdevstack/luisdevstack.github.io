@@ -165,9 +165,9 @@ function loadLesson(lessonId) {
 
                 <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
                     <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
-<span class="text-slate-500">000010</span><span class="cobol-comment-silver">*================================================================*</span>
-<span class="text-slate-500">000020</span><span class="cobol-comment-silver">* LECCIÓN 1.1: ESQUELETO MÍNIMO DE UN PROGRAMA EN COBOL          *</span>
-<span class="text-slate-500">000030</span><span class="cobol-comment-silver">*================================================================*</span>
+<span class="text-slate-500">000010</span><span class="cobol-comment">*================================================================*</span>
+<span class="text-slate-500">000020</span><span class="cobol-comment">* LECCIÓN 1.1: ESQUELETO MÍNIMO DE UN PROGRAMA EN COBOL          *</span>
+<span class="text-slate-500">000030</span><span class="cobol-comment">*================================================================*</span>
 <span class="text-slate-500">000040</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
 <span class="text-slate-500">000050</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROGRAM-ID.</span> LEC0101.
 <span class="text-slate-500">000060</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
@@ -221,9 +221,9 @@ function loadLesson(lessonId) {
 
                 <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
                     <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
-<span class="text-slate-500">000010</span><span class="cobol-comment-silver">*================================================================*</span>
-<span class="text-slate-500">000020</span><span class="cobol-comment-silver">* DEMOSTRACIÓN DE ZONAS Y ÁREAS EN FORMATO FIJO                  *</span>
-<span class="text-slate-500">000030</span><span class="cobol-comment-silver">*================================================================*</span>
+<span class="text-slate-500">000010</span><span class="cobol-comment">*================================================================*</span>
+<span class="text-slate-500">000020</span><span class="cobol-comment">* DEMOSTRACIÓN DE ZONAS Y ÁREAS EN FORMATO FIJO                  *</span>
+<span class="text-slate-500">000030</span><span class="cobol-comment">*================================================================*</span>
 <span class="text-slate-500">000040</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
 <span class="text-slate-500">000050</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROGRAM-ID.</span> LEC0102.
 <span class="text-slate-500">000060</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">DATA DIVISION.</span>
@@ -259,6 +259,133 @@ function loadLesson(lessonId) {
                             <p class="text-xs text-slate-300 leading-relaxed">
                                 <span class="font-bold text-purple-400">Cols 12 - 72 (Área B):</span> Área para sentencias ejecutables (DISPLAY, MOVE) y subniveles.
                             </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else if (lessonId === '1.3') {
+        container.innerHTML = `
+            <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6 text-center py-12">
+                <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.3</span>
+                <h2 class="text-2xl font-bold text-white tracking-tight">Las 4 Divisiones de COBOL</h2>
+                <p class="text-slate-400 text-sm max-w-md mx-auto">
+                    Esta lección se encuentra actualmente en desarrollo y se integrará próximamente con guías detalladas e interactividad.
+                </p>
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-mono">
+                    <i class="fa-solid fa-person-digging text-amber-400"></i> Próximamente
+                </div>
+            </div>
+        `;
+    } else if (lessonId === '1.4') {
+        container.innerHTML = `
+            <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6 text-center py-12">
+                <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.4</span>
+                <h2 class="text-2xl font-bold text-white tracking-tight">Delimitadores y Puntos en COBOL</h2>
+                <p class="text-slate-400 text-sm max-w-md mx-auto">
+                    Esta lección se encuentra actualmente en desarrollo y se integrará próximamente con guías detalladas e interactividad.
+                </p>
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-mono">
+                    <i class="fa-solid fa-person-digging text-amber-400"></i> Próximamente
+                </div>
+            </div>
+        `;
+    } else if (lessonId === '1.5') {
+        container.innerHTML = `
+            <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.5</span>
+                    <span class="text-[10px] bg-sky-950 text-sky-300 border border-sky-800 px-2.5 py-0.5 rounded font-mono">Práctica Interactiva</span>
+                </div>
+
+                <h2 class="text-2xl font-bold text-white tracking-tight">¡Tu Primer Hola Mundo y Glosario Didáctico!</h2>
+
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    Es momento de consolidar lo aprendido. A continuación, te presentamos el glosario oficial de colores que utilizamos en nuestros editores y un ejercicio interactivo de código.
+                </p>
+
+                <!-- GLOSARIO DE SISTEMA DE COLORES ESTILIZADO -->
+                <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <h3 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-palette text-sky-400"></i> Glosario Visual de Sintaxis COBOL
+                    </h3>
+                    <div class="grid sm:grid-cols-2 gap-3 text-xs">
+                        <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                            <span class="w-3 h-3 rounded-full bg-sky-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(56,189,248,0.5)]"></span>
+                            <div>
+                                <strong class="text-sky-300 block mb-0.5">Palabras Reservadas y Verbos</strong>
+                                <span class="text-slate-400 text-[11px]">En tono <span class="text-sky-400 font-bold">Azul Claro</span>, indican instrucciones clave como <code class="text-sky-300">DISPLAY</code> o <code class="text-sky-300">DIVISION</code>.</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                            <span class="w-3 h-3 rounded-full bg-purple-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(192,132,252,0.5)]"></span>
+                            <div>
+                                <strong class="text-purple-300 block mb-0.5">Comentarios de Documentación</strong>
+                                <span class="text-slate-400 text-[11px]">Envueltos con la etiqueta <span class="cobol-comment font-bold">tornasol</span>, señalan líneas ignoradas por el compilador (*).</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                            <span class="w-3 h-3 rounded-full bg-pink-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(244,114,182,0.5)]"></span>
+                            <div>
+                                <strong class="text-pink-300 block mb-0.5">Literales Alfanuméricos (Strings)</strong>
+                                <span class="text-slate-400 text-[11px]">En color <span class="text-pink-400 font-bold">Rosa</span>, definen cadenas de texto fijas entre comillas.</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                            <span class="w-3 h-3 rounded-full bg-amber-300 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(252,211,77,0.5)]"></span>
+                            <div>
+                                <strong class="text-amber-300 block mb-0.5">Etiquetas y Párrafos</strong>
+                                <span class="text-slate-400 text-[11px]">En tono <span class="text-amber-300 font-bold">Amarillo</span>, funcionan como puntos de anclaje (análogos a :INICIO de Batch).</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EJEMPLO COMPLETADO DE HOLA MUNDO -->
+                <div class="space-y-3 pt-2">
+                    <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-code text-emerald-400"></i> Estructura Final del Programa "Hola Mundo"
+                    </h3>
+                    <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-xl">
+                        <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
+<span class="text-slate-500">000010</span><span class="cobol-comment">*================================================================*</span>
+<span class="text-slate-500">000020</span><span class="cobol-comment">* MI PRIMER PROGRAMA: HOLA MUNDO EN COBOL                       *</span>
+<span class="text-slate-500">000030</span><span class="cobol-comment">*================================================================*</span>
+<span class="text-slate-500">000040</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
+<span class="text-slate-500">000050</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROGRAM-ID.</span> HOLAMUNDO.
+<span class="text-slate-500">000060</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
+<span class="text-slate-500">000070</span><span class="text-slate-500"> </span><span class="text-amber-300">INICIO-PROGRAMA.</span>
+<span class="text-slate-500">000080</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡Hola Mundo desde GnuCOBOL y Mainframe!"</span>.
+<span class="text-slate-500">000090</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN ROMPECABEZAS DIDÁCTICO -->
+                <div class="bg-slate-950/80 border border-purple-900/40 rounded-xl p-5 space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <h4 class="text-xs font-bold text-purple-300 uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-puzzle-piece text-purple-400"></i> Rompecabezas Lógico: Arma tu Bloque
+                        </h4>
+                        <span class="text-[10px] bg-purple-950 text-purple-300 px-2 py-0.5 rounded border border-purple-800">Reto Práctico</span>
+                    </div>
+                    <p class="text-xs text-slate-300">
+                        Identifica mentalmente el orden correcto en el que deben colocarse las líneas lógicas de la <code>PROCEDURE DIVISION</code> para imprimir un mensaje de bienvenida y cerrar el programa con éxito:
+                    </p>
+                    <div class="grid gap-2 text-xs font-mono">
+                        <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
+                            <span>1. [ ? ] <strong class="text-amber-300">INICIO-PROGRAMA.</strong></span>
+                            <span class="text-[10px] text-slate-500">Párrafo de inicio</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
+                            <span>2. [ ? ] <strong class="text-sky-400">DISPLAY "¡Hola Mundo!"</strong></span>
+                            <span class="text-[10px] text-slate-500">Salida por pantalla</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
+                            <span>3. [ ? ] <strong class="text-sky-400">STOP RUN.</strong></span>
+                            <span class="text-[10px] text-slate-500">Cierre de ejecución</span>
                         </div>
                     </div>
                 </div>
