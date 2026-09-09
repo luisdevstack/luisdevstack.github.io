@@ -186,3 +186,11 @@ details summary::-webkit-details-marker { display: none; }
     -webkit-text-fill-color: transparent;
     animation: gradientShift 2s ease infinite;
 }
+
+.cobol-comment {
+    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 25%, #c084fc 50%, #34d399 75%, #38bdf8 100%);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 2s ease infinite;
+}
