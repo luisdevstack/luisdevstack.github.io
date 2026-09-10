@@ -7,9 +7,36 @@
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Three.js e Importmap para el efecto Stardust -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.174.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.174.0/examples/jsm/"
+        }
+    }
+    </script>
+
     <link rel="stylesheet" href="./css/styles.css">
+
+    <style>
+        /* Contenedor del fondo 3D Stardust */
+        #app {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col relative pt-24">
+
+    <!-- CONTENEDOR 3D DE FONDO -->
+    <div id="app"></div>
 
     <!-- BARRA DE NAVEGACIÓN FLOTANTE -->
     <div class="fixed top-4 inset-x-0 z-50 flex justify-center px-4">
@@ -73,7 +100,7 @@
     </div>
 
     <!-- CONTENIDO PRINCIPAL: PORTAFOLIO EN GRID DE 3 TARJETAS -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8 space-y-8">
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8 space-y-8 relative z-10">
         <div>
             <h2 class="text-3xl font-bold text-white">Portafolio de Proyectos</h2>
             <p class="text-slate-400 mt-1">Soluciones de arquitectura de datos, transformación, optimización y desarrollo.</p>
@@ -178,9 +205,126 @@
         </div>
     </main>
 
-    <footer class="bg-slate-950 border-t border-slate-800/80 py-6 text-center text-xs text-slate-500">
+    <footer class="bg-slate-950 border-t border-slate-800/80 py-6 text-center text-xs text-slate-500 relative z-10">
         <p>© 2026 Luis Alberto Moreno · Actuario y Data Engineer</p>
     </footer>
+
+    <!-- SCRIPT EXCLUSIVO DEL EFECTO STARDUST 3D -->
+    <script type="module">
+        import * as THREE from 'three';
+
+        const app = document.querySelector('#app');
+        const clock = new THREE.Clock();
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setClearColor(0x000000, 0);
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        app.appendChild(renderer.domElement);
+
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x020617, 0.02);
+
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.set(0, 0, 7);
+
+        // Paleta de colores en sintonía con cian, azul eléctrico y acentos sutiles
+        const colors = {
+            cyan: new THREE.Color(0x00f0ff),
+            skyBlue: new THREE.Color(0x48cae4),
+            electricBlue: new THREE.Color(0x0077ff)
+        };
+
+        const sharedUniforms = { uTime: { value: 0 } };
+
+        // Sistema de Partículas (Stardust)
+        const particleCount = 1600;
+        const particleGeo = new THREE.BufferGeometry();
+        const particlePos = new Float32Array(particleCount * 3);
+        const particleScales = new Float32Array(particleCount);
+        const particleColorMix = new Float32Array(particleCount);
+
+        for (let i = 0; i < particleCount; i++) {
+            const r = 0.5 + Math.pow(Math.random(), 2.0) * 5.0;
+            const theta = Math.random() * Math.PI * 2;
+            particlePos[i * 3] = Math.cos(theta) * r;
+            particlePos[i * 3 + 1] = (Math.random() - 0.5) * 4.0;
+            particlePos[i * 3 + 2] = Math.sin(theta) * r;
+            particleScales[i] = Math.random();
+            particleColorMix[i] = Math.random();
+        }
+
+        particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePos, 3));
+        particleGeo.setAttribute('aScale', new THREE.BufferAttribute(particleScales, 1));
+        particleGeo.setAttribute('aColorMix', new THREE.BufferAttribute(particleColorMix, 1));
+
+        const particleMat = new THREE.ShaderMaterial({
+            transparent: true,
+            depthWrite: false,
+            blending: THREE.AdditiveBlending,
+            uniforms: {
+                uTime: sharedUniforms.uTime,
+                uColorA: { value: colors.cyan },
+                uColorB: { value: colors.skyBlue },
+                uColorC: { value: colors.electricBlue }
+            },
+            vertexShader: `
+                uniform float uTime;
+                attribute float aScale;
+                attribute float aColorMix;
+                varying float vAlpha;
+                varying float vColorMix;
+                void main() {
+                    float distXZ = max(length(position.xz), 0.001);
+                    float angle = uTime * (0.3 / distXZ);
+                    mat2 rot = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
+                    vec3 pos = position;
+                    pos.xz = rot * pos.xz;
+                    vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
+                    gl_PointSize = (14.0 * aScale + 1.5) * (1.0 / -mvPosition.z);
+                    vAlpha = (0.3 + 0.7 * sin(uTime * 2.5 + aScale * 10.0));
+                    vColorMix = aColorMix;
+                    gl_Position = projectionMatrix * mvPosition;
+                }
+            `,
+            fragmentShader: `
+                uniform vec3 uColorA;
+                uniform vec3 uColorB;
+                uniform vec3 uColorC;
+                varying float vAlpha;
+                varying float vColorMix;
+                void main() {
+                    float dist = length(gl_PointCoord - vec2(0.5));
+                    if (dist > 0.5) discard;
+                    float glow = smoothstep(0.5, 0.0, dist);
+                    vec3 color = mix(uColorA, uColorB, vColorMix);
+                    gl_FragColor = vec4(color * glow, vAlpha * glow * 0.8);
+                }
+            `
+        });
+
+        const stardust = new THREE.Points(particleGeo, particleMat);
+        scene.add(stardust);
+
+        function setViewportSize() {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        }
+        window.addEventListener('resize', setViewportSize);
+        setViewportSize();
+
+        function animate() {
+            const time = clock.getElapsedTime();
+            sharedUniforms.uTime.value = time;
+
+            stardust.rotation.y = time * 0.02;
+
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
 
     <script src="./js/translations.js"></script>
     <script src="./js/main.js"></script>
