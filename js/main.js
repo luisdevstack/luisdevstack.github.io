@@ -64,25 +64,32 @@ function initExercismCarousel() {
 // INICIALIZADOR DEL FONDO 3D STARDUST GLOBAL AUTOMÁTICO
 function initStardustBackground() {
     // 1. Crear el contenedor #app si no existe en la página
-    if (!document.querySelector('#app')) {
-        const appDiv = document.createElement('div');
+    let appDiv = document.querySelector('#app');
+    if (!appDiv) {
+        appDiv = document.createElement('div');
         appDiv.id = 'app';
-        document.body.prepend(appDiv);
+        document.body.appendChild(appDiv); // Se añade al final para mantener el flujo limpio
     }
 
-    // 2. Inyectar los estilos necesarios para el canvas fijo al fondo y elevar el contenido
+    // 2. Inyectar los estilos necesarios para que #app sea un fondo fijo real sin afectar el layout
     if (!document.querySelector('#stardust-dynamic-styles')) {
         const styleSheet = document.createElement('style');
         styleSheet.id = 'stardust-dynamic-styles';
         styleSheet.innerText = `
             #app {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                z-index: 0;
-                pointer-events: none;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                z-index: 0 !important;
+                pointer-events: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            body {
+                position: relative;
+                z-index: 1;
             }
             body > *:not(#app) {
                 position: relative;
@@ -103,6 +110,11 @@ function initStardustBackground() {
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         renderer.setClearColor(0x000000, 0);
         renderer.outputColorSpace = THREE.SRGBColorSpace;
+        
+        // Asegurar dimensiones del canvas interno
+        renderer.domElement.style.display = 'block';
+        renderer.domElement.style.width = '100%';
+        renderer.domElement.style.height = '100%';
         app.appendChild(renderer.domElement);
 
         const scene = new THREE.Scene();
@@ -211,5 +223,5 @@ function initStardustBackground() {
 document.addEventListener('DOMContentLoaded', () => {
     setupAccordionToggle();
     initExercismCarousel();
-    initStardustBackground(); // Inicializa el fondo estelar en todas partes
+    initStardustBackground();
 });
