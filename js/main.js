@@ -31,12 +31,10 @@ function initExercismCarousel() {
     let currentIndex = 0;
     const totalItems = 4;
 
-    // Verificar si el primer elemento del carrusel existe en la página actual
     const firstItem = document.getElementById('ex-item-0');
-    if (!firstItem) return; // Si no existe, salir sin ejecutar intervalo
+    if (!firstItem) return;
 
     setInterval(() => {
-        // Remover estado activo del ítem y del indicador actual
         const currentEl = document.getElementById(`ex-item-${currentIndex}`);
         const currentDot = document.getElementById(`dot-ex-${currentIndex}`);
 
@@ -46,10 +44,8 @@ function initExercismCarousel() {
             currentDot.classList.add('bg-slate-700', 'w-1.5');
         }
 
-        // Incrementar índice circularmente
         currentIndex = (currentIndex + 1) % totalItems;
 
-        // Activar el nuevo ítem e indicador
         const nextEl = document.getElementById(`ex-item-${currentIndex}`);
         const nextDot = document.getElementById(`dot-ex-${currentIndex}`);
 
@@ -61,45 +57,15 @@ function initExercismCarousel() {
     }, 3500);
 }
 
-// INICIALIZADOR DEL FONDO 3D STARDUST GLOBAL AUTOMÁTICO
+// INICIALIZADOR DEL FONDO 3D STARDUST GLOBAL
 function initStardustBackground() {
-    // 1. Crear el contenedor #app si no existe en la página
     let appDiv = document.querySelector('#app');
     if (!appDiv) {
         appDiv = document.createElement('div');
         appDiv.id = 'app';
-        document.body.appendChild(appDiv); // Se añade al final para mantener el flujo limpio
+        document.body.appendChild(appDiv);
     }
 
-    // 2. Inyectar los estilos necesarios para que #app sea un fondo fijo real sin afectar el layout
-    if (!document.querySelector('#stardust-dynamic-styles')) {
-        const styleSheet = document.createElement('style');
-        styleSheet.id = 'stardust-dynamic-styles';
-        styleSheet.innerText = `
-            #app {
-                position: fixed !important;
-                top: 0 !important;
-                left: 0 !important;
-                width: 100vw !important;
-                height: 100vh !important;
-                z-index: 0 !important;
-                pointer-events: none !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-            body {
-                position: relative;
-                z-index: 1;
-            }
-            body > *:not(#app) {
-                position: relative;
-                z-index: 10;
-            }
-        `;
-        document.head.appendChild(styleSheet);
-    }
-
-    // 3. Cargar Three.js e iniciar el renderizado de partículas Stardust
     import('https://cdn.jsdelivr.net/npm/three@0.174.0/build/three.module.js').then((THREE) => {
         const app = document.querySelector('#app');
         if (!app) return;
@@ -111,7 +77,6 @@ function initStardustBackground() {
         renderer.setClearColor(0x000000, 0);
         renderer.outputColorSpace = THREE.SRGBColorSpace;
         
-        // Asegurar dimensiones del canvas interno
         renderer.domElement.style.display = 'block';
         renderer.domElement.style.width = '100%';
         renderer.domElement.style.height = '100%';
