@@ -1,6 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;700&display=swap');
 
-body { font-family: 'Inter', sans-serif; }
+/* =========================================================
+   ESTRUCTURA GLOBAL Y FONDO STARDUST 3D
+   ========================================================= */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background-color: #020617; /* Fondo base profundo */
+    color: #f8fafc;
+}
+
+/* Contenedor fijo del fondo 3D Stardust para todas las secciones */
+#app {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Asegurar que todo el contenido y elementos de la página floten sobre el fondo 3D */
+body > *:not(#app) {
+    position: relative;
+    z-index: 10;
+}
+
 .font-mono-code { font-family: 'Fira Code', monospace; }
 
 /* PERSONAJE DE FONDO ACORDADO SOLO PARA HOME Y CONTACTO (100vh) */
@@ -153,14 +183,7 @@ details summary::-webkit-details-marker { display: none; }
    NUEVAS CLASES: FONDOS Y COLUMNAS PARA CURSO COBOL
    ========================================================= */
 
-/* Fondo didáctico para marcar las columnas de COBOL */
 .cobol-columns-bg {
-    /* 
-      Col 1-6 (Secuencia): Slate / Gris
-      Col 7 (Indicador): Yellow / Amarillo
-      Col 8-11 (Área A): Cyan / Celeste
-      Col 12-72 (Área B): Purple / Morado
-    */
     background: linear-gradient(to right,
         rgba(100, 116, 139, 0.2) 0ch, rgba(100, 116, 139, 0.2) 6ch,
         rgba(234, 179, 8, 0.2) 6ch, rgba(234, 179, 8, 0.2) 7ch,
@@ -170,23 +193,14 @@ details summary::-webkit-details-marker { display: none; }
     );
 }
 
-/* Ajuste para asegurar que el bloque ocupe el espacio correcto sin romper el fondo */
 .cobol-code-block {
     font-family: 'Fira Code', 'Courier New', Courier, monospace;
     display: inline-block;
     min-width: max-content;
-    padding-left: 0 !important; /* Vital para que el caracter 0 alinee con el 0ch del degradado */
+    padding-left: 0 !important;
 }
 
-/* Color y efecto tornasol plateado específico para comentarios COBOL */
-.cobol-comment-silver {
-    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 25%, #c084fc 50%, #34d399 75%, #38bdf8 100%);
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientShift 2s ease infinite;
-}
-
+.cobol-comment-silver,
 .cobol-comment {
     background: linear-gradient(135deg, #38bdf8 0%, #818cf8 25%, #c084fc 50%, #34d399 75%, #38bdf8 100%);
     background-size: 300% 300%;
