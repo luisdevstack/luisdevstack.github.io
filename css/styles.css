@@ -59,7 +59,7 @@ body > *:not(#app) {
     object-fit: contain;
 }
 
-/* ESTILOS GLASSMORPHISM PROFESIONAL CON EFECTO MAGMA ANIMADO (ESTILO PYRA) */
+/* ESTILOS GLASSMORPHISM PROFESIONAL CON EFECTO VESPER (CRISTAL VIOLETA Y CIAN) */
 .glass-panel {
     background: rgba(15, 23, 42, 0.55);
     backdrop-filter: blur(16px);
@@ -71,28 +71,28 @@ body > *:not(#app) {
 .glass-card {
     position: relative;
     overflow: hidden;
-    background: rgba(15, 23, 42, 0.4);
+    background: rgba(18, 10, 32, 0.45);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(56, 189, 248, 0.15);
+    border: 1px solid rgba(177, 116, 255, 0.2);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Capa interna animada con textura de magma y vetas incandescentes tipo Pyra */
+/* Capa interna animada con texturas de facetas violetas y cian tipo Vesper */
 .glass-card::before {
     content: "";
     position: absolute;
     inset: -50%;
     background: 
-        radial-gradient(circle at 50% 50%, rgba(255, 90, 10, 0.14) 0%, transparent 45%),
-        repeating-linear-gradient(45deg, rgba(255, 45, 30, 0.08) 0px, rgba(255, 132, 44, 0.05) 3px, transparent 6px, transparent 16px);
-    opacity: 0.55;
-    animation: pyraMagmaFlow 14s linear infinite;
+        radial-gradient(circle at 50% 50%, rgba(120, 45, 220, 0.16) 0%, transparent 45%),
+        repeating-linear-gradient(135deg, rgba(76, 230, 255, 0.07) 0px, rgba(177, 116, 255, 0.05) 3px, transparent 6px, transparent 16px);
+    opacity: 0.6;
+    animation: vesperShift 14s linear infinite;
     pointer-events: none;
     z-index: 0;
 }
 
-@keyframes pyraMagmaFlow {
+@keyframes vesperShift {
     0% {
         transform: rotate(0deg) scale(1);
     }
@@ -105,12 +105,12 @@ body > *:not(#app) {
 }
 
 .glass-card:hover {
-    border-color: rgba(255, 132, 44, 0.5);
-    box-shadow: 0 12px 30px -10px rgba(255, 100, 20, 0.25);
+    border-color: rgba(76, 230, 255, 0.5);
+    box-shadow: 0 12px 30px -10px rgba(120, 45, 220, 0.3);
     transform: translateY(-2px);
 }
 
-/* Asegurar que los elementos hijos de la tarjeta floten por encima del fondo de magma */
+/* Asegurar que los elementos hijos de la tarjeta floten por encima del fondo */
 .glass-card > * {
     position: relative;
     z-index: 1;
