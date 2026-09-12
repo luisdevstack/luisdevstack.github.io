@@ -38,7 +38,10 @@ function initExercismCarousel() {
         const currentEl = document.getElementById(`ex-item-${currentIndex}`);
         const currentDot = document.getElementById(`dot-ex-${currentIndex}`);
 
-        if (currentEl) currentEl.classList.remove('active');
+        if (currentEl) {
+            currentEl.classList.remove('active');
+            currentEl.classList.add('hidden');
+        }
         if (currentDot) {
             currentDot.classList.remove('bg-purple-400', 'w-2');
             currentDot.classList.add('bg-slate-700', 'w-1.5');
@@ -49,7 +52,10 @@ function initExercismCarousel() {
         const nextEl = document.getElementById(`ex-item-${currentIndex}`);
         const nextDot = document.getElementById(`dot-ex-${currentIndex}`);
 
-        if (nextEl) nextEl.classList.add('active');
+        if (nextEl) {
+            nextEl.classList.remove('hidden');
+            nextEl.classList.add('active');
+        }
         if (nextDot) {
             nextDot.classList.remove('bg-slate-700', 'w-1.5');
             nextDot.classList.add('bg-purple-400', 'w-2');
