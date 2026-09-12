@@ -123,7 +123,7 @@ function loadLesson(lessonId) {
                             <p class="text-slate-400">En <code>settings.json</code> agrega este mapeo de ejecución:</p>
                             <div class="bg-slate-900 p-2.5 rounded font-mono-code text-[11px] text-slate-300 border border-slate-800 overflow-x-auto">
                                 "code-runner.executorMap": {<br>
-                                &nbsp;&nbsp;"cobol": "cobc -x -o $fileNameWithoutExt $fileName && ./$fileNameWithoutExt"<br>
+                                &nbsp;&nbsp;"cobol": "cobc -x -o $fileNameWithoutExt $fileName &amp;&amp; ./$fileNameWithoutExt"<br>
                                 }
                             </div>
                         </div>
@@ -144,7 +144,7 @@ function loadLesson(lessonId) {
                                 [<br>
                                 &nbsp;&nbsp;{<br>
                                 &nbsp;&nbsp;&nbsp;&nbsp;"label": "Compilar y Ejecutar COBOL",<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;"command": "cobc -x $ZED_FILE && ./\\${ZED_FILE_STEM}",<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"command": "cobc -x $ZED_FILE &amp;&amp; ./\\${ZED_FILE_STEM}",<br>
                                 &nbsp;&nbsp;&nbsp;&nbsp;"use_new_terminal": true<br>
                                 &nbsp;&nbsp;}<br>
                                 ]
@@ -164,24 +164,51 @@ function loadLesson(lessonId) {
 
                 <h2 class="text-2xl font-bold text-white tracking-tight">Historia y Arquitectura del Mainframe / COBOL</h2>
 
-                <p class="text-slate-300 text-sm leading-relaxed">
-                    COBOL (COmmon Business-Oriented Language) se diseñó en 1959 como un lenguaje de programación de alto nivel enfocado en el procesamiento de datos comerciales y financieros. El primer programa se ejecutó con éxito en diciembre de 1960 en equipos <b>Mainframe</b> pioneros como la UNIVAC II y la RCA 501. Estas macrocomputadoras utilizaban salas enteras, almacenamiento en cintas magnéticas y tarjetas perforadas, y una memoria de núcleos magnéticos de apenas unos pocos kilobytes. Herencias directas de esta época son las líneas de código estructuradas en un ancho fijo de 80 columnas y el uso obligatorio del punto y los números de nivel. <br>
-La memoria magnética quedó atrás; hoy emplean semiconductores de silicio (RAM de alta velocidad) del orden de terabytes. Sus CPUs modernas combinan frecuencias muy elevadas con procesadores especializados integrados para cifrado por hardware e inteligencia artificial.<br>
-Operan bajo el principio de Scale-Up (máquinas hiperpotentes centralizadas) y utilizan particionamiento físico/virtual avanzado (LPARs) para correr entornos corporativos junto a contenedores o Linux de manera totalmente aislada.
-El Equipo más Reciente: La cúspide de esta tecnología se encuentra en sistemas avanzados como la familia IBM z17 y la línea LinuxONE 5, los cuales incorporan aceleradores de IA nativos en el silicio (para analizar el 100% de las transacciones financieras en tiempo real y detectar fraudes en menos de un milisegundo) y criptografía avanzada orientada a proteger los datos frente a la computación cuántica.
-                </p>
+                <div class="space-y-6 text-slate-300 text-sm leading-relaxed">
+                    <p>
+                        <strong class="text-white">COBOL (COmmon Business-Oriented Language)</strong> se diseñó en 1959 como un lenguaje de programación de alto nivel enfocado en el procesamiento de datos comerciales y financieros. El primer programa se ejecutó con éxito en diciembre de 1960 en equipos Mainframe pioneros como la <strong class="text-sky-300">UNIVAC II</strong> y la <strong class="text-sky-300">RCA 501</strong>. Estas macrocomputadoras utilizaban salas enteras, almacenamiento en cintas magnéticas y tarjetas perforadas, y una memoria de núcleos magnéticos de apenas unos pocos kilobytes. Herencias directas de esta época son las líneas de código estructuradas en un ancho fijo de <strong class="text-amber-300">80 columnas</strong> y el uso obligatorio del punto y los números de nivel.
+                    </p>
+
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-xl space-y-2">
+                        <h4 class="font-bold text-purple-300 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-microchip"></i> De la Memoria Magnética al Silicio Moderno
+                        </h4>
+                        <p class="text-slate-400 text-xs">
+                            La memoria magnética quedó atrás; hoy emplean <strong class="text-slate-200">semiconductores de silicio (RAM de alta velocidad)</strong> del orden de terabytes. Sus CPUs modernas combinan frecuencias muy elevadas con procesadores especializados integrados para cifrado por hardware e inteligencia artificial.
+                        </p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-server text-emerald-400"></i> Arquitectura y la Cúspide Tecnológica Actual
+                        </h4>
+                        <p class="text-xs text-slate-300">
+                            Operan bajo el principio de <strong class="text-emerald-300">Scale-Up</strong> (máquinas hiperpotentes centralizadas) y utilizan particionamiento físico/virtual avanzado (<strong class="text-emerald-300">LPARs</strong>) para correr entornos corporativos junto a contenedores o Linux de manera totalmente aislada.
+                        </p>
+                        <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-xl space-y-2">
+                            <strong class="text-sky-400 block text-xs font-mono">El Equipo más Reciente: IBM z17 &amp; LinuxONE 5</strong>
+                            <p class="text-slate-400 text-xs">
+                                La cúspide de esta tecnología se encuentra en sistemas avanzados como la familia <strong class="text-white">IBM z17</strong> y la línea <strong class="text-white">LinuxONE 5</strong>, los cuales incorporan <strong class="text-sky-300">aceleradores de IA nativos en el silicio</strong> (para analizar el 100% de las transacciones financieras en tiempo real y detectar fraudes en menos de un milisegundo) y criptografía avanzada orientada a proteger los datos frente a la computación cuántica.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center my-4">
+                    <img src="./assets/univacii.svg" alt="UNIVAC Mainframe" class="max-h-56 w-auto rounded-xl border border-slate-800 shadow-lg object-contain" onerror="this.style.display='none';">
+                </div>
 
                 <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
                     <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
 <span class="text-slate-500">000010</span><span class="cobol-comment">*================================================================*</span>
 <span class="text-slate-500">000020</span><span class="cobol-comment">* LECCIÓN 1.1: ESQUELETO MÍNIMO DE UN PROGRAMA EN COBOL          *</span>
 <span class="text-slate-500">000030</span><span class="cobol-comment">*================================================================*</span>
-<span class="text-slate-500">000040</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
-<span class="text-slate-500">000050</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROGRAM-ID.</span> LEC0101.
-<span class="text-slate-500">000060</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
-<span class="text-slate-500">000070</span><span class="text-slate-500"> </span><span class="text-amber-300">INICIO.</span>
-<span class="text-slate-500">000080</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡Bienvenido al curso de COBOL!"</span>.
-<span class="text-slate-500">000090</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
+<span class="text-slate-500">000040</span> <span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
+<span class="text-slate-500">000050</span> <span class="text-sky-400 font-semibold">PROGRAM-ID.</span> LEC0101.
+<span class="text-slate-500">000060</span> <span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
+<span class="text-slate-500">000070</span> <span class="text-amber-300">INICIO.</span>
+<span class="text-slate-500">000080</span>       <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡Bienvenido al curso de COBOL!"</span>.
+<span class="text-slate-500">000090</span>       <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
                 </div>
 
                 <div class="space-y-3 pt-2">
@@ -223,30 +250,40 @@ El Equipo más Reciente: La cúspide de esta tecnología se encuentra en sistema
 
                 <h2 class="text-2xl font-bold text-white tracking-tight">El Formato Fijo de 80 Columnas</h2>
 
-                <p class="text-slate-300 text-sm leading-relaxed">
-                    El legado histórico (Formato Fijo - Fixed Format):
-El <b>formato clásico</b> de 80 columnas se mantiene intacto como opción predeterminada y obligatoria en miles de sistemas antiguos que aún corren en producción en los mainframes del mundo. Si una empresa tiene un programa escrito en los años 70 u 80, el compilador actual del mainframe lo leerá exactamente respetando esas columnas (las secuencias, el área de comentarios en la columna 7, el Área A y el Área B). <br>
+                <div class="space-y-4 text-slate-300 text-sm leading-relaxed">
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-xl space-y-2">
+                        <strong class="text-sky-300 block text-xs font-bold uppercase tracking-wider">El Legado Histórico (Formato Fijo)</strong>
+                        <p class="text-slate-400 text-xs">
+                            El formato clásico de 80 columnas se mantiene intacto como opción predeterminada y obligatoria en miles de sistemas antiguos que aún corren en producción en los mainframes del mundo. Si una empresa tiene un programa escrito en los años 70 u 80, el compilador actual del mainframe lo leerá exactamente respetando esas columnas (las secuencias, el área de comentarios en la columna 7, el Área A y el Área B).
+                        </p>
+                    </div>
 
-La <b>evolución moderna</b> (Formato Libre - Free Format):
-A partir del estándar oficial COBOL 2002 (y consolidado en los estándares posteriores de 2014 y 2023), se introdujo oficialmente el Formato Libre. Los compiladores modernos (GnuCOBOL y los entornos actuales de IBM Enterprise COBOL) soportan perfectamente la directiva. <br>
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-emerald-400 rounded-r-xl space-y-2">
+                        <strong class="text-emerald-300 block text-xs font-bold uppercase tracking-wider">La Evolución Moderna (Formato Libre)</strong>
+                        <p class="text-slate-400 text-xs">
+                            A partir del estándar oficial <strong>COBOL 2002</strong> (y consolidado en los estándares posteriores de 2014 y 2023), se introdujo oficialmente el Formato Libre. Los compiladores modernos (GnuCOBOL y los entornos actuales de IBM Enterprise COBOL) soportan perfectamente la directiva para prescindir de las restricciones de columnas.
+                        </p>
+                    </div>
 
-<b>En resumen:</b> En los sistemas legacy más antiguos sigue rigiendo el formato fijo de 80 columnas por cuestiones de inercia y compatibilidad; sin embargo, el COBOL moderno ya adoptó el formato libre para alinearse con los estándares de programación actuales. ¡Es el puente perfecto entre el pasado de las tarjetas perforadas y el desarrollo de software contemporáneo!
-                </p>
+                    <p class="text-xs text-slate-400 bg-slate-950/50 p-4 rounded-xl border border-slate-800">
+                        <strong class="text-white block mb-1">En resumen:</strong> En los sistemas <em>legacy</em> más antiguos sigue rigiendo el formato fijo de 80 columnas por cuestiones de inercia y compatibilidad; sin embargo, el COBOL moderno ya adoptó el formato libre para alinearse con los estándares de programación actuales. ¡Es el puente perfecto entre el pasado de las tarjetas perforadas y el desarrollo de software contemporáneo!
+                    </p>
+                </div>
 
                 <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
                     <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
 <span class="text-slate-500">000010</span><span class="cobol-comment">*================================================================*</span>
 <span class="text-slate-500">000020</span><span class="cobol-comment">* DEMOSTRACIÓN DE ZONAS Y ÁREAS EN FORMATO FIJO                  *</span>
 <span class="text-slate-500">000030</span><span class="cobol-comment">*================================================================*</span>
-<span class="text-slate-500">000040</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
-<span class="text-slate-500">000050</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROGRAM-ID.</span> LEC0102.
-<span class="text-slate-500">000060</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">DATA DIVISION.</span>
-<span class="text-slate-500">000070</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">WORKING-STORAGE SECTION.</span>
-<span class="text-slate-500">000080</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">01</span> WS-TEXTO          <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">X(20)</span> <span class="text-sky-400 font-semibold">VALUE</span> <span class="text-pink-400">"FORMATO FIJO COBOL"</span>.
-<span class="text-slate-500">000090</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
-<span class="text-slate-500">000100</span><span class="text-slate-500"> </span><span class="text-amber-300">MAIN-PARAGRAPH.</span>
-<span class="text-slate-500">000110</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">DISPLAY</span> WS-TEXTO.
-<span class="text-slate-500">000120</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
+<span class="text-slate-500">000040</span> <span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
+<span class="text-slate-500">000050</span> <span class="text-sky-400 font-semibold">PROGRAM-ID.</span> LEC0102.
+<span class="text-slate-500">000060</span> <span class="text-sky-400 font-semibold">DATA DIVISION.</span>
+<span class="text-slate-500">000070</span> <span class="text-sky-400 font-semibold">WORKING-STORAGE SECTION.</span>
+<span class="text-slate-500">000080</span> <span class="text-sky-400 font-semibold">01</span> WS-TEXTO                 <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">X(20)</span> <span class="text-sky-400 font-semibold">VALUE</span> <span class="text-pink-400">"FORMATO FIJO COBOL"</span>.
+<span class="text-slate-500">000090</span> <span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
+<span class="text-slate-500">000100</span> <span class="text-amber-300">MAIN-PARAGRAPH.</span>
+<span class="text-slate-500">000110</span>       <span class="text-sky-400 font-semibold">DISPLAY</span> WS-TEXTO.
+<span class="text-slate-500">000120</span>       <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
                 </div>
             </div>
         `;
@@ -255,61 +292,29 @@ A partir del estándar oficial COBOL 2002 (y consolidado en los estándares post
             <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                     <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.3</span>
-                    <span class="text-[10px] bg-sky-950 text-sky-300 border border-sky-800 px-2.5 py-0.5 rounded font-mono">Arquitectura Modular</span>
+                    <span class="text-[10px] bg-sky-950 text-sky-300 border border-sky-800 px-2.5 py-0.5 rounded font-mono">Limitadores Estructurales y Sintácticos</span>
                 </div>
 
-                <h2 class="text-2xl font-bold text-white tracking-tight">Las 4 Divisiones Fundamentales de COBOL</h2>
+                <h2 class="text-2xl font-bold text-white tracking-tight">Delimitadores, Divisiones y la Importancia del Punto (.)</h2>
 
                 <p class="text-slate-300 text-sm leading-relaxed">
-                    Todo programa clásico en COBOL está estructurado jerárquicamente en hasta cuatro divisiones obligatorias u opcionales. Cada una cumple un propósito arquitectónico específico, separando los metadatos, el entorno de hardware, la memoria de datos y la lógica ejecutable.
-                </p>
-
-                <div class="grid gap-4 text-xs">
-                    <div class="p-4 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-xl space-y-2">
-                        <div class="font-bold text-sky-300 text-sm flex items-center gap-2">
-                            <i class="fa-solid fa-id-card"></i> 1. IDENTIFICATION DIVISION
-                        </div>
-                        <p class="text-slate-400">Es la única división obligatoria absoluta. Contiene metadatos de documentación del programa, destacando el párrafo <code>PROGRAM-ID</code> que asigna el nombre oficial al binario compilado.</p>
-                    </div>
-
-                    <div class="p-4 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-xl space-y-2">
-                        <div class="font-bold text-purple-300 text-sm flex items-center gap-2">
-                            <i class="fa-solid fa-network-wired"></i> 2. ENVIRONMENT DIVISION
-                        </div>
-                        <p class="text-slate-400">Define la relación entre el programa y el entorno físico externo de la computadora (Mainframe o servidor). Incluye la <code>CONFIGURATION SECTION</code> y la <code>INPUT-OUTPUT SECTION</code> para asociar archivos lógicos con dispositivos físicos.</p>
-                    </div>
-
-                    <div class="p-4 bg-slate-950/80 border-l-4 border-emerald-400 rounded-r-xl space-y-2">
-                        <div class="font-bold text-emerald-300 text-sm flex items-center gap-2">
-                            <i class="fa-solid fa-memory"></i> 3. DATA DIVISION
-                        </div>
-                        <p class="text-slate-400">Aloja la definición de todas las variables, estructuras de registros y memoria de trabajo. Se divide en secciones clave como la <code>WORKING-STORAGE SECTION</code> y la <code>FILE SECTION</code>.</p>
-                    </div>
-
-                    <div class="p-4 bg-slate-950/80 border-l-4 border-amber-400 rounded-r-xl space-y-2">
-                        <div class="font-bold text-amber-300 text-sm flex items-center gap-2">
-                            <i class="fa-solid fa-terminal"></i> 4. PROCEDURE DIVISION
-                        </div>
-                        <p class="text-slate-400">Contiene el corazón algorítmico del programa. Aquí reside todo el código ejecutable organizado en párrafos, sentencias y verbos lógicos (como <code>DISPLAY</code>, <code>MOVE</code> o <code>PERFORM</code>).</p>
-                    </div>
-                </div>
-            </div>
-        `;
-    } else if (lessonId === '1.4') {
-        container.innerHTML = `
-            <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                    <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.4</span>
-                    <span class="text-[10px] bg-sky-950 text-sky-300 border border-sky-800 px-2.5 py-0.5 rounded font-mono">Sintaxis y Puntuación</span>
-                </div>
-
-                <h2 class="text-2xl font-bold text-white tracking-tight">Delimitadores, Sentencias y la Importancia del Punto (.)</h2>
-
-                <p class="text-slate-300 text-sm leading-relaxed">
-                    A diferencia de lenguajes modernos donde las llaves <code>{}</code> o los saltos de línea delimitan bloques, en COBOL la puntuación y los delimitadores juegan un papel crítico en el alcance de las instrucciones lógicas.
+                    Todo programa clásico en COBOL está estructurado jerárquicamente en divisiones, párrafos y sentencias. A diferencia de lenguajes modernos donde las llaves <code>{}</code> o los saltos de línea delimitan bloques, en COBOL la puntuación y los delimitadores juegan un papel crítico en el alcance de las instrucciones lógicas.
                 </p>
 
                 <div class="space-y-4 text-xs">
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-xl space-y-2">
+                        <div class="font-bold text-sky-300 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-layer-group"></i> Las 4 Divisiones Fundamentales
+                        </div>
+                        <p class="text-slate-400">
+                            Se dividen arquitectónicamente en: 
+                            <br>• <code>IDENTIFICATION DIVISION</code> (Metadatos y nombre del programa)
+                            <br>• <code>ENVIRONMENT DIVISION</code> (Relación hardware/archivos)
+                            <br>• <code>DATA DIVISION</code> (Memoria RAM y variables)
+                            <br>• <code>PROCEDURE DIVISION</code> (Lógica y verbos ejecutables)
+                        </p>
+                    </div>
+
                     <div class="p-4 bg-slate-950/80 border-l-4 border-pink-400 rounded-r-xl space-y-2">
                         <div class="font-bold text-pink-300 text-sm flex items-center gap-2">
                             <i class="fa-solid fa-circle-stop"></i> El Poder y Peligro del Punto (.)
@@ -319,8 +324,8 @@ A partir del estándar oficial COBOL 2002 (y consolidado en los estándares post
                         </p>
                     </div>
 
-                    <div class="p-4 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-xl space-y-2">
-                        <div class="font-bold text-sky-300 text-sm flex items-center gap-2">
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-xl space-y-2">
+                        <div class="font-bold text-purple-300 text-sm flex items-center gap-2">
                             <i class="fa-solid fa-columns"></i> Espacios y Comas
                         </div>
                         <p class="text-slate-400">
@@ -330,11 +335,11 @@ A partir del estándar oficial COBOL 2002 (y consolidado en los estándares post
                 </div>
             </div>
         `;
-    } else if (lessonId === '1.5') {
+    } else if (lessonId === '1.4') {
         container.innerHTML = `
             <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                    <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.5</span>
+                    <span class="text-xs font-mono text-sky-400">Módulo 1 · Lección 1.4</span>
                     <span class="text-[10px] bg-sky-950 text-sky-300 border border-sky-800 px-2.5 py-0.5 rounded font-mono">Práctica Interactiva</span>
                 </div>
 
@@ -435,14 +440,14 @@ A partir del estándar oficial COBOL 2002 (y consolidado en los estándares post
                     <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-xl">
                         <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
 <span class="text-slate-500">000010</span><span class="cobol-comment">*================================================================*</span>
-<span class="text-slate-500">000020</span><span class="cobol-comment">* MI PRIMER PROGRAMA: HOLA MUNDO EN COBOL                       *</span>
+<span class="text-slate-500">000020</span><span class="cobol-comment">* MI PRIMER PROGRAMA: HOLA MUNDO EN COBOL                        *</span>
 <span class="text-slate-500">000030</span><span class="cobol-comment">*================================================================*</span>
-<span class="text-slate-500">000040</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
-<span class="text-slate-500">000050</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROGRAM-ID.</span> HOLAMUNDO.
-<span class="text-slate-500">000060</span><span class="text-slate-500"> </span><span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
-<span class="text-slate-500">000070</span><span class="text-slate-500"> </span><span class="text-amber-300">INICIO-PROGRAMA.</span>
-<span class="text-slate-500">000080</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡Hola Mundo desde GnuCOBOL y Mainframe!"</span>.
-<span class="text-slate-500">000090</span><span class="text-slate-500">     </span><span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
+<span class="text-slate-500">000040</span> <span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
+<span class="text-slate-500">000050</span> <span class="text-sky-400 font-semibold">PROGRAM-ID.</span> HOLAMUNDO.
+<span class="text-slate-500">000060</span> <span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
+<span class="text-slate-500">000070</span> <span class="text-amber-300">INICIO-PROGRAMA.</span>
+<span class="text-slate-500">000080</span>       <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡Hola Mundo desde GnuCOBOL y Mainframe!"</span>.
+<span class="text-slate-500">000090</span>       <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
                     </div>
                 </div>
             </div>
@@ -534,7 +539,7 @@ A partir del estándar oficial COBOL 2002 (y consolidado en los estándares post
                         <p class="text-slate-400">Llena el campo o variable completamente con espacios en blanco (caracteres de relleno estándar).</p>
                     </div>
                     <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg">
-                        <strong class="text-sky-300 block font-mono text-sm">ZEROS / ZERO / ZEROS</strong>
+                        <strong class="text-sky-300 block font-mono text-sm">ZEROS / ZERO</strong>
                         <p class="text-slate-400">Rellena la variable numérica o alfanumérica con ceros ('0').</p>
                     </div>
                     <div class="p-3 bg-slate-950/80 border-l-4 border-amber-400 rounded-r-lg">
@@ -555,16 +560,16 @@ A partir del estándar oficial COBOL 2002 (y consolidado en los estándares post
                 <h2 class="text-2xl font-bold text-white tracking-tight">La Cláusula REDEFINES</h2>
 
                 <p class="text-slate-300 text-sm leading-relaxed">
-                    La cláusula <code>REDEFINES</code> permite que dos o más variables compartan exactamente el **mismo espacio físico de memoria RAM**, permitiendo interpretar los mismos bytes de formas distintas según el contexto del programa.
+                    La cláusula <code>REDEFINES</code> permite que dos o más variables compartan exactamente el <strong>mismo espacio físico de memoria RAM</strong>, permitiendo interpretar los mismos bytes de formas distintas según el contexto del programa.
                 </p>
 
                 <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
                     <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
 <span class="text-slate-500">000100</span> <span class="text-sky-400 font-semibold">01</span> WS-FECHA-RAW       <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">X(8)</span>.
 <span class="text-slate-500">000110</span> <span class="text-sky-400 font-semibold">01</span> WS-FECHA-ESTRUCTURA <span class="text-sky-400 font-semibold">REDEFINES</span> WS-FECHA-RAW.
-<span class="text-slate-500">000120</span>     <span class="text-sky-400 font-semibold">05</span> WS-ANIO       <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(4)</span>.
-<span class="text-slate-500">000130</span>     <span class="text-sky-400 font-semibold">05</span> WS-MES        <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(2)</span>.
-<span class="text-slate-500">000140</span>     <span class="text-sky-400 font-semibold">05</span> WS-DIA        <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(2)</span>.</code></pre>
+<span class="text-slate-500">000120</span>      <span class="text-sky-400 font-semibold">05</span> WS-ANIO       <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(4)</span>.
+<span class="text-slate-500">000130</span>      <span class="text-sky-400 font-semibold">05</span> WS-MES        <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(2)</span>.
+<span class="text-slate-500">000140</span>      <span class="text-sky-400 font-semibold">05</span> WS-DIA        <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(2)</span>.</code></pre>
                 </div>
             </div>
         `;
