@@ -218,37 +218,51 @@
                     </div>
                 </div>
 
-                <!-- ANUNCIO DE EXERCISM -->
-                <div class="hidden md:flex flex-col items-center bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-2xl p-5 relative overflow-hidden group shadow-xl space-y-4">
-                    <div class="w-full space-y-4 text-center">
-                        <div class="flex flex-col items-center justify-center gap-2">
-                            <img src="./assets/Exercism.svg" alt="Exercism Logo" class="h-10 w-auto logo-exercism-silver" onerror="this.style.display='none';">
-                            <span class="font-mono font-bold text-sm silver-gradient-text tracking-tight">Ruta COBOL en Exercism</span>
-                        </div>
+<!-- ANUNCIO DE EXERCISM -->
+<div class="hidden md:flex flex-col items-center bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-2xl p-5 relative overflow-hidden group shadow-xl space-y-4">
+    <div class="w-full space-y-4 text-center">
+        <div class="flex flex-col items-center justify-center gap-2">
+            <img src="./assets/Exercism.svg" alt="Exercism Logo" class="h-10 w-auto logo-exercism-silver" onerror="this.style.display='none';">
+            <span class="font-mono font-bold text-sm silver-gradient-text tracking-tight">Ruta COBOL en Exercism</span>
+        </div>
 
-                        <p class="text-xs text-slate-300 leading-relaxed text-left">
-                            ¡Pon a prueba tu código! Practica de manera interactiva y domina COBOL con retroalimentación real.
-                        </p>
+        <p class="text-xs text-slate-300 leading-relaxed text-left">
+            ¡Pon a prueba tu código! Practica de manera interactiva y domina COBOL con retroalimentación real.
+        </p>
 
-                        <div class="bg-slate-950/60 border border-purple-900/40 rounded-xl p-3 text-left exercism-carousel-container">
-                            <div class="exercism-carousel-item active flex items-start gap-2 text-[11px]" id="ex-item-0">
-                                <i class="fa-solid fa-vial-circle-check text-purple-400 text-xs mt-0.5 flex-shrink-0"></i>
-                                <div>
-                                    <strong class="text-slate-200 block font-semibold">Pruebas Automatizadas</strong>
-                                    <span class="text-slate-400 text-[10px]">Ejecución de test-suite en tiempo real en cada entrega.</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <a href="https://exercism.org/tracks/cobol"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="inline-flex items-center justify-center gap-2 w-full py-2 px-4 rounded-xl font-bold text-xs bg-purple-600 hover:bg-purple-500 text-white shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all duration-300">
-                            <span>Ir a la Ruta de Exercism</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                        </a>
-                    </div>
+        <div class="bg-slate-950/60 border border-purple-900/40 rounded-xl p-3 text-left exercism-carousel-container relative overflow-hidden min-h-[60px]">
+            <div class="exercism-carousel-item active flex items-start gap-2 text-[11px] transition-opacity duration-500" id="ex-item-0">
+                <i class="fa-solid fa-vial-circle-check text-purple-400 text-xs mt-0.5 flex-shrink-0"></i>
+                <div>
+                    <strong class="text-slate-200 block font-semibold">Pruebas Automatizadas</strong>
+                    <span class="text-slate-400 text-[10px]">Ejecución de test-suite en tiempo real en cada entrega.</span>
                 </div>
+            </div>
+            <div class="exercism-carousel-item hidden flex items-start gap-2 text-[11px] transition-opacity duration-500" id="ex-item-1">
+                <i class="fa-solid fa-comments text-purple-400 text-xs mt-0.5 flex-shrink-0"></i>
+                <div>
+                    <strong class="text-slate-200 block font-semibold">Mentoría Humana</strong>
+                    <span class="text-slate-400 text-[10px]">Recibe feedback personalizado de expertos en la plataforma.</span>
+                </div>
+            </div>
+            <div class="exercism-carousel-item hidden flex items-start gap-2 text-[11px] transition-opacity duration-500" id="ex-item-2">
+                <i class="fa-solid fa-trophy text-purple-400 text-xs mt-0.5 flex-shrink-0"></i>
+                <div>
+                    <strong class="text-slate-200 block font-semibold">Comunidad Global</strong>
+                    <span class="text-slate-400 text-[10px]">Compara tus soluciones y sube de nivel en el ranking de COBOL.</span>
+                </div>
+            </div>
+        </div>
+
+        <a href="https://exercism.org/tracks/cobol"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="inline-flex items-center justify-center gap-2 w-full py-2 px-4 rounded-xl font-bold text-xs bg-purple-600 hover:bg-purple-500 text-white shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all duration-300">
+            <span>Ir a la Ruta de Exercism</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        </a>
+    </div>
+</div>
             </aside>
 
             <!-- CONTENIDO DE LA LECCIÓN -->
