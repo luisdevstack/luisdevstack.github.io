@@ -144,7 +144,7 @@ function loadLesson(lessonId) {
                                 [<br>
                                 &nbsp;&nbsp;{<br>
                                 &nbsp;&nbsp;&nbsp;&nbsp;"label": "Compilar y Ejecutar COBOL",<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;"command": "cobc -x $ZED_FILE &amp;&amp; ./\\${ZED_FILE_STEM}",<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"command": "cobc -x $ZED_FILE &amp;&amp; ./$ZED_FILE_STEM",<br>
                                 &nbsp;&nbsp;&nbsp;&nbsp;"use_new_terminal": true<br>
                                 &nbsp;&nbsp;}<br>
                                 ]
@@ -169,6 +169,10 @@ function loadLesson(lessonId) {
                         <strong class="text-white">COBOL (COmmon Business-Oriented Language)</strong> se diseñó en 1959 como un lenguaje de programación de alto nivel enfocado en el procesamiento de datos comerciales y financieros. El primer programa se ejecutó con éxito en diciembre de 1960 en equipos Mainframe pioneros como la <strong class="text-sky-300">UNIVAC II</strong> y la <strong class="text-sky-300">RCA 501</strong>. Estas macrocomputadoras utilizaban salas enteras, almacenamiento en cintas magnéticas y tarjetas perforadas, y una memoria de núcleos magnéticos de apenas unos pocos kilobytes. Herencias directas de esta época son las líneas de código estructuradas en un ancho fijo de <strong class="text-amber-300">80 columnas</strong> y el uso obligatorio del punto y los números de nivel.
                     </p>
 
+                <div class="flex justify-center my-4">
+                    <img src="./assets/univacii.svg" alt="UNIVAC Mainframe" class="max-h-56 w-auto rounded-xl border border-slate-800 shadow-lg object-contain" onerror="this.style.display='none';">
+                </div>
+                
                     <div class="p-4 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-xl space-y-2">
                         <h4 class="font-bold text-purple-300 text-sm flex items-center gap-2">
                             <i class="fa-solid fa-microchip"></i> De la Memoria Magnética al Silicio Moderno
@@ -193,11 +197,7 @@ function loadLesson(lessonId) {
                         </div>
                     </div>
                 </div>
-
-                <div class="flex justify-center my-4">
-                    <img src="./assets/univacii.svg" alt="UNIVAC Mainframe" class="max-h-56 w-auto rounded-xl border border-slate-800 shadow-lg object-contain" onerror="this.style.display='none';">
-                </div>
-
+                
                 <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
                     <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
 <span class="text-slate-500">000010</span><span class="cobol-comment">*================================================================*</span>
