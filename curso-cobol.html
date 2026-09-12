@@ -28,25 +28,18 @@
 
                 <!-- Navegación Adaptativa -->
                 <nav class="flex items-center space-x-1 sm:space-x-1.5">
-                    <!-- INICIO -->
                     <a href="./index.html" class="flex items-center gap-1.5 px-2.5 py-1.5 md:px-3.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200" title="Inicio">
                         <i class="fa-solid fa-house"></i>
                         <span class="hidden md:inline" data-i18n="navHome">Inicio</span>
                     </a>
-
-                    <!-- PORTAFOLIO -->
                     <a href="./portafolio.html" class="flex items-center gap-1.5 px-2.5 py-1.5 md:px-3.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200" title="Portafolio">
                         <i class="fa-solid fa-briefcase"></i>
                         <span class="hidden md:inline" data-i18n="navPortfolio">Portafolio</span>
                     </a>
-
-                    <!-- APRENDE COBOL (ACTIVO) -->
                     <a href="./curso-cobol.html" class="flex items-center gap-1.5 px-2.5 py-1.5 md:px-3.5 rounded-full text-xs md:text-sm font-semibold text-slate-950 bg-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.4)] transition-all duration-300" title="Aprende COBOL">
                         <i class="fa-solid fa-graduation-cap"></i>
                         <span class="hidden md:inline" data-i18n="navCourse">Aprende COBOL</span>
                     </a>
-
-                    <!-- CONTACTO -->
                     <a href="./contacto.html" class="flex items-center gap-1.5 px-2.5 py-1.5 md:px-3.5 rounded-full text-xs md:text-sm font-medium text-slate-300 hover:text-white hover:bg-sky-900/30 transition-all duration-200" title="Contacto">
                         <i class="fa-solid fa-envelope"></i>
                         <span class="hidden md:inline" data-i18n="navContact">Contacto</span>
@@ -54,7 +47,6 @@
 
                     <div class="h-4 w-[1px] bg-sky-400/20 mx-0.5 sm:mx-1"></div>
 
-                    <!-- WHATSAPP -->
                     <a href="https://wa.me/525527813356?text=Hola%20Luis,%20vi%20tu%20sitio%20web%20y%20me%20interesa%20consultar%20sobre%20sus%20servicios."
                        target="_blank"
                        rel="noopener noreferrer"
@@ -63,7 +55,6 @@
                         <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i>
                     </a>
 
-                    <!-- IDIOMA -->
                     <button id="lang-toggle-btn" onclick="toggleLanguage()" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border border-sky-400/40 text-[11px] sm:text-xs font-mono font-bold text-sky-400 hover:bg-sky-400/10 transition" title="Cambiar idioma">
                         EN
                     </button>
@@ -76,7 +67,7 @@
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8">
         <div class="grid lg:grid-cols-12 gap-8">
 
-            <!-- SIDEBAR DEL CURSO (ACORDEÓN + TARJETA EXERCISM) -->
+            <!-- SIDEBAR DEL CURSO -->
             <aside class="lg:col-span-4 space-y-6">
                 <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-4 space-y-3">
                     <div class="flex items-center justify-between px-2 pb-2 border-b border-slate-800">
@@ -120,15 +111,11 @@
                                     <i class="fa-solid fa-play text-[10px]"></i>
                                 </button>
                                 <button onclick="loadLesson('1.3')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
-                                    <span>1.3 Las 4 Divisiones</span>
+                                    <span>1.3 Limitadores Estructurales</span>
                                     <i class="fa-solid fa-play text-[10px]"></i>
                                 </button>
-                                <button onclick="loadLesson('1.4')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
-                                    <span>1.4 Delimitadores y Puntos</span>
-                                    <i class="fa-solid fa-play text-[10px]"></i>
-                                </button>
-                                <button onclick="loadLesson('1.5')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-sky-300 hover:text-white hover:bg-sky-900/30 flex items-center justify-between font-medium">
-                                    <span>1.5 Tu Primer Hola Mundo</span>
+                                <button onclick="loadLesson('1.4')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-sky-300 hover:text-white hover:bg-sky-900/30 flex items-center justify-between font-medium">
+                                    <span>1.4 Tu Primer Hola Mundo</span>
                                     <i class="fa-solid fa-play text-[10px] text-sky-400"></i>
                                 </button>
                             </div>
@@ -231,13 +218,9 @@
                     </div>
                 </div>
 
-                <!-- ANUNCIO DE EXERCISM CON CARRUSEL ANIMADO Y LOGO PLATEADO -->
+                <!-- ANUNCIO DE EXERCISM -->
                 <div class="hidden md:flex flex-col items-center bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-2xl p-5 relative overflow-hidden group shadow-xl space-y-4">
-
-                    <!-- TARJETA INVITACIÓN EXERCISM ENRIQUECIDA -->
                     <div class="w-full space-y-4 text-center">
-                        
-                        <!-- LOGO APILADO SOBRE EL TEXTO -->
                         <div class="flex flex-col items-center justify-center gap-2">
                             <img src="./assets/Exercism.svg" alt="Exercism Logo" class="h-10 w-auto logo-exercism-silver" onerror="this.style.display='none';">
                             <span class="font-mono font-bold text-sm silver-gradient-text tracking-tight">Ruta COBOL en Exercism</span>
@@ -247,9 +230,7 @@
                             ¡Pon a prueba tu código! Practica de manera interactiva y domina COBOL con retroalimentación real.
                         </p>
 
-                        <!-- CARRUSEL DE VENTAJAS DINÁMICO -->
                         <div class="bg-slate-950/60 border border-purple-900/40 rounded-xl p-3 text-left exercism-carousel-container">
-                            <!-- Item 1 -->
                             <div class="exercism-carousel-item active flex items-start gap-2 text-[11px]" id="ex-item-0">
                                 <i class="fa-solid fa-vial-circle-check text-purple-400 text-xs mt-0.5 flex-shrink-0"></i>
                                 <div>
@@ -257,48 +238,12 @@
                                     <span class="text-slate-400 text-[10px]">Ejecución de test-suite en tiempo real en cada entrega.</span>
                                 </div>
                             </div>
-
-                            <!-- Item 2 -->
-                            <div class="exercism-carousel-item flex items-start gap-2 text-[11px]" id="ex-item-1">
-                                <i class="fa-solid fa-comments text-purple-400 text-xs mt-0.5 flex-shrink-0"></i>
-                                <div>
-                                    <strong class="text-slate-200 block font-semibold">Feedback de Mentores</strong>
-                                    <span class="text-slate-400 text-[10px]">Revisiones de código personalizadas y 100% gratuitas.</span>
-                                </div>
-                            </div>
-
-                            <!-- Item 3 -->
-                            <div class="exercism-carousel-item flex items-start gap-2 text-[11px]" id="ex-item-2">
-                                <i class="fa-solid fa-chart-line text-purple-400 text-xs mt-0.5 flex-shrink-0"></i>
-                                <div>
-                                    <strong class="text-slate-200 block font-semibold">Dificultad Gradual</strong>
-                                    <span class="text-slate-400 text-[10px]">De "Hello World" a algoritmos complejos de Mainframe.</span>
-                                </div>
-                            </div>
-
-                            <!-- Item 4 -->
-                            <div class="exercism-carousel-item flex items-start gap-2 text-[11px]" id="ex-item-3">
-                                <i class="fa-solid fa-code-branch text-purple-400 text-xs mt-0.5 flex-shrink-0"></i>
-                                <div>
-                                    <strong class="text-slate-200 block font-semibold">100% Gratuito & Open Source</strong>
-                                    <span class="text-slate-400 text-[10px]">Resuelve ejercicios localmente vía CLI o en el navegador.</span>
-                                </div>
-                            </div>
                         </div>
 
-                        <!-- INDICADORES DEL CARRUSEL -->
-                        <div class="flex justify-center gap-1.5 pt-0.5">
-                            <span class="w-2 h-1 rounded-full bg-purple-400 transition-all duration-300" id="dot-ex-0"></span>
-                            <span class="w-1.5 h-1 rounded-full bg-slate-700 transition-all duration-300" id="dot-ex-1"></span>
-                            <span class="w-1.5 h-1 rounded-full bg-slate-700 transition-all duration-300" id="dot-ex-2"></span>
-                            <span class="w-1.5 h-1 rounded-full bg-slate-700 transition-all duration-300" id="dot-ex-3"></span>
-                        </div>
-
-                        <!-- BOTÓN DE ACCIÓN -->
                         <a href="https://exercism.org/tracks/cobol"
                            target="_blank"
                            rel="noopener noreferrer"
-                           class="inline-flex items-center justify-center gap-2 w-full py-2 px-4 rounded-xl font-bold text-xs bg-purple-600 hover:bg-purple-500 text-white shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.5)]">
+                           class="inline-flex items-center justify-center gap-2 w-full py-2 px-4 rounded-xl font-bold text-xs bg-purple-600 hover:bg-purple-500 text-white shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all duration-300">
                             <span>Ir a la Ruta de Exercism</span>
                             <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                         </a>
@@ -306,9 +251,8 @@
                 </div>
             </aside>
 
-            <!-- CONTENIDO ENRIQUECIDO DE LA LECCIÓN -->
+            <!-- CONTENIDO DE LA LECCIÓN -->
             <section class="lg:col-span-8 space-y-6" id="lesson-content">
-                <!-- Se llena dinámicamente con JS (lessons.js) -->
             </section>
 
         </div>
