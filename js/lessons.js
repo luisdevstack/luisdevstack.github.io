@@ -164,15 +164,22 @@ function loadLesson(lessonId) {
 
                 <h2 class="text-2xl font-bold text-white tracking-tight">Historia y Arquitectura del Mainframe / COBOL</h2>
 
-                <div class="space-y-6 text-slate-300 text-sm leading-relaxed">
-                    <p>
-                        <strong class="text-white">COBOL (COmmon Business-Oriented Language)</strong> se diseñó en 1959 como un lenguaje de programación de alto nivel enfocado en el procesamiento de datos comerciales y financieros. El primer programa se ejecutó con éxito en diciembre de 1960 en equipos Mainframe pioneros como la <strong class="text-sky-300">UNIVAC II</strong> y la <strong class="text-sky-300">RCA 501</strong>. Estas macrocomputadoras utilizaban salas enteras, almacenamiento en cintas magnéticas y tarjetas perforadas, y una memoria de núcleos magnéticos de apenas unos pocos kilobytes. Herencias directas de esta época son las líneas de código estructuradas en un ancho fijo de <strong class="text-amber-300">80 columnas</strong> y el uso obligatorio del punto y los números de nivel.
-                    </p>
-
-                <div class="flex justify-center my-4">
-                    <img src="./assets/univacii.svg" alt="UNIVAC Mainframe" class="max-h-56 w-auto rounded-xl border border-slate-800 shadow-lg object-contain" onerror="this.style.display='none';">
+                <!-- SECCIÓN MODIFICADA A DOS COLUMNAS -->
+                <div class="grid md:grid-cols-2 gap-6 items-center bg-slate-950/40 border border-slate-800/80 rounded-2xl p-5 md:p-6 shadow-lg">
+                    <div class="space-y-4 text-slate-300 text-sm leading-relaxed">
+                        <p>
+                            <strong class="text-white">COBOL (COmmon Business-Oriented Language)</strong> se diseñó en 1959 como un lenguaje de programación de alto nivel enfocado en el procesamiento de datos comerciales y financieros. El primer programa se ejecutó con éxito en diciembre de 1960 en equipos Mainframe pioneros como la <strong class="text-sky-300">UNIVAC II</strong> y la <strong class="text-sky-300">RCA 501</strong>.
+                        </p>
+                        <p class="text-xs text-slate-400">
+                            Estas macrocomputadoras utilizaban salas enteras, almacenamiento en cintas magnéticas y tarjetas perforadas, y una memoria de núcleos magnéticos de apenas unos pocos kilobytes. Herencias directas de esta época son las líneas de código estructuradas en un ancho fijo de <strong class="text-amber-300">80 columnas</strong> y el uso obligatorio del punto y los números de nivel.
+                        </p>
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="./assets/univacii.svg" alt="UNIVAC Mainframe" class="max-h-56 w-auto rounded-xl border border-slate-800 shadow-lg object-contain bg-slate-900/50 p-2" onerror="this.style.display='none';">
+                    </div>
                 </div>
-                
+
+                <div class="space-y-6 text-slate-300 text-sm leading-relaxed">
                     <div class="p-4 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-xl space-y-2">
                         <h4 class="font-bold text-purple-300 text-sm flex items-center gap-2">
                             <i class="fa-solid fa-microchip"></i> De la Memoria Magnética al Silicio Moderno
@@ -201,14 +208,14 @@ function loadLesson(lessonId) {
                 <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
                     <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
 <span class="text-slate-500">000010</span><span class="cobol-comment">*================================================================*</span>
-<span class="text-slate-500">000020</span><span class="cobol-comment">* LECCIÓN 1.1: ESQUELETO MÍNIMO DE UN PROGRAMA EN COBOL          *</span>
+<span class="text-slate-500">000020</span><span class="cobol-comment">* LECCIÓN 1.1: ESQUELETO MÍNIMO DE UN PROGRAMA EN COBOL         *</span>
 <span class="text-slate-500">000030</span><span class="cobol-comment">*================================================================*</span>
 <span class="text-slate-500">000040</span> <span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
 <span class="text-slate-500">000050</span> <span class="text-sky-400 font-semibold">PROGRAM-ID.</span> LEC0101.
 <span class="text-slate-500">000060</span> <span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
 <span class="text-slate-500">000070</span> <span class="text-amber-300">INICIO.</span>
-<span class="text-slate-500">000080</span>       <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡Bienvenido al curso de COBOL!"</span>.
-<span class="text-slate-500">000090</span>       <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
+<span class="text-slate-500">000080</span>        <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡Bienvenido al curso de COBOL!"</span>.
+<span class="text-slate-500">000090</span>        <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
                 </div>
 
                 <div class="space-y-3 pt-2">
@@ -282,8 +289,8 @@ function loadLesson(lessonId) {
 <span class="text-slate-500">000080</span> <span class="text-sky-400 font-semibold">01</span> WS-TEXTO                 <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">X(20)</span> <span class="text-sky-400 font-semibold">VALUE</span> <span class="text-pink-400">"FORMATO FIJO COBOL"</span>.
 <span class="text-slate-500">000090</span> <span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
 <span class="text-slate-500">000100</span> <span class="text-amber-300">MAIN-PARAGRAPH.</span>
-<span class="text-slate-500">000110</span>       <span class="text-sky-400 font-semibold">DISPLAY</span> WS-TEXTO.
-<span class="text-slate-500">000120</span>       <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
+<span class="text-slate-500">000110</span>        <span class="text-sky-400 font-semibold">DISPLAY</span> WS-TEXTO.
+<span class="text-slate-500">000120</span>        <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
                 </div>
             </div>
         `;
@@ -440,14 +447,14 @@ function loadLesson(lessonId) {
                     <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-xl">
                         <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
 <span class="text-slate-500">000010</span><span class="cobol-comment">*================================================================*</span>
-<span class="text-slate-500">000020</span><span class="cobol-comment">* MI PRIMER PROGRAMA: HOLA MUNDO EN COBOL                        *</span>
+<span class="text-slate-500">000020</span><span class="cobol-comment">* MI PRIMER PROGRAMA: HOLA MUNDO EN COBOL                         *</span>
 <span class="text-slate-500">000030</span><span class="cobol-comment">*================================================================*</span>
 <span class="text-slate-500">000040</span> <span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
 <span class="text-slate-500">000050</span> <span class="text-sky-400 font-semibold">PROGRAM-ID.</span> HOLAMUNDO.
 <span class="text-slate-500">000060</span> <span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
 <span class="text-slate-500">000070</span> <span class="text-amber-300">INICIO-PROGRAMA.</span>
-<span class="text-slate-500">000080</span>       <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡Hola Mundo desde GnuCOBOL y Mainframe!"</span>.
-<span class="text-slate-500">000090</span>       <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
+<span class="text-slate-500">000080</span>        <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡Hola Mundo desde GnuCOBOL y Mainframe!"</span>.
+<span class="text-slate-500">000090</span>        <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
                     </div>
                 </div>
             </div>
@@ -565,11 +572,11 @@ function loadLesson(lessonId) {
 
                 <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
                     <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
-<span class="text-slate-500">000100</span> <span class="text-sky-400 font-semibold">01</span> WS-FECHA-RAW       <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">X(8)</span>.
+<span class="text-slate-500">000100</span> <span class="text-sky-400 font-semibold">01</span> WS-FECHA-RAW         <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">X(8)</span>.
 <span class="text-slate-500">000110</span> <span class="text-sky-400 font-semibold">01</span> WS-FECHA-ESTRUCTURA <span class="text-sky-400 font-semibold">REDEFINES</span> WS-FECHA-RAW.
-<span class="text-slate-500">000120</span>      <span class="text-sky-400 font-semibold">05</span> WS-ANIO       <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(4)</span>.
-<span class="text-slate-500">000130</span>      <span class="text-sky-400 font-semibold">05</span> WS-MES        <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(2)</span>.
-<span class="text-slate-500">000140</span>      <span class="text-sky-400 font-semibold">05</span> WS-DIA        <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(2)</span>.</code></pre>
+<span class="text-slate-500">000120</span>      <span class="text-sky-400 font-semibold">05</span> WS-ANIO        <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(4)</span>.
+<span class="text-slate-500">000130</span>      <span class="text-sky-400 font-semibold">05</span> WS-MES         <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(2)</span>.
+<span class="text-slate-500">000140</span>      <span class="text-sky-400 font-semibold">05</span> WS-DIA         <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(2)</span>.</code></pre>
                 </div>
             </div>
         `;
