@@ -164,7 +164,6 @@ function loadLesson(lessonId) {
 
                 <h2 class="text-2xl font-bold text-white tracking-tight">Historia y Arquitectura del Mainframe / COBOL</h2>
 
-                <!-- SECCIÓN MODIFICADA A DOS COLUMNAS -->
                 <div class="grid md:grid-cols-2 gap-6 items-center bg-slate-950/40 border border-slate-800/80 rounded-2xl p-5 md:p-6 shadow-lg">
                     <div class="space-y-4 text-slate-300 text-sm leading-relaxed">
                         <p>
@@ -472,30 +471,56 @@ function loadLesson(lessonId) {
 
                 <h2 class="text-2xl font-bold text-white tracking-tight">Niveles de Datos (01, 05, 77)</h2>
 
-                <p class="text-slate-300 text-sm leading-relaxed">
-                    COBOL no utiliza variables sueltas como otros lenguajes; organiza la memoria RAM en jerarquías estrictas basadas en números de nivel dentro de la <code>WORKING-STORAGE SECTION</code>.
-                </p>
+                <!-- SECCIÓN MODIFICADA A DOS COLUMNAS CON EL TEXTO Y LA IMAGEN matrk.svg -->
+                <div class="grid md:grid-cols-2 gap-6 items-center bg-slate-950/40 border border-slate-800/80 rounded-2xl p-5 md:p-6 shadow-lg">
+                    <div class="space-y-4 text-slate-300 text-sm leading-relaxed">
+                        <p class="text-slate-300 text-xs leading-relaxed">
+                            Históricamente, COBOL nació bajo restricciones extremas de hardware, su gestión de memoria se diseñó como un bloque estático y contiguo de bytes preasignado en tiempo de compilación dentro de la WORKING-STORAGE SECTION. Cada variable ocupaba un desplazamiento (offset) fijo en el búfer de memoria.
+                        </p>
+                        <p class="text-slate-300 text-xs leading-relaxed">
+                            Imagina que la memoria RAM de la computadora para tu programa de COBOL es una enorme tira de papel continua (o una cinta métrica gigante). COBOL no es como Python o JavaScript donde tú creas una variable llamada nombre y la computadora mágicamente le busca un lugar; No, en COBOL tú agarras esa tira gigante y dices: "A ver, esta sección mide 50 bytes, esta otra 10, y yo te voy a decir exactamente qué vive en dónde".
+                        </p>
+                        <p class="text-slate-300 text-xs leading-relaxed">
+                            Los niveles no son sino reglas de jerarquía y anidación. Por ejemplo: <br>
+                            Imagina que tienes una caja de cartón (Nivel 01).<br>
+                            Dentro de esa caja, metes cajas más pequeñas (Nivel 05).<br>
+                            Y por ahí suelto en tu escritorio, tienes un Post-it que no está metido en ninguna caja (Nivel 77).
+                        </p>
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="./assets/matrk.svg" alt="Estructura de Memoria COBOL" class="max-h-56 w-auto rounded-xl border border-slate-800 shadow-lg object-contain bg-slate-900/50 p-2" onerror="this.style.display='none';">
+                    </div>
+                </div>
 
                 <div class="grid gap-4 text-xs">
                     <div class="p-4 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-xl space-y-2">
                         <div class="font-bold text-purple-300 text-sm flex items-center gap-2">
                             <i class="fa-solid fa-layer-group"></i> Nivel 01 (Registros Principales)
                         </div>
-                        <p class="text-slate-400">Define el nivel superior o un bloque de datos completo (por ejemplo, un registro de empleado o estructura de cabecera).</p>
+                        <p class="text-slate-400">
+                            Define el bloque completo de datos. Si tú le pides a COBOL que mueva, imprima o guarde un 01, la computadora agarra toda la caja con todo lo que tiene adentro de un solo golpe.<br>
+                            Ejemplo informal: 01 CLIENTE. (La caja entera que contiene la ficha de una persona: su nombre, su edad, su dirección).
+                        </p>
                     </div>
 
                     <div class="p-4 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-xl space-y-2">
                         <div class="font-bold text-sky-300 text-sm flex items-center gap-2">
                             <i class="fa-solid fa-sitemap"></i> Niveles 02 al 49 (Subcampos)
                         </div>
-                        <p class="text-slate-400">Subdividen lógicamente al nivel 01 superior, permitiendo crear estructuras anidadas similares a objetos o structs en C.</p>
+                        <p class="text-slate-400">
+                            Si el nivel 01 es CLIENTE, los niveles 05 son las cosas que están adentro: el nombre, el apellido, la calle. Si quieres acceder a ellos individualmente, le dices a COBOL: "Oye, búscame el 05 que está dentro del 01".<br>
+                            Ejemplo informal: Dado que el cliente es 01, su edad vendría a ser un elemento 05.
+                        </p>
                     </div>
 
                     <div class="p-4 bg-slate-950/80 border-l-4 border-amber-400 rounded-r-xl space-y-2">
                         <div class="font-bold text-amber-300 text-sm flex items-center gap-2">
                             <i class="fa-solid fa-tag"></i> Nivel 77 (Variables Independientes)
                         </div>
-                        <p class="text-slate-400">Se utiliza para declarar variables elementales aisladas que no dependen ni tienen subcampos subordinados.</p>
+                        <p class="text-slate-400">
+                            Es una variable suelta que creas para hacer cálculos rápidos (un contador, un acumulador, un interruptor de "sí o no"). No tiene hijos, no tiene padres, no pertenece a ninguna estructura familiar. Está ahí sola en la memoria.<br>
+                            Ejemplo informal: Un numerito aislado que usas para contar cuántas veces pasó algo, sin importarle los clientes.
+                        </p>
                     </div>
                 </div>
             </div>
