@@ -28,39 +28,70 @@ function setupAccordionToggle() {
 
 // CARRUSEL AUTOMÁTICO DE VENTAJAS DE EXERCISM (Curso COBOL)
 function initExercismCarousel() {
+    const items = document.querySelectorAll('.exercism-carousel-item');
+    const dots = document.querySelectorAll('[id^="dot-ex-"]');
+    const container = document.querySelector('.exercism-carousel-container');
+
+    if (items.length === 0) return;
+
     let currentIndex = 0;
-    const totalItems = 4;
+    let timer = null;
 
-    const firstItem = document.getElementById('ex-item-0');
-    if (!firstItem) return;
+    function showItem(index) {
+        items.forEach((item, i) => {
+            if (i === index) {
+                item.classList.remove('hidden');
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+                item.classList.add('hidden');
+            }
+        });
 
-    setInterval(() => {
-        const currentEl = document.getElementById(`ex-item-${currentIndex}`);
-        const currentDot = document.getElementById(`dot-ex-${currentIndex}`);
+        dots.forEach((dot, i) => {
+            if (i === index) {
+                dot.classList.remove('bg-slate-700', 'w-1.5');
+                dot.classList.add('bg-purple-400', 'w-2');
+            } else {
+                dot.classList.remove('bg-purple-400', 'w-2');
+                dot.classList.add('bg-slate-700', 'w-1.5');
+            }
+        });
 
-        if (currentEl) {
-            currentEl.classList.remove('active');
-            currentEl.classList.add('hidden');
+        currentIndex = index;
+    }
+
+    function startTimer() {
+        if (!timer) {
+            timer = setInterval(() => {
+                const nextIndex = (currentIndex + 1) % items.length;
+                showItem(nextIndex);
+            }, 3500);
         }
-        if (currentDot) {
-            currentDot.classList.remove('bg-purple-400', 'w-2');
-            currentDot.classList.add('bg-slate-700', 'w-1.5');
-        }
+    }
 
-        currentIndex = (currentIndex + 1) % totalItems;
-
-        const nextEl = document.getElementById(`ex-item-${currentIndex}`);
-        const nextDot = document.getElementById(`dot-ex-${currentIndex}`);
-
-        if (nextEl) {
-            nextEl.classList.remove('hidden');
-            nextEl.classList.add('active');
+    function stopTimer() {
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
         }
-        if (nextDot) {
-            nextDot.classList.remove('bg-slate-700', 'w-1.5');
-            nextDot.classList.add('bg-purple-400', 'w-2');
-        }
-    }, 3500);
+    }
+
+    // Pausa dinámica al pasar el mouse por el contenedor
+    if (container) {
+        container.addEventListener('mouseenter', stopTimer);
+        container.addEventListener('mouseleave', startTimer);
+    }
+
+    // Navegación mediante clic en indicadores (dots)
+    dots.forEach((dot, i) => {
+        dot.style.cursor = 'pointer';
+        dot.addEventListener('click', () => {
+            showItem(i);
+        });
+    });
+
+    startTimer();
 }
 
 // INICIALIZADOR DEL FONDO 3D STARDUST GLOBAL
@@ -82,7 +113,7 @@ function initStardustBackground() {
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         renderer.setClearColor(0x000000, 0);
         renderer.outputColorSpace = THREE.SRGBColorSpace;
-        
+
         renderer.domElement.style.display = 'block';
         renderer.domElement.style.width = '100%';
         renderer.domElement.style.height = '100%';

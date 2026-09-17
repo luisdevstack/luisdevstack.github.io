@@ -167,7 +167,7 @@ function loadLesson(lessonId) {
                 <div class="grid md:grid-cols-2 gap-6 items-center bg-slate-950/40 border border-slate-800/80 rounded-2xl p-5 md:p-6 shadow-lg">
                     <div class="space-y-4 text-slate-300 text-sm leading-relaxed">
                         <p>
-                            <strong class="text-white">COBOL (COmmon Business-Oriented Language).</strong> 
+                            <strong class="text-white">COBOL (COmmon Business-Oriented Language).</strong>
                         </p>
                         <p class="text-xs text-slate-400">
                             Se diseñó en 1959 como un lenguaje de programación de alto nivel enfocado en el procesamiento de datos comerciales y financieros. El primer programa se ejecutó con éxito en diciembre de 1960 en equipos Mainframe pioneros como la <strong class="text-sky-300">UNIVAC II</strong> y la <strong class="text-sky-300">RCA 501</strong>.<br><br>
@@ -204,19 +204,18 @@ function loadLesson(lessonId) {
                         </div>
                     </div>
                 </div>
-                
-                <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
-                    <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
-<span class="text-slate-500">000010</span><span class="cobol-comment">*================================================================*</span>
-<span class="text-slate-500">000020</span><span class="cobol-comment">* LECCIÓN 1.1: ESQUELETO MÍNIMO DE UN PROGRAMA EN COBOL         *</span>
+
+<div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto shadow-lg">
+    <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed p-5 min-w-max block"><code class="text-slate-300 block"><span class="text-slate-500">000010</span><span class="cobol-comment">*================================================================*</span>
+<span class="text-slate-500">000020</span><span class="cobol-comment">* LECCIÓN 1.1: ESQUELETO MÍNIMO DE UN PROGRAMA EN COBOL          *</span>
 <span class="text-slate-500">000030</span><span class="cobol-comment">*================================================================*</span>
 <span class="text-slate-500">000040</span> <span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
 <span class="text-slate-500">000050</span> <span class="text-sky-400 font-semibold">PROGRAM-ID.</span> LEC0101.
 <span class="text-slate-500">000060</span> <span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
 <span class="text-slate-500">000070</span> <span class="text-amber-300">INICIO.</span>
-<span class="text-slate-500">000080</span>        <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡Bienvenido al curso de COBOL!"</span>.
-<span class="text-slate-500">000090</span>        <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
-                </div>
+<span class="text-slate-500">000080</span>     <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡Bienvenido al curso de COBOL!"</span>.
+<span class="text-slate-500">000090</span>     <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
+</div>
 
                 <div class="space-y-3 pt-2">
                     <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
@@ -277,21 +276,21 @@ function loadLesson(lessonId) {
                     </p>
                 </div>
 
-                <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
-                    <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
-<span class="text-slate-500">000010</span><span class="cobol-comment">*================================================================*</span>
+<div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto shadow-lg">
+    <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed p-5 min-w-max block"><code class="text-slate-300 block"><span class="text-slate-500">000010</span><span class="cobol-comment">*================================================================*</span>
 <span class="text-slate-500">000020</span><span class="cobol-comment">* DEMOSTRACIÓN DE ZONAS Y ÁREAS EN FORMATO FIJO                  *</span>
 <span class="text-slate-500">000030</span><span class="cobol-comment">*================================================================*</span>
 <span class="text-slate-500">000040</span> <span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
 <span class="text-slate-500">000050</span> <span class="text-sky-400 font-semibold">PROGRAM-ID.</span> LEC0102.
 <span class="text-slate-500">000060</span> <span class="text-sky-400 font-semibold">DATA DIVISION.</span>
 <span class="text-slate-500">000070</span> <span class="text-sky-400 font-semibold">WORKING-STORAGE SECTION.</span>
-<span class="text-slate-500">000080</span> <span class="text-sky-400 font-semibold">01</span> WS-TEXTO                 <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">X(20)</span> <span class="text-sky-400 font-semibold">VALUE</span> <span class="text-pink-400">"FORMATO FIJO COBOL"</span>.
+<span class="text-slate-500">000080</span> <span class="text-sky-400 font-semibold">01</span> <span class="text-emerald-400">WS-TEXTO</span>                 <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">X(20)</span> <span class="text-sky-400 font-semibold">VALUE</span> <span class="text-pink-400">"FORMATO FIJO COBOL"</span>.
 <span class="text-slate-500">000090</span> <span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
 <span class="text-slate-500">000100</span> <span class="text-amber-300">MAIN-PARAGRAPH.</span>
-<span class="text-slate-500">000110</span>        <span class="text-sky-400 font-semibold">DISPLAY</span> WS-TEXTO.
-<span class="text-slate-500">000120</span>        <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
-                </div>
+<span class="text-slate-500">000110</span>     <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-emerald-400">WS-TEXTO</span>.
+<span class="text-slate-500">000120</span>     <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
+</div>
+
             </div>
         `;
     } else if (lessonId === '1.3') {
@@ -314,7 +313,7 @@ function loadLesson(lessonId) {
                             <i class="fa-solid fa-layer-group"></i> Las 4 Divisiones Fundamentales
                         </div>
                         <p class="text-slate-400">
-                            Se dividen arquitectónicamente en: 
+                            Se dividen arquitectónicamente en:
                             <br>• <code>IDENTIFICATION DIVISION</code> (Metadatos y nombre del programa)
                             <br>• <code>ENVIRONMENT DIVISION</code> (Relación hardware/archivos)
                             <br>• <code>DATA DIVISION</code> (Memoria RAM y variables)
@@ -331,8 +330,8 @@ function loadLesson(lessonId) {
                         </p>
                     </div>
 
-                    <div class="p-4 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-xl space-y-2">
-                        <div class="font-bold text-purple-300 text-sm flex items-center gap-2">
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-amber-400 rounded-r-xl space-y-2">
+                        <div class="font-bold text-amber-300 text-sm flex items-center gap-2">
                             <i class="fa-solid fa-columns"></i> Espacios y Comas
                         </div>
                         <p class="text-slate-400">
@@ -370,9 +369,9 @@ function loadLesson(lessonId) {
                         </div>
 
                         <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
-                            <span class="w-3 h-3 rounded-full bg-purple-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(192,132,252,0.5)]"></span>
+                            <span class="w-3 h-3 rounded-full bg-purple-600 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(192,132,252,0.5)]"></span>
                             <div>
-                                <strong class="cobol-comment block font-extrabold mb-0.5">Comentarios de Documentación</strong>
+                                <strong class="cobol-comment text-[13px] block font-extrabold mb-0.5"><b>Comentarios y Documentación</b></strong>
                                 <span class="text-slate-400 text-[11px]">Envueltos con la etiqueta <span class="cobol-comment font-bold">tornasol</span>, señalan líneas ignoradas por el compilador (*).</span>
                             </div>
                         </div>
@@ -381,7 +380,7 @@ function loadLesson(lessonId) {
                             <span class="w-3 h-3 rounded-full bg-pink-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(244,114,182,0.5)]"></span>
                             <div>
                                 <strong class="text-pink-300 block mb-0.5">Literales Alfanuméricos (Strings)</strong>
-                                <span class="text-slate-400 text-[11px]">En color <span class="text-pink-400 font-bold">Rosa</span>, definen cadenas de texto fijas entre comillas.</span>
+                                <span class="text-slate-400 text-[11px]">En color <span class="text-pink-300 font-bold">Rosa</span>, definen cadenas de texto fijas entre comillas.</span>
                             </div>
                         </div>
 
@@ -419,7 +418,7 @@ function loadLesson(lessonId) {
                             <span class="text-[10px] text-slate-500">División de procedimientos</span>
                         </div>
                         <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
-                            <span>4. [ ? ] <strong class="text-amber-300">INICIO-PROGRAMA.</strong></span>
+                            <span>4. [ ? ] <strong class="text-sky-400">INICIO-PROGRAMA.</strong></span>
                             <span class="text-[10px] text-slate-500">Etiqueta / Párrafo inicial</span>
                         </div>
                         <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
@@ -442,24 +441,23 @@ function loadLesson(lessonId) {
 
                 <div id="solution-container" class="hidden space-y-3 pt-2 transition-all duration-300">
                     <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
-                        <i class="fa-solid fa-code text-emerald-400"></i> Estructura Final del Programa "Hola Mundo" (Solución)
+                        <i class="fa-solid fa-code text-emerald-400"></i> Estructura Final del Programa "Hola Mundo"
                     </h3>
-                    <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-xl">
-                        <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
-<span class="text-slate-500">000010</span><span class="cobol-comment">*================================================================*</span>
-<span class="text-slate-500">000020</span><span class="cobol-comment">* MI PRIMER PROGRAMA: HOLA MUNDO EN COBOL                         *</span>
+<div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto shadow-xl">
+    <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed p-5 min-w-max block"><code class="text-slate-300 block"><span class="text-slate-500">000010</span><span class="cobol-comment">*================================================================*</span>
+<span class="text-slate-500">000020</span><span class="cobol-comment">* MI PRIMER PROGRAMA: HOLA MUNDO EN COBOL                        *</span>
 <span class="text-slate-500">000030</span><span class="cobol-comment">*================================================================*</span>
 <span class="text-slate-500">000040</span> <span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
 <span class="text-slate-500">000050</span> <span class="text-sky-400 font-semibold">PROGRAM-ID.</span> HOLAMUNDO.
 <span class="text-slate-500">000060</span> <span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
 <span class="text-slate-500">000070</span> <span class="text-amber-300">INICIO-PROGRAMA.</span>
-<span class="text-slate-500">000080</span>        <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡Hola Mundo desde GnuCOBOL y Mainframe!"</span>.
-<span class="text-slate-500">000090</span>        <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
-                    </div>
+<span class="text-slate-500">000080</span>     <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"¡Hola Mundo desde GnuCOBOL y Mainframe!"</span>.
+<span class="text-slate-500">000090</span>     <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
+</div>
                 </div>
             </div>
         `;
-    } 
+    }
     // --- MÓDULO 2: MANEJO DE MEMORIA ---
     else if (lessonId === '2.1') {
         container.innerHTML = `
@@ -469,26 +467,35 @@ function loadLesson(lessonId) {
                     <span class="text-[10px] bg-purple-950 text-purple-300 border border-purple-800 px-2.5 py-0.5 rounded font-mono">Estructura Jerárquica</span>
                 </div>
 
-                <h2 class="text-2xl font-bold text-white tracking-tight">Niveles de Datos (01, 05, 77)</h2>
+                <h2 class="text-2xl font-bold text-white tracking-tight">Los Niveles de Datos</h2>
+
+                <div class="relative p-4 bg-slate-950/80 rounded-r-xl space-y-2 border-torna">
+                    <i class="cobol-comment fa-solid fa-feather"></i><span class="cobol-comment font-bold"> Históricamente:</span>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+
+                       <b>COBOL</b> nació bajo <b>restricciones extremas</b> de <b>hardware</b>, su gestión de <b>memoria</b> se diseñó como un <span class="text-gold-900 font-extrabold strong">bloque estático</span> y <b>contiguo</b> de bytes preasignado en tiempo de compilación dentro de la <b>WORKING-STORAGE SECTION</b>. Cada variable ocupaba un desplazamiento (offset) fijo en el búfer de memoria.
+
+                    </p>
+                </div>
 
                 <!-- SECCIÓN MODIFICADA A DOS COLUMNAS CON EL TEXTO Y LA IMAGEN matrk.svg -->
                 <div class="grid md:grid-cols-2 gap-6 items-center bg-slate-950/40 border border-slate-800/80 rounded-2xl p-5 md:p-6 shadow-lg">
                     <div class="space-y-4 text-slate-300 text-sm leading-relaxed">
-                        <p class="text-slate-300 text-xs leading-relaxed">
-                            Históricamente, COBOL nació bajo restricciones extremas de hardware, su gestión de memoria se diseñó como un bloque estático y contiguo de bytes preasignado en tiempo de compilación dentro de la WORKING-STORAGE SECTION. Cada variable ocupaba un desplazamiento (offset) fijo en el búfer de memoria.
+
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Imagina que la memoria <span class="text-white-900 font-extrabold">RAM</span> de la computadora es una enorme tira de papel continua (o una cinta métrica gigante). COBOL no es como Python o JavaScript donde tú creas una variable llamada nombre y la computadora mágicamente le busca un lugar; No, en COBOL tú agarras esa tira gigante y dices: <span class="cobol-comment font-bold italic">"A ver, esta sección mide 50 bytes, esta otra 10, y yo te voy a decir exactamente qué vive en dónde"</span>.<br>
+                            Los niveles no son sino reglas de jerarquía y anidación: <br>
+
                         </p>
-                        <p class="text-slate-300 text-xs leading-relaxed">
-                            Imagina que la memoria RAM de la computadora para tu programa de COBOL es una enorme tira de papel continua (o una cinta métrica gigante). COBOL no es como Python o JavaScript donde tú creas una variable llamada nombre y la computadora mágicamente le busca un lugar; No, en COBOL tú agarras esa tira gigante y dices: "A ver, esta sección mide 50 bytes, esta otra 10, y yo te voy a decir exactamente qué vive en dónde".
-                        </p>
-                        <p class="text-slate-300 text-xs leading-relaxed">
-                            Los niveles no son sino reglas de jerarquía y anidación. Por ejemplo: <br>
-                            Imagina que tienes una caja de cartón (Nivel 01).<br>
-                            Dentro de esa caja, metes cajas más pequeñas (Nivel 05).<br>
-                            Y por ahí suelto en tu escritorio, tienes un Post-it que no está metido en ninguna caja (Nivel 77).
-                        </p>
+                            <ul class="list-disc list-inside bg-slate-950/80 text-slate-300 text-xs leading-relaxed space-y-1">
+                                <li class="text-purple-300"><span class="text-slate-400">Imagina que tienes una caja de cartón <span class="text-purple-300 font-bold">(Nivel 01)</span>.</span></li>
+                                <li class="text-sky-400"><span class="text-slate-400">Dentro de esa caja, metes cajas más pequeñas <span class="text-sky-400 font-bold">(Nivel 05)</span>.</span></li>
+                                <li class="text-amber-400"><span class="text-slate-400">Y tienes un Post-it que no está en ninguna caja <span class="text-amber-400 font-bpld">(Nivel 77)</span>.</span></li>
+                            </ul>
                     </div>
                     <div class="flex justify-center">
-                        <img src="./assets/matrk.svg" alt="Estructura de Memoria COBOL" class="max-h-56 w-auto rounded-xl border border-slate-800 shadow-lg object-contain bg-slate-900/50 p-2" onerror="this.style.display='none';">
+                    <img src="./assets/matrk.svg" alt="Estructura de Memoria COBOL"
+                    class="max-h-56 w-auto" onerror="this.style.display='none';">
                     </div>
                 </div>
 
@@ -527,30 +534,102 @@ function loadLesson(lessonId) {
         `;
     } else if (lessonId === '2.2') {
         container.innerHTML = `
-            <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                    <span class="text-xs font-mono text-purple-400">Módulo 2 · Lección 2.2</span>
-                    <span class="text-[10px] bg-purple-950 text-purple-300 border border-purple-800 px-2.5 py-0.5 rounded font-mono">Tipos y Formatos</span>
+
+        <div class="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 space-y-6">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <span class="text-xs font-mono text-purple-400">Módulo 2 · Lección 2.2</span>
+                <span class="text-[10px] bg-purple-950 text-purple-300 border border-purple-800 px-2.5 py-0.5 rounded font-mono">Tipos y Formatos</span>
+            </div>
+
+            <h2 class="text-2xl font-bold text-white tracking-tight">La Cláusula PIC (Picture) y Los Tipos de Datos</h2>
+
+            <div class="relative p-4 bg-slate-950/80 rounded-r-xl space-y-2 border-torna">
+                <i class="cobol-comment fa-solid fa-memory"></i><span class="cobol-comment font-bold"> Históricamente:</span>
+                <p class="text-slate-400 text-xs leading-relaxed">
+                En COBOL no existen tipos de datos abstractos como <b>int</b>, <b>float</b> o <b>string</b>.
+                La <b>gestión de memoria</b> se diseñó como un <b>bloque estático y contiguo</b> de <b>bytes preasignado</b>. Cada variable ocupaba un <b><i>offset</i></b>, <span class="cobol-comment italic">(un <b><i>offset</i></b> actúa como una coordenada que <b>marca</b> el <b>inicio</b> de un bloque de <b>memoria</b> y junto a <b><i>Length</i></b> determina la <b>ubicación milimétrica</b> del espacio donde <b>habita</b> la <b>variable)</b></span> fijo en el búfer de memoria.
+                Como la memoria es una tira plana de bytes, tienes que dibujar con <b>precisión quirúrgica</b> cómo se ve cada <b>dato</b> usando una máscara o plantilla.<br><br>
+
+                Al no haber un motor moderno que adivine los tipos de datos en tiempo de ejecución (como Python o JavaScript), <b>el compilador confía ciegamente en la etiqueta PIC.</b> Si la etiqueta dice: <span class="cobol-comment">"La caja es numérica (PIC 9)"</span> y tú intentas meterle una <b>letra</b>, <b>COBOL asume</b> que estás <b>violando las leyes</b> de clasificación, lo que puede provocar un error matemático <b>(data exception)</b> y <b>apagar</b> el <b>programa</b> por <b>seguridad</b>.
+                </p>
+            </div>
+            <div class="p-4 bg-slate-950/80 border-l-4 border-red-300 rounded-r-xl space-y-2">
+                <div class="font-bold text-red-300 text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-camera-retro"></i> ¿Qué es la cláusula PIC?
+                </div>
+                <p class="text-slate-400 text-xs leading-relaxed">
+                <b>PIC</b> es la abreviatura de Picture (Imagen). Es una <b>cadena de símbolos</b> que le <b>explica</b> al <b>compilador</b>: <span class="cobol-comment">"Este campo mide tantos caracteres y solo acepta letras, o solo números, o viene con puntos decimales incluidos". </span>
+                La forma más sencilla de entender la cláusula PIC, es <b>pensar</b> que la PIC es el <b>molde</b> que <b>le dice a COBOL</b> <b>cómo</b> debe ser un dato: <b>qué</b> tipo de dato es, <b>cuántos</b> caracteres ocupa y, en algunos casos, cómo se debe presentar.<br><br>
+                Si los niveles <b>(</b><span class="text-purple-300 font-bold">01</span>, <span class="text-sky-300 font-bold">05</span>, <span class="text-amber-300 font-bold">77</span><b>)</b> eran las <b>cajas</b> para <b>organizar</b> la <b>memoria</b>, la <b>Cláusula PIC</b> (Picture) es la <b>etiqueta pegada</b> en la caja que dice <b>exactamente</b> qué <b>tipo de contenido</b> vive adentro y <b>cuánto espacio ocupa</b>. Los tipos de datos básicos para almacenar información, son tres:
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-2">
+                    <span class="font-bold text-sky-300 block text-sm">Alfanuméricos: (X)</span>
+                    <p class="text-slate-400">Acepta letras, números y símbolos. Ejemplo: <code>PIC X(10)</code> reserva 10 espacios de texto alineados a la izquierda. Es lo más parecido a una cadena de texto (string).</p>
                 </div>
 
-                <h2 class="text-2xl font-bold text-white tracking-tight">La Cláusula PIC (Picture) y Tipos de Datos</h2>
-
-                <p class="text-slate-300 text-sm leading-relaxed">
-                    La cláusula <code>PIC</code> define exactamente cuántos bytes ocupa una variable en memoria y qué tipo de caracteres puede almacenar.
-                </p>
-
-                <div class="grid sm:grid-cols-2 gap-4 text-xs">
-                    <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-2">
-                        <span class="font-bold text-emerald-300 block text-sm">Alfanuméricos: X(n)</span>
-                        <p class="text-slate-400">Acepta letras, números y símbolos. Ejemplo: <code>PIC X(10)</code> reserva 10 espacios de texto alineados a la izquierda.</p>
-                    </div>
-
-                    <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-2">
-                        <span class="font-bold text-sky-300 block text-sm">Numéricos Enteros: 9(n)</span>
-                        <p class="text-slate-400">Almacena exclusivamente dígitos numéricos (0-9). Ejemplo: <code>PIC 9(5)</code> para un valor entero de hasta 5 cifras.</p>
-                    </div>
+                <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-2">
+                    <span class="font-bold text-purple-300 block text-sm">Alfabéticos: (A)</span>
+                    <p class="text-slate-400">Únicamernte acepta letras, [de la A a la Z y espacios]. Honestamente, hoy en día casi no se usa; los programadores prefieren usar X para el texto.</p>
                 </div>
             </div>
+
+  <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-2">
+      <span class="font-bold text-yellow-300 block text-sm">Numéricos: (9)</span>
+      <p class="text-slate-400 text-xs">
+      Guarda únicamente números para realizar cálculos matemáticos.<br><br>
+      <span class="font-bold text-yellow-300 block text-xs">Las 2 extensiones numéricas</span>
+      Aunque los 3 anteriores son la base, dentro del tipo numérico (9) existen dos modificadores fundamentales para trabajar con números reales:
+      <ul class="list-disc list-inside bg-slate-950/80 text-slate-300 text-xs leading-relaxed space-y-1">
+      <li>Con signo (S): Para indicar si el número puede ser negativo (ejemplo: PIC S9(4)).</li>
+      <li>Con decimales (V): Para indicar la posición de la coma o punto decimal (ejemplo: PIC 9(3)V99).</li>
+      </ul>
+      <span class="font-bold text-yellow-300 block text-xs">Numéricos de edición (para mostrar en pantalla o reportes)</span>
+      <span class="text-slate-400 text-xs">
+      Existe una cuarta categoría indirecta llamada caracteres de edición, que sirve para dar formato visual a los números antes de imprimir un cheque o reporte:
+      </span>
+
+      <ul class="list-disc list-inside bg-slate-950/80 text-slate-300 text-xs leading-relaxed space-y-1">
+         <li>Z: Reemplaza los ceros a la izquierda por espacios (ej. PIC ZZ9).</li>
+         <li>, / .: Añade comas de miles o puntos decimales visibles.</li>
+         <li>$: Añade el símbolo de moneda automáticamente.</li>
+      </ul>
+
+  </div>
+
+            <!-- Contenedor de código -->
+            <div id="solution-container-pic" class="space-y-3 pt-2 transition-all duration-300">
+                <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                    <i class="fa-solid fa-code text-emerald-400"></i> Ejemplo de Uso de Cláusula PIC
+                </h3>
+                <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto shadow-xl">
+                    <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed p-5 min-w-max block"><code class="text-slate-300 block"><span class="text-slate-500">000100</span> <span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
+<span class="text-slate-500">000200</span> <span class="text-sky-400 font-semibold">PROGRAM-ID.</span> EJEMPLOPIC.
+<span class="text-slate-500">000300</span> <span class="text-sky-400 font-semibold">ENVIRONMENT DIVISION.</span>
+<span class="text-slate-500">000400</span> <span class="text-sky-400 font-semibold">DATA DIVISION.</span>
+<span class="text-slate-500">000500</span> <span class="text-sky-400 font-semibold">WORKING-STORAGE SECTION.</span>
+<span class="text-slate-500">000600</span><span class="cobol-comment">*----------------------------------------------------------------*</span>
+<span class="text-slate-500">000700</span><span class="cobol-comment">* DEFINICION DE VARIABLES CON CLAUSULA PIC EN FORMATO COLUMNADO  *</span>
+<span class="text-slate-500">000800</span><span class="cobol-comment">*----------------------------------------------------------------*</span>
+<span class="text-slate-500">000900</span> <span class="text-sky-400 font-semibold">01</span> <span class="text-emerald-400">NOMBRE-CLIENTE</span>  <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">X(15)</span>     <span class="text-sky-400 font-semibold">VALUE</span> <span class="text-pink-400">"CARLOS GOMEZ"</span>.
+<span class="text-slate-500">001000</span> <span class="text-sky-400 font-semibold">01</span> <span class="text-emerald-400">EDAD-CLIENTE</span>    <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(02)</span>     <span class="text-sky-400 font-semibold">VALUE</span> <span class="text-purple-300">30</span>.
+<span class="text-slate-500">001100</span> <span class="text-sky-400 font-semibold">01</span> <span class="text-emerald-400">SALDO-CUENTA</span>    <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(04)V99</span>  <span class="text-sky-400 font-semibold">VALUE</span> <span class="text-purple-300">1250.50</span>.
+<span class="text-slate-500">001200</span> <span class="text-sky-400 font-semibold">01</span> <span class="text-emerald-400">SALDO-FORMATO</span>   <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">$Z,ZZ9.99</span>.
+<span class="text-slate-500">001300</span> <span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
+<span class="text-slate-500">001400</span> <span class="text-amber-300">MAIN-PROCEDURE.</span>
+<span class="text-slate-500">001500</span>     <span class="text-sky-400 font-semibold">MOVE</span> <span class="text-emerald-400">SALDO-CUENTA</span> <span class="text-sky-400 font-semibold">TO</span> <span class="text-emerald-400">SALDO-FORMATO</span>.
+<span class="text-slate-500">001600</span>     <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"NOMBRE: "</span> <span class="text-emerald-400">NOMBRE-CLIENTE</span>.
+<span class="text-slate-500">001700</span>     <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"EDAD:   "</span> <span class="text-emerald-400">EDAD-CLIENTE</span>.
+<span class="text-slate-500">001800</span>     <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"SALDO:  "</span> <span class="text-emerald-400">SALDO-FORMATO</span>.
+<span class="text-slate-500">001900</span>     <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+
         `;
     } else if (lessonId === '2.3') {
         container.innerHTML = `
@@ -597,13 +676,13 @@ function loadLesson(lessonId) {
                 </p>
 
                 <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
-                    <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed"><code class="text-slate-300">
-<span class="text-slate-500">000100</span> <span class="text-sky-400 font-semibold">01</span> WS-FECHA-RAW         <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">X(8)</span>.
-<span class="text-slate-500">000110</span> <span class="text-sky-400 font-semibold">01</span> WS-FECHA-ESTRUCTURA <span class="text-sky-400 font-semibold">REDEFINES</span> WS-FECHA-RAW.
-<span class="text-slate-500">000120</span>      <span class="text-sky-400 font-semibold">05</span> WS-ANIO        <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(4)</span>.
-<span class="text-slate-500">000130</span>      <span class="text-sky-400 font-semibold">05</span> WS-MES         <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(2)</span>.
-<span class="text-slate-500">000140</span>      <span class="text-sky-400 font-semibold">05</span> WS-DIA         <span class="text-sky-400 font-semibold">PIC</span> <span class="text-emerald-400">9(2)</span>.</code></pre>
-                </div>
+<div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto shadow-lg">
+    <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed p-5 min-w-max block"><code class="text-slate-300 block"><span class="text-slate-500">000100</span><span class="text-sky-400 font-semibold"> 01</span> <span class="text-emerald-400">WS-FECHA-RAW</span>        <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">X(8)</span>.
+<span class="text-slate-500">000110</span><span class="text-sky-400 font-semibold"> 01</span> <span class="text-emerald-400">WS-FECHA-ESTRUCTURA</span> <span class="text-sky-400 font-semibold">REDEFINES</span> <span class="text-emerald-400">WS-FECHA-RAW</span>.
+<span class="text-slate-500">000120</span>     <span class="text-sky-400 font-semibold">05</span> <span class="text-emerald-400">WS-ANIO</span>         <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(4)</span>.
+<span class="text-slate-500">000130</span>     <span class="text-sky-400 font-semibold">05</span> <span class="text-emerald-400">WS-MES</span>          <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(2)</span>.
+<span class="text-slate-500">000140</span>     <span class="text-sky-400 font-semibold">05</span> <span class="text-emerald-400">WS-DIA</span>          <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(2)</span>.</code></pre>
+</div>
             </div>
         `;
     }
