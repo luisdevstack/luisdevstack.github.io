@@ -149,11 +149,11 @@ body > *:not(#app) {
 
 /* EFECTO TORNASOL PLATEADO EN TEXTO */
 .silver-gradient-text {
-    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 35%, #e2e8f0 70%, #a855f7 100%);
+    background: linear-gradient(135deg, #9E8B9B 0%, #cbd5e1 35%, #BBE8FC 50%, #e2e8f0 70%, #9E8B9B 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: silverShift 4s ease infinite;
+    animation: silverShift 8s ease infinite;
 }
 
 @keyframes silverShift {
@@ -185,6 +185,7 @@ body > *:not(#app) {
 }
 
 /* BOTÓN PÍLDORA NEUMÓRFICO */
+
 .pill-3d-button {
     display: inline-flex;
     align-items: center;
@@ -192,17 +193,35 @@ body > *:not(#app) {
     gap: 1.25rem;
     padding: 0.5rem 0.6rem 0.5rem 1.4rem;
     border-radius: 9999px;
-    background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
+
+    /* Fondo más translúcido para que el backdrop-filter funcione */
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.6));
+
+    /* Borde más brillante */
+    border: 1px solid rgba(56, 189, 248, 0.4);
+
+    /* Sombras combinadas: brillo superior + sombra proyectada con brillo azulado */
+    box-shadow:
+        0 8px 32px 0 rgba(0, 0, 0, 0.7),
+        0 0 15px 0 rgba(56, 189, 248, 0.15),
+        inset 0 1px 2px 0 rgba(255, 255, 255, 0.3);
+
+    /* Desenfoque del fondo */
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
+
     animation: floatingPill 4s ease-in-out infinite;
     transition: all 0.3s ease;
 }
 
+/* Efecto Hover para que reaccione al cursor */
 .pill-3d-button:hover {
-    border-color: rgba(56, 189, 248, 0.6);
-    box-shadow: 0 15px 30px -5px rgba(56, 189, 248, 0.25);
+    border-color: rgba(56, 189, 248, 0.8);
+    box-shadow:
+        0 12px 35px 0 rgba(0, 0, 0, 0.8),
+        0 0 20px 2px rgba(56, 189, 248, 0.3),
+        inset 0 1px 3px 0 rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
 }
 
 @keyframes floatingPill {
@@ -217,11 +236,8 @@ details summary::-webkit-details-marker { display: none; }
    NUEVAS CLASES: FONDOS Y COLUMNAS PARA CURSO COBOL
    ========================================================= */
 
+
    .cobol-columns-bg {
-       /*
-         1ch = Ancho exacto de 1 carácter en tipografía monoespaciada.
-         Añadimos 1.25rem (p-5) a cada tramo para sincronizar con el padding izquierdo del cuadro.
-       */
        background: linear-gradient(to right,
            rgba(100, 116, 139, 0.25) 0rem, rgba(100, 116, 139, 0.25) calc(1.25rem + 6ch),     /* Cols 1-6 */
            rgba(234, 179, 8, 0.3) calc(1.25rem + 6ch), rgba(234, 179, 8, 0.3) calc(1.25rem + 7ch), /* Col 7 (*) */
@@ -233,7 +249,26 @@ details summary::-webkit-details-marker { display: none; }
 
    .cobol-code-block {
        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+       position: relative;
    }
+
+   /* 2. Regla superior de columnas inyectada automáticamente */
+   .cobol-code-block::before {
+       /* Muestra la escala tradicional de columnas COBOL:
+          1....6 (Secuencia) | 7 (*) | 8...11 (Área A) | 12...........72 (Área B) */
+       content: "1      78    12";
+       display: block;
+       font-size: 11px;
+       font-weight: 700;
+       color: #94a3b8; /* Slate-400 para buena visibilidad */
+       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+       padding-bottom: 4px;
+       margin-bottom: 8px;
+       user-select: none; /* Evita que el usuario seleccione la regla al copiar código */
+       letter-spacing: 0.15px;
+   }
+
+
 
 .cobol-comment-silver,
 .cobol-comment {
@@ -256,4 +291,96 @@ details summary::-webkit-details-marker { display: none; }
         background: linear-gradient(180deg, #38bdf8 0%, #818cf8 25%, #c084fc 50%, #34d399 75%, #38bdf8 100%);
         background-size: 100% 300%;
         animation: gradientShift 4s ease infinite;
+}
+
+/* Efecto textura de cristal (Adaptable y Fluido) */
+
+.bubble-card {
+  position: relative;
+  width: 100%;
+  max-width: 100%;       /* Permite que ocupe todo el ancho disponible del contenedor padre */
+
+  padding: 40px;
+  border-radius: 24px;
+  box-sizing: border-box; /* Vital para que el padding no rompa el ancho total */
+
+  /* Usamos variables CSS con un valor por defecto (0.5) */
+  --bubble-opacity: 0.5;
+
+  background:
+    /* Núcleo oscuro controlado por la variable de opacidad */
+    radial-gradient(ellipse at 50% 50%, rgba(0,0,0, calc(var(--bubble-opacity) + 0.35)) 20%, rgba(0,0,0,0) 65%),
+
+    /* Banda de arcoíris escalada por la opacidad */
+    linear-gradient(0deg,
+      rgba(75, 75, 117, calc(var(--bubble-opacity) * 0.7)) 0%,
+      rgba(0, 255, 255, calc(var(--bubble-opacity) * 0.4)) 6%,
+      rgba(255, 0, 128, calc(var(--bubble-opacity) * 0.3)) 12%,
+      rgba(255, 255, 255, 0) 35%,
+      rgba(255, 255, 255, 0) 65%,
+      rgba(18, 35, 77, calc(var(--bubble-opacity) * 0.3)) 88%,
+      rgba(0, 255, 150, calc(var(--bubble-opacity) * 0.4)) 94%,
+      rgba(84, 69, 97, calc(var(--bubble-opacity) * 0.8)) 100%
+    ),
+
+    /* Ruido lateral */
+    linear-gradient(90deg,
+      rgba(255,0,255, calc(var(--bubble-opacity) * 0.2)) 0%,
+      transparent 20%,
+      transparent 80%,
+      rgba(0,200,255, calc(var(--bubble-opacity) * 0.2)) 100%
+    );
+
+  background-blend-mode: screen;
+
+  /* Sombras adaptadas a la transparencia */
+  box-shadow:
+    inset 0 30px 40px rgba(255, 255, 255, calc(var(--bubble-opacity) * 0.9)),
+    inset 0 -25px 35px rgba(255, 255, 255, calc(var(--bubble-opacity) * 0.5)),
+    inset 15px 0 25px rgba(255, 0, 150, calc(var(--bubble-opacity) * 0.3)),
+    inset -15px 0 25px rgba(0, 200, 255, calc(var(--bubble-opacity) * 0.36)),
+    inset 0 0 1px 1px rgba(255, 255, 255, 0.7),
+    0 10px 30px rgba(0, 0, 0, 0.5);
+
+  backdrop-filter: blur(12px);
+  color: #fff;
+}
+
+/* --- BRILLOS Y DESTELLOS --- */
+
+.bubble-card::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 20px;
+  width: 140px;
+  height: 35px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(197, 248, 252, 0.9) 0%,
+    rgba(40, 45, 64, 0.5) 30%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: rotate(-12deg);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.bubble-card::after {
+  content: "";
+  position: absolute;
+  bottom: 12px;
+  right: 25px;
+  width: 110px;
+  height: 25px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(252, 246, 197, 0.4) 0%,
+    rgba(255, 255, 255, 0.05) 60%,
+    transparent 100%
+  );
+  transform: rotate(10deg);
+  pointer-events: none;
 }

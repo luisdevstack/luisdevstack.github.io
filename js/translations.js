@@ -4,7 +4,7 @@ const i18n = {
         navPortfolio: "Portafolio",
         navCourse: "Aprende COBOL",
         navContact: "Contacto",
-        heroSubtitle: "Especialista en optimización de bases de datos, Arquitectura de Procesamiento Paralelo Masivo, Modelado Semántico, Query Tuning e Implementación de Flujos de Datos de Alto Rendimiento.",
+        heroSubtitle: "Especialista en <span class=\"silver-gradient-text font-bold\">Ingeniería de Datos</span>, <span class=\"silver-gradient-text font-bold\">Bases de Datos</span>, <span class=\"silver-gradient-text font-bold\">COBOL</span>, Arquitectura de <span class=\"silver-gradient-text font-bold\">Procesamiento Paralelo Masivo</span>, <span class=\"silver-gradient-text font-bold\">Modelado Semántico</span>, <span class=\"silver-gradient-text font-bold\">Query Tuning</span> e implementación de <span class=\"silver-gradient-text font-bold\">Pipelines escalables</span> de <span class=\"silver-gradient-text font-bold\">alto rendimiento</span>.",
         exploreProjectsTag: "EXPLORAR",
         exploreProjectsTitle: "Proyectos de Datos",
         learnCobolTag: "MAINFRAME",
@@ -23,7 +23,7 @@ const i18n = {
         navPortfolio: "Portfolio",
         navCourse: "Learn COBOL",
         navContact: "Contact",
-        heroSubtitle: "Specialist in database optimization, Massively Parallel Processing Architecture, Semantic Modeling, Query Tuning, and High-Performance Data Pipeline Implementation.",
+        heroSubtitle: "Specialist in <b>Data Engineering</b>, <b>Databases</b>, <b>COBOL</b>, Massively Parallel Processing Architecture, Semantic Modeling, <b>Query Tuning</b>, and High-Performance <b>Scalable Pipeline</b> Implementation.",
         exploreProjectsTag: "EXPLORE",
         exploreProjectsTitle: "Data Projects",
         learnCobolTag: "MAINFRAME",
@@ -45,7 +45,8 @@ function setLanguage(lang) {
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (i18n[lang] && i18n[lang][key]) {
-            el.textContent = i18n[lang][key];
+            // Se usa innerHTML para permitir etiquetas HTML (como <b>)
+            el.innerHTML = i18n[lang][key];
         }
     });
 

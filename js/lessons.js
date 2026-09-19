@@ -17,6 +17,136 @@ function toggleModule(modId) {
     }
 }
 
+// lessons.js
+
+function getCobolDocumentationBlock() {
+    return `
+        <!-- Bloque de Documentación Despliegue -->
+        <details class="bg-slate-900/60 border border-slate-800 rounded-xl p-5 group transition-all duration-300 bubble-card hover:bg-fuchsia-800/40 my-4" style="--bubble-opacity: 0.13;">
+            <!-- Cabecera desplegable -->
+            <summary class="cursor-pointer text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center justify-between select-none">
+                <span class="flex items-center gap-2">
+                    <i class="fa-solid fa-palette text-sky-400"></i><span class="text-cyan-300"> Glosario Visual de Sintaxis COBOL</span>
+                </span>
+                <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 group-open:rotate-180"></i>
+            </summary>
+
+            <!-- Contenido que se despliega -->
+            <div class="mt-4 pt-4 border-t border-slate-800/80 grid sm:grid-cols-2 gap-3 text-xs">
+
+                <!-- 1. Palabras Reservadas y Verbos -->
+                <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                    <span class="w-3 h-3 rounded-full bg-sky-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(56,189,248,0.5)]"></span>
+                    <div>
+                        <strong class="text-sky-300 block mb-0.5">Palabras Reservadas y Verbos</strong>
+                        <span class="text-slate-400 text-[11px]">En tono <span class="text-sky-400 font-bold">Azul Claro</span>, indican instrucciones clave como <code class="text-sky-300">DISPLAY</code> o <code class="text-sky-300">DIVISION</code>.</span>
+                    </div>
+                </div>
+
+                <!-- 2. Comentarios y Documentación -->
+                <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                    <span class="w-3 h-3 rounded-full bg-purple-600 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(192,132,252,0.5)]"></span>
+                    <div>
+                        <strong class="cobol-comment text-[13px] block font-extrabold mb-0.5"><b>Comentarios y Documentación</b></strong>
+                        <span class="text-slate-400 text-[11px]">Envueltos con la etiqueta <span class="cobol-comment font-bold">tornasol</span>, señalan líneas ignoradas por el compilador (*).</span>
+                    </div>
+                </div>
+
+                <!-- 3. Literales Alfanuméricos (Strings) -->
+                <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                    <span class="w-3 h-3 rounded-full bg-pink-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(244,114,182,0.5)]"></span>
+                    <div>
+                        <strong class="text-pink-300 block mb-0.5">Literales Alfanuméricos (Strings)</strong>
+                        <span class="text-slate-400 text-[11px]">En color <span class="text-pink-300 font-bold">Rosa</span>, definen cadenas de texto fijas entre comillas.</span>
+                    </div>
+                </div>
+
+                <!-- 4. Etiquetas y Párrafos -->
+                <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                    <span class="w-3 h-3 rounded-full bg-amber-300 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(252,211,77,0.5)]"></span>
+                    <div>
+                        <strong class="text-amber-300 block mb-0.5">Etiquetas y Párrafos</strong>
+                        <span class="text-slate-400 text-[11px]">En tono <span class="text-amber-300 font-bold">Amarillo</span>, funcionan como puntos de anclaje.</span>
+                    </div>
+                </div>
+
+                <!-- 5. Nombre del Programa -->
+                <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                    <span class="w-3 h-3 rounded-full bg-slate-100 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(241,245,249,0.5)]"></span>
+                    <div>
+                        <strong class="text-slate-100 block mb-0.5">Nombre del Programa</strong>
+                        <span class="text-slate-400 text-[11px]">En tono <span class="text-slate-100 font-bold">Blanco</span>, identifica el módulo o programa (ej. <code class="text-slate-200">EJEMPLOPIC</code>).</span>
+                    </div>
+                </div>
+
+                <!-- 6. Variables y Data Names -->
+                <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                    <span class="w-3 h-3 rounded-full bg-emerald-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(52,211,153,0.5)]"></span>
+                    <div>
+                        <strong class="text-emerald-300 block mb-0.5">Variables y Data Names</strong>
+                        <span class="text-slate-400 text-[11px]">En tono <span class="text-emerald-400 font-bold">Verde</span>, corresponden a nombres de campos y registros.</span>
+                    </div>
+                </div>
+
+                <!-- 7. Cláusulas PIC y Tipos -->
+                <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                    <span class="w-3 h-3 rounded-full bg-pink-300/70 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(244,114,182,0.3)]"></span>
+                    <div>
+                        <strong class="text-pink-200/90 block mb-0.5">Cláusulas PIC y Tipos</strong>
+                        <span class="text-slate-400 text-[11px]">En <span class="text-pink-200/90 font-bold">Rosa Tenue</span>, definen la estructura y máscara (ej. <code class="text-pink-200">X(15)</code>, <code class="text-pink-200">9(02)</code>).</span>
+                    </div>
+                </div>
+
+                <div></div>
+
+                <!-- Título de sección columnas -->
+                <div class="flex items-start gap-2.5 bg-slate-950/60 p-3.5 rounded-lg border border-slate-800 col-span-full my-2">
+                    <h3 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2 w-full">
+                        <i class="fa-solid fa-columns text-sky-400"></i><strong class="text-cyan-300/90 block mb-0.5"> Distribución de Columnas (Formato Clásico COBOL)</strong>
+                    </h3>
+                </div>
+
+                <!-- Columnas 1 a 6 -->
+                <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                    <span class="w-3 h-3 rounded-full bg-slate-500 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(100,116,139,0.5)]"></span>
+                    <div>
+                        <strong class="text-slate-300 block mb-0.5">Columnas 1 - 6</strong>
+                        <span class="text-slate-400 text-[11px]">Área de <span class="text-slate-200 font-bold">Secuencia</span>. Utilizada tradicionalmente para numerar líneas.</span>
+                    </div>
+                </div>
+
+                <!-- Columna 7 -->
+                <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                    <span class="w-3 h-3 rounded-full bg-amber-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(251,191,36,0.5)]"></span>
+                    <div>
+                        <strong class="text-amber-300 block mb-0.5">Columna 7</strong>
+                        <span class="text-slate-400 text-[11px]">Área de <span class="text-amber-300 font-bold">Indicador</span>. El asterisco (<code class="text-amber-200">*</code>) denota comentarios.</span>
+                    </div>
+                </div>
+
+                <!-- Columnas 8 a 11 -->
+                <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                    <span class="w-3 h-3 rounded-full bg-emerald-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(2,132,199,0.5)]"></span>
+                    <div>
+                        <strong class="text-emerald-300 block mb-0.5">Columnas 8 - 11 (Área A)</strong>
+                        <span class="text-slate-400 text-[11px]">Margen A para <span class="text-emerald-300 font-bold">Divisiones, Secciones</span> y nivel 01.</span>
+                    </div>
+                </div>
+
+                <!-- Columnas 12 a 80 -->
+                <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                    <span class="w-3 h-3 rounded-full bg-purple-500 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+                    <div>
+                        <strong class="text-purple-300 block mb-0.5">Columnas 12 - 80 (Área B)</strong>
+                        <span class="text-slate-400 text-[11px]">Margen B para <span class="text-purple-400 font-bold">sentencias ejecutables</span>, verbos y cláusulas (<code class="text-sky-400">PIC</code>, <code class="text-sky-400">MOVE</code>).</span>
+                    </div>
+                </div>
+
+            </div>
+        </details>
+    `;
+}
+
 // Función para alternar la visibilidad de la solución del rompecabezas
 function toggleSolution() {
     const solutionDiv = document.getElementById('solution-container');
@@ -171,11 +301,13 @@ function loadLesson(lessonId) {
                         </p>
                         <p class="text-xs text-slate-400">
                             Se diseñó en 1959 como un lenguaje de programación de alto nivel enfocado en el procesamiento de datos comerciales y financieros. El primer programa se ejecutó con éxito en diciembre de 1960 en equipos Mainframe pioneros como la <strong class="text-sky-300">UNIVAC II</strong> y la <strong class="text-sky-300">RCA 501</strong>.<br><br>
-                            Estas macrocomputadoras utilizaban salas enteras, almacenamiento en cintas magnéticas y tarjetas perforadas, y una memoria de núcleos magnéticos de apenas unos pocos kilobytes. Herencias directas de esta época son las líneas de código estructuradas en un ancho fijo de <strong class="text-amber-300">80 columnas</strong> y el uso obligatorio del punto y los números de nivel.
+                            Estas macrocomputadoras utilizaban salas enteras, almacenamiento en cintas magnéticas, tarjetas perforadas y una memoria de núcleos magnéticos de apenas unos pocos kilobytes.<br><br>
+                            Herencias directas de esta época son las líneas de código estructuradas en un ancho fijo de <strong class="text-amber-300">80 columnas</strong> y el uso obligatorio del punto y los números de nivel.<br><br>
+                            A diferencia de otros lenguajes, que a veces sufren de errores de redondeo por el uso de punto flotante binario, <b>COBOL</b> utiliza <b>aritmética decimal empaquetada</b>, garantizando una <b>precisión absoluta</b> hasta el último centavo.
                         </p>
                     </div>
-                    <div class="flex justify-center">
-                        <img src="./assets/univacii.svg" alt="UNIVAC Mainframe" class="max-h-56 w-auto rounded-xl border border-slate-800 shadow-lg object-contain bg-slate-900/50 p-2" onerror="this.style.display='none';">
+                    <div class="flex justify-center bubble-card" style="--bubble-opacity: 0.08;">
+                        <img src="./assets/univacii.svg" alt="UNIVAC Mainframe" class="max-h-56 w-auto" onerror="this.style.display='none';">
                     </div>
                 </div>
 
@@ -217,33 +349,9 @@ function loadLesson(lessonId) {
 <span class="text-slate-500">000090</span>     <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
 </div>
 
-                <div class="space-y-3 pt-2">
-                    <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
-                        <i class="fa-solid fa-list-check text-sky-400"></i> Documentación Exhaustiva Línea por Línea
-                    </h3>
-                    <div class="grid gap-3 text-xs">
-                        <div class="p-3 bg-slate-950/80 border-l-4 border-slate-500 rounded-r-lg space-y-1">
-                            <div class="font-mono font-bold text-slate-200">Líneas 000010 - 000030: Encabezado de Comentario</div>
-                            <p class="text-slate-400"><strong class="text-amber-400">Columna 7 (*):</strong> Operador de comentario. Desactiva la línea para el compilador.</p>
-                        </div>
-                        <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg space-y-1">
-                            <div class="font-mono font-bold text-sky-300">Línea 000040: IDENTIFICATION DIVISION.</div>
-                            <p class="text-slate-400"><strong class="text-sky-400">Área A (Col 8):</strong> Declaración de la primera división obligatoria. Cierra obligatoriamente con punto (.).</p>
-                        </div>
-                        <div class="p-3 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-lg space-y-1">
-                            <div class="font-mono font-bold text-purple-300">Línea 000050: PROGRAM-ID. LEC0101.</div>
-                            <p class="text-slate-400"><strong class="text-purple-400">Sintaxis:</strong> Define el nombre único del programa ejecutable.</p>
-                        </div>
-                        <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg space-y-1">
-                            <div class="font-mono font-bold text-sky-300">Línea 000060 - 000070: PROCEDURE DIVISION. / INICIO.</div>
-                            <p class="text-slate-400"><strong class="text-sky-400">Área A:</strong> Tercera división obligatoria que aloja la lógica ejecutable.</p>
-                        </div>
-                        <div class="p-3 bg-slate-950/80 border-l-4 border-emerald-400 rounded-r-lg space-y-1">
-                            <div class="font-mono font-bold text-emerald-300">Líneas 000080 - 000090: DISPLAY y STOP RUN.</div>
-                            <p class="text-slate-400"><strong class="text-slate-200">Área B (Col 12):</strong> <strong class="text-purple-400">DISPLAY</strong> imprime en pantalla y <strong class="text-purple-400">STOP RUN</strong> finaliza el proceso.</p>
-                        </div>
-                    </div>
-                </div>
+<!-- BLOQUE REUTILIZABLE DEL GLOSARIO -->
+            ${getCobolDocumentationBlock()}
+
             </div>
         `;
     } else if (lessonId === '1.2') {
@@ -290,6 +398,9 @@ function loadLesson(lessonId) {
 <span class="text-slate-500">000110</span>     <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-emerald-400">WS-TEXTO</span>.
 <span class="text-slate-500">000120</span>     <span class="text-sky-400 font-semibold">STOP RUN</span>.</code></pre>
 </div>
+
+<!-- BLOQUE REUTILIZABLE DEL GLOSARIO -->
+            ${getCobolDocumentationBlock()}
 
             </div>
         `;
@@ -355,11 +466,13 @@ function loadLesson(lessonId) {
                     Es momento de consolidar lo aprendido. Revisa el glosario oficial de colores, resuelve el rompecabezas lógico y consulta la solución cuando estés listo.
                 </p>
 
+                        <!-- Bloque de Documentación -->
                 <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5 space-y-4">
                     <h3 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
                         <i class="fa-solid fa-palette text-sky-400"></i> Glosario Visual de Sintaxis COBOL
                     </h3>
                     <div class="grid sm:grid-cols-2 gap-3 text-xs">
+                        <!-- 1. Palabras Reservadas y Verbos -->
                         <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
                             <span class="w-3 h-3 rounded-full bg-sky-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(56,189,248,0.5)]"></span>
                             <div>
@@ -368,6 +481,7 @@ function loadLesson(lessonId) {
                             </div>
                         </div>
 
+                        <!-- 2. Comentarios y Documentación -->
                         <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
                             <span class="w-3 h-3 rounded-full bg-purple-600 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(192,132,252,0.5)]"></span>
                             <div>
@@ -376,6 +490,7 @@ function loadLesson(lessonId) {
                             </div>
                         </div>
 
+                        <!-- 3. Literales Alfanuméricos (Strings) -->
                         <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
                             <span class="w-3 h-3 rounded-full bg-pink-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(244,114,182,0.5)]"></span>
                             <div>
@@ -384,6 +499,7 @@ function loadLesson(lessonId) {
                             </div>
                         </div>
 
+                        <!-- 4. Etiquetas y Párrafos -->
                         <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
                             <span class="w-3 h-3 rounded-full bg-amber-300 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(252,211,77,0.5)]"></span>
                             <div>
@@ -391,8 +507,79 @@ function loadLesson(lessonId) {
                                 <span class="text-slate-400 text-[11px]">En tono <span class="text-amber-300 font-bold">Amarillo</span>, funcionan como puntos de anclaje.</span>
                             </div>
                         </div>
+
+                        <!-- 5. Nombre del Programa -->
+                        <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                            <span class="w-3 h-3 rounded-full bg-slate-100 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(241,245,249,0.5)]"></span>
+                            <div>
+                                <strong class="text-slate-100 block mb-0.5">Nombre del Programa</strong>
+                                <span class="text-slate-400 text-[11px]">En tono <span class="text-slate-100 font-bold">Blanco</span>, identifica el módulo o programa (ej. <code class="text-slate-200">EJEMPLOPIC</code>).</span>
+                            </div>
+                        </div>
+
+                        <!-- 6. Variables y Data Names -->
+                        <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                            <span class="w-3 h-3 rounded-full bg-emerald-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(52,211,153,0.5)]"></span>
+                            <div>
+                                <strong class="text-emerald-300 block mb-0.5">Variables y Data Names</strong>
+                                <span class="text-slate-400 text-[11px]">En tono <span class="text-emerald-400 font-bold">Verde</span>, corresponden a nombres de campos y registros.</span>
+                            </div>
+                        </div>
+
+                        <!-- 7. Cláusulas PIC y Tipos -->
+                        <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800 col-span-full sm:col-span-1">
+                            <span class="w-3 h-3 rounded-full bg-pink-300/70 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(244,114,182,0.3)]"></span>
+                            <div>
+                                <strong class="text-pink-200/90 block mb-0.5">Cláusulas PIC y Tipos</strong>
+                                <span class="text-slate-400 text-[11px]">En <span class="text-pink-200/90 font-bold">Rosa Tenue</span>, definen la estructura y máscara (ej. <code class="text-pink-200">X(15)</code>, <code class="text-pink-200">9(02)</code>).</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                        <!-- Mini Bloque columnas -->
+                        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5 space-y-4">
+                            <h3 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-columns text-sky-400"></i> Distribución de Columnas (Formato Clásico COBOL)
+                            </h3>
+                            <div class="grid sm:grid-cols-2 gap-3 text-xs">
+                                <!-- 1. Columnas 1 a 6 -->
+                                <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                                    <span class="w-3 h-3 rounded-full bg-slate-500 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(100,116,139,0.5)]"></span>
+                                    <div>
+                                        <strong class="text-slate-300 block mb-0.5">Columnas 1 - 6</strong>
+                                        <span class="text-slate-400 text-[11px]">Área de <span class="text-slate-200 font-bold">Secuencia</span>. Utilizada tradicionalmente para numerar líneas.</span>
+                                    </div>
+                                </div>
+
+                                <!-- 2. Columna 7 -->
+                                <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                                    <span class="w-3 h-3 rounded-full bg-amber-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(251,191,36,0.5)]"></span>
+                                    <div>
+                                        <strong class="text-amber-300 block mb-0.5">Columna 7</strong>
+                                        <span class="text-slate-400 text-[11px]">Área de <span class="text-amber-300 font-bold">Indicador</span>. El asterisco (<code class="text-amber-200">*</code>) denota comentarios.</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Columnas 8 a 11 -->
+                                <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                                    <span class="w-3 h-3 rounded-full bg-emerald-400 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(2,132,199,0.5)]"></span>
+                                    <div>
+                                        <strong class="text-emerald-300 block mb-0.5">Columnas 8 - 11 (Área A)</strong>
+                                        <span class="text-slate-400 text-[11px]">Margen A para <span class="text-emerald-300 font-bold">Divisiones, Secciones</span> y nivel 01.</span>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Columnas 12 a 80 -->
+                                <div class="flex items-start gap-2.5 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+                                    <span class="w-3 h-3 rounded-full bg-purple-500 mt-0.5 flex-shrink-0 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+                                    <div>
+                                        <strong class="text-purple-300 block mb-0.5">Columnas 12 - 80 (Área B)</strong>
+                                        <span class="text-slate-400 text-[11px]">Margen B para <span class="text-purple-400 font-bold">sentencias ejecutables</span>, verbos y cláusulas (<code class="text-sky-400">PIC</code>, <code class="text-sky-400">MOVE</code>).</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Bloque de Documentación -->
 
                 <div class="bg-slate-950/80 border border-purple-900/40 rounded-xl p-5 space-y-4 shadow-lg">
                     <div class="flex items-center justify-between border-b border-slate-800 pb-3">
@@ -410,7 +597,7 @@ function loadLesson(lessonId) {
                             <span class="text-[10px] text-slate-500">División inicial</span>
                         </div>
                         <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
-                            <span>2. [ ? ] <strong class="text-sky-400">PROGRAM-ID. HOLAMUNDO.</strong></span>
+                            <span>2. [ ? ] <strong class="text-sky-400">PROGRAM-ID. </strong><strong class="text-sky-100">HOLAMUNDO.</strong></span>
                             <span class="text-[10px] text-slate-500">Identificador del programa</span>
                         </div>
                         <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
@@ -418,11 +605,11 @@ function loadLesson(lessonId) {
                             <span class="text-[10px] text-slate-500">División de procedimientos</span>
                         </div>
                         <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
-                            <span>4. [ ? ] <strong class="text-sky-400">INICIO-PROGRAMA.</strong></span>
+                            <span>4. [ ? ] <strong class="text-amber-400">INICIO-PROGRAMA.</strong></span>
                             <span class="text-[10px] text-slate-500">Etiqueta / Párrafo inicial</span>
                         </div>
                         <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
-                            <span>5. [ ? ] <strong class="text-sky-400">DISPLAY "¡Hola Mundo!"</strong></span>
+                            <span>5. [ ? ] <strong class="text-sky-400">DISPLAY </strong><strong class="text-pink-400">"¡Hola Mundo desde GnuCOBOL y Mainframe!"</strong></span>
                             <span class="text-[10px] text-slate-500">Salida en pantalla</span>
                         </div>
                         <div class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 flex items-center justify-between">
@@ -473,7 +660,7 @@ function loadLesson(lessonId) {
                     <i class="cobol-comment fa-solid fa-feather"></i><span class="cobol-comment font-bold"> Históricamente:</span>
                     <p class="text-slate-400 text-xs leading-relaxed">
 
-                       <b>COBOL</b> nació bajo <b>restricciones extremas</b> de <b>hardware</b>, su gestión de <b>memoria</b> se diseñó como un <span class="text-gold-900 font-extrabold strong">bloque estático</span> y <b>contiguo</b> de bytes preasignado en tiempo de compilación dentro de la <b>WORKING-STORAGE SECTION</b>. Cada variable ocupaba un desplazamiento (offset) fijo en el búfer de memoria.
+                       <b>COBOL</b> nació bajo <b>restricciones extremas</b> de <b>hardware</b>, su gestión de <b>memoria</b> se diseñó como un <span class="text-gold-900 font-extrabold strong">bloque estático</span> y <b>contiguo</b> de bytes preasignado en tiempo de compilación dentro de la <b>WORKING-STORAGE SECTION</b>. Cada variable ocupaba un desplazamiento <b><i>(offset)</i></b> fijo en el búfer de memoria.
 
                     </p>
                 </div>
@@ -483,8 +670,8 @@ function loadLesson(lessonId) {
                     <div class="space-y-4 text-slate-300 text-sm leading-relaxed">
 
                         <p class="text-slate-400 text-xs leading-relaxed">
-                            Imagina que la memoria <span class="text-white-900 font-extrabold">RAM</span> de la computadora es una enorme tira de papel continua (o una cinta métrica gigante). COBOL no es como Python o JavaScript donde tú creas una variable llamada nombre y la computadora mágicamente le busca un lugar; No, en COBOL tú agarras esa tira gigante y dices: <span class="cobol-comment font-bold italic">"A ver, esta sección mide 50 bytes, esta otra 10, y yo te voy a decir exactamente qué vive en dónde"</span>.<br>
-                            Los niveles no son sino reglas de jerarquía y anidación: <br>
+                            Imagina que la memoria <span class="text-white-900 font-extrabold">RAM</span> de la computadora es una enorme tira de papel continua (o una cinta métrica gigante). COBOL no es como Python o JavaScript, donde tú creas una variable y la computadora mágicamente le busca un lugar, y la tira de papel crece, o se encoge y las variables flotan libremente; No, en <b>COBOL</b> tú agarras esa tira gigante y dices: <span class="cobol-comment font-bold italic">"A ver, esta sección mide 50 bytes, esta otra 10, y yo te voy a decir exactamente qué vive en dónde"</span>.<br><br>
+                            Los niveles de datos no son sino reglas de jerarquía y anidación: <br>
 
                         </p>
                             <ul class="list-disc list-inside bg-slate-950/80 text-slate-300 text-xs leading-relaxed space-y-1">
@@ -493,7 +680,7 @@ function loadLesson(lessonId) {
                                 <li class="text-amber-400"><span class="text-slate-400">Y tienes un Post-it que no está en ninguna caja <span class="text-amber-400 font-bpld">(Nivel 77)</span>.</span></li>
                             </ul>
                     </div>
-                    <div class="flex justify-center">
+                    <div class="flex justify-center bubble-card" style="--bubble-opacity: 0.08;">
                     <img src="./assets/matrk.svg" alt="Estructura de Memoria COBOL"
                     class="max-h-56 w-auto" onerror="this.style.display='none';">
                     </div>
@@ -627,6 +814,9 @@ function loadLesson(lessonId) {
                 </div>
             </div>
 
+            <!-- BLOQUE REUTILIZABLE DEL GLOSARIO -->
+                        ${getCobolDocumentationBlock()}
+
         </div>
 
 
@@ -683,6 +873,10 @@ function loadLesson(lessonId) {
 <span class="text-slate-500">000130</span>     <span class="text-sky-400 font-semibold">05</span> <span class="text-emerald-400">WS-MES</span>          <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(2)</span>.
 <span class="text-slate-500">000140</span>     <span class="text-sky-400 font-semibold">05</span> <span class="text-emerald-400">WS-DIA</span>          <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(2)</span>.</code></pre>
 </div>
+
+<!-- BLOQUE REUTILIZABLE DEL GLOSARIO -->
+            ${getCobolDocumentationBlock()}
+
             </div>
         `;
     }

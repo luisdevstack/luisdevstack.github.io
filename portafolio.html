@@ -7,7 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Three.js e Importmap para el efecto Stardust -->
     <script type="importmap">
     {
@@ -46,7 +46,7 @@
                 <!-- Logo e Identidad -->
                 <a href="./index.html" class="flex items-center space-x-2.5 pl-2">
                     <div class="w-7 h-7 bg-sky-500/20 border border-sky-400/30 rounded-full flex items-center justify-center font-bold text-sky-400 text-xs shadow-[0_0_10px_rgba(56,189,248,0.3)] flex-shrink-0">
-                        &lt;/&gt;
+                        <img src="./assets/favicon.png" alt="Fondo Arquitectura DataLab" onerror="this.src='./assets/favicon.svg';">
                     </div>
                     <span class="hidden sm:inline font-bold text-xs sm:text-sm tracking-tight animated-gradient-text">
                         Luis Alberto Moreno
@@ -110,9 +110,9 @@
         <div class="grid md:grid-cols-3 gap-6">
 
             <!-- TARJETA 1: DATA PIPELINES -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between hover:border-sky-400/50 transition">
+            <div class="bubble-card rounded-2xl p-6 flex flex-col justify-between hover:border-sky-400/50 transition" style="--bubble-opacity: 0.08;">
                 <div class="space-y-3">
-                    <div class="text-sky-400 text-xs font-bold font-mono tracking-wider">DATA PIPELINES</div>
+                    <div class="text-sky-400 text-xs font-bold font-mono tracking-wider"><i class="fa-solid fa-arrows-split-up-and-left"></i> DATA PIPELINES</div>
                     <h3 class="text-xl font-bold text-white">Detección de Outliers con Snowpark</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">
                         Pipeline para el cálculo de tasas por minuto y detección de outliers estadísticos en datasets de movilidad pública.
@@ -140,9 +140,9 @@
             </div>
 
             <!-- TARJETA 2: DISEÑO VERTICA -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-400/50 transition">
+            <div class="bubble-card rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-400/50 transition" style="--bubble-opacity: 0.08;">
                 <div class="space-y-3">
-                    <div class="text-cyan-400 text-xs font-bold font-mono tracking-wider">DISEÑO</div>
+                    <div class="text-cyan-400 text-xs font-bold font-mono tracking-wider"><i class="fa-solid fa-paint-roller"></i> TUNING</div>
                     <h3 class="text-xl font-bold text-white">Vertica Projection Designing</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">
                         Extracción, Carga y Transformación en bases de datos columnares con optimización de storage y tuple mover.
@@ -163,14 +163,17 @@
 
                 <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-500 font-mono">
                     <span>Vertica · SQL</span>
-                    <span class="text-cyan-400 font-semibold">Detalles →</span>
+                    <button onclick="const details = this.closest('.bubble-card').querySelector('details'); details.open = !details.open;" class="text-sky-400 hover:underline flex items-center gap-1 font-semibold">
+                        Detalles →
+                    </button>
                 </div>
             </div>
 
+
             <!-- TARJETA 3: EDUCATION / MAINFRAME -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between hover:border-purple-400/50 transition">
+            <div class="bubble-card rounded-2xl p-6 flex flex-col justify-between hover:border-purple-400/50 transition" style="--bubble-opacity: 0.08;">
                 <div class="space-y-3">
-                    <div class="text-purple-400 text-xs font-bold font-mono tracking-wider">EDUCATION / MAINFRAME</div>
+                    <div class="text-purple-400 text-xs font-bold font-mono tracking-wider"><i class="fa-solid fa-microscope"></i> EDUCACIÓN</div>
                     <h3 class="text-xl font-bold text-white">COBOL Interactive Academy</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">
                         Plataforma interactiva de aprendizaje para el lenguaje COBOL con compilador local y guías de arquitectura.
@@ -206,7 +209,7 @@
     </main>
 
     <footer class="bg-slate-950 border-t border-slate-800/80 py-6 text-center text-xs text-slate-500 relative z-10">
-        <p>© 2026 Luis Alberto Moreno · Actuario y Data Engineer</p>
+        <p>© 2026 Luis Alberto Moreno · Ciencia Actuarial e Ingeniería de Datos</p>
     </footer>
 
     <!-- SCRIPT EXCLUSIVO DEL EFECTO STARDUST 3D -->
