@@ -692,8 +692,8 @@ function loadLesson(lessonId) {
                             <i class="fa-solid fa-layer-group"></i> Nivel 01 (Registros Principales)
                         </div>
                         <p class="text-slate-400">
-                            Define el bloque completo de datos. Si tú le pides a COBOL que mueva, imprima o guarde un 01, la computadora agarra toda la caja con todo lo que tiene adentro de un solo golpe.<br>
-                            Ejemplo informal: 01 CLIENTE. (La caja entera que contiene la ficha de una persona: su nombre, su edad, su dirección).
+                            Define el <b>bloque completo</b> de datos. Si tú le pides a COBOL que mueva, imprima o guarde un 01, la computadora agarra toda la caja con todo lo que tiene adentro de un solo golpe. Se rige por la <b>especificación</b> del <b>lenguaje COBOL</b>. <b>Todo</b> registro individual o <b>grupo principal</b> <b>debe comenzar</b> con el <b>nivel 01</b>. Debe iniciar siempre en el <b>Área A</b> del <b>código</b> de <b>COBOL</b>.<br><br>
+                            Ej: 01 CLIENTE. (La caja entera que contiene la ficha de una persona: su nombre, su edad, su dirección).
                         </p>
                     </div>
 
@@ -702,8 +702,9 @@ function loadLesson(lessonId) {
                             <i class="fa-solid fa-sitemap"></i> Niveles 02 al 49 (Subcampos)
                         </div>
                         <p class="text-slate-400">
-                            Si el nivel 01 es CLIENTE, los niveles 05 son las cosas que están adentro: el nombre, el apellido, la calle. Si quieres acceder a ellos individualmente, le dices a COBOL: "Oye, búscame el 05 que está dentro del 01".<br>
-                            Ejemplo informal: Dado que el cliente es 01, su edad vendría a ser un elemento 05.
+                            Si el nivel 01 es <b>CLIENTE</b>, los niveles 05 son las cosas que están adentro: el nombre, el apellido, la calle. En la industria <b>Mainframe</b>, se estableció el <b>acuerdo de estilo</b> de <b>incrementar</b> de 5 en 5. Si quieres acceder a ellos individualmente, le dices a COBOL: "Oye, búscame el 05 que está dentro del 01".<br><br>
+                            Ej: El cliente es 01, el nombre del cliente sería 05, su fecha de nacimiento un 10 y el año de nacimiento un 15.<br><br>
+                            Dado que es una acuerdo de estilo, esto también sería válido: Cliente: 01, Nombre: 02, Fecha 03, Año: 04.
                         </p>
                     </div>
 
@@ -712,11 +713,61 @@ function loadLesson(lessonId) {
                             <i class="fa-solid fa-tag"></i> Nivel 77 (Variables Independientes)
                         </div>
                         <p class="text-slate-400">
-                            Es una variable suelta que creas para hacer cálculos rápidos (un contador, un acumulador, un interruptor de "sí o no"). No tiene hijos, no tiene padres, no pertenece a ninguna estructura familiar. Está ahí sola en la memoria.<br>
-                            Ejemplo informal: Un numerito aislado que usas para contar cuántas veces pasó algo, sin importarle los clientes.
+                            Es una variable suelta que creas para hacer cálculos rápidos (un contador, un acumulador, un interruptor de "sí o no"). No tiene hijos, no tiene padres, no pertenece a ninguna estructura familiar. Está ahí sola en la memoria.<br><br>
+                            Ej: Un numerito aislado que usas para contar cuántas veces pasó algo, sin importarle los clientes.
                         </p>
                     </div>
                 </div>
+
+<div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto shadow-lg">
+    <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed p-5 min-w-max block"><code class="text-slate-300 block"><span class="text-slate-500">000010</span><span class="cobol-comment">*================================================================*</span>
+<span class="text-slate-500">000020</span><span class="cobol-comment">* DEMOSTRACIÓN DE LA DECLARACIÓN DE NIVELES DE DATOS            *</span>
+<span class="text-slate-500">000030</span><span class="cobol-comment">*================================================================*</span>
+<span class="text-slate-500">000040</span> <span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
+<span class="text-slate-500">000050</span><span class="cobol-comment">* División principal para identificar el programa</span>
+<span class="text-slate-500">000060</span> <span class="text-sky-400 font-semibold">PROGRAM-ID.</span> DEMONIV.
+<span class="text-slate-500">000070</span><span class="cobol-comment">* Nombre del programa ejecutable</span>
+<span class="text-slate-500">000080</span> <span class="text-sky-400 font-semibold">DATA DIVISION.</span>
+<span class="text-slate-500">000090</span><span class="cobol-comment">* División reservada para la definición de la memoria RAM</span>
+<span class="text-slate-500">000100</span> <span class="text-sky-400 font-semibold">WORKING-STORAGE SECTION.</span>
+<span class="text-slate-500">000110</span><span class="cobol-comment">* Bloque estático y contiguo preasignado en tiempo de compilación</span>
+<span class="text-slate-500">000120</span> <span class="text-sky-400 font-semibold">77</span>  <span class="text-emerald-400">WS-CONTADOR</span>             <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(03)</span> <span class="text-sky-400 font-semibold">VALUE</span> <span class="text-purple-300">000</span>.
+<span class="text-slate-500">000130</span><span class="cobol-comment">* NIVEL 77: Post-it suelto. Variable independiente sin jerarquía</span>
+<span class="text-slate-500">000140</span> <span class="text-sky-400 font-semibold">01</span>  <span class="text-emerald-400">WS-CLIENTE</span>.
+<span class="text-slate-500">000150</span><span class="cobol-comment">* NIVEL 01: Caja de cartón. Registro principal en Área A</span>
+<span class="text-slate-500">000160</span>     <span class="text-sky-400 font-semibold">05</span>  <span class="text-emerald-400">WS-NOMBRE</span>           <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">X(30)</span> <span class="text-sky-400 font-semibold">VALUE</span> <span class="text-pink-400">"JUAN PEREZ"</span>.
+<span class="text-slate-500">000170</span><span class="cobol-comment">*    NIVEL 05: Subcampo primario dentro de la caja CLIENTE</span>
+<span class="text-slate-500">000180</span>     <span class="text-sky-400 font-semibold">05</span>  <span class="text-emerald-400">WS-FECHA-NACIMIENTO</span>.
+<span class="text-slate-500">000190</span><span class="cobol-comment">*    NIVEL 05: Caja intermedia que agrupa los campos de la fecha</span>
+<span class="text-slate-500">000200</span>         <span class="text-sky-400 font-semibold">10</span>  <span class="text-emerald-400">WS-DIA</span>         <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(02)</span> <span class="text-sky-400 font-semibold">VALUE</span> <span class="text-purple-300">15</span>.
+<span class="text-slate-500">000210</span><span class="cobol-comment">*       NIVEL 10: Subcampo hijo que almacena el día</span>
+<span class="text-slate-500">000220</span>         <span class="text-sky-400 font-semibold">10</span>  <span class="text-emerald-400">WS-MES</span>         <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(02)</span> <span class="text-sky-400 font-semibold">VALUE</span> <span class="text-purple-300">09</span>.
+<span class="text-slate-500">000230</span><span class="cobol-comment">*       NIVEL 10: Subcampo hijo que almacena el mes</span>
+<span class="text-slate-500">000240</span>         <span class="text-sky-400 font-semibold">10</span>  <span class="text-emerald-400">WS-ANIO</span>.
+<span class="text-slate-500">000250</span><span class="cobol-comment">*       NIVEL 10: Subgrupo contenedor para descomponer el año</span>
+<span class="text-slate-500">000260</span>             <span class="text-sky-400 font-semibold">15</span>  <span class="text-emerald-400">WS-SIGLO</span>   <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(02)</span> <span class="text-sky-400 font-semibold">VALUE</span> <span class="text-purple-300">20</span>.
+<span class="text-slate-500">000270</span><span class="cobol-comment">*          NIVEL 15: Subcampo nieto para los primeros dos dígitos</span>
+<span class="text-slate-500">000280</span>             <span class="text-sky-400 font-semibold">15</span>  <span class="text-emerald-400">WS-DECADA</span>  <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(02)</span> <span class="text-sky-400 font-semibold">VALUE</span> <span class="text-purple-300">26</span>.
+<span class="text-slate-500">000285</span><span class="cobol-comment">*          NIVEL 15: Subcampo nieto para los últimos dos dígitos</span>
+<span class="text-slate-500">000290</span> <span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
+<span class="text-slate-500">000300</span><span class="cobol-comment">* División de instrucciones ejecutables</span>
+<span class="text-slate-500">000310</span> <span class="text-amber-300">MAIN-PARAGRAPH.</span>
+<span class="text-slate-500">000320</span><span class="cobol-comment">* Párrafo de inicio del programa</span>
+<span class="text-slate-500">000330</span>     <span class="text-sky-400 font-semibold">ADD</span> <span class="text-purple-300">1</span> <span class="text-sky-400 font-semibold">TO</span> <span class="text-emerald-400">WS-CONTADOR</span>.
+<span class="text-slate-500">000340</span><span class="cobol-comment">* Operación sobre la variable aislada (Nivel 77)</span>
+<span class="text-slate-500">000350</span>     <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"CONTADOR (77): "</span> <span class="text-emerald-400">WS-CONTADOR</span>.
+<span class="text-slate-500">000360</span><span class="cobol-comment">* Imprime el valor del Post-it independiente</span>
+<span class="text-slate-500">000370</span>     <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"CAJA ENTERA (01): "</span> <span class="text-emerald-400">WS-CLIENTE</span>.
+<span class="text-slate-500">000380</span><span class="cobol-comment">* Imprime toda la caja (Nivel 01) y sus subcampos de un solo golpe</span>
+<span class="text-slate-500">000390</span>     <span class="text-sky-400 font-semibold">DISPLAY</span> <span class="text-pink-400">"SUBCAMPO (15): "</span> <span class="text-emerald-400">WS-SIGLO</span>.
+<span class="text-slate-500">000400</span><span class="cobol-comment">* Accede individualmente al subcampo Nivel 15</span>
+<span class="text-slate-500">000410</span>     <span class="text-sky-400 font-semibold">STOP RUN</span>.
+<span class="text-slate-500">000420</span><span class="cobol-comment">* Fin de la ejecución del programa</span></code></pre>
+</div>
+
+<!-- BLOQUE REUTILIZABLE DEL GLOSARIO -->
+            ${getCobolDocumentationBlock()}
+
             </div>
         `;
     } else if (lessonId === '2.2') {
@@ -759,7 +810,7 @@ function loadLesson(lessonId) {
 
                 <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-2">
                     <span class="font-bold text-purple-300 block text-sm">Alfabéticos: (A)</span>
-                    <p class="text-slate-400">Únicamernte acepta letras, [de la A a la Z y espacios]. Honestamente, hoy en día casi no se usa; los programadores prefieren usar X para el texto.</p>
+                    <p class="text-slate-400">Únicamente acepta letras, [de la A a la Z y espacios]. Honestamente, hoy en día casi no se usa; los programadores prefieren usar X para el texto.</p>
                 </div>
             </div>
 
@@ -829,26 +880,182 @@ function loadLesson(lessonId) {
                     <span class="text-[10px] bg-purple-950 text-purple-300 border border-purple-800 px-2.5 py-0.5 rounded font-mono">Inicialización</span>
                 </div>
 
-                <h2 class="text-2xl font-bold text-white tracking-tight">Literales y Valores Figurativos</h2>
+                <h2 class="text-2xl font-bold text-white tracking-tight">Literales y Literales Figurativos</h2>
 
-                <p class="text-slate-300 text-sm leading-relaxed">
-                    Los valores figurativos en COBOL son palabras clave predefinidas que permiten inicializar bloques de memoria completos sin necesidad de escribir literales explícitos.
-                </p>
+                <div class="relative p-4 bg-slate-950/80 rounded-r-xl space-y-2 border-torna">
+                    <i class="cobol-comment fa-solid fa-book-open-reader"></i><span class="cobol-comment font-bold"> Antecedentes</span>
+                    <p class="text-slate-400 text-xs leading-relaxed">
 
-                <div class="grid gap-3 text-xs">
-                    <div class="p-3 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-lg">
-                        <strong class="text-purple-300 block font-mono text-sm">SPACES / SPACE</strong>
-                        <p class="text-slate-400">Llena el campo o variable completamente con espacios en blanco (caracteres de relleno estándar).</p>
-                    </div>
-                    <div class="p-3 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-lg">
-                        <strong class="text-sky-300 block font-mono text-sm">ZEROS / ZERO</strong>
-                        <p class="text-slate-400">Rellena la variable numérica o alfanumérica con ceros ('0').</p>
-                    </div>
-                    <div class="p-3 bg-slate-950/80 border-l-4 border-amber-400 rounded-r-lg">
-                        <strong class="text-amber-300 block font-mono text-sm">HIGH-VALUES / LOW-VALUES</strong>
-                        <p class="text-slate-400">Representan el valor hexadecimal más alto (xFF) y más bajo (x00) del conjunto de caracteres del sistema, muy usados en control de corte de control.</p>
-                    </div>
+                    La existencia de los literales y los literales figurativos responde, directamente, a la arquitectura de las computadoras de mediados del siglo XX y a la filosofía del lenguaje de ser legible como  <b><i>inglés empresarial</i></b>. En los <b>mainframes</b> antiguos, las zonas de <b>memoria</b> no inicializadas contenían "basura" <b>(datos residuales de otros procesos)</b>. La RAM conserva los patrones de bits de la última electricidad o magnetismo que pasó por ella; la región de memoria RAM donde trabajó quedaba liberada en el sistema operativo, pero los datos binarios seguían grabados físicamente en los transistores o núcleos de ferrita. Se necesitaba una forma rápida, estándar y sin consumo extra de almacenamiento en  blanquear grandes estructuras de datos <b><i>(RECORDS)</i></b> antes de procesar archivos.<br><br>
+                    Para entenderlo mejor, imagina que eres un profesor y al entrar a dar <span class="silver-gradient-text font-bold italic">clase:: [Programa]</span>, el <span class="text-sky-300 font-bold italic">pizarrón:: [Memoria]</span> contiene los apuntes de la clase previa, el problema es que esos apuntes interfieren con tu clase y necesitas borrarlos; los <span class="text-red-300 font-bold italic">literales</span> vendrían a ser el <span class="text-red-300 font-bold italic">borrador y plumón</span> para sobreescribir el pizarrón, mientras que los <span class="cobol-comment font-bold italic">literales figurativos</span> serían un <span class="cobol-comment font-bold italic">botón mágico que limpia el pizarrón por completo</span>.
+                    </p>
                 </div>
+
+<!-- Bloque demostrativo -->
+
+                    <!-- SPACES / SPACE -->
+                    <div class="bg-[#111827]/80 backdrop-blur-md border-l-4 border-purple-500 rounded-r-xl p-5 text-gray-200 shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-[#111827] fa-marker text-purple-400 text-sm"></i>
+                            <h3 class="font-bold text-sm text-purple-400 tracking-wide">SPACES / SPACE</h3>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed mb-3">
+                            Llena el campo o variable completamente con espacios en blanco (caracteres de relleno estándar).
+                        </p>
+                        <div class="bg-[#0B0F19] rounded-lg p-3 text-xs text-gray-400 border border-purple-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <span><strong class="text-purple-300">Tipo de dato:</strong> Alfanumérico (<code class="text-purple-400">PIC X</code>)</span>
+                            <span class="bg-purple-950/60 text-purple-300 px-2.5 py-1 rounded border border-purple-800/40"><i class="fa-solid fa-terminal mr-1.5"></i>MOVE SPACES TO WS-TEXTO</span>
+                        </div>
+                    </div>
+
+                    <!-- ZEROS / ZERO / ZEROES -->
+                    <div class="bg-[#111827]/80 backdrop-blur-md border-l-4 border-sky-500 rounded-r-xl p-5 text-gray-200 shadow-lg hover:shadow-sky-500/10 transition-all duration-300">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-[#111827] fa-hashtag text-sky-400 text-sm"></i>
+                            <h3 class="font-bold text-sm text-sky-400 tracking-wide">ZEROS / ZERO / ZEROES</h3>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed mb-3">
+                            Rellena la variable numérica o alfanumérica con ceros ('0'). Se adapta automáticamente al formato numérico (<code class="text-sky-300">COMP-3, binario o display</code>) sin provocar errores de tipo de dato.
+                        </p>
+                        <div class="bg-[#0B0F19] rounded-lg p-3 text-xs text-gray-400 border border-sky-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <span><strong class="text-sky-300">Tipo de dato:</strong> Numérico / Alfanumérico (<code class="text-sky-400">PIC 9</code> / <code class="text-sky-400">PIC X</code>)</span>
+                            <span class="bg-sky-950/60 text-sky-300 px-2.5 py-1 rounded border border-sky-800/40"><i class="fa-solid fa-terminal mr-1.5"></i>MOVE ZEROS TO WS-ACUMULADOR</span>
+                        </div>
+                    </div>
+
+                    <!-- HIGH-VALUES / LOW-VALUES -->
+                    <div class="bg-[#111827]/80 backdrop-blur-md border-l-4 border-amber-500 rounded-r-xl p-5 text-gray-200 shadow-lg hover:shadow-amber-500/10 transition-all duration-300">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-[#111827] fa-sort text-amber-400 text-sm"></i>
+                            <h3 class="font-bold text-sm text-amber-400 tracking-wide">HIGH-VALUES / LOW-VALUES</h3>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed mb-3">
+                            Representan el valor hexadecimal más alto (<code class="text-amber-300">X'FF'</code>) y más bajo (<code class="text-amber-300">X'00'</code>) del conjunto de caracteres del sistema. Son fundamentales para indicar fin de archivo (EOF) y control de cortes en procesos Batch.
+                        </p>
+                        <div class="bg-[#0B0F19] rounded-lg p-3 text-xs text-gray-400 border border-amber-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <span><strong class="text-amber-300">Uso común:</strong> Archivos, tablas y algoritmos de ordenamiento</span>
+                            <span class="bg-amber-950/60 text-amber-300 px-2.5 py-1 rounded border border-amber-800/40"><i class="fa-solid fa-terminal mr-1.5"></i>MOVE HIGH-VALUES TO REG-CLAVE</span>
+                        </div>
+                    </div>
+
+                    <!-- ALL 'literal' -->
+                    <div class="bg-[#111827]/80 backdrop-blur-md border-l-4 border-emerald-500 rounded-r-xl p-5 text-gray-200 shadow-lg hover:shadow-emerald-500/10 transition-all duration-300">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-[#111827] fa-repeat text-emerald-400 text-sm"></i>
+                            <h3 class="font-bold text-sm text-emerald-400 tracking-wide">ALL 'literal'</h3>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed mb-3">
+                            Repite una cadena o carácter especificado cíclicamente hasta llenar por completo la longitud de la variable receptora. Ideal para generar líneas divisoras o patrones en reportes.
+                        </p>
+                        <div class="bg-[#0B0F19] rounded-lg p-3 text-xs text-gray-400 border border-emerald-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <span><strong class="text-emerald-300">Tipo de dato:</strong> Alfanumérico (<code class="text-emerald-400">PIC X</code>)</span>
+                            <span class="bg-emerald-950/60 text-emerald-300 px-2.5 py-1 rounded border border-emerald-800/40"><i class="fa-solid fa-terminal mr-1.5"></i>MOVE ALL '-' TO WS-LINEA</span>
+                        </div>
+                    </div>
+
+                    <!-- QUOTES / QUOTE -->
+                    <div class="bg-[#111827]/80 backdrop-blur-md border-l-4 border-rose-500 rounded-r-xl p-5 text-gray-200 shadow-lg hover:shadow-rose-500/10 transition-all duration-300">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-[#111827] fa-quote-right text-rose-400 text-sm"></i>
+                            <h3 class="font-bold text-sm text-rose-400 tracking-wide">QUOTES / QUOTE</h3>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed mb-3">
+                            Representa el carácter de comilla simple o doble (según la configuración del compilador). Permite insertar comillas dentro de cadenas de texto sin romper la sintaxis del programa.
+                        </p>
+                        <div class="bg-[#0B0F19] rounded-lg p-3 text-xs text-gray-400 border border-rose-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <span><strong class="text-rose-300">Uso común:</strong> Archivos delimitados (CSV) y cadenas complejas</span>
+                            <span class="bg-rose-950/60 text-rose-300 px-2.5 py-1 rounded border border-rose-800/40"><i class="fa-solid fa-terminal mr-1.5"></i>MOVE QUOTE TO WS-DELIMITADOR</span>
+                        </div>
+                    </div>
+
+<!-- SECCIÓN VENTAJAS -->
+<div class="p-4 bg-slate-950/80 border-l-4 border-red-300 rounded-r-xl space-y-2">
+    <div class="font-bold text-red-300 text-sm flex items-center gap-1">
+        <i class="fa-solid fa-laptop-code"></i> Diferencias entre Literales y Figurativos
+    </div>
+    <p class="text-slate-400 text-xs leading-relaxed">
+    <b>Literales comunes (fijos):</b><br>
+    Tienen un valor y un tamaño estáticos explícitamente definidos por ti en el código.</p>
+
+            <ul class="list-disc list-inside bg-slate-950/80 text-slate-300 text-xs leading-relaxed space-y-1">
+            <li>'HOLA' siempre ocupará 4 bytes.</li>
+            <li>100 siempre representará el número cien.</li>
+            </ul>
+    <p class="text-slate-400 text-xs leading-relaxed">
+    <b>Literales figurativos (dinámicos/adaptativos):</b><br></p>
+    <p class="text-slate-100 text-xs leading-relaxed">
+    Son conceptos abstractos cuyos valores se generan dinámicamente y se adaptan en tamaño y tipo según la variable receptora. Si haces MOVE SPACES TO WS-CAMPO, el literal figurativo SPACES adoptará automáticamente la longitud del PIC de WS-CAMPO (ya sean 5 bytes, 100 bytes o 5000 bytes) y rellenará toda esa área.
+    </p>
+</div>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
+    <!-- Ventaja 1 -->
+    <div class="bg-navy p-8 rounded-2xl border border-lime-300/30 hover:border-lime-400/50 hover:shadow-xl hover:shadow-teal/5 transition-all group">
+        <div class="w-14 h-14 rounded-2xl bg-lime-500/10 flex items-center justify-center text-lime-400 text-2xl mb-6 group-hover:scale-10 group-hover:bg-lime-400/30 transition-all">
+            <i class="fa-solid fa-wrench"></i>
+        </div>
+        <h3 class="text-sm font-bold text-white mb-3">Mantenibilidad de Código</h3>
+        <p class="text-slate-300 text-xs leading-relaxed">
+            Si la definición de una variable cambia de <code class="font-mono text-teal">PIC X(50)</code> a <code class="font-mono text-teal">PIC X(200)</code>, un <code class="font-mono text-teal">MOVE SPACES</code> se ajusta automáticamente sin modificar el código fuente.
+        </p>
+    </div>
+
+    <!-- Ventaja 2 -->
+    <div class="bg-navy p-8 rounded-2xl border border-sky-300/30 hover:border-sky-400/50 hover:shadow-xl hover:shadow-teal/5 transition-all group">
+        <div class="w-14 h-14 rounded-2xl bg-sky-500/10 flex items-center justify-center text-blue-400 text-2xl mb-6 group-hover:scale-10 group-hover:bg-sky-400/30 transition-all">
+            <i class="fa-solid fa-globe"></i>
+        </div>
+        <h3 class="text-sm font-bold text-white mb-3">Portabilidad Multiplataforma</h3>
+        <p class="text-slate-300 text-xs leading-relaxed">
+            Figurativos como <code class="font-mono text-sky-400">HIGH-VALUES</code> y <code class="font-mono text-sky-400">LOW-VALUES</code> garantizan el comportamiento de ordenamiento sin importar si el entorno opera bajo codificación ASCII o EBCDIC.
+        </p>
+    </div>
+
+    <!-- Ventaja 3 -->
+    <div class="bg-navy p-8 rounded-2xl border border-purple-300/30 hover:border-purple-400/50 hover:shadow-xl hover:shadow-teal/5 transition-all group">
+        <div class="w-14 h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-400 text-2xl mb-6 group-hover:scale-10 group-hover:bg-purple-400/30 transition-all">
+            <i class="fa-solid fa-user-check"></i>
+        </div>
+        <h3 class="text-sm font-bold text-white mb-3">Prevención de Errores</h3>
+        <p class="text-slate-300 text-xs leading-relaxed">
+            Elimina la necesidad de escribir y contar manualmente largas cadenas de espacios o ceros (evita errores como escribir 19 espacios en lugar de 20).
+        </p>
+    </div>
+
+    <!-- Ventaja 4 -->
+    <div class="bg-navy p-8 rounded-2xl border border-amber-300/30 hover:border-amber-400/50 hover:shadow-xl hover:shadow-teal/5 transition-all group">
+        <div class="w-14 h-14 rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-400 text-2xl mb-6 group-hover:scale-10 group-hover:bg-amber-400/30 transition-all">
+            <i class="fa-solid fa-gauge-high"></i>
+        </div>
+        <h3 class="text-sm font-bold text-white mb-3">Optimización de Hardware</h3>
+        <p class="text-slate-300 text-xs leading-relaxed">
+            Los compiladores transforman palabras como <code class="font-mono text-amber-400">ZERO</code> o <code class="font-mono text-amber-400">SPACE</code> en instrucciones en ensamblador de muy bajo nivel para llenado ultra rápido de bloques de RAM.
+        </p>
+    </div>
+
+    <!-- Ventaja 5 -->
+    <div class="bg-navy p-8 rounded-2xl border border-emerald-300/30 hover:border-emerald-400/50 hover:shadow-xl hover:shadow-teal/5 transition-all group">
+        <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-2xl mb-6 group-hover:scale-10 group-hover:bg-emerald-400/30 transition-all">
+            <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3 class="text-sm font-bold text-white mb-3">Seguridad e Inicialización</h3>
+        <p class="text-slate-300 text-xs leading-relaxed">
+            Facilita la limpieza completa de campos, arreglos (<code class="font-mono text-emerald">OCCURS</code>) y estructuras complejas antes de procesar archivos, previniendo lecturas de datos basura.
+        </p>
+    </div>
+
+    <!-- Ventaja 6 -->
+    <div class="bg-navy p-8 rounded-2xl border border-rose-300/30 hover:border-rose-400/50 hover:shadow-xl hover:shadow-teal/5 transition-all group">
+        <div class="w-14 h-14 rounded-2xl bg-rose-500/10 flex items-center justify-center text-rose-400 text-2xl mb-6 group-hover:scale-10 group-hover:bg-rose-400/30  transition-all">
+            <i class="fa-solid fa-book-open"></i>
+        </div>
+        <h3 class="text-sm font-bold text-white mb-3">Expresividad Clara</h3>
+        <p class="text-slate-300 text-xs leading-relaxed">
+            Permite redactar código con un nivel de auto-documentación único en la industria: <code class="font-mono text-rose-400">MOVE ZEROS TO SALDO</code> expresa la intención directa del negocio.
+        </p>
+    </div>
+</div>
+
             </div>
         `;
     } else if (lessonId === '2.4') {
@@ -859,23 +1066,222 @@ function loadLesson(lessonId) {
                     <span class="text-[10px] bg-purple-950 text-purple-300 border border-purple-800 px-2.5 py-0.5 rounded font-mono">Optimización de Memoria</span>
                 </div>
 
-                <h2 class="text-2xl font-bold text-white tracking-tight">La Cláusula REDEFINES</h2>
+                <h2 class="text-2xl font-bold text-white tracking-tight">Representación en Memoria</h2>
 
-                <p class="text-slate-300 text-sm leading-relaxed">
-                    La cláusula <code>REDEFINES</code> permite que dos o más variables compartan exactamente el <strong>mismo espacio físico de memoria RAM</strong>, permitiendo interpretar los mismos bytes de formas distintas según el contexto del programa.
-                </p>
+                <div class="space-y-4">
 
-                <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto p-4 shadow-lg">
-<div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto shadow-lg">
-    <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed p-5 min-w-max block"><code class="text-slate-300 block"><span class="text-slate-500">000100</span><span class="text-sky-400 font-semibold"> 01</span> <span class="text-emerald-400">WS-FECHA-RAW</span>        <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">X(8)</span>.
-<span class="text-slate-500">000110</span><span class="text-sky-400 font-semibold"> 01</span> <span class="text-emerald-400">WS-FECHA-ESTRUCTURA</span> <span class="text-sky-400 font-semibold">REDEFINES</span> <span class="text-emerald-400">WS-FECHA-RAW</span>.
-<span class="text-slate-500">000120</span>     <span class="text-sky-400 font-semibold">05</span> <span class="text-emerald-400">WS-ANIO</span>         <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(4)</span>.
-<span class="text-slate-500">000130</span>     <span class="text-sky-400 font-semibold">05</span> <span class="text-emerald-400">WS-MES</span>          <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(2)</span>.
-<span class="text-slate-500">000140</span>     <span class="text-sky-400 font-semibold">05</span> <span class="text-emerald-400">WS-DIA</span>          <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(2)</span>.</code></pre>
-</div>
+                    <!-- CONTENEDOR PRINCIPAL: CONCEPTO GLOBAL -->
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-mauve-500 rounded-r-xl space-y-2">
+                        <div class="font-bold text-mauve-500 text-sm flex items-center gap-1">
+                            <i class="fa-solid fa-border-all"></i> Cláusulas de Definición de Datos (Retícula en Memoria)
+                        </div>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Continuemos con la analogía del pizarrón y definamos las cláusulas. <b>El Esquema de Diseño en Memoria:</b> Es el conjunto de reglas en la <code><span class="font-bold text-yellow-300">DATA DIVISION</span></code> que actúan como el plano arquitectónico del pizarrón. Definen la jerarquía de espacio, el tipo de cuadrícula, la técnica de codificación física y la inicialización de los datos antes de ejecutar el programa.
+                        </p>
+                    </div>
 
-<!-- BLOQUE REUTILIZABLE DEL GLOSARIO -->
-            ${getCobolDocumentationBlock()}
+                    <!-- CATEGORÍA 1: GEOMETRÍA Y LÍMITES -->
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-sky-300 rounded-r-xl space-y-2">
+                        <div class="font-bold text-sky-300 text-sm flex items-center gap-1">
+                            <i class="fa-solid fa-ruler-combined"></i> Cláusulas de Estructuración y Límites
+                        </div>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            <a href="javascript:void(0)" onclick="loadLesson('2.1')" class="text-slate-400 font-bold hover:text-cyan-500 transition-colors cursor-pointer">Niveles (01-49):</a>
+                            Marcan las fronteras jerárquicas en el pizarrón (marcos principales y subdivisiones internas de recuadros).<br><br>
+                            <b>PICTURE (PIC):</b>
+                            Funciona como la cinta métrica que asigna la cantidad exacta de casillas cuadradas y el tipo de dato permitido (carácter o número).<br><br>
+                            <b>SYNCHRONIZED (SYNC):</b>
+                            Ajusta las casillas a los bordes de palabra de la CPU, dejando espacios en blanco intencionales (<i>slack bytes</i>) para optimizar la lectura.
+                        </p>
+                    </div>
+
+                    <!-- CATEGORÍA 2: CODIFICACIÓN FÍSICA -->
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-purple-400 rounded-r-xl space-y-2">
+                        <div class="font-bold text-purple-400 text-sm flex items-center gap-1">
+                            <i class="fa-solid fa-microchip"></i> Cláusulas de Representación en Memoria (USAGE)
+                        </div>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            <b>USAGE IS DISPLAY:</b>
+                            Escribe 1 carácter legible por casilla (formato de texto normal).<br><br>
+                            <b>USAGE IS COMP-3:</b>
+                            Apreta 2 dígitos por casilla en formato decimal empaquetado para ahorrar espacio en disco y acelerar cálculos financieros.<br><br>
+                            <b>USAGE IS COMP / BINARY:</b>
+                            Almacena los valores en binario puro de máquina (bloques fijos de 2, 4 u 8 bytes) para máxima velocidad de procesamiento.
+                        </p>
+                    </div>
+
+                    <!-- CATEGORÍA 3: REUTILIZACIÓN Y OPTIMIZACIÓN -->
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-amber-400 rounded-r-xl space-y-2">
+                        <div class="font-bold text-amber-400 text-sm flex items-center gap-1">
+                            <i class="fa-solid fa-clone"></i> Cláusulas de Reutilización y Arreglos
+                        </div>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            <b>REDEFINES:</b>
+                            Sobrepone una plantilla transparente sobre una sección de pizarrón existente para interpretarla con otra estructura sin gastar memoria adicional.<br><br>
+                            <b>OCCURS:</b>
+                            Estampilla y clona un recuadro $N$ veces consecutivas para crear arreglos o tablas fijas y variables.
+                        </p>
+                    </div>
+
+                    <!-- CATEGORÍA 4: ESTADO INICIAL -->
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-emerald-500 rounded-r-xl space-y-2">
+                        <div class="font-bold text-emerald-500 text-sm flex items-center gap-1">
+                            <i class="fa-solid fa-eraser"></i> Inicialización de Espacio (Literales)
+                        </div>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            <b>VALUE (Literales Fijos):</b>
+                            Escribe a mano un valor predefinido de tamaño y contenido estático en las casillas seleccionadas.<br><br>
+                            <b>Literales Figurativos (SPACES, ZEROES):</b>
+                            Actúan como un botón mágico que limpia o rellena todo el ancho del contenedor sin importar cuántos bytes mida.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="space-y-6">
+
+                    <!-- ENCABEZADO DEL EJERCICIO -->
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-red-500 rounded-r-xl space-y-2">
+                        <div class="font-bold cobol-comment text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-pen-to-square"></i> Ejercicio Práctico: El Plano del Pizarrón Bancario
+                        </div>
+                        <p class="cobol-comment font-bold text-xs leading-relaxed">
+                            Eres el arquitecto de datos de un sistema financiero. Antes de ejecutar el programa, debes calcular el plano arquitectónico en la memoria RAM (el pizarrón) para verificar la retícula de espacio y el comportamiento de las cláusulas de COBOL.
+                        </p>
+                    </div>
+
+                    <!-- CÓDIGO COBOL DE EVALUACIÓN (DESPLEGABLE) -->
+                    <details class="group p-4 bg-slate-950/80 border-l-4 border-white rounded-r-xl space-y-3" closed>
+                        <!-- BOTÓN / ENCABEZADO -->
+                        <summary class="font-bold text-white text-sm flex items-center justify-between cursor-pointer list-none select-none">
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-code"></i> Código a Evaluar (DATA DIVISION)
+                            </span>
+                            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform duration-200">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </span>
+                        </summary>
+
+    <!-- CONTENIDO A OCULTAR/MOSTRAR -->
+    <div class="pt-2">
+        <div class="bg-[#0b1121] border border-slate-800 rounded-xl overflow-x-auto shadow-lg">
+            <pre class="cobol-code-block cobol-columns-bg text-[13px] leading-relaxed p-5 min-w-max block"><code class="text-slate-300 block"><span class="text-slate-500">000010</span><span class="cobol-comment">*================================================================*</span>
+<span class="text-slate-500">000020</span><span class="cobol-comment">* ESTRUCTURA DE REGISTRO DE CUENTA Y TIPOS DE DATOS              *</span>
+<span class="text-slate-500">000030</span><span class="cobol-comment">*================================================================*</span>
+<span class="text-slate-500">000040</span> <span class="text-sky-400 font-semibold">IDENTIFICATION DIVISION.</span>
+<span class="text-slate-500">000050</span><span class="cobol-comment">* Identificación del programa</span>
+<span class="text-slate-500">000060</span> <span class="text-sky-400 font-semibold">PROGRAM-ID.</span> REGCTA.
+<span class="text-slate-500">000070</span><span class="cobol-comment">* Nombre del programa ejecutable</span>
+<span class="text-slate-500">000080</span> <span class="text-sky-400 font-semibold">DATA DIVISION.</span>
+<span class="text-slate-500">000090</span><span class="cobol-comment">* División de datos para la definición de memoria</span>
+<span class="text-slate-500">000100</span> <span class="text-sky-400 font-semibold">WORKING-STORAGE SECTION.</span>
+<span class="text-slate-500">000110</span><span class="cobol-comment">* Sección de almacenamiento de variables en memoria contigua</span>
+<span class="text-slate-500">000120</span> <span class="text-sky-400 font-semibold">01</span>  <span class="text-emerald-400">REGISTRO-CUENTA</span>.
+<span class="text-slate-500">000130</span><span class="cobol-comment">* Registro principal (Nivel 01) en Área A</span>
+<span class="text-slate-500">000140</span>     <span class="text-sky-400 font-semibold">05</span>  <span class="text-emerald-400">CLIENTE-ID</span>           <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">X(8)</span>        <span class="text-sky-400 font-semibold">VALUE</span> <span class="text-sky-400 font-semibold">SPACES</span>.
+<span class="text-slate-500">000150</span><span class="cobol-comment">*    Identificador alfanumérico del cliente</span>
+<span class="text-slate-500">000160</span>     <span class="text-sky-400 font-semibold">05</span>  <span class="text-emerald-400">DATOS-FECHA</span>.
+<span class="text-slate-500">000170</span><span class="cobol-comment">*    Grupo contenedor de la estructura de fecha</span>
+<span class="text-slate-500">000180</span>         <span class="text-sky-400 font-semibold">10</span>  <span class="text-emerald-400">FECHA-AAAAMMDD</span>   <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(8)</span>        <span class="text-sky-400 font-semibold">USAGE IS DISPLAY</span>.
+<span class="text-slate-500">000190</span><span class="cobol-comment">*        Campo numérico de 8 dígitos en formato estándar DISPLAY</span>
+<span class="text-slate-500">000200</span>         <span class="text-sky-400 font-semibold">10</span>  <span class="text-emerald-400">FECHA-DETALLE</span> <span class="text-sky-400 font-semibold">REDEFINES</span> <span class="text-emerald-400">FECHA-AAAAMMDD</span>.
+<span class="text-slate-500">000210</span><span class="cobol-comment">*        Redefinición del espacio de memoria de FECHA-AAAAMMDD</span>
+<span class="text-slate-500">000220</span>             <span class="text-sky-400 font-semibold">15</span>  <span class="text-emerald-400">FECHA-AAAA</span>   <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(4)</span>.
+<span class="text-slate-500">000230</span><span class="cobol-comment">*          Subcampo nieto que representa el año</span>
+<span class="text-slate-500">000240</span>             <span class="text-sky-400 font-semibold">15</span>  <span class="text-emerald-400">FECHA-MM</span>     <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(2)</span>.
+<span class="text-slate-500">000250</span><span class="cobol-comment">*          Subcampo nieto que representa el mes</span>
+<span class="text-slate-500">000260</span>             <span class="text-sky-400 font-semibold">15</span>  <span class="text-emerald-400">FECHA-DD</span>     <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(2)</span>.
+<span class="text-slate-500">000270</span><span class="cobol-comment">*          Subcampo nieto que representa el día</span>
+<span class="text-slate-500">000280</span>     <span class="text-sky-400 font-semibold">05</span>  <span class="text-emerald-400">SALDO-PRINCIPAL</span>      <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">S9(7)V99</span>    <span class="text-sky-400 font-semibold">USAGE IS COMP-3</span>.
+<span class="text-slate-500">000290</span><span class="cobol-comment">*    Campo numérico con signo y decimales empacado</span>
+<span class="text-slate-500">000300</span>     <span class="text-sky-400 font-semibold">05</span>  <span class="text-emerald-400">CONTADOR-ACCESOS</span>     <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(4)</span>        <span class="text-sky-400 font-semibold">USAGE IS COMP</span>.
+<span class="text-slate-500">000310</span><span class="cobol-comment">*    Contador entero binario puro (COMP)</span>
+<span class="text-slate-500">000320</span>     <span class="text-sky-400 font-semibold">05</span>  <span class="text-emerald-400">HISTORIAL-MOVIM</span>      <span class="text-sky-400 font-semibold">OCCURS 3 TIMES</span>.
+<span class="text-slate-500">000330</span><span class="cobol-comment">*    Tabla o arreglo interno repetido 3 veces</span>
+<span class="text-slate-500">000340</span>         <span class="text-sky-400 font-semibold">10</span>  <span class="text-emerald-400">COD-OPERACION</span>    <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">X(2)</span>        <span class="text-sky-400 font-semibold">VALUE</span> <span class="text-pink-400">'OP'</span>.
+<span class="text-slate-500">000350</span><span class="cobol-comment">*        Código de operación de 2 caracteres inicializado con 'OP'</span>
+<span class="text-slate-500">000360</span>         <span class="text-sky-400 font-semibold">10</span>  <span class="text-emerald-400">MONTO-MOVIM</span>      <span class="text-sky-400 font-semibold">PIC</span> <span class="text-purple-300">9(5)V99</span>     <span class="text-sky-400 font-semibold">USAGE IS COMP-3</span>.
+<span class="text-slate-500">000370</span><span class="cobol-comment">*        Monto del movimiento en formato numérico empacado</span>
+<span class="text-slate-500">000380</span> <span class="text-sky-400 font-semibold">PROCEDURE DIVISION.</span>
+<span class="text-slate-500">000390</span><span class="cobol-comment">* División de instrucciones ejecutables</span>
+<span class="text-slate-500">000400</span> <span class="text-amber-300">MAIN-PARAGRAPH.</span>
+<span class="text-slate-500">000410</span><span class="cobol-comment">* Párrafo de inicio del programa</span>
+<span class="text-slate-500">000420</span>     <span class="text-sky-400 font-semibold">STOP RUN</span>.
+<span class="text-slate-500">000430</span><span class="cobol-comment">* Detiene la ejecución y finaliza el programa</span></code></pre>
+        </div>
+
+                            <!-- BLOQUE REUTILIZABLE DEL GLOSARIO -->
+                            <div class="mt-3">
+                                ${getCobolDocumentationBlock()}
+                            </div>
+                        </div>
+                    </details>
+
+                    </div>
+
+                    <!-- PREGUNTAS DEL EJERCICIO -->
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-sky-400 rounded-r-xl space-y-3">
+                        <div class="font-bold text-sky-300 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-calculator"></i> Parte 1: Cálculo del Ancho del Pizarrón
+                        </div>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Calcula los bytes exactos que ocupa cada campo de <code>01 REGISTRO-CUENTA</code> en la memoria RAM:
+                        </p>
+                        <ul class="text-slate-300 text-xs space-y-2 list-disc list-inside pl-1">
+                            <li><b>CLIENTE-ID:</b> ¿Cuántos bytes ocupa y qué valor contiene al iniciar por la cláusula <code>VALUE SPACES</code>?</li>
+                            <li><b>DATOS-FECHA:</b> ¿Cuántos bytes ocupa en total? ¿La plantilla <code>REDEFINES</code> añade espacio extra?</li>
+                            <li><b>SALDO-PRINCIPAL:</b> Aplica la fórmula $\lceil(dígitos + 1) / 2\rceil$ para <code>COMP-3</code>. ¿Cuántos bytes ocupa?</li>
+                            <li><b>CONTADOR-ACCESOS:</b> ¿Cuántos bytes asigna la CPU para un campo <code>PIC 9(4) COMP</code>?</li>
+                            <li><b>HISTORIAL-MOVIM:</b> Calcula los bytes de una ocurrencia y multiplícalo por <code>OCCURS 3 TIMES</code>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-amber-400 rounded-r-xl space-y-3">
+                        <div class="font-bold text-amber-300 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-brain"></i> Parte 2: Análisis de Comportamiento
+                        </div>
+                        <ul class="text-slate-300 text-xs space-y-2 list-disc list-inside pl-1">
+                            <li><b>A. Botón Mágico:</b> Al hacer <code>MOVE SPACES TO CLIENTE-ID</code>, ¿cómo actúa el literal figurativo sobre las casillas asignadas por la <code>PICTURE</code>?</li>
+                            <li><b>B. Plantilla Transparente:</b> Si asignas <code>"20260920"</code> a <code>FECHA-AAAAMMDD</code>, ¿qué valor exacto lee la variable <code>FECHA-AAAA</code>?</li>
+                            <li><b>C. Rendimiento:</b> ¿Por qué es más eficiente usar <code>USAGE IS COMP</code> en <code>CONTADOR-ACCESOS</code> que <code>DISPLAY</code>?</li>
+                        </ul>
+                    </div>
+
+                    <!-- SOLUCIONARIO (DESPLEGABLE) -->
+                    <div class="p-4 bg-slate-950/80 border-l-4 border-pink-400 rounded-r-xl space-y-2">
+                        <details class="group">
+                            <summary class="font-bold text-pink-300 text-sm flex items-center justify-between cursor-pointer list-none">
+                                <span class="flex items-center gap-2">
+                                    <i class="fa-solid fa-square-check"></i> Ver Solucionario del Ejercicio
+                                </span>
+                                <span class="text-xs text-slate-500 group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+
+                            <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-400 space-y-3 leading-relaxed">
+                                <p><b>1. Resultados del Cálculo de Bytes:</b></p>
+                                <ul class="list-disc list-inside space-y-1 pl-2">
+                                    <li><b>CLIENTE-ID:</b> <b>8 bytes</b>. Inicializado con 8 espacios vacíos mediante <code>SPACES</code>.</li>
+                                    <li><b>DATOS-FECHA:</b> <b>8 bytes</b>. La cláusula <code>REDEFINES</code> no agrega ningún byte adicional; sólo superpone una lectura transparente.</li>
+                                    <li><b>SALDO-PRINCIPAL:</b> <b>5 bytes</b>. Tiene 9 dígitos numéricos: $\lceil(9 + 1) / 2\rceil = 5\text{ bytes}$.</li>
+                                    <li><b>CONTADOR-ACCESOS:</b> <b>2 bytes</b>. Los rangos hasta <code>PIC 9(4)</code> caben en media palabra binaria de hardware (16 bits).</li>
+                                    <li><b>HISTORIAL-MOVIM:</b> <b>18 bytes</b> (2 bytes de <code>COD-OPERACION</code> + 4 bytes de <code>MONTO-MOVIM</code> = 6 bytes por ocurrencia $\times$ 3).</li>
+                                </ul>
+
+                                <p class="text-emerald-300 font-bold bg-emerald-950/40 p-2 rounded border border-emerald-800/50">
+                                    Total del Ancho del Pizarrón (REGISTRO-CUENTA): 8 + 8 + 5 + 2 + 18 = 41 Bytes
+                                </p>
+
+                                <p><b>2. Respuestas de Análisis:</b></p>
+                                <p>
+                                    <b>A:</b> <code>SPACES</code> limpia los 8 bytes completos del contenedor ajustándose al tamaño de la <code>PICTURE</code>.<br>
+                                    <b>B:</b> <code>FECHA-AAAA</code> lee <code>"2026"</code> al tomar los primeros 4 bytes de la plantilla.<br>
+                                    <b>C:</b> <code>COMP</code> procesa operaciones e incrementos directamente a nivel binario en el procesador.
+                                </p>
+                            </div>
+                        </details>
+                    </div>
+
+                </div>
 
             </div>
         `;
