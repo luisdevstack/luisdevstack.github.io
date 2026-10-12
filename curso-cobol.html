@@ -8,6 +8,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        /* Estilo visual para remarcar la lección seleccionada */
+        .lesson-btn.active-lesson {
+            background-color: rgba(56, 189, 248, 0.15);
+            border-color: rgba(56, 189, 248, 0.5);
+            color: #ffffff;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col relative pt-20">
 
@@ -77,97 +86,109 @@
 
                     <div class="space-y-2 text-xs" id="accordion-container">
 
-                        <!-- MÓDULO 0 -->
+                        <!-- MÓDULO 0 (Verde / Esmeralda) -->
                         <div class="border border-emerald-800/60 rounded-xl overflow-hidden bg-emerald-950/20">
                             <button onclick="toggleModule('mod-0')" class="w-full px-3 py-2.5 text-left font-semibold text-emerald-300 hover:bg-emerald-900/30 flex items-center justify-between transition">
                                 <span class="flex items-center gap-2"><i class="fa-solid fa-terminal text-emerald-400"></i> M0: Entorno y Herramientas</span>
                                 <i id="icon-mod-0" class="fa-solid fa-chevron-down text-emerald-500 text-[10px] transition-transform duration-200"></i>
                             </button>
                             <div id="mod-0" class="space-y-1 p-2 bg-slate-950/80 border-t border-emerald-900/40">
-                                <button onclick="loadLesson('0.1')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-emerald-900/30 flex items-center justify-between">
+                                <button onclick="selectLesson(this, '0.1')" class="lesson-btn w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-emerald-900/30 border border-transparent flex items-center justify-between transition">
                                     <span>0.1 Instalar MSYS2 y GnuCOBOL</span>
                                     <i class="fa-solid fa-play text-[10px] text-emerald-400"></i>
                                 </button>
-                                <button onclick="loadLesson('0.2')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-emerald-900/30 flex items-center justify-between">
+                                <button onclick="selectLesson(this, '0.2')" class="lesson-btn w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-emerald-900/30 border border-transparent flex items-center justify-between transition">
                                     <span>0.2 Configurar VS Code & Zed</span>
                                     <i class="fa-solid fa-play text-[10px] text-emerald-400"></i>
                                 </button>
                             </div>
                         </div>
 
-                        <!-- MÓDULO 1 -->
-                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
-                            <button onclick="toggleModule('mod-1')" class="w-full px-3 py-2.5 text-left font-semibold text-slate-200 hover:bg-slate-800/60 flex items-center justify-between transition">
+                        <!-- MÓDULO 1 (Azul Cielo) -->
+                        <div class="border border-sky-800/60 rounded-xl overflow-hidden bg-sky-950/20">
+                            <button onclick="toggleModule('mod-1')" class="w-full px-3 py-2.5 text-left font-semibold text-sky-300 hover:bg-sky-900/30 flex items-center justify-between transition">
                                 <span class="flex items-center gap-2"><i class="fa-solid fa-layer-group text-sky-400"></i> M1: Fundamentos y Estructura</span>
-                                <i id="icon-mod-1" class="fa-solid fa-chevron-right text-slate-500 text-[10px] transition-transform duration-200"></i>
+                                <i id="icon-mod-1" class="fa-solid fa-chevron-right text-sky-500 text-[10px] transition-transform duration-200"></i>
                             </button>
-                            <div id="mod-1" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-slate-800/60">
-                                <button onclick="loadLesson('1.1')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
+                            <div id="mod-1" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-sky-900/40">
+                                <button onclick="selectLesson(this, '1.1')" class="lesson-btn w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-sky-900/30 border border-transparent flex items-center justify-between transition">
                                     <span>1.1 Historia del Mainframe</span>
-                                    <i class="fa-solid fa-play text-[10px]"></i>
+                                    <i class="fa-solid fa-play text-[10px] text-sky-400"></i>
                                 </button>
-                                <button onclick="loadLesson('1.2')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
+                                <button onclick="selectLesson(this, '1.2')" class="lesson-btn w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-sky-900/30 border border-transparent flex items-center justify-between transition">
                                     <span>1.2 Formato Fijo y Columnas</span>
-                                    <i class="fa-solid fa-play text-[10px]"></i>
+                                    <i class="fa-solid fa-play text-[10px] text-sky-400"></i>
                                 </button>
-                                <button onclick="loadLesson('1.3')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
+                                <button onclick="selectLesson(this, '1.3')" class="lesson-btn w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-sky-900/30 border border-transparent flex items-center justify-between transition">
                                     <span>1.3 Limitadores Estructurales</span>
-                                    <i class="fa-solid fa-play text-[10px]"></i>
+                                    <i class="fa-solid fa-play text-[10px] text-sky-400"></i>
                                 </button>
-                                <button onclick="loadLesson('1.4')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
+                                <button onclick="selectLesson(this, '1.4')" class="lesson-btn w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-sky-900/30 border border-transparent flex items-center justify-between transition">
                                     <span>1.4 Tu Primer Hola Mundo</span>
-                                    <i class="fa-solid fa-play text-[10px]"></i>
+                                    <i class="fa-solid fa-play text-[10px] text-sky-400"></i>
                                 </button>
                             </div>
                         </div>
 
-                        <!-- MÓDULO 2 -->
-                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
-                            <button onclick="toggleModule('mod-2')" class="w-full px-3 py-2.5 text-left font-semibold text-slate-300 hover:bg-slate-800/60 flex items-center justify-between transition">
+                        <!-- MÓDULO 2 (Púrpura) -->
+                        <div class="border border-purple-800/60 rounded-xl overflow-hidden bg-purple-950/20">
+                            <button onclick="toggleModule('mod-2')" class="w-full px-3 py-2.5 text-left font-semibold text-purple-300 hover:bg-purple-900/30 flex items-center justify-between transition">
                                 <span class="flex items-center gap-2"><i class="fa-solid fa-memory text-purple-400"></i> M2: Manejo de Memoria</span>
-                                <i id="icon-mod-2" class="fa-solid fa-chevron-right text-slate-500 text-[10px] transition-transform duration-200"></i>
+                                <i id="icon-mod-2" class="fa-solid fa-chevron-right text-purple-500 text-[10px] transition-transform duration-200"></i>
                             </button>
-                            <div id="mod-2" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-slate-800/60">
-                                <button onclick="loadLesson('2.1')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
+                            <div id="mod-2" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-purple-900/40">
+                                <button onclick="selectLesson(this, '2.1')" class="lesson-btn w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-purple-900/30 border border-transparent flex items-center justify-between transition">
                                     <span>2.1 Los Niveles de Datos</span>
-                                    <i class="fa-solid fa-play text-[10px]"></i>
+                                    <i class="fa-solid fa-play text-[10px] text-purple-400"></i>
                                 </button>
-                                <button onclick="loadLesson('2.2')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
+                                <button onclick="selectLesson(this, '2.2')" class="lesson-btn w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-purple-900/30 border border-transparent flex items-center justify-between transition">
                                     <span>2.2 La Cláusula PIC</span>
-                                    <i class="fa-solid fa-play text-[10px]"></i>
+                                    <i class="fa-solid fa-play text-[10px] text-purple-400"></i>
                                 </button>
-                                <button onclick="loadLesson('2.3')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
+                                <button onclick="selectLesson(this, '2.3')" class="lesson-btn w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-purple-900/30 border border-transparent flex items-center justify-between transition">
                                     <span>2.3 Literales y Figurativos</span>
-                                    <i class="fa-solid fa-play text-[10px]"></i>
+                                    <i class="fa-solid fa-play text-[10px] text-purple-400"></i>
                                 </button>
-                                <button onclick="loadLesson('2.4')" class="w-full text-left px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 flex items-center justify-between">
+                                <button onclick="selectLesson(this, '2.4')" class="lesson-btn w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-purple-900/30 border border-transparent flex items-center justify-between transition">
                                     <span>2.4 Representación en Memoria</span>
-                                    <i class="fa-solid fa-play text-[10px]"></i>
+                                    <i class="fa-solid fa-play text-[10px] text-purple-400"></i>
                                 </button>
                             </div>
                         </div>
 
-                        <!-- MÓDULOS DEL 3 AL 7 -->
-                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
-                            <button onclick="toggleModule('mod-3')" class="w-full px-3 py-2.5 text-left font-semibold text-slate-300 hover:bg-slate-800/60 flex items-center justify-between transition">
+                        <!-- MÓDULO 3 (Ámbar / Naranja) -->
+                        <div class="border border-amber-800/60 rounded-xl overflow-hidden bg-amber-950/20">
+                            <button onclick="toggleModule('mod-3')" class="w-full px-3 py-2.5 text-left font-semibold text-amber-300 hover:bg-amber-900/30 flex items-center justify-between transition">
                                 <span class="flex items-center gap-2"><i class="fa-solid fa-code-branch text-amber-400"></i> M3: Control y Operaciones</span>
-                                <i id="icon-mod-3" class="fa-solid fa-chevron-right text-slate-500 text-[10px] transition-transform duration-200"></i>
+                                <i id="icon-mod-3" class="fa-solid fa-chevron-right text-amber-500 text-[10px] transition-transform duration-200"></i>
                             </button>
-                            <div id="mod-3" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-slate-800/60">
-                                <span class="block px-2 py-1 text-[11px] text-slate-500">3.1 Asignación con MOVE</span>
-                                <span class="block px-2 py-1 text-[11px] text-slate-500">3.2 Operaciones y COMPUTE</span>
-                                <span class="block px-2 py-1 text-[11px] text-slate-500">3.3 Decisiones IF / ELSE / 88</span>
-                                <span class="block px-2 py-1 text-[11px] text-slate-500">3.4 Evaluación con EVALUATE</span>
-                                <span class="block px-2 py-1 text-[11px] text-slate-500">3.5 Bucles PERFORM</span>
+                            <div id="mod-3" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-amber-900/40">
+                                <button onclick="selectLessonModule3(this, '3.1')" class="lesson-btn w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-amber-900/30 border border-transparent flex items-center justify-between transition">
+                                    <span>3.1 Mecánica de Hardware (MOVE)</span>
+                                    <i class="fa-solid fa-play text-[10px] text-amber-400"></i>
+                                </button>
+                                <button onclick="selectLessonModule3(this, '3.2')" class="lesson-btn w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-amber-900/30 border border-transparent flex items-center justify-between transition">
+                                    <span>3.2 Operaciones y COMPUTE</span>
+                                    <i class="fa-solid fa-play text-[10px] text-amber-400"></i>
+                                </button>
+                                <button onclick="selectLessonModule3(this, '3.3')" class="lesson-btn w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-amber-900/30 border border-transparent flex items-center justify-between transition">
+                                    <span>3.3 Estructura Condicional</span>
+                                    <i class="fa-solid fa-play text-[10px] text-amber-400"></i>
+                                </button>
+                                <button onclick="selectLessonModule3(this, '3.4')" class="lesson-btn w-full text-left px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-amber-900/30 border border-transparent flex items-center justify-between transition">
+                                    <span>3.4 Bucles PERFORM</span>
+                                    <i class="fa-solid fa-play text-[10px] text-amber-400"></i>
+                                </button>
                             </div>
                         </div>
 
-                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
-                            <button onclick="toggleModule('mod-4')" class="w-full px-3 py-2.5 text-left font-semibold text-slate-300 hover:bg-slate-800/60 flex items-center justify-between transition">
+                        <!-- MÓDULO 4 (Esmeralda / Verde Claro) -->
+                        <div class="border border-emerald-800/60 rounded-xl overflow-hidden bg-emerald-950/20">
+                            <button onclick="toggleModule('mod-4')" class="w-full px-3 py-2.5 text-left font-semibold text-emerald-300 hover:bg-emerald-900/30 flex items-center justify-between transition">
                                 <span class="flex items-center gap-2"><i class="fa-solid fa-font text-emerald-400"></i> M4: Texto y Funciones</span>
-                                <i id="icon-mod-4" class="fa-solid fa-chevron-right text-slate-500 text-[10px] transition-transform duration-200"></i>
+                                <i id="icon-mod-4" class="fa-solid fa-chevron-right text-emerald-500 text-[10px] transition-transform duration-200"></i>
                             </button>
-                            <div id="mod-4" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-slate-800/60">
+                            <div id="mod-4" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-emerald-900/40">
                                 <span class="block px-2 py-1 text-[11px] text-slate-500">4.1 STRING y UNSTRING</span>
                                 <span class="block px-2 py-1 text-[11px] text-slate-500">4.2 INSPECT REPLACING</span>
                                 <span class="block px-2 py-1 text-[11px] text-slate-500">4.3 Reference Modification</span>
@@ -175,12 +196,13 @@
                             </div>
                         </div>
 
-                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
-                            <button onclick="toggleModule('mod-5')" class="w-full px-3 py-2.5 text-left font-semibold text-slate-300 hover:bg-slate-800/60 flex items-center justify-between transition">
+                        <!-- MÓDULO 5 (Cian) -->
+                        <div class="border border-cyan-800/60 rounded-xl overflow-hidden bg-cyan-950/20">
+                            <button onclick="toggleModule('mod-5')" class="w-full px-3 py-2.5 text-left font-semibold text-cyan-300 hover:bg-cyan-900/30 flex items-center justify-between transition">
                                 <span class="flex items-center gap-2"><i class="fa-solid fa-table-cells text-cyan-400"></i> M5: Arrays y Tablas</span>
-                                <i id="icon-mod-5" class="fa-solid fa-chevron-right text-slate-500 text-[10px] transition-transform duration-200"></i>
+                                <i id="icon-mod-5" class="fa-solid fa-chevron-right text-cyan-500 text-[10px] transition-transform duration-200"></i>
                             </button>
-                            <div id="mod-5" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-slate-800/60">
+                            <div id="mod-5" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-cyan-900/40">
                                 <span class="block px-2 py-1 text-[11px] text-slate-500">5.1 Cláusula OCCURS</span>
                                 <span class="block px-2 py-1 text-[11px] text-slate-500">5.2 Subíndices e Índices</span>
                                 <span class="block px-2 py-1 text-[11px] text-slate-500">5.3 Recorrido de Tablas</span>
@@ -188,12 +210,13 @@
                             </div>
                         </div>
 
-                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
-                            <button onclick="toggleModule('mod-6')" class="w-full px-3 py-2.5 text-left font-semibold text-slate-300 hover:bg-slate-800/60 flex items-center justify-between transition">
+                        <!-- MÓDULO 6 (Índigo) -->
+                        <div class="border border-indigo-800/60 rounded-xl overflow-hidden bg-indigo-950/20">
+                            <button onclick="toggleModule('mod-6')" class="w-full px-3 py-2.5 text-left font-semibold text-indigo-300 hover:bg-indigo-900/30 flex items-center justify-between transition">
                                 <span class="flex items-center gap-2"><i class="fa-solid fa-diagram-project text-indigo-400"></i> M6: Subprogramas</span>
-                                <i id="icon-mod-6" class="fa-solid fa-chevron-right text-slate-500 text-[10px] transition-transform duration-200"></i>
+                                <i id="icon-mod-6" class="fa-solid fa-chevron-right text-indigo-500 text-[10px] transition-transform duration-200"></i>
                             </button>
-                            <div id="mod-6" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-slate-800/60">
+                            <div id="mod-6" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-indigo-900/40">
                                 <span class="block px-2 py-1 text-[11px] text-slate-500">6.1 CALL ... USING</span>
                                 <span class="block px-2 py-1 text-[11px] text-slate-500">6.2 LINKAGE SECTION</span>
                                 <span class="block px-2 py-1 text-[11px] text-slate-500">6.3 Paso de Parámetros</span>
@@ -201,12 +224,13 @@
                             </div>
                         </div>
 
-                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
-                            <button onclick="toggleModule('mod-7')" class="w-full px-3 py-2.5 text-left font-semibold text-slate-300 hover:bg-slate-800/60 flex items-center justify-between transition">
+                        <!-- MÓDULO 7 (Rosa / Rose) -->
+                        <div class="border border-rose-800/60 rounded-xl overflow-hidden bg-rose-950/20">
+                            <button onclick="toggleModule('mod-7')" class="w-full px-3 py-2.5 text-left font-semibold text-rose-300 hover:bg-rose-900/30 flex items-center justify-between transition">
                                 <span class="flex items-center gap-2"><i class="fa-solid fa-file-invoice text-rose-400"></i> M7: Manejo de Archivos</span>
-                                <i id="icon-mod-7" class="fa-solid fa-chevron-right text-slate-500 text-[10px] transition-transform duration-200"></i>
+                                <i id="icon-mod-7" class="fa-solid fa-chevron-right text-rose-500 text-[10px] transition-transform duration-200"></i>
                             </button>
-                            <div id="mod-7" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-slate-800/60">
+                            <div id="mod-7" class="hidden space-y-1 p-2 bg-slate-950/80 border-t border-rose-900/40">
                                 <span class="block px-2 py-1 text-[11px] text-slate-500">7.1 FILE-CONTROL y SELECT</span>
                                 <span class="block px-2 py-1 text-[11px] text-slate-500">7.2 FILE SECTION y FD</span>
                                 <span class="block px-2 py-1 text-[11px] text-slate-500">7.3 OPEN, READ, WRITE, CLOSE</span>
@@ -278,10 +302,27 @@
 
     <script src="./js/translations.js"></script>
     <script src="./js/lessons.js"></script>
+    <script src="./js/modulo_3.js"></script>
     <script src="./js/main.js"></script>
     <script>
+        // Función auxiliar para manejar el resaltado visual de la lección seleccionada
+        function selectLesson(btnElement, lessonId) {
+            document.querySelectorAll('.lesson-btn').forEach(btn => btn.classList.remove('active-lesson'));
+            if (btnElement) btnElement.classList.add('active-lesson');
+            if (typeof loadLesson === 'function') loadLesson(lessonId);
+        }
+
+        function selectLessonModule3(btnElement, lessonId) {
+            document.querySelectorAll('.lesson-btn').forEach(btn => btn.classList.remove('active-lesson'));
+            if (btnElement) btnElement.classList.add('active-lesson');
+            if (typeof loadLessonModule3 === 'function') loadLessonModule3(lessonId);
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
-            if (typeof loadLesson === 'function') {
+            const firstBtn = document.querySelector('.lesson-btn');
+            if (firstBtn) {
+                selectLesson(firstBtn, '0.1');
+            } else if (typeof loadLesson === 'function') {
                 loadLesson('0.1');
             }
         });

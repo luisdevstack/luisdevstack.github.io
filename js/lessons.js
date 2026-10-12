@@ -1286,4 +1286,5 @@ function loadLesson(lessonId) {
             </div>
         `;
     }
+
 }
